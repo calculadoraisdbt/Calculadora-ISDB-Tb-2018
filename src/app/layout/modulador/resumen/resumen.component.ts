@@ -1,0 +1,168 @@
+import { Component, OnInit } from '@angular/core';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { ModuladorService } from 'app/Services/modulador.service'
+
+@Component({
+  selector: 'app-resumen',
+  templateUrl: './resumen.component.html',
+  styleUrls: ['./resumen.component.scss'],
+  providers: [ModuladorService]
+})
+export class ResumenComponent implements OnInit {
+
+  intSelected : string = "" ;
+  modoSelected : string = "" ;
+  esqModSelected : string [] ;
+  codConSelected : string [] ;
+  oneSeg : boolean = false;
+  mostMenos : boolean = true;
+  oneSegseg : string = "";
+  segCapaASelected : number ;
+  segCapaBSelected : number ;
+  segCapaCSelected : number ;
+  SegOpt : string [] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"] ;
+  mostrarB : string [] ;
+  options = [0,1,2,3,4,5,6,7,8,9,10,11,12,13];
+  select1  ;
+  select2  ;
+  select3  ;
+  activado = false;
+  constructor(private _moduladorService:ModuladorService) {
+
+        this.intSelected = this._moduladorService.obtenerIntervalo();
+        this.modoSelected = this._moduladorService.obtenerModo();
+         this.esqModSelected = this._moduladorService.obtenerEsquemaModulacion();
+         this.codConSelected = this._moduladorService.obtenerCodificacionConvolucional();
+        this.select1 = this._moduladorService.obtenerSegmentoA();
+         this.select2 = this._moduladorService.obtenerSegmentoB();
+           this.select3 = this._moduladorService.obtenerSegmentoC();
+   }
+
+   
+        
+
+  ngOnInit() {
+  }
+
+  intSelection(value){
+
+    
+     this.intSelected = value;
+     this._moduladorService.actualizarIntervalo(this.intSelected);
+  }
+
+
+  change(){
+
+   var change = document.getElementById("oneseg");
+                    if (change.innerHTML === "Desactivado")
+                    {
+                        change.innerHTML = "Activado";
+                        this.oneSeg = true ;
+                        this.oneSegseg = "1" ;
+                    }
+                    else {
+                        change.innerHTML = "Desactivado";
+                        this.oneSeg = false ;
+                        this.oneSegseg = "" ;
+                    }
+}
+
+modo(value){
+
+     this.modoSelected = value;
+     this._moduladorService.actualizarModo(this.modoSelected);
+
+
+}
+
+esqModSelection(value, id){
+    if(id === 'capa A') {
+
+        this.esqModSelected[0] = value;
+         this._moduladorService.actualizarEsquemaModulacion(this.esqModSelected[0], id);   
+
+    }
+     if (id === 'capa B') {
+
+        this.esqModSelected[1] = value;
+        this._moduladorService.actualizarEsquemaModulacion(this.esqModSelected[1], id);  
+
+    }
+    if(id === 'capa C') {
+
+        this.esqModSelected[2] = value;
+        this._moduladorService.actualizarEsquemaModulacion(this.esqModSelected[2], id);  
+
+    }
+
+    
+
+}
+
+codConSelection(value, id){
+    if(id === 'capa A') {
+
+        this.codConSelected[0] = value;
+         this._moduladorService. actualizarCodificacionConvolucional(this.codConSelected[0], id);   
+
+    }
+     if (id === 'capa B') {
+
+        this.codConSelected[1] = value;
+        this._moduladorService. actualizarCodificacionConvolucional(this.codConSelected[1], id);  
+
+    }
+    if(id === 'capa C') {
+
+        this.codConSelected[2] = value;
+        this._moduladorService. actualizarCodificacionConvolucional(this.codConSelected[2], id);  
+
+    }
+
+    
+
+}
+
+ getLimit(value) {
+    // get the sum of the select's
+    const suma = this.select1 + this.select2 + this.select3;
+
+    // we minus the total plus this value as we still 
+    // need the option that is selected
+    return this.options.length - suma + value;
+  }
+  
+  saveValueA(value) {
+        this._moduladorService.actualizarSegmentoA(value);
+    // call service or whatever to save the value
+  }
+
+   saveValueB(value) {
+       this._moduladorService.actualizarSegmentoB(value);
+    // call service or whatever to save the value
+  }
+
+   saveValueC(value) {
+       this._moduladorService.actualizarSegmentoC(value);
+    // call service or whatever to save the value
+  }
+
+  onActivado() {
+    // check if we are inactive
+    if (!this.activado) {
+      // set the select options
+      this.select1 = 1;
+      this.select2 = 0;
+      this.select3 = 0;
+    }
+    // toggle active
+    this.activado = !this.activado;
+  }
+
+  isValidSuma() {
+    const suma = this.select1 + this.select2 + this.select3;
+    return suma === 13;
+  }
+
+}

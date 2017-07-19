@@ -1,0 +1,135 @@
+
+<h4>RED DE FRECUENCIA UNICA</h4>
+<div>
+    <agm-map
+    [latitude]="lat" 
+    [longitude]="lng"
+    [zoom]="zoom">
+                    <div *ngIf="tra0" >
+                    <agm-marker
+                    [latitude]="markers[0].lati" 
+                    [longitude]="markers[0].longi"
+                    [markerDraggable]="markers[0].arrastrable"
+                    (dragEnd)= "posicionFinalMarcador(markers[0], $event)">
+                    <agm-info-window>{{markers[0].nombre}}</agm-info-window>
+                    </agm-marker>
+                    </div>
+
+                    <div *ngIf="tra1" >
+                    <agm-marker  
+                    [latitude]="markers[1].lati" 
+                    [longitude]="markers[1].longi"
+                    [markerDraggable]="markers[1].arrastrable"
+                    (dragEnd)= "posicionFinalMarcador(markers[1], $event)">
+                    <agm-info-window>{{markers[1].nombre}}</agm-info-window>
+                    </agm-marker>
+                    </div>
+
+                    <div *ngIf="recep" >
+                    <agm-marker  
+                     [iconUrl]="'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'"
+                    [latitude]="markers[2].lati" 
+                    [longitude]="markers[2].longi"
+                    [markerDraggable]="markers[2].arrastrable"
+                    (dragEnd)= "posicionFinalMarcador(markers[2], $event)">
+                    <agm-info-window>{{markers[2].nombre}}</agm-info-window>
+                    </agm-marker>
+                    </div>
+                 <div *ngIf="obst" >
+                    <agm-marker  
+                     [iconUrl]="'http://maps.google.com/mapfiles/ms/icons/green-dot.png'"
+                    [latitude]="markers[3].lati" 
+                    [longitude]="markers[3].longi"
+                    [markerDraggable]="markers[3].arrastrable"
+                    (dragEnd)= "posicionFinalMarcador(markers[3], $event)">
+                    <agm-info-window>{{markers[3].nombre}}</agm-info-window>
+                    </agm-marker>
+                    </div>
+    </agm-map>
+</div>
+
+<h5>Antes de calcular la distancia posicione los marcadores</h5>
+
+
+<div class="row">
+                        <div class="col">
+                    <form (ngSubmit)="uploadTx1()" #frmTx1="ngForm" >
+        
+                        <input type="checkbox" [(ngModel)]="tra0" value="false" name="tra0" id="tra0"> Tx 1 
+                         <input [(ngModel)]="newLatTx1"  placeholder="Latitud" name="newLatTx1" id="newLatTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"  />
+                         <input [(ngModel)]="newLongTx1"  placeholder="Longitud" name="newLongTx1" id="newLongTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/>
+                         <button [disabled]=!frmTx1.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button>                             
+                     
+                    </form > </div>   <br>
+<div class="col">
+                        <form (ngSubmit)="uploadTx2()" #frmTx2="ngForm"> 
+                        <input type="checkbox" [(ngModel)]="tra1" value="false"  name="tra1" id="tra1"> Tx 2
+                        <input [(ngModel)]="newLatTx2"  placeholder="Latitud" name="newLatTx2" id="newLatTx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/>
+                         <input [(ngModel)]="newLongTx2"  placeholder="Longitud" name="newLongTx2" id="newLongTx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/>
+                         <button  [disabled]=!frmTx2.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button>
+                        </form> <br> </div>
+                         <div class="w-100"></div>
+                         <div class="col">
+                        <form (ngSubmit)="uploadRx()" #frmRx="ngForm">
+                        <input type="checkbox" [(ngModel)]="recep" value="false" name="recep" id="recep"> Rx 1
+                        <input [(ngModel)]="newLatRx"  placeholder="Latitud" name="newLatRx" id="newLatRx" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/>
+                         <input [(ngModel)]="newLongRx"  placeholder="Longitud" name="newLongRx" id="newLongRx" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/>
+                         <button [disabled]=!frmRx.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button>
+                        </form> </div> 
+                        <div class="col-xs"> 
+                        <form (ngSubmit)="uploadOb()" #frmOb="ngForm" >
+                        <input type="checkbox" [(ngModel)]="obst" value="false" name="obst" id="obst" > Obstaculo
+                        <input [(ngModel)]="newLatOb"  placeholder="Latitud" name="newLatOb" id="newLatOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/>
+                         <input [(ngModel)]="newLongOb"  placeholder="Longitud" name="newLongOb" id="newLongOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/>
+                         <button [disabled]=!frmOb.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button>
+                        </form> </div>   <br> 
+
+
+</div>
+
+<div>
+<br>
+    <button 
+     type="button"
+      class="btn btn-sm btn-secondary"
+      [disabled]= "!recep"
+      data-toggle="tooltip" data-placement="top" title="Seleccione el Receptor"
+      (click)="show()">Calcular Distancia</button>
+</div> <br>
+
+<div class="alert alert-warning" role="alert">
+  <strong>Atencion!</strong> Ingresar latitud y longitud entre 10 y 18 digitos, utilizando "." y sin espacios. 
+</div>
+
+
+
+<div class="card-group">
+  <div class="card">
+    <div class="card-small">
+    <div class="card-block">
+      <h4 class="card-title"></h4> <br>
+      <p class="card-text"> Distancia Tx1-Rx por camino directo :</p>
+      <p class="card-text">Distancia Tx2-Rx por camino directo : </p>
+          <p class="card-text">Distancia Tx2-Rx por camino reflejado: </p>
+              <p class="card-text">Tiempo de retardo Tx2-Rx por camino reflejado: </p>
+      <p class="card-text"><small class="text-muted"></small></p>
+    </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title"> </h4> <br>
+        <div *ngIf="tra0" >
+        <div id="testB"  ></div> 
+        </div>
+      <p class="card-text" id="testB"> </p>
+      <p class="card-text" id="testA"> </p>
+      <p class="card-text" id="Tx1Ob"> </p> 
+      <p class="card-text" id="Tx2Ob"> </p>
+      <p class="card-text"><small class="text-muted"></small></p>
+    </div>
+  </div>
+  </div>
+
+
+
