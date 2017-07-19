@@ -15,7 +15,7 @@
                     <option value="MODO 1" >MODO 1</option>
                     <option value="MODO 2">MODO 2</option>
                     <option value="MODO 3" >MODO 3</option>
-                </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </select>
                  <label>Intervalo de Guarda :</label>
                 <select [value]="intSelected" class="form-control-mb-12"
                 (change)="intSelection($event.target.value)" >
@@ -23,62 +23,77 @@
                     <option value="1/8">1/8</option>
                     <option  value="1/16">1/16</option>
                     <option  value="1/32">1/32</option>
-                </select> <br><br>
-              <button (click)="onActivado()">{{ activado ? 'Desactivado' : 'Activado' }}</button>
-              <select [(ngModel)]="select1" [disabled]="activado" (change)="saveValueA(select1)">
+                </select><br><br>
+                  <label> One-Seg: </label>
+                    <button (click)="onActivado()">{{ activado ? 'Desactivado' : 'Activado' }}</button>
+                   
+                 <table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Capa A</th>
+      <th>Capa B</th>
+      <th>Capa C</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Nº de Segmentos [Ns]:</th>
+      <td> <select [(ngModel)]="select1" [disabled]="activado" (change)="saveValueA(select1)">
               <option *ngFor="let o of options | slice:0:getLimit(select1)" [ngValue]="o">{{ o }}</option>
-              </select>
-              <select [(ngModel)]="select2" (change)="saveValueB(select2)">
+              </select> </td>
+      <td> <select [(ngModel)]="select2" (change)="saveValueB(select2)">
               <option *ngFor="let o of options | slice:0:getLimit(select2)" [ngValue]="o">{{ o }}</option>
-              </select>
-              <select [(ngModel)]="select3" (change)="saveValueC(select3)">
+              </select> </td>
+      <td> <select [(ngModel)]="select3" (change)="saveValueC(select3)">
                <option *ngFor="let o of options | slice:0:getLimit(select3)" [ngValue]="o">{{ o }}</option>
-              </select>
-
-<br><br>
-
-<p *ngIf="!isValidSuma()" style="color:red">La suma do los segmentos asignados debe ser 13</p>
-
-                 <label>Esquema de Modulacion</label>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-            <select class="form-control-mb-12" [value]="esqModSelected[0]" (change)="esqModSelection($event.target.value, 'capa A')">
+              </select></td>
+                  </tr>
+    <tr>
+      <th scope="row">Esquema de Modulacion:</th>
+      <td>  <select class="form-control-mb-12" [value]="esqModSelected[0]" (change)="esqModSelection($event.target.value, 'capa A')">
                    <option value="QPSK">QPSK</option>
                     <option value="16-QAM">16-QAM</option>
                     <option value="64-QAM">64-QAM</option>
                     <option value="DQPSK">DQPSK</option>
-                </select> 
-                 <select  class="form-control-mb-12" [value]="esqModSelected[1]" (change)="esqModSelection($event.target.value,'capa B')">
+                </select> </td>
+      <td> <select  class="form-control-mb-12" [value]="esqModSelected[1]" (change)="esqModSelection($event.target.value,'capa B')">
                     <option value="QPSK">QPSK</option>
                     <option value="16-QAM">16-QAM</option>
                     <option value="64-QAM">64-QAM</option>
                     <option value="DQPSK">DQPSK</option>
-                </select> 
-                 <select  class="form-control-mb-12" [value]="esqModSelected[2]" (change)="esqModSelection($event.target.value, 'capa C')">
+                </select> </td>
+      <td> <select  class="form-control-mb-12" [value]="esqModSelected[2]" (change)="esqModSelection($event.target.value, 'capa C')">
                      <option value="QPSK">QPSK</option>
                     <option value="16-QAM">16-QAM</option>
                     <option value="64-QAM">64-QAM</option>
                     <option value="DQPSK">DQPSK</option>
-                </select> <br> <br>
-
-                 <label>Codificacion Convolucional</label>  &nbsp;&nbsp;
-            <select class="form-control-mb-12"  [value]="codConSelected[0]" (change)="codConSelection($event.target.value, 'capa A')">
+                </select></td>
+                  </tr>
+    <tr>
+      <th scope="row">Codificacion Convolucional [Ki]</th>
+      <td><select class="form-control-mb-12"  [value]="codConSelected[0]" (change)="codConSelection($event.target.value, 'capa A')">
                <option value="1/2">1/2</option>
                     <option value="2/3">2/3</option>
                     <option value="3/4">3/4</option>
                     <option value="5/6">5/6</option>
-                </select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                 <select class="form-control-mb-12" [value]="codConSelected[1]" (change)="codConSelection($event.target.value, 'capa B')">
+                </select></td>
+      <td>  <select class="form-control-mb-12" [value]="codConSelected[1]" (change)="codConSelection($event.target.value, 'capa B')">
                   <option value="1/2">1/2</option>
                     <option value="2/3">2/3</option>
                     <option value="3/4">3/4</option>
                     <option value="5/6">5/6</option>
-                </select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                 <select class="form-control-mb-12" [value]="codConSelected[2]"  (change)="codConSelection($event.target.value, 'capa C')">
+                </select> </td>
+      <td> <select class="form-control-mb-12" [value]="codConSelected[2]"  (change)="codConSelection($event.target.value, 'capa C')">
                <option value="1/2">1/2</option>
                     <option value="2/3">2/3</option>
                     <option value="3/4">3/4</option>
                     <option value="5/6">5/6</option>
-                </select> 
-                
+                </select> </td>
+       </tr>
+  </tbody>
+</table>
+   <p *ngIf="!isValidSuma()" style="color:red">La suma do los segmentos asignados debe ser 13</p>             
             </div>
             </div>
             

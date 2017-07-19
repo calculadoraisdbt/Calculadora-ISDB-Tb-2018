@@ -20,13 +20,11 @@ export class ResumenComponent implements OnInit {
   segCapaASelected : number ;
   segCapaBSelected : number ;
   segCapaCSelected : number ;
-  SegOpt : string [] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"] ;
-  mostrarB : string [] ;
   options = [0,1,2,3,4,5,6,7,8,9,10,11,12,13];
   select1  ;
   select2  ;
   select3  ;
-  activado = false;
+  activado ;
   constructor(private _moduladorService:ModuladorService) {
 
         this.intSelected = this._moduladorService.obtenerIntervalo();
@@ -36,6 +34,7 @@ export class ResumenComponent implements OnInit {
         this.select1 = this._moduladorService.obtenerSegmentoA();
          this.select2 = this._moduladorService.obtenerSegmentoB();
            this.select3 = this._moduladorService.obtenerSegmentoC();
+           this.activado = this._moduladorService.obtenerActivado();
    }
 
    
@@ -148,6 +147,11 @@ codConSelection(value, id){
     // call service or whatever to save the value
   }
 
+  saveActivado(value){
+        this._moduladorService.actualizarActivado(value);
+
+  }
+
   onActivado() {
     // check if we are inactive
     if (!this.activado) {
@@ -155,9 +159,14 @@ codConSelection(value, id){
       this.select1 = 1;
       this.select2 = 0;
       this.select3 = 0;
+      this.saveValueA(this.select1);
+      this.saveValueB(this.select2);
+      this.saveValueC(this.select3);
     }
     // toggle active
     this.activado = !this.activado;
+    this.saveActivado(this.activado);
+
   }
 
   isValidSuma() {

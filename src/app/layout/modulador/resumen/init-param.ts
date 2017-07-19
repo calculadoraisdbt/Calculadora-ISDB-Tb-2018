@@ -16,7 +16,7 @@ load(){
             var select1 = 0;
             var select2 = 0;
             var select3 = 0;
-           //   console.log(select1);
+            var activado = false;
             localStorage.setItem('intSelected', JSON.stringify(intSelected));
             localStorage.setItem('modoSelected', JSON.stringify(modoSelected));
             localStorage.setItem('esqModSelected', JSON.stringify(esqModSelected));
@@ -24,9 +24,9 @@ load(){
            localStorage.setItem('select1', JSON.stringify(select1));
             localStorage.setItem('select2', JSON.stringify(select2));
             localStorage.setItem('select3', JSON.stringify(select3));
+            localStorage.setItem('activado', JSON.stringify(activado));
         }else{
                 console.log('Cargando parametros...');
-              //  console.log(select1);
         }
 
              

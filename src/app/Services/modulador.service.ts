@@ -178,4 +178,17 @@ export class ModuladorService extends InitParam {
       
    }
 
+   actualizarActivado(value){
+         var activado = JSON.parse(localStorage.getItem('activado'));
+             activado = value;
+             localStorage.setItem('activado', JSON.stringify(activado));
+   }
+
+   obtenerActivado(){
+             var activado = JSON.parse(localStorage.getItem('activado'));
+             console.log(typeof activado);
+      return activado;
+
+   }
+
 }
