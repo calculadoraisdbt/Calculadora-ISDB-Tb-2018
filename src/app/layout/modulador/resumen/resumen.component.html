@@ -93,12 +93,11 @@
        </tr>
   </tbody>
 </table>
-   <p *ngIf="!isValidSuma()" style="color:red">La suma do los segmentos asignados debe ser 13</p>             
+<div *ngIf="!isValidSuma()" class="alert alert-danger">
+    <strong>La suma de los segmentos asignados debe ser 13</strong> 
+</div>
+      
             </div>
-            </div>
-            
-            <div class="card-footer">
-                <button class="btn btn-info btn-sm" (click)="randomize()">Update</button>
             </div>
         </div>
     </div>
@@ -111,367 +110,739 @@
             <div class="card-header">Resultados</div>
             <div class="card-block">
                 <ngb-tabset>
-                    <ngb-tab title="Resumen">
+                    <ngb-tab title="Resumen" [disabled]="!isValidSuma()">
                         <ng-template ngbTabContent>
-                            
-<div class="card-group">
-  <div class="card">
-    <div class="card-small">
-    <div class="card-block">
-      <h4 class="card-title"></h4> <br>
-      <p class="card-text">Ancho de banda del canal: BW<sub>CH</sub>[Mhz]</p>
-      <p class="card-text">Intervalo de guarda: </p>
-          <p class="card-text">Intervalo de guarda: T <sub>G</sub> </p>
-              <p class="card-text">TSP totales transmitidos: </p>
-               <p class="card-text">TSP nulos transmitidos: </p>
-               <p class="card-text">Payload total transmitido A+B+C: [Mbps] </p><hr>
-              <div class="underline"> <p class="card-text">Capa A </p> </div>
-               <p class="card-text">Modulacion: </p>
-               <p class="card-text">Codificacion interna: </p>
-               <p class="card-text">Segmentos asignados: </p>
-               <p class="card-text">Payload total Capa A: [Mbps] </p><hr>
-           <div class="underline" >     <p class="card-text">Capa B </p> </div>
-               <p class="card-text">Modulacion: </p>
-               <p class="card-text">Codificacion interna: </p>
-               <p class="card-text">Segmentos asignados: </p>
-               <p class="card-text">Payload total Capa B: [Mbps] </p><hr>
-           <div class="underline" >     <p class="card-text">Capa C </p> </div>
-               <p class="card-text">Modulacion: </p>
-               <p class="card-text">Codificacion interna: </p>
-               <p class="card-text">Segmentos asignados: </p>
-               <p class="card-text">Payload total Capa C: [Mbps] </p><hr>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 1</h4>
-      <p class="card-text"></p>
-      <p class="card-text"></p>
-      <p class="card-text">{{intSelected}} </p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 2</h4>
-      <p class="card-text"></p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 3</h4>
-      <p class="card-text"></p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-</div>
+                          <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Modo 1</th>
+      <th>Modo 2</th>
+      <th>Modo 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Ancho de banda del canal: BW<sub>CH</sub>[Mhz]</th>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th scope="row">Intervalo de guarda:</th>
+      <td>{{intSelected}}</td>
+      <td>{{intSelected}}</td>
+      <td>{{intSelected}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Intervalo de guarda: T <sub>G</sub> [µseg]</th>
+      <td>{{tg1}}</td>
+      <td>{{tg2}}</td>
+      <td>{{tg3}}</td>
+    </tr>
+    <tr>
+      <th scope="row">TSP totales transmitidos:</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">TSP nulos transmitidos:</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Payload total transmitido A+B+C: [Mbps] </th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row" class="underline" >Capa A:</th>
+      <td></td>
+      <td></td>
+      <td></td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Modulacion:</th>
+      <td>{{esqModSelected[0]}}</td>
+      <td>{{esqModSelected[0]}}</td>
+      <td>{{esqModSelected[0]}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Codificacion interna:</th>
+      <td>{{codConSelected[0]}}</td>
+      <td>{{codConSelected[0]}}</td>
+      <td>{{codConSelected[0]}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Segmentos asignados: </th>
+      <td>{{select1}}</td>
+      <td>{{select1}}</td>
+      <td>{{select1}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Payload total Capa A: [Mbps]</th>
+     <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row" class="underline">Capa B:</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Modulacion:</th>
+     <td>{{esqModSelected[1]}}</td>
+      <td>{{esqModSelected[1]}}</td>
+      <td>{{esqModSelected[1]}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Codificacion interna:</th>
+     <td>{{codConSelected[1]}}</td>
+      <td>{{codConSelected[1]}}</td>
+      <td>{{codConSelected[1]}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Segmentos asignados: </th>
+    <td>{{select2}}</td>
+      <td>{{select2}}</td>
+      <td>{{select2}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Payload total Capa B: [Mbps]</th>
+     <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row" class="underline">Capa C:</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Modulacion:</th>
+     <td>{{esqModSelected[2]}}</td>
+      <td>{{esqModSelected[2]}}</td>
+      <td>{{esqModSelected[2]}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Codificacion interna:</th>
+     <td>{{codConSelected[2]}}</td>
+      <td>{{codConSelected[2]}}</td>
+      <td>{{codConSelected[2]}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Segmentos asignados: </th>
+     <td>{{select3}}</td>
+      <td>{{select3}}</td>
+      <td>{{select3}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Payload total Capa C: [Mbps]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
                         </ng-template>
                     </ngb-tab>
-                    <ngb-tab>
-                        <ng-template ngbTabTitle><b>Globales</b> </ng-template>
+                    <ngb-tab [disabled]="!isValidSuma()">
+                        <ng-template ngbTabTitle>Globales </ng-template>
                         <ng-template ngbTabContent>
-                           <div class="card-group">
-  <div class="card">
-    <div class="card-small">
-    <div class="card-block">
-      <h4 class="card-title"></h4> <br>
-      <p class="card-text">Anchura de banda del canal: BW<sub>CH</sub>[Mhz]</p>
-      <p class="card-text">Numero de segmentos: N<sub>s</sub> [Segm] </p>
-          <p class="card-text">Numero total de portadoras: L [Port] </p>
-              <p class="card-text">Denominacion segun el nº de portadoras: </p><hr>
-               <p class="card-text">Nº de portadoras por segmento: L<sub>s</sub> [Port] </p>
-               <p class="card-text">Anchura de banda en el canal: BW<sub>T</sub> [Mhz] </p>
-               <p class="card-text">Anchura de banda del segmento: BW<sub>s</sub> [Khz] </p> 
-               <p class="card-text">Separacion entre portadoras: Δf [Khz] </p>
-               <p class="card-text">Tiempo util de simbolo: T <sub>u</sub> [useg] </p><hr>
-               <p class="card-text">Intervalo de guarda: T<sub>G</sub> [useg] </p>
-               <p class="card-text">Tiempo de simbolo: T<sub>s</sub> [useg] </p><hr>
-               <p class="card-text">Frecuencia de simbolo: f<sub>s</sub> [Hz] </p> 
-               <p class="card-text">N de simbolos OFDM por cuadro: F [Simb] </p>
-               <p class="card-text">Tiempo de cuadro: T<sub>F</sub> [ms] </p>
-               <p class="card-text">Frecuencia de cuadro: F <sub>f</sub> [hZ]: </p><hr>
-               <p class="card-text">Muestas por simbolo OFDM: S[bins] </p>
-             <p class="card-text">Frecuencia de muestreo IFFT: f <sub>IFTT</sub> [Mhz] </p> 
-               <p class="card-text">Periodo de muestreo IFFT: T <sub>m</sub> [useg] </p><hr>
-               <p class="card-text">Total de pulsos por simbolo OFDM: N <sub> pulsos </sub> [-] </p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 1</h4>
-      <p class="card-text"></p>
-      <p class="card-text"></p>
-      <p class="card-text"> </p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 2</h4>
-      <p class="card-text"></p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 3</h4>
-      <p class="card-text"></p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-</div>
+                          <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Modo 1</th>
+      <th>Modo 2</th>
+      <th>Modo 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Anchura de banda del canal: BW<sub>CH</sub>[Mhz]</th>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th scope="row">Numero de segmentos: N<sub>s</sub> [Segm]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Numero total de portadoras: L [Port]</th>
+        <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Denominacion segun el nº de portadoras:</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row">Nº de portadoras por segmento: L<sub>s</sub> [Port]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Anchura de banda en el canal: BW<sub>T</sub> [Mhz] </th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row" >Anchura de banda del segmento: BW<sub>s</sub> [Khz]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Separacion entre portadoras: Δf [Khz] </th>
+       <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Tiempo util de simbolo: T <sub>u</sub> [useg]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row">Intervalo de guarda: T<sub>G</sub> [useg]</th>
+   <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Tiempo de simbolo: T<sub>s</sub> [useg]</th>
+     <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row"  >Frecuencia de simbolo: f<sub>s</sub> [Hz]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Nº de simbolos OFDM por cuadro: F [Simb]</th>
+    <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Tiempo de cuadro: T<sub>F</sub> [ms]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Frecuencia de cuadro: F <sub>f</sub> [hZ]: </th>
+  <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row">Muestas por simbolo OFDM: S[bins]</th>
+     <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row" >Frecuencia de muestreo IFFT: f <sub>IFTT</sub> [Mhz]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Periodo de muestreo IFFT: T <sub>m</sub> [useg]</th>
+    <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row">Total de pulsos por simbolo OFDM: N <sub> pulsos </sub> [-]</th>
+  <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>          
                         </ng-template>
                     </ngb-tab>
-                    <ngb-tab title="Segmentos" [disabled]="false">
+                    <ngb-tab title="Segmentos" [disabled]="!isValidSuma()">
                         <ng-template ngbTabContent>
-                             <div class="card-group">
-  <div class="card">
-    <div class="card-small">
-    <div class="card-block">
-      <h4 class="card-title"></h4> <br>
-      <p class="card-text">Ancho de banda del segmento: B<sub>WS</sub>[Khz]</p>
-      <p class="card-text">Separacion entre portadoras: Δf [Segm] </p> <hr>
-   <div class="underline" >   <p class="card-text"> Portadoras por segmento Para QPSK, 16-QAM, 64-QAM </p> </div>
-          <p class="card-text">Total: Nt<sub>P</sub> [Portadoras] </p>
-              <p class="card-text"> Datos: L <sub>D</sub> [Portadoras] </p>
-               <p class="card-text"> SP: SP [Portadoras] </p>
-               <p class="card-text"> CP: CP [Portadoras] </p>
-               <p class="card-text">TMCC: TMCC [Portadoras]  </p> 
-               <p class="card-text">AC1: AC1 [Portadoras]  </p>
-               <p class="card-text">AC2: AC2 [Portadoras]  </p><hr>
-               <div class="underline" >   <p class="card-text"> Portadoras por segmento Para DQPSK </p> </div>
-          <p class="card-text">Total: Nt<sub>P</sub> [Portadoras] </p>
-              <p class="card-text"> Datos: L <sub>D</sub> [Portadoras] </p>
-               <p class="card-text"> SP: SP [Portadoras] </p>
-               <p class="card-text"> CP: CP [Portadoras] </p>
-               <p class="card-text">TMCC: TMCC [Portadoras]  </p> 
-               <p class="card-text">AC1: AC1 [Portadoras]  </p>
-               <p class="card-text">AC2: AC2 [Portadoras]  </p><hr>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 1</h4>
-      <p class="card-text"></p>
-      <p class="card-text"></p>
-      <p class="card-text"> </p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 2</h4>
-      <p class="card-text"></p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 3</h4>
-      <p class="card-text"></p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-</div>
+                           <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Modo 1</th>
+      <th>Modo 2</th>
+      <th>Modo 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Ancho de banda del segmento: B<sub>WS</sub>[Khz]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Separacion entre portadoras: Δf [Segm]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row" class="underline">Portadoras por segmento Para QPSK, 16-QAM, 64-QAM</th>
+        <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Total: Nt<sub>P</sub> [Portadoras]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Datos: L <sub>D</sub> [Portadoras] </th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">SP: SP [Portadoras] </th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row" > CP: CP [Portadoras]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+  
+    </tr>
+    <tr>
+      <th scope="row">TMCC: TMCC [Portadoras]  </th>
+       <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">AC1: AC1 [Portadoras]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">AC2: AC2 [Portadoras]</th>
+   <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row" class="underline">Portadoras por segmento Para DQPSK</th>
+     <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Total: Nt<sub>P</sub> [Portadoras]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Datos: L <sub>D</sub> [Portadoras] </th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">SP: SP [Portadoras] </th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row" > CP: CP [Portadoras]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+  
+    </tr>
+    <tr>
+      <th scope="row">TMCC: TMCC [Portadoras]  </th>
+       <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">AC1: AC1 [Portadoras]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">AC2: AC2 [Portadoras]</th>
+   <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>     
                         </ng-template>
                     </ngb-tab>
-                     <ngb-tab title="ReMUX y cuadro OFDM" [disabled]="false">
+                     <ngb-tab title="ReMUX y cuadro OFDM" [disabled]="!isValidSuma()">
                         <ng-template ngbTabContent>
-                             <div class="card-group">
-  <div class="card" >
-    <div class="card-small">
-    <div class="card-block">
-      <h4 class="card-title"></h4> <br>
-      <p class="card-text">Duracion del TSP: T<sub>TSP</sub> [us]</p>
-      <p class="card-text">Nº de TSP transportados por el BTS en un cuadro multiplex: N<sub>BTS</sub> [-] </p> 
-   <p class="card-text"> Nº de TSP nulos transportados por el BTS en un cuadro multiplex: ΣTSP<sub>nul</sub> [-]</p> 
-          <p class="card-text">Frecuencia reloj del BTS (4 flFFT): f<sub>R</sub> [Mhz] </p> <hr>
-              <p class="card-text"> Nº total de portadoras: L  [Port] </p>
-               <p class="card-text">  Nº total de portadoras de Datos: L<sub>D</sub>  [Port] </p>
-               <p class="card-text"> Port. asignadas a pilotos dispersos: SP [Port] </p>
-               <p class="card-text">Port. asignadas a pilotos continuos: CP [Port]  </p>
-               <p class="card-text">portadoras asignadas al TMCC: TMCC [Port]  </p> 
-               <p class="card-text">Portadoras asignadas al canal AC1: AC1 [Port]  </p>
-               <p class="card-text">Portadotas asignadas al canal AC2: AC2 [Port]  </p><hr>
-     <p class="card-text"> Nº total de port. de datos Capa A : L <sub>DA</sub> [Port] </p> 
-          <p class="card-text">Nº total de port. de datos Capa B : L <sub>DB</sub> [Port] </p>
-              <p class="card-text"> Nº total de port. de datos Capa C : L <sub>DC</sub> [Port]</p>
-               <p class="card-text"> Total de port. de datos en 3 Capas: L <sub>D</sub> [Port] </p>
-               <p class="card-text"> Nº total de port. del cuadro OFDM : L <sub>T</sub> [Port] </p>
-               <p class="card-text">Nº total de portadoras nulas: L <sub>N</sub>[Port]  </p> 
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 1</h4>
-      <p class="card-text"></p>
-      <p class="card-text"></p>
-      <p class="card-text"> </p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 2</h4>
-      <p class="card-text"></p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 3</h4>
-      <p class="card-text"></p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-</div>
+                           <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Modo 1</th>
+      <th>Modo 2</th>
+      <th>Modo 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Duracion del TSP: T<sub>TSP</sub> [us]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Nº de TSP transportados por el BTS en un cuadro multiplex: N<sub>BTS</sub> [-]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row"  >Nº de TSP nulos transportados por el BTS en un cuadro multiplex: ΣTSP<sub>nul</sub> [-]</th>
+        <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Frecuencia reloj del BTS (4 flFFT): f<sub>R</sub> [Mhz]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row"> Nº total de portadoras: L  [Port]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Nº total de portadoras de Datos: L<sub>D</sub>  [Port]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row" > Port. asignadas a pilotos dispersos: SP [Port]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Port. asignadas a pilotos continuos: CP [Port]  </th>
+       <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Portadoras asignadas al TMCC: TMCC [Port]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Portadoras asignadas al canal AC1: AC1 [Port]</th>
+   <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row"  >Portadotas asignadas al canal AC2: AC2 [Port]</th>
+     <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row">Nº total de port. de datos Capa A : L <sub>DA</sub> [Port]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Nº total de port. de datos Capa B : L <sub>DB</sub> [Port] </th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Nº total de port. de datos Capa C : L <sub>DC</sub> [Port]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row" > Total de port. de datos en 3 Capas: L <sub>D</sub> [Port] </th>
+      <td></td>
+      <td></td>
+      <td></td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Nº total de port. del cuadro OFDM : L <sub>T</sub> [Port]  </th>
+       <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Nº total de portadoras nulas: L <sub>N</sub>[Port]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>               
                         </ng-template>
                     </ngb-tab>
-                    <ngb-tab title="Capa A" [disabled]="false">
+                    <ngb-tab title="Capa A" [disabled]="!isValidSuma()">
                         <ng-template ngbTabContent>
-                             <div class="card-group">
-  <div class="card">
-    <div class="card-small">
-    <div class="card-block">
-      <h4 class="card-title"></h4> <br>
-      <p class="card-text">Numero de bits por portadora: bp [-]</p> <hr>
-      <p class="card-text">Tasa binaria neta por segmento: R <sub>S</sub> [bps] </p> 
-   <p class="card-text"> Tasa binaria neta por segmento: R <sub>S</sub> [Mbps]</p> 
-          <p class="card-text">Relacion de codificacion externa: K<sub>o</sub> [-] </p> <hr>
-              <p class="card-text"> Capacidad maxima del segmento: R <sub>max</sub> [bps] </p>
-               <p class="card-text"> Capacidad maxima del segmento: R <sub>max</sub> [Mbps] </p>
-               <p class="card-text"> Nº TSP por segmento por cuadro: N [-] </p>
-               <p class="card-text">Tasa binaria neta de la Capa A: R <sub>A</sub> [Mbps]  </p> 
-               <p class="card-text">Total de TSP para la Capa A: N <sub>S</sub> x N [TSP<sub>S</sub>]  </p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 1</h4>
-      <p class="card-text"></p>
-      <p class="card-text"></p>
-      <p class="card-text"> </p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 2</h4>
-      <p class="card-text"></p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 3</h4>
-      <p class="card-text"></p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-</div>
+                           <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Modo 1</th>
+      <th>Modo 2</th>
+      <th>Modo 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Numero de bits por portadora: bp [-]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row">Tasa binaria neta por segmento: R <sub>S</sub> [bps]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row"  >Tasa binaria neta por segmento: R <sub>S</sub> [Mbps] </th>
+        <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row">Relacion de codificacion externa: K<sub>o</sub> [-]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row"> Capacidad maxima del segmento: R <sub>max</sub> [bps]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row"> Capacidad maxima del segmento: R <sub>max</sub> [Mbps]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Nº TSP por segmento por cuadro: N [-]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row" > Tasa binaria neta de la Capa A: R <sub>A</sub> [Mbps]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Total de TSP para la Capa A: N <sub>S</sub> x N [TSP<sub>S</sub>]   </th>
+       <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>               
                         </ng-template>
                     </ngb-tab>
-                    <ngb-tab title="capa B" [disabled]="false">
+                    <ngb-tab title="capa B" [disabled]="!isValidSuma()">
                         <ng-template ngbTabContent>
-                             <div class="card-group">
-  <div class="card">
-    <div class="card-small">
-    <div class="card-block">
-      <h4 class="card-title"></h4> <br>
-   <p class="card-text">Numero de bits por portadora: bp [-]</p> <hr>
-      <p class="card-text">Tasa binaria neta por segmento: R <sub>S</sub> [bps] </p> 
-   <p class="card-text"> Tasa binaria neta por segmento: R <sub>S</sub> [Mbps]</p> 
-          <p class="card-text">Relacion de codificacion externa: K<sub>o</sub> [-] </p> <hr>
-              <p class="card-text"> Capacidad maxima del segmento: R <sub>max</sub> [bps] </p>
-               <p class="card-text"> Capacidad maxima del segmento: R <sub>max</sub> [Mbps] </p>
-               <p class="card-text"> Nº TSP por segmento por cuadro: N [-] </p>
-               <p class="card-text">Tasa binaria neta de la Capa B: R <sub>B</sub> [Mbps]  </p> 
-               <p class="card-text">Total de TSP para la Capa B: N <sub>S</sub> x N [TSP<sub>S</sub>]  </p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 1</h4>
-      <p class="card-text"></p>
-      <p class="card-text"></p>
-      <p class="card-text"> </p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 2</h4>
-      <p class="card-text"></p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 3</h4>
-      <p class="card-text"></p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-</div>
+                           <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Modo 1</th>
+      <th>Modo 2</th>
+      <th>Modo 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Numero de bits por portadora: bp [-]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row">Tasa binaria neta por segmento: R <sub>S</sub> [bps]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row"  >Tasa binaria neta por segmento: R <sub>S</sub> [Mbps] </th>
+        <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row">Relacion de codificacion externa: K<sub>o</sub> [-]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row"> Capacidad maxima del segmento: R <sub>max</sub> [bps]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row"> Capacidad maxima del segmento: R <sub>max</sub> [Mbps]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Nº TSP por segmento por cuadro: N [-]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row" > Tasa binaria neta de la Capa B: R <sub>B</sub> [Mbps]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Total de TSP para la Capa B: N <sub>S</sub> x N [TSP<sub>S</sub>]   </th>
+       <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>               
+     
                         </ng-template>
                     </ngb-tab>
-                    <ngb-tab title="Capa C" [disabled]="false">
+                    <ngb-tab title="Capa C" [disabled]="!isValidSuma()">
                         <ng-template ngbTabContent>
-                             <div class="card-group">
-  <div class="card">
-    <div class="card-small">
-    <div class="card-block">
-      <h4 class="card-title"></h4> <br>
-      <p class="card-text">Numero de bits por portadora: bp [-]</p> <hr>
-      <p class="card-text">Tasa binaria neta por segmento: R <sub>S</sub> [bps] </p> 
-   <p class="card-text"> Tasa binaria neta por segmento: R <sub>S</sub> [Mbps]</p> 
-          <p class="card-text">Relacion de codificacion externa: K<sub>o</sub> [-] </p> <hr>
-              <p class="card-text"> Capacidad maxima del segmento: R <sub>max</sub> [bps] </p>
-               <p class="card-text"> Capacidad maxima del segmento: R <sub>max</sub> [Mbps] </p>
-               <p class="card-text"> Nº TSP por segmento por cuadro: N [-] </p>
-               <p class="card-text">Tasa binaria neta de la Capa C: R <sub>C</sub> [Mbps]  </p> 
-               <p class="card-text">Total de TSP para la Capa C: N <sub>S</sub> x N [TSP<sub>S</sub>]  </p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 1</h4>
-      <p class="card-text"></p>
-      <p class="card-text"></p>
-      <p class="card-text"> </p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 2</h4>
-      <p class="card-text"></p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">MODO 3</h4>
-      <p class="card-text"></p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-</div>
+                           <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Modo 1</th>
+      <th>Modo 2</th>
+      <th>Modo 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Numero de bits por portadora: bp [-]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row">Tasa binaria neta por segmento: R <sub>S</sub> [bps]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row"  >Tasa binaria neta por segmento: R <sub>S</sub> [Mbps] </th>
+        <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row">Relacion de codificacion externa: K<sub>o</sub> [-]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>&nbsp;
+    <tr>
+      <th scope="row"> Capacidad maxima del segmento: R <sub>max</sub> [bps]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row"> Capacidad maxima del segmento: R <sub>max</sub> [Mbps]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">Nº TSP por segmento por cuadro: N [-]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row" > Tasa binaria neta de la Capa C: R <sub>C</sub> [Mbps]</th>
+      <td></td>
+      <td></td>
+      <td></td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Total de TSP para la Capa C: N <sub>S</sub> x N [TSP<sub>S</sub>]   </th>
+       <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>                                      
                         </ng-template>
                     </ngb-tab>
                 </ngb-tabset>

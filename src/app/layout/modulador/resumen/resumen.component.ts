@@ -25,6 +25,12 @@ export class ResumenComponent implements OnInit {
   select2  ;
   select3  ;
   activado ;
+  tu1 : number = 252;
+  tg1 : number ;
+  tu2 : number = 504;
+  tg2 : number ;
+  tu3 : number = 1008;
+  tg3 : number ;
   constructor(private _moduladorService:ModuladorService) {
 
         this.intSelected = this._moduladorService.obtenerIntervalo();
@@ -48,6 +54,11 @@ export class ResumenComponent implements OnInit {
     
      this.intSelected = value;
      this._moduladorService.actualizarIntervalo(this.intSelected);
+
+    this.calculoIntervaloGuarda(value);
+       
+
+        
   }
 
 
@@ -71,6 +82,7 @@ modo(value){
 
      this.modoSelected = value;
      this._moduladorService.actualizarModo(this.modoSelected);
+
 
 
 }
@@ -174,4 +186,45 @@ codConSelection(value, id){
     return suma === 13;
   }
 
+  // Funciones modelo 
+
+calculoIntervaloGuarda(valor : any ) {
+
+     if (valor == "1/4"){
+
+            this.tg1=(this.tu1)/4;
+            this.tg2=(this.tu2)/4;
+            this.tg3=(this.tu3)/4;
+
+
+     }
+        if (valor == "1/8"){
+
+            this.tg1=(this.tu1)/8;
+            this.tg2=(this.tu2)/8;
+            this.tg3=(this.tu3)/8;
+
+
+     }
+        if (valor == "1/16"){
+
+            this.tg1=(this.tu1)/16;
+            this.tg2=(this.tu2)/16;
+            this.tg3=(this.tu3)/16;
+
+
+     }
+        if (valor == "1/32"){
+
+            this.tg1=(this.tu1)/32;
+            this.tg2=(this.tu2)/32;
+            this.tg3=(this.tu3)/32;
+
+     }
+
+    
 }
+
+}
+
+
