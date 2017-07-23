@@ -102,8 +102,8 @@
         </div>
     </div>
 </div>
-
-
+ 
+<!-- Resultados  -->
 <div class="row">
     <div class="col">
         <div class="card">
@@ -116,7 +116,7 @@
   <thead>
     <tr>
       <th></th>
-      <th>Modo 1</th>
+      <th >Modo 1</th>
       <th>Modo 2</th>
       <th>Modo 3</th>
     </tr>
@@ -124,9 +124,9 @@
   <tbody>
     <tr>
       <th scope="row">Ancho de banda del canal: BW<sub>CH</sub>[Mhz]</th>
-      <td>6</td>
-      <td>6</td>
-      <td>6</td>
+      <td>{{bw}}</td>
+      <td>{{bw}}</td>
+      <td>{{bw}}</td>
     </tr>
     <tr>
       <th scope="row">Intervalo de guarda:</th>
@@ -251,6 +251,7 @@
     </tr>
   </tbody>
 </table>
+<!-- GLOBALES -->
                         </ng-template>
                     </ngb-tab>
                     <ngb-tab [disabled]="!isValidSuma()">
@@ -268,112 +269,112 @@
   <tbody>
     <tr>
       <th scope="row">Anchura de banda del canal: BW<sub>CH</sub>[Mhz]</th>
-      <td>6</td>
-      <td>6</td>
-      <td>6</td>
+      <td>{{bw}}</td>
+      <td>{{bw}}</td>
+      <td>{{bw}}</td>
     </tr>
     <tr>
       <th scope="row">Numero de segmentos: N<sub>s</sub> [Segm]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{ns}}</td>
+      <td>{{ns}}</td>
+      <td>{{ns}}</td>
     </tr>
     <tr>
       <th scope="row">Numero total de portadoras: L [Port]</th>
-        <td></td>
-      <td></td>
-      <td></td>
+        <td>{{(ls1*ns)+1}}</td>
+      <td>{{(ls2*ns)+1}}</td>
+      <td>{{(ls3*ns)+1}}</td>
     </tr>
     <tr>
       <th scope="row">Denominacion segun el nº de portadoras:</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>2K</td>
+      <td>4K</td>
+      <td>8K</td>
     </tr>&nbsp;
     <tr>
       <th scope="row">Nº de portadoras por segmento: L<sub>s</sub> [Port]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{ls1}}</td>
+      <td>{{ls2}}</td>
+      <td>{{ls3}}</td>
     </tr>
     <tr>
       <th scope="row">Anchura de banda en el canal: BW<sub>T</sub> [Mhz] </th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{(bws*13)/1000}}</td>
+      <td>{{(bws*13)/1000}}</td>
+      <td>{{(bws*13)/1000}}</td>
     </tr>
     <tr>
       <th scope="row" >Anchura de banda del segmento: BW<sub>s</sub> [Khz]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{bws}}</td>
+      <td>{{bws}}</td>
+      <td>{{bws}}</td>
   
     </tr>
     <tr>
       <th scope="row">Separacion entre portadoras: Δf [Khz] </th>
-       <td></td>
-      <td></td>
-      <td></td>
+      <td>{{bws/ls1 }}</td>
+      <td>{{bws/ls2}}</td>
+      <td>{{bws/ls3}}</td>
     </tr>
     <tr>
       <th scope="row">Tiempo util de simbolo: T <sub>u</sub> [useg]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{(1/(bws/ls1))*1000}}</td>
+      <td>{{(1/(bws/ls2))*1000}}</td>
+      <td>{{(1/(bws/ls3))*1000}}</td>
     </tr>&nbsp;
     <tr>
       <th scope="row">Intervalo de guarda: T<sub>G</sub> [useg]</th>
-   <td></td>
-      <td></td>
-      <td></td>
+      <td>{{tg1}}</td>
+      <td>{{tg2}}</td>
+      <td>{{tg3}}</td>
     </tr>
     <tr>
       <th scope="row">Tiempo de simbolo: T<sub>s</sub> [useg]</th>
-     <td></td>
-      <td></td>
-      <td></td>
+     <td>{{tg1+(1/(bws/ls1))*1000}}</td>
+      <td>{{tg2+(1/(bws/ls2))*1000}}</td>
+      <td>{{tg3+(1/(bws/ls3))*1000}}</td>
     </tr>
     <tr>
       <th scope="row"  >Frecuencia de simbolo: f<sub>s</sub> [Hz]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{(1/(tg1+(1/(bws/ls1))*1000))*1000000}}</td>
+      <td>{{(1/(tg2+(1/(bws/ls2))*1000))*1000000}}</td>
+      <td>{{(1/(tg3+(1/(bws/ls3))*1000))*1000000}}</td>
     </tr>
     <tr>
       <th scope="row">Nº de simbolos OFDM por cuadro: F [Simb]</th>
-    <td></td>
-      <td></td>
-      <td></td>
+      <td>{{f}}</td>
+      <td>{{f}}</td>
+      <td>{{f}}</td>
     </tr>
     <tr>
       <th scope="row">Tiempo de cuadro: T<sub>F</sub> [ms]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{(f*(tg1+(1/(bws/ls1))*1000))/1000}}</td>
+      <td>{{(f*(tg2+(1/(bws/ls2))*1000))/1000}}</td>
+      <td>{{(f*(tg3+(1/(bws/ls3))*1000))/1000}}</td>
     </tr>
     <tr>
-      <th scope="row">Frecuencia de cuadro: F <sub>f</sub> [hZ]: </th>
-  <td></td>
-      <td></td>
-      <td></td>
+      <th scope="row">Frecuencia de cuadro: F <sub>f</sub> [Hz]: </th>
+      <td>{{(1/((f*(tg1+(1/(bws/ls1))*1000))/1000))*1000}}</td>
+      <td>{{(1/((f*(tg2+(1/(bws/ls2))*1000))/1000))*1000}}</td>
+      <td>{{(1/((f*(tg3+(1/(bws/ls3))*1000))/1000))*1000}}</td>
     </tr>&nbsp;
     <tr>
       <th scope="row">Muestas por simbolo OFDM: S[bins]</th>
-     <td></td>
-      <td></td>
-      <td></td>
+      <td>2048</td>
+      <td>4096</td>
+      <td>8192</td>
     </tr>
     <tr>
       <th scope="row" >Frecuencia de muestreo IFFT: f <sub>IFTT</sub> [Mhz]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{2048/252}}</td>
+      <td>{{2048/252}}</td>
+      <td>{{2048/252}}</td>
     </tr>
     <tr>
       <th scope="row">Periodo de muestreo IFFT: T <sub>m</sub> [useg]</th>
-    <td></td>
-      <td></td>
-      <td></td>
+      <td>{{1/(2048/252)}}</td>
+      <td>{{1/(2048/252)}}</td>
+      <td>{{1/(2048/252)}}</td>
     </tr>&nbsp;
     <tr>
       <th scope="row">Total de pulsos por simbolo OFDM: N <sub> pulsos </sub> [-]</th>
@@ -399,15 +400,15 @@
   <tbody>
     <tr>
       <th scope="row">Ancho de banda del segmento: B<sub>WS</sub>[Khz]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{bws}}</td>
+      <td>{{bws}}</td>
+      <td>{{bws}}</td>
     </tr>
     <tr>
       <th scope="row">Separacion entre portadoras: Δf [Segm]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{bws/ls1 }}</td>
+      <td>{{bws/ls2}}</td>
+      <td>{{bws/ls3}}</td>
     </tr>&nbsp;
     <tr>
       <th scope="row" class="underline">Portadoras por segmento Para QPSK, 16-QAM, 64-QAM</th>

@@ -31,6 +31,14 @@ export class ResumenComponent implements OnInit {
   tg2 : number ;
   tu3 : number = 1008;
   tg3 : number ;
+  bw : number = 6 ;
+  bws : number = 428.57;
+  ns : number = 13;
+  ls1 : number = 108;
+  ls2 : number = 216;
+  ls3 : number = 432;
+  f : number = 204;
+
   constructor(private _moduladorService:ModuladorService) {
 
         this.intSelected = this._moduladorService.obtenerIntervalo();
@@ -47,6 +55,8 @@ export class ResumenComponent implements OnInit {
         
 
   ngOnInit() {
+                this.calculoIntervaloGuarda(this.intSelected );
+
   }
 
   intSelection(value){
