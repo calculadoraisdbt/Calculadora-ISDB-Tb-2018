@@ -35,6 +35,8 @@
                     <agm-info-window>{{markers[2].nombre}}</agm-info-window>
                     </agm-marker>
                     </div>
+
+                   
                  <div *ngIf="obst" >
                     <agm-marker  
                      [iconUrl]="'http://maps.google.com/mapfiles/ms/icons/green-dot.png'"
@@ -45,57 +47,110 @@
                     <agm-info-window>{{markers[3].nombre}}</agm-info-window>
                     </agm-marker>
                     </div>
+                    <div *ngIf="tra2" >
+                    <agm-marker  
+                    [latitude]="markers[4].lati" 
+                    [longitude]="markers[4].longi"
+                    [markerDraggable]="markers[4].arrastrable"
+                    (dragEnd)= "posicionFinalMarcador(markers[4], $event)">
+                    <agm-info-window>{{markers[4].nombre}}</agm-info-window>
+                    </agm-marker>
+                    </div>
+
+                     <div *ngIf="tra3" >
+                    <agm-marker  
+                    [latitude]="markers[5].lati" 
+                    [longitude]="markers[5].longi"
+                    [markerDraggable]="markers[5].arrastrable"
+                    (dragEnd)= "posicionFinalMarcador(markers[5], $event)">
+                    <agm-info-window>{{markers[5].nombre}}</agm-info-window>
+                    </agm-marker>
+                    </div>
+                  <div *ngIf="recep2" >
+                    <agm-marker  
+                     [iconUrl]="'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'"
+                    [latitude]="markers[6].lati" 
+                    [longitude]="markers[6].longi"
+                    [markerDraggable]="markers[6].arrastrable"
+                    (dragEnd)= "posicionFinalMarcador(markers[6], $event)">
+                    <agm-info-window>{{markers[6].nombre}}</agm-info-window>
+                    </agm-marker>
+                    </div>
     </agm-map>
 </div>
 
 <h5>Antes de calcular la distancia posicione los marcadores</h5>
-
-
-<div class="row">
-                        <div class="col">
-                    <form (ngSubmit)="uploadTx1()" #frmTx1="ngForm" >
-        
-                        <input type="checkbox" [(ngModel)]="tra0" value="false" name="tra0" id="tra0"> Tx 1 
-                         <input [(ngModel)]="newLatTx1"  placeholder="Latitud" name="newLatTx1" id="newLatTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"  />
-                         <input [(ngModel)]="newLongTx1"  placeholder="Longitud" name="newLongTx1" id="newLongTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/>
-                         <button [disabled]=!frmTx1.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button>                             
-                     
-                    </form > </div>   <br>
-<div class="col">
-                        <form (ngSubmit)="uploadTx2()" #frmTx2="ngForm"> 
-                        <input type="checkbox" [(ngModel)]="tra1" value="false"  name="tra1" id="tra1"> Tx 2
-                        <input [(ngModel)]="newLatTx2"  placeholder="Latitud" name="newLatTx2" id="newLatTx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/>
-                         <input [(ngModel)]="newLongTx2"  placeholder="Longitud" name="newLongTx2" id="newLongTx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/>
-                         <button  [disabled]=!frmTx2.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button>
-                        </form> <br> </div>
-                         <div class="w-100"></div>
-                         <div class="col">
-                        <form (ngSubmit)="uploadRx()" #frmRx="ngForm">
-                        <input type="checkbox" [(ngModel)]="recep" value="false" name="recep" id="recep"> Rx 1
-                        <input [(ngModel)]="newLatRx"  placeholder="Latitud" name="newLatRx" id="newLatRx" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/>
-                         <input [(ngModel)]="newLongRx"  placeholder="Longitud" name="newLongRx" id="newLongRx" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/>
-                         <button [disabled]=!frmRx.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button>
-                        </form> </div> 
-                        <div class="col-xs"> 
-                        <form (ngSubmit)="uploadOb()" #frmOb="ngForm" >
-                        <input type="checkbox" [(ngModel)]="obst" value="false" name="obst" id="obst" > Obstaculo
-                        <input [(ngModel)]="newLatOb"  placeholder="Latitud" name="newLatOb" id="newLatOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/>
-                         <input [(ngModel)]="newLongOb"  placeholder="Longitud" name="newLongOb" id="newLongOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/>
-                         <button [disabled]=!frmOb.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button>
-                        </form> </div>   <br> 
-
-
-</div>
-
-<div>
-<br>
-    <button 
+    <div class="col col-xl col-lg-12">
+ <div class="card mb-3">
+            <div class="card-header">Selector de Marcadores</div>
+            <div class="card-block table-responsive">
+                <table class="table table-inverse">
+                    <tbody>
+                        <tr>
+                          <form (ngSubmit)="uploadTx1()" #frmTx1="ngForm" >
+                            <th scope="row"><input type="checkbox" [(ngModel)]="tra0" value="false" name="tra0" id="tra0"> Tx 1</th>
+                            <td> <input [(ngModel)]="newLatTx1"  placeholder="Latitud" name="newLatTx1" id="newLatTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"  /> </td>
+                            <td> <input [(ngModel)]="newLongTx1"  placeholder="Longitud" name="newLongTx1" id="newLongTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
+                            <td><button [disabled]=!frmTx1.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
+                            </form >
+                        </tr>
+                        <tr>
+                          <form (ngSubmit)="uploadTx2()" #frmTx2="ngForm"> 
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="tra1" value="false"  name="tra1" id="tra1"> Tx 2 </th>
+                            <td> <input [(ngModel)]="newLatTx2"  placeholder="Latitud" name="newLatTx2" id="newLatTx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
+                            <td> <input [(ngModel)]="newLongTx2"  placeholder="Longitud" name="newLongTx2" id="newLongTx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
+                            <td> <button  [disabled]=!frmTx2.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
+                            </form>
+                        </tr>
+                        <tr>
+                             <form (ngSubmit)="uploadTx3()" #frmTx3="ngForm">
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="tra2" value="false"  name="tra2" id="tra2"> Tx 3</th>
+                            <td> <input [(ngModel)]="newLatTx3"  placeholder="Latitud" name="newLatTx3" id="newLatTx3" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
+                            <td> <input [(ngModel)]="newLongTx3"  placeholder="Longitud" name="newLongTx3" id="newLongTx3" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
+                            <td><button  [disabled]=!frmTx3.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
+                             </form>
+                           <form (ngSubmit)="uploadTx4()" #frmTx4="ngForm">
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="tra3" value="false"  name="tra3" id="tra3"> Tx 4</th>
+                            <td> <input [(ngModel)]="newLatTx4"  placeholder="Latitud" name="newLatTx4" id="newLatTx4" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
+                            <td> <input [(ngModel)]="newLongTx4"  placeholder="Longitud" name="newLongTx4" id="newLongTx4" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
+                            <td><button  [disabled]=!frmTx4.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
+                             </form>
+                        </tr>
+                             <tr>
+                              <form (ngSubmit)="uploadRx()" #frmRx="ngForm">
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="recep" value="false" name="recep" id="recep"> Rx 1</th>
+                            <td> <input [(ngModel)]="newLatRx"  placeholder="Latitud" name="newLatRx" id="newLatRx" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
+                            <td>  <input [(ngModel)]="newLongRx"  placeholder="Longitud" name="newLongRx" id="newLongRx" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
+                            <td><button [disabled]=!frmRx.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button></td>
+                             </form>
+                        </tr>
+                             <tr>
+                              <form (ngSubmit)="uploadRx2()" #frmRx2="ngForm">
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="recep2" value="false" name="recep2" id="recep2"> Rx 2</th>
+                            <td> <input [(ngModel)]="newLatRx2"  placeholder="Latitud" name="newLatRx2" id="newLatRx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
+                            <td>  <input [(ngModel)]="newLongRx2"  placeholder="Longitud" name="newLongRx2" id="newLongRx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
+                            <td><button [disabled]=!frmRx2.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button></td>
+                             </form>
+                        </tr>
+                             <tr>
+                             <form (ngSubmit)="uploadOb()" #frmOb="ngForm" >
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="obst" value="false" name="obst" id="obst" >Obst</th>
+                            <td> <input [(ngModel)]="newLatOb"  placeholder="Latitud" name="newLatOb" id="newLatOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
+                            <td>  <input [(ngModel)]="newLongOb"  placeholder="Longitud" name="newLongOb" id="newLongOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
+                            <td> <button  [disabled]=!frmTx4.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
+                             </form>
+                        </tr>
+                    </tbody>
+                </table>
+                   <button 
      type="button"
       class="btn btn-sm btn-secondary"
       [disabled]= "!recep"
       data-toggle="tooltip" data-placement="top" title="Seleccione el Receptor"
       (click)="show()">Calcular Distancia</button>
-</div> <br>
+            </div>
+        </div>
+    </div>
 
 <div class="alert alert-warning" role="alert">
   <strong>Atencion!</strong> Ingresar latitud y longitud entre 10 y 18 digitos, utilizando "." y sin espacios. 
@@ -130,6 +185,152 @@
     </div>
   </div>
   </div>
+
+
+
+<!-- Resultados  -->
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-header"> Resultados </div>
+            <div class="card-block">
+                <ngb-tabset>
+                    <ngb-tab title="Distancias">
+                        <ng-template ngbTabContent>
+  <div class="card-block table-responsive">
+                <table class="table table-inverse">
+                    <thead>
+                        <tr>
+                            <th>Camino Directo</th>
+                            <th>Tx 1</th>
+                            <th>Tx 2</th>
+                            <th>Tx 3</th>
+                            <th>Tx 4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Rx 1</th>
+                            <td  ><p class="card-text" id="testB"> </p></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Rx 2</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+                     <div class="card-block table-responsive">
+                <table class="table table-inverse">
+                    <thead>
+                        <tr>
+                            <th>Camino Reflejado</th>
+                            <th>Tx 1</th>
+                            <th>Tx 2</th>
+                            <th>Tx 3</th>
+                            <th>Tx 4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Rx 1</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Rx 2</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+                        </ng-template>
+                    </ngb-tab>  
+                    <ngb-tab title="Tiempos">
+                        <ng-template ngbTabContent>
+
+            <div class="card-block table-responsive">
+                <table class="table table-inverse">
+                    <thead>
+                        <tr>
+                            <th>Camino Directo</th>
+                            <th>Tx 1</th>
+                            <th>Tx 2</th>
+                            <th>Tx 3</th>
+                            <th>Tx 4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Rx 1</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Rx 2</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+                     <div class="card-block table-responsive">
+                <table class="table table-inverse">
+                    <thead>
+                        <tr>
+                            <th>Camino Reflejado</th>
+                            <th>Tx 1</th>
+                            <th>Tx 2</th>
+                            <th>Tx 3</th>
+                            <th>Tx 4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Rx 1</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Rx 2</th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+                        </ng-template>
+                    </ngb-tab>  
+                    <ngb-tab title="Ventana de Sincronizacion">
+                        <ng-template ngbTabContent>
+                          
+            <div class="card-block">
+                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+                </canvas>
+            </div>
+                    </ng-template>
+                    </ngb-tab>      
+                </ngb-tabset>
+            </div>
+        </div>
+    </div>
+    
+
+
 
 
 

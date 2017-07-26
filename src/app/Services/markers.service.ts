@@ -8,9 +8,16 @@ declare var google: any;
   var lat1 : number;
   var lng1 : number;
   var  lat2 : number;
+  var lng2 : number;
    var lng3 : number;
   var  lat3 : number;
-  var lng2 : number;
+  var lng4 : number;
+  var  lat4 : number;
+  var lng5 : number;
+  var  lat5 : number;
+    var lng6 : number;
+  var  lat6 : number;
+  
   var dist : number = 0;
   var dist0 : number = 0;
   var disttTx1Ob : number = 0;
@@ -88,6 +95,33 @@ export class MarkersService extends Init {
                   lng3 = nuevaLng;
                    markers[3].lati=nuevaLat;
                      markers[3].longi=nuevaLng;
+
+             }
+               if (marker.nombre === 'Transmisor 3'){
+
+                   lat4 = nuevaLat;
+                   lng4 = nuevaLng;
+                    markers[4].lati=nuevaLat;
+                     markers[4].longi=nuevaLng;
+
+
+             }
+               if (marker.nombre === 'Transmisor 4'){
+
+                   lat5 = nuevaLat;
+                   lng5 = nuevaLng;
+                    markers[5].lati=nuevaLat;
+                     markers[5].longi=nuevaLng;
+
+
+             }
+                    if (marker.nombre === 'Receptor 2'){
+
+                   lat6 = nuevaLat;
+                   lng6 = nuevaLng;
+                    markers[6].lati=nuevaLat;
+                     markers[6].longi=nuevaLng;
+
 
              }
               
@@ -241,6 +275,46 @@ export class MarkersService extends Init {
        //obtener los marcadores
                    lat3 = nuevaLat;
                    lng3 = nuevaLng;
+    
+
+         //Configurar en el local Storage
+        localStorage.setItem('markers', JSON.stringify(marker));     
+
+    }
+
+    updtTx3(marker,  nuevaLat, nuevaLng){
+
+      //obtener los marcadores
+                   lat4 = nuevaLat;
+                   lng4 = nuevaLng;
+    
+
+         //Configurar en el local Storage
+        localStorage.setItem('markers', JSON.stringify(marker));           
+
+
+
+    }
+
+    updtTx4(marker,  nuevaLat, nuevaLng){
+
+      //obtener los marcadores
+                   lat5 = nuevaLat;
+                   lng5 = nuevaLng;
+    
+
+         //Configurar en el local Storage
+        localStorage.setItem('markers', JSON.stringify(marker));           
+
+
+
+    }
+
+     updtRx2 (marker,  nuevaLat, nuevaLng){
+
+       //obtener los marcadores
+                   lat6 = nuevaLat;
+                   lng6 = nuevaLng;
     
 
          //Configurar en el local Storage

@@ -5,6 +5,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 
 
+
 @Component({
     selector: 'app-blank-page',
     templateUrl: './blank-page.component.html',
@@ -12,6 +13,49 @@ import { FormControl, FormGroup } from '@angular/forms';
     providers: [MarkersService]
 })
 export class BlankPageComponent implements OnInit {
+       // bar chart
+    public barChartOptions: any = {
+        scaleShowVerticalLines: false,
+        responsive: true
+    };
+    public barChartLabels: string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+    public barChartType: string = 'bar';
+    public barChartLegend: boolean = true;
+
+    public barChartData: any[] = [
+    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
+    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
+    ];
+ // events
+    public chartClicked(e: any): void {
+        // console.log(e);
+    }
+
+    public chartHovered(e: any): void {
+        // console.log(e);
+    }
+
+    public randomize(): void {
+        // Only Change 3 values
+        const data = [
+            Math.round(Math.random() * 100),
+            59,
+            80,
+            (Math.random() * 100),
+            56,
+            (Math.random() * 100),
+            40
+        ];
+        const clone = JSON.parse(JSON.stringify(this.barChartData));
+        clone[0].data = data;
+        this.barChartData = clone;
+        /**
+        * (My guess), for Angular to recognize the change in the dataset
+        * it has to change the dataset variable directly,
+        * so one way around it, is to clone the data, change it and then
+        * assign it;
+        */
+    }
         resultDist : number = 0;
          markers : Marker[];
         constructor( private _markerService:MarkersService) { 
@@ -26,15 +70,24 @@ export class BlankPageComponent implements OnInit {
     tra0: boolean = false;
     tra1: boolean = false;
     recep: boolean = false;
+    recep2: boolean = false;
     obst: boolean = false;
+    tra2: boolean = false;
+    tra3: boolean = false;
     newLatTx1 : string ;     
     newLongTx1 : string ;    
     newLatTx2  : string ;  
     newLongTx2 : string ;  
     newLatRx : string ;  
     newLongRx : string ;  
+    newLatRx2 : string ;  
+    newLongRx2 : string ;  
     newLatOb : string ;  
     newLongOb : string ;  
+    newLatTx3  : string ;  
+    newLongTx3 : string ; 
+    newLatTx4  : string ;  
+    newLongTx4 : string ; 
    // nombreMarcador : string;
    // latitudMarcador: string;
    // longitudMarcador: string;
@@ -124,7 +177,7 @@ export class BlankPageComponent implements OnInit {
     uploadRx(){
             var nuevoMarcador = {
 
-               nombre: "Receptor",
+               nombre: "Receptor 1",
                lati: parseFloat(this.newLatRx),
                longi: parseFloat(this.newLongRx),
                arrastrable: true
@@ -149,6 +202,54 @@ export class BlankPageComponent implements OnInit {
              this.markers.splice( 3, 0, nuevoMarcador  );
 
             this._markerService.updtOb(this.markers , this.newLatOb, this.newLongOb);
+
+    }
+
+     uploadTx3(){
+             var nuevoMarcador = {
+
+               nombre: "Transmisor 3",
+               lati: parseFloat(this.newLatTx3),
+               longi: parseFloat(this.newLongTx3),
+               arrastrable: true
+            }
+            this.markers.splice(4, 1);
+             this.markers.splice( 4, 0, nuevoMarcador  );
+
+            this._markerService.updtTx3(this.markers , this.newLatTx3, this.newLongTx3);
+
+
+    }
+
+     uploadTx4(){
+             var nuevoMarcador = {
+
+               nombre: "Transmisor 4",
+               lati: parseFloat(this.newLatTx4),
+               longi: parseFloat(this.newLongTx4),
+               arrastrable: true
+            }
+            this.markers.splice(5, 1);
+             this.markers.splice( 5, 0, nuevoMarcador  );
+
+            this._markerService.updtTx4(this.markers , this.newLatTx4, this.newLongTx4);
+
+
+    }
+
+    uploadRx2(){
+            var nuevoMarcador = {
+
+               nombre: "Receptor 2",
+               lati: parseFloat(this.newLatRx2),
+               longi: parseFloat(this.newLongRx2),
+               arrastrable: true
+            }
+            this.markers.splice(6, 1);
+             this.markers.splice( 6, 0, nuevoMarcador  );
+
+            this._markerService.updtRx2(this.markers , this.newLatRx2, this.newLongRx2);
+
 
     }
 

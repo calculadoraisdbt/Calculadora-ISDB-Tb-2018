@@ -299,28 +299,28 @@
     </tr>
     <tr>
       <th scope="row">Anchura de banda en el canal: BW<sub>T</sub> [Mhz] </th>
-      <td>{{(bws*13)/1000}}</td>
-      <td>{{(bws*13)/1000}}</td>
-      <td>{{(bws*13)/1000}}</td>
+      <td>{{((bws*13)/1000).toFixed(2)}}</td>
+      <td>{{((bws*13)/1000).toFixed(2)}}</td>
+      <td>{{((bws*13)/1000).toFixed(2)}}</td>
     </tr>
     <tr>
       <th scope="row" >Anchura de banda del segmento: BW<sub>s</sub> [Khz]</th>
-      <td>{{bws}}</td>
+      <td>{{(bws)}}</td>
       <td>{{bws}}</td>
       <td>{{bws}}</td>
   
     </tr>
     <tr>
       <th scope="row">Separacion entre portadoras: Δf [Khz] </th>
-      <td>{{bws/ls1 }}</td>
-      <td>{{bws/ls2}}</td>
-      <td>{{bws/ls3}}</td>
+      <td>{{(bws/ls1).toFixed(2) }}</td>
+      <td>{{(bws/ls2).toFixed(2)}}</td>
+      <td>{{(bws/ls3).toFixed(2)}}</td>
     </tr>
     <tr>
       <th scope="row">Tiempo util de simbolo: T <sub>u</sub> [useg]</th>
-      <td>{{(1/(bws/ls1))*1000}}</td>
-      <td>{{(1/(bws/ls2))*1000}}</td>
-      <td>{{(1/(bws/ls3))*1000}}</td>
+      <td>{{((1/(bws/ls1))*1000).toFixed(2)}}</td>
+      <td>{{((1/(bws/ls2))*1000).toFixed(2)}}</td>
+      <td>{{((1/(bws/ls3))*1000).toFixed(2)}}</td>
     </tr>&nbsp;
     <tr>
       <th scope="row">Intervalo de guarda: T<sub>G</sub> [useg]</th>
@@ -330,15 +330,15 @@
     </tr>
     <tr>
       <th scope="row">Tiempo de simbolo: T<sub>s</sub> [useg]</th>
-     <td>{{tg1+(1/(bws/ls1))*1000}}</td>
-      <td>{{tg2+(1/(bws/ls2))*1000}}</td>
-      <td>{{tg3+(1/(bws/ls3))*1000}}</td>
+     <td>{{(tg1+(1/(bws/ls1))*1000).toFixed(2)}}</td>
+      <td>{{(tg2+(1/(bws/ls2))*1000).toFixed(2)}}</td>
+      <td>{{(tg3+(1/(bws/ls3))*1000).toFixed(2)}}</td>
     </tr>
     <tr>
       <th scope="row"  >Frecuencia de simbolo: f<sub>s</sub> [Hz]</th>
-      <td>{{(1/(tg1+(1/(bws/ls1))*1000))*1000000}}</td>
-      <td>{{(1/(tg2+(1/(bws/ls2))*1000))*1000000}}</td>
-      <td>{{(1/(tg3+(1/(bws/ls3))*1000))*1000000}}</td>
+      <td>{{((1/(tg1+(1/(bws/ls1))*1000))*1000000).toFixed(2)}}</td>
+      <td>{{((1/(tg2+(1/(bws/ls2))*1000))*1000000).toFixed(2)}}</td>
+      <td>{{((1/(tg3+(1/(bws/ls3))*1000))*1000000).toFixed(2)}}</td>
     </tr>
     <tr>
       <th scope="row">Nº de simbolos OFDM por cuadro: F [Simb]</th>
@@ -348,15 +348,15 @@
     </tr>
     <tr>
       <th scope="row">Tiempo de cuadro: T<sub>F</sub> [ms]</th>
-      <td>{{(f*(tg1+(1/(bws/ls1))*1000))/1000}}</td>
-      <td>{{(f*(tg2+(1/(bws/ls2))*1000))/1000}}</td>
-      <td>{{(f*(tg3+(1/(bws/ls3))*1000))/1000}}</td>
+      <td>{{((f*(tg1+(1/(bws/ls1))*1000))/1000).toFixed(2)}}</td>
+      <td>{{((f*(tg2+(1/(bws/ls2))*1000))/1000).toFixed(2)}}</td>
+      <td>{{((f*(tg3+(1/(bws/ls3))*1000))/1000).toFixed(2)}}</td>
     </tr>
     <tr>
       <th scope="row">Frecuencia de cuadro: F <sub>f</sub> [Hz]: </th>
-      <td>{{(1/((f*(tg1+(1/(bws/ls1))*1000))/1000))*1000}}</td>
-      <td>{{(1/((f*(tg2+(1/(bws/ls2))*1000))/1000))*1000}}</td>
-      <td>{{(1/((f*(tg3+(1/(bws/ls3))*1000))/1000))*1000}}</td>
+      <td>{{((1/((f*(tg1+(1/(bws/ls1))*1000))/1000))*1000).toFixed(2)}}</td>
+      <td>{{((1/((f*(tg2+(1/(bws/ls2))*1000))/1000))*1000).toFixed(2)}}</td>
+      <td>{{((1/((f*(tg3+(1/(bws/ls3))*1000))/1000))*1000).toFixed(2)}}</td>
     </tr>&nbsp;
     <tr>
       <th scope="row">Muestas por simbolo OFDM: S[bins]</th>
@@ -366,15 +366,15 @@
     </tr>
     <tr>
       <th scope="row" >Frecuencia de muestreo IFFT: f <sub>IFTT</sub> [Mhz]</th>
-      <td>{{2048/252}}</td>
-      <td>{{2048/252}}</td>
-      <td>{{2048/252}}</td>
+      <td>{{(2048/252).toFixed(2)}}</td>
+      <td>{{(2048/252).toFixed(2)}}</td>
+      <td>{{(2048/252).toFixed(2)}}</td>
     </tr>
     <tr>
       <th scope="row">Periodo de muestreo IFFT: T <sub>m</sub> [useg]</th>
-      <td>{{1/(2048/252)}}</td>
-      <td>{{1/(2048/252)}}</td>
-      <td>{{1/(2048/252)}}</td>
+      <td>{{(1/(2048/252)).toFixed(2)}}</td>
+      <td>{{(1/(2048/252)).toFixed(2)}}</td>
+      <td>{{(1/(2048/252)).toFixed(2)}}</td>
     </tr>&nbsp;
     <tr>
       <th scope="row">Total de pulsos por simbolo OFDM: N <sub> pulsos </sub> [-]</th>
@@ -406,9 +406,9 @@
     </tr>
     <tr>
       <th scope="row">Separacion entre portadoras: Δf [Segm]</th>
-      <td>{{bws/ls1 }}</td>
-      <td>{{bws/ls2}}</td>
-      <td>{{bws/ls3}}</td>
+      <td>{{(bws/ls1).toFixed(2)}}</td>
+      <td>{{(bws/ls2).toFixed(2)}}</td>
+      <td>{{(bws/ls3).toFixed(2)}}</td>
     </tr>&nbsp;
     <tr>
       <th scope="row" class="underline">Portadoras por segmento Para QPSK, 16-QAM, 64-QAM</th>

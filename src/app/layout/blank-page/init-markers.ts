@@ -19,9 +19,9 @@ load(){
                 lati: -31.516667,
                 longi : -64.283333,
                 arrastrable : true,
-                },
+                },             
                 {
-                nombre: 'Receptor',
+                nombre: 'Receptor 1',
                 lati: -31.316667,
                 longi : -64.383333,
                 arrastrable : true,
@@ -29,6 +29,24 @@ load(){
                 {
                 nombre: 'Obstaculo',
                 lati: -31.316667,
+                longi : -64.383333,
+                arrastrable : true,
+                },
+             {
+                nombre: 'Transmisor 3',
+                lati: -31.326667,
+                longi : -64.583333,
+                arrastrable : true,
+                },
+                {
+                nombre: 'Transmisor 4',
+                lati: -31.616667,
+                longi : -64.383333,
+                arrastrable : true,
+                },
+                {
+                nombre: 'Receptor 2',
+                lati: -31.616667,
                 longi : -64.383333,
                 arrastrable : true,
                 },

@@ -1,8 +1,18 @@
+
+<!-- Resultados  -->
 <div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-header"> Codificadores </div>
+            <div class="card-block">
+                <ngb-tabset>
+                    <ngb-tab title="Encoder 1">
+                        <ng-template ngbTabContent>
+                                <div class="row">
     <div class="col col-xl-6 col-lg-12">
         <div class="card mb-3">
             <div class="card-header">
-                Encoder Set Up
+                Encoder Set Up 1
             </div>
             <div class="card-block table-responsive">
                 <table class="table">
@@ -196,4 +206,418 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
+                        </ng-template>
+                    </ngb-tab>  
+                    <ngb-tab title="Encoder 2">
+                        <ng-template ngbTabContent>
+                                <div class="row">
+    <div class="col col-xl-6 col-lg-12">
+        <div class="card mb-3">
+            <div class="card-header">
+                Encoder Set Up 2
+            </div>
+            <div class="card-block table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Video Source</th>
+                            <td>
+                              <select>
+                                <option>HDMI</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Audio Source</th>
+                            <td>
+                              <select>
+                                <option>Channnels 1+2</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Audio Codec</th>
+                            <td>
+                              <select>
+                                <option>AAC-LC ADTS</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Audio Bit Rate</th>
+                            <td>
+                              <select>
+                                <option>128 kbits</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Video Resolution</th>
+                           <td>
+                              <select>
+                                <option>D1 PAL (720x576)</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Rate Control</th>
+                            <td>
+                              <select>
+                                <option>CBR</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Video Bit Rate</th>
+                           <td>
+                              <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Video Profile</th>
+                           <td>
+                              <select>
+                                <option>High</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Gop Size</th>
+                            <td>
+                              <select>
+                                <option>30 Frames</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Video burst size</th>
+                            <td>
+                              <select>
+                                <option>300ms</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Video Codec</th>
+                           <td>
+                              <select>
+                                <option>H.264</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Frame Decimation</th>
+                           <td>
+                              <select>
+                                <option>None</option>
+                              </select>
+                            </td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col col-xl-6 col-lg-12">
+        <div class="card mb-3">
+            <div class="card-header">Output Setup</div>
+            <div class="card-block table-responsive">
+                <table class="table table-inverse">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Output Interface</th>
+                            <td>
+                               <select>
+                                <option>ASI + Ethernet(CBR)</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Output Format</th>
+                            <td>
+                               <select>
+                                <option>MPEG-2 TS</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Dest IP Address</th>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Dest Port</th>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">TS Bitrate</th>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">ASI PCI Interval</th>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">PID Audio, Video, PCR</th>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header">Local IP Set Up</div>
+            <div class="card-block table-responsive">
+                <table class="table table-hover table-striped">
+                    <tbody>
+                        <tr>
+                            <td>Local iP Address</td>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                           
+                        </tr>
+                        <tr>
+                            <td>Local Netmask</td>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                           
+                        </tr>
+                        <tr>
+                            <td>Default Gateway</td>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                            
+                        </tr>
+                  
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> 
+                        </ng-template>
+                    </ngb-tab>  
+                    <ngb-tab title="Encoder 3">
+                        <ng-template ngbTabContent>
+                                <div class="row">
+    <div class="col col-xl-6 col-lg-12">
+        <div class="card mb-3">
+            <div class="card-header">
+                Encoder Set Up 3
+            </div>
+            <div class="card-block table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Video Source</th>
+                            <td>
+                              <select>
+                                <option>HDMI</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Audio Source</th>
+                            <td>
+                              <select>
+                                <option>Channnels 1+2</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Audio Codec</th>
+                            <td>
+                              <select>
+                                <option>AAC-LC ADTS</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Audio Bit Rate</th>
+                            <td>
+                              <select>
+                                <option>128 kbits</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Video Resolution</th>
+                           <td>
+                              <select>
+                                <option>D1 PAL (720x576)</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Rate Control</th>
+                            <td>
+                              <select>
+                                <option>CBR</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Video Bit Rate</th>
+                           <td>
+                              <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Video Profile</th>
+                           <td>
+                              <select>
+                                <option>High</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Gop Size</th>
+                            <td>
+                              <select>
+                                <option>30 Frames</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Video burst size</th>
+                            <td>
+                              <select>
+                                <option>300ms</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Video Codec</th>
+                           <td>
+                              <select>
+                                <option>H.264</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Frame Decimation</th>
+                           <td>
+                              <select>
+                                <option>None</option>
+                              </select>
+                            </td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col col-xl-6 col-lg-12">
+        <div class="card mb-3">
+            <div class="card-header">Output Setup</div>
+            <div class="card-block table-responsive">
+                <table class="table table-inverse">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Output Interface</th>
+                            <td>
+                               <select>
+                                <option>ASI + Ethernet(CBR)</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Output Format</th>
+                            <td>
+                               <select>
+                                <option>MPEG-2 TS</option>
+                              </select>
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Dest IP Address</th>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">Dest Port</th>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">TS Bitrate</th>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">ASI PCI Interval</th>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                           <tr>
+                            <th scope="row">PID Audio, Video, PCR</th>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header">Local IP Set Up</div>
+            <div class="card-block table-responsive">
+                <table class="table table-hover table-striped">
+                    <tbody>
+                        <tr>
+                            <td>Local iP Address</td>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                           
+                        </tr>
+                        <tr>
+                            <td>Local Netmask</td>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                           
+                        </tr>
+                        <tr>
+                            <td>Default Gateway</td>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                            
+                        </tr>
+                  
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> 
+                        </ng-template>
+                    </ngb-tab>      
+                </ngb-tabset>
+            </div>
+        </div>
+    </div>
+    
+
