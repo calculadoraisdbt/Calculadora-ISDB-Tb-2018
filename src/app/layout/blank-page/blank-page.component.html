@@ -79,12 +79,21 @@
     </agm-map>
 </div>
 
-<h5>Antes de calcular la distancia posicione los marcadores</h5>
-    <div class="col col-xl col-lg-12">
- <div class="card mb-3">
-            <div class="card-header">Selector de Marcadores</div>
-            <div class="card-block table-responsive">
-                <table class="table table-inverse">
+<!-- Resultados  -->
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-header"> </div>
+            <div class="card-block">
+                <ngb-tabset>
+                    <ngb-tab title="Selector">
+                        <ng-template ngbTabContent>
+                            <br>
+                            <div class="alert alert-warning" role="alert"> 
+  <strong>Atencion!</strong> Ingresar latitud y longitud entre 10 y 18 digitos, utilizando "." y sin espacios. 
+</div>
+
+                                  <table class="table table-inverse">
                     <tbody>
                         <tr>
                           <form (ngSubmit)="uploadTx1()" #frmTx1="ngForm" >
@@ -92,6 +101,8 @@
                             <td> <input [(ngModel)]="newLatTx1"  placeholder="Latitud" name="newLatTx1" id="newLatTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"  /> </td>
                             <td> <input [(ngModel)]="newLongTx1"  placeholder="Longitud" name="newLongTx1" id="newLongTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button [disabled]=!frmTx1.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
+                            <td>{{mostLati}}</td>
+                            <td>{{mostLongi}}</td>
                             </form >
                         </tr>
                         <tr>
@@ -100,6 +111,8 @@
                             <td> <input [(ngModel)]="newLatTx2"  placeholder="Latitud" name="newLatTx2" id="newLatTx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <input [(ngModel)]="newLongTx2"  placeholder="Longitud" name="newLongTx2" id="newLongTx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <button  [disabled]=!frmTx2.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
+                            <td>{{mostLati1}}</td>
+                            <td>{{mostLongi1}}</td>
                             </form>
                         </tr>
                         <tr>
@@ -108,12 +121,16 @@
                             <td> <input [(ngModel)]="newLatTx3"  placeholder="Latitud" name="newLatTx3" id="newLatTx3" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <input [(ngModel)]="newLongTx3"  placeholder="Longitud" name="newLongTx3" id="newLongTx3" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button  [disabled]=!frmTx3.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
+                            <td>{{mostLati4}}</td>
+                            <td>{{mostLongi4}}</td>
                              </form>
                            <form (ngSubmit)="uploadTx4()" #frmTx4="ngForm">
                             <th scope="row"> <input type="checkbox" [(ngModel)]="tra3" value="false"  name="tra3" id="tra3"> Tx 4</th>
                             <td> <input [(ngModel)]="newLatTx4"  placeholder="Latitud" name="newLatTx4" id="newLatTx4" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <input [(ngModel)]="newLongTx4"  placeholder="Longitud" name="newLongTx4" id="newLongTx4" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button  [disabled]=!frmTx4.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
+                            <td>{{mostLati5}}</td>
+                            <td>{{mostLongi5}}</td>
                              </form>
                         </tr>
                              <tr>
@@ -122,6 +139,8 @@
                             <td> <input [(ngModel)]="newLatRx"  placeholder="Latitud" name="newLatRx" id="newLatRx" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td>  <input [(ngModel)]="newLongRx"  placeholder="Longitud" name="newLongRx" id="newLongRx" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button [disabled]=!frmRx.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button></td>
+                            <td>{{mostLati2}}</td>
+                            <td>{{mostLongi2}}</td>
                              </form>
                         </tr>
                              <tr>
@@ -130,6 +149,8 @@
                             <td> <input [(ngModel)]="newLatRx2"  placeholder="Latitud" name="newLatRx2" id="newLatRx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td>  <input [(ngModel)]="newLongRx2"  placeholder="Longitud" name="newLongRx2" id="newLongRx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button [disabled]=!frmRx2.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button></td>
+                            <td>{{mostLati6}}</td>
+                            <td>{{mostLongi6}}</td>
                              </form>
                         </tr>
                              <tr>
@@ -138,67 +159,20 @@
                             <td> <input [(ngModel)]="newLatOb"  placeholder="Latitud" name="newLatOb" id="newLatOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td>  <input [(ngModel)]="newLongOb"  placeholder="Longitud" name="newLongOb" id="newLongOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <button  [disabled]=!frmTx4.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
+                            <td>{{mostLati3}}</td>
+                            <td>{{mostLongi3}}</td>
                              </form>
                         </tr>
                     </tbody>
-                </table>
-                   <button 
-     type="button"
-      class="btn btn-sm btn-secondary"
-      [disabled]= "!recep"
-      data-toggle="tooltip" data-placement="top" title="Seleccione el Receptor"
-      (click)="show()">Calcular Distancia</button>
-            </div>
-        </div>
-    </div>
+                </table> <br>
+                
 
-<div class="alert alert-warning" role="alert">
-  <strong>Atencion!</strong> Ingresar latitud y longitud entre 10 y 18 digitos, utilizando "." y sin espacios. 
-</div>
-
-
-
-<div class="card-group">
-  <div class="card">
-    <div class="card-small">
-    <div class="card-block">
-      <h4 class="card-title"></h4> <br>
-      <p class="card-text"> Distancia Tx1-Rx por camino directo :</p>
-      <p class="card-text">Distancia Tx2-Rx por camino directo : </p>
-          <p class="card-text">Distancia Tx2-Rx por camino reflejado: </p>
-              <p class="card-text">Tiempo de retardo Tx2-Rx por camino reflejado: </p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title"> </h4> <br>
-        <div *ngIf="tra0" >
-        <div id="testB"  ></div> 
-        </div>
-      <p class="card-text" id="testB"> </p>
-      <p class="card-text" id="testA"> </p>
-      <p class="card-text" id="Tx1Ob"> </p> 
-      <p class="card-text" id="Tx2Ob"> </p>
-      <p class="card-text"><small class="text-muted"></small></p>
-    </div>
-  </div>
-  </div>
-
-
-
-<!-- Resultados  -->
-<div class="row">
-    <div class="col">
-        <div class="card">
-            <div class="card-header"> Resultados </div>
-            <div class="card-block">
-                <ngb-tabset>
+                        </ng-template>
+                    </ngb-tab>
                     <ngb-tab title="Distancias">
                         <ng-template ngbTabContent>
   <div class="card-block table-responsive">
-                <table class="table table-inverse">
+                <table class="table ">
                     <thead>
                         <tr>
                             <th>Camino Directo</th>
@@ -211,22 +185,24 @@
                     <tbody>
                         <tr>
                             <th scope="row">Rx 1</th>
-                            <td  ><p class="card-text" id="testB"> </p></td>
-                            <td></td>
-                            <td></td>
+                           <td>     <p *ngIf="tra0" id="testB"> </p> </td>
+                            <td><p *ngIf="tra1" id="testA"> </p> </td>
+                            <td><p  *ngIf="tra2" id="testdistTx3Rx1"> </p></td>
+                            <td><p  *ngIf="tra3"id="testdistTx4Rx1"></p></td>
                         </tr>
                         <tr>
                             <th scope="row">Rx 2</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><p  *ngIf="tra0"id="testdistTx1Rx2"></p></td>
+                            <td><p  *ngIf="tra1"id="testdistTx2Rx2"></p></td>
+                            <td><p  *ngIf="tra2"id="testdistTx3Rx2"></p> </td>
+                            <td><p  *ngIf="tra3"id="testdistTx4Rx2"></p> </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
                      <div class="card-block table-responsive">
-                <table class="table table-inverse">
+                <table class="table ">
                     <thead>
                         <tr>
                             <th>Camino Reflejado</th>
@@ -239,7 +215,7 @@
                     <tbody>
                         <tr>
                             <th scope="row">Rx 1</th>
-                            <td></td>
+                            <td>  <p id="Tx1Ob"> </p> </td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -252,6 +228,12 @@
                     </tbody>
                 </table>
             </div>
+             <button 
+     type="button"
+      class="btn btn-sm btn-secondary"
+      [disabled]= "!recep"
+      data-toggle="tooltip" data-placement="top" title="Seleccione el Receptor"
+      (click)="show()">Calcular</button> <br>
                         </ng-template>
                     </ngb-tab>  
                     <ngb-tab title="Tiempos">
@@ -312,6 +294,12 @@
                     </tbody>
                 </table>
             </div>
+             <button 
+     type="button"
+      class="btn btn-sm btn-secondary"
+      [disabled]= "!recep"
+      data-toggle="tooltip" data-placement="top" title="Seleccione el Receptor"
+      (click)="show()">Calcular</button> <br>
 
                         </ng-template>
                     </ngb-tab>  
