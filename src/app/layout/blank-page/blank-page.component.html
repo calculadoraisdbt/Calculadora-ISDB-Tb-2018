@@ -97,7 +97,7 @@
                     <tbody>
                         <tr>
                           <form (ngSubmit)="uploadTx1()" #frmTx1="ngForm" >
-                            <th scope="row"><input type="checkbox" [(ngModel)]="tra0" value="false" name="tra0" id="tra0"> Tx 1</th>
+                            <th scope="row"><input type="checkbox" [(ngModel)]="tra0"   name="tra0" id="tra0"> Tx 1</th>
                             <td> <input [(ngModel)]="newLatTx1"  placeholder="Latitud" name="newLatTx1" id="newLatTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"  /> </td>
                             <td> <input [(ngModel)]="newLongTx1"  placeholder="Longitud" name="newLongTx1" id="newLongTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button [disabled]=!frmTx1.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
@@ -107,7 +107,7 @@
                         </tr>
                         <tr>
                           <form (ngSubmit)="uploadTx2()" #frmTx2="ngForm"> 
-                            <th scope="row"> <input type="checkbox" [(ngModel)]="tra1" value="false"  name="tra1" id="tra1"> Tx 2 </th>
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="tra1"    name="tra1" id="tra1"> Tx 2 </th>
                             <td> <input [(ngModel)]="newLatTx2"  placeholder="Latitud" name="newLatTx2" id="newLatTx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <input [(ngModel)]="newLongTx2"  placeholder="Longitud" name="newLongTx2" id="newLongTx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <button  [disabled]=!frmTx2.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
@@ -117,7 +117,7 @@
                         </tr>
                         <tr>
                              <form (ngSubmit)="uploadTx3()" #frmTx3="ngForm">
-                            <th scope="row"> <input type="checkbox" [(ngModel)]="tra2" value="false"  name="tra2" id="tra2"> Tx 3</th>
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="tra2"    name="tra2" id="tra2"> Tx 3</th>
                             <td> <input [(ngModel)]="newLatTx3"  placeholder="Latitud" name="newLatTx3" id="newLatTx3" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <input [(ngModel)]="newLongTx3"  placeholder="Longitud" name="newLongTx3" id="newLongTx3" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button  [disabled]=!frmTx3.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
@@ -125,7 +125,7 @@
                             <td>{{mostLongi4}}</td>
                              </form>
                            <form (ngSubmit)="uploadTx4()" #frmTx4="ngForm">
-                            <th scope="row"> <input type="checkbox" [(ngModel)]="tra3" value="false"  name="tra3" id="tra3"> Tx 4</th>
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="tra3"    name="tra3" id="tra3"> Tx 4</th>
                             <td> <input [(ngModel)]="newLatTx4"  placeholder="Latitud" name="newLatTx4" id="newLatTx4" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <input [(ngModel)]="newLongTx4"  placeholder="Longitud" name="newLongTx4" id="newLongTx4" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button  [disabled]=!frmTx4.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
@@ -135,7 +135,7 @@
                         </tr>
                              <tr>
                               <form (ngSubmit)="uploadRx()" #frmRx="ngForm">
-                            <th scope="row"> <input type="checkbox" [(ngModel)]="recep" value="false" name="recep" id="recep"> Rx 1</th>
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="recep"   name="recep" id="recep"> Rx 1</th>
                             <td> <input [(ngModel)]="newLatRx"  placeholder="Latitud" name="newLatRx" id="newLatRx" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td>  <input [(ngModel)]="newLongRx"  placeholder="Longitud" name="newLongRx" id="newLongRx" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button [disabled]=!frmRx.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button></td>
@@ -145,7 +145,7 @@
                         </tr>
                              <tr>
                               <form (ngSubmit)="uploadRx2()" #frmRx2="ngForm">
-                            <th scope="row"> <input type="checkbox" [(ngModel)]="recep2" value="false" name="recep2" id="recep2"> Rx 2</th>
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="recep2"   name="recep2" id="recep2"> Rx 2</th>
                             <td> <input [(ngModel)]="newLatRx2"  placeholder="Latitud" name="newLatRx2" id="newLatRx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td>  <input [(ngModel)]="newLongRx2"  placeholder="Longitud" name="newLongRx2" id="newLongRx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button [disabled]=!frmRx2.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button></td>
@@ -155,7 +155,7 @@
                         </tr>
                              <tr>
                              <form (ngSubmit)="uploadOb()" #frmOb="ngForm" >
-                            <th scope="row"> <input type="checkbox" [(ngModel)]="obst" value="false" name="obst" id="obst" >Obst</th>
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="obst"  name="obst" id="obst" >Obst</th>
                             <td> <input [(ngModel)]="newLatOb"  placeholder="Latitud" name="newLatOb" id="newLatOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td>  <input [(ngModel)]="newLongOb"  placeholder="Longitud" name="newLongOb" id="newLongOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <button  [disabled]=!frmTx4.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
@@ -165,17 +165,22 @@
                         </tr>
                     </tbody>
                 </table> <br>
-                
-
+                <h4>Seleccione los parametros que desea calcular</h4>
+                <div>
+                    <input type="checkbox" [(ngModel)]="distanciaTab"  name="distanciaTab" id="distanciaTab" > DISTANCIAS
+                </div>
+                 <div>
+                    <input type="checkbox" [(ngModel)]="tiempoTab"  name="tiempoTab" id="tiempoTab" > TIEMPOS
+                </div>
                         </ng-template>
                     </ngb-tab>
-                    <ngb-tab title="Distancias">
+                    <ngb-tab title="Resultados" >
                         <ng-template ngbTabContent>
   <div class="card-block table-responsive">
                 <table class="table ">
                     <thead>
                         <tr>
-                            <th>Camino Directo</th>
+                            <th>Distancias Camino Directo</th>
                             <th>Tx 1</th>
                             <th>Tx 2</th>
                             <th>Tx 3</th>
@@ -192,10 +197,10 @@
                         </tr>
                         <tr>
                             <th scope="row">Rx 2</th>
-                            <td><p  *ngIf="tra0"id="testdistTx1Rx2"></p></td>
-                            <td><p  *ngIf="tra1"id="testdistTx2Rx2"></p></td>
-                            <td><p  *ngIf="tra2"id="testdistTx3Rx2"></p> </td>
-                            <td><p  *ngIf="tra3"id="testdistTx4Rx2"></p> </td>
+                            <td><p  id="testdistTx1Rx2"></p></td>
+                            <td><p id="testdistTx2Rx2"></p></td>
+                            <td><p  id="testdistTx3Rx2"></p> </td>
+                            <td><p  id="testdistTx4Rx2"></p> </td>
                         </tr>
                     </tbody>
                 </table>
@@ -205,7 +210,7 @@
                 <table class="table ">
                     <thead>
                         <tr>
-                            <th>Camino Reflejado</th>
+                            <th>Distancias Camino Reflejado</th>
                             <th>Tx 1</th>
                             <th>Tx 2</th>
                             <th>Tx 3</th>
@@ -215,35 +220,27 @@
                     <tbody>
                         <tr>
                             <th scope="row">Rx 1</th>
-                            <td>  <p id="Tx1Ob"> </p> </td>
-                            <td></td>
-                            <td></td>
+                            <td>  <p id="testTx1Ob"> </p> </td>
+                            <td><p id="testTx2Rx1CR"> </p> </td>
+                            <td><p id="testTx3Rx1CR"></p></td>
+                            <td><p id="testTx4Rx1CR"></p></td>
                         </tr>
                         <tr>
                             <th scope="row">Rx 2</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td> <p id="testTx1Rx2CR"> </p></td>
+                            <td><p id="testTx2Rx2CR"> </p></td>
+                            <td><p id="testTx3Rx2CR"></p></td>
+                            <td><p id="testTx4Rx2CR"></p></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-             <button 
-     type="button"
-      class="btn btn-sm btn-secondary"
-      [disabled]= "!recep"
-      data-toggle="tooltip" data-placement="top" title="Seleccione el Receptor"
-      (click)="show()">Calcular</button> <br>
-                        </ng-template>
-                    </ngb-tab>  
-                    <ngb-tab title="Tiempos">
-                        <ng-template ngbTabContent>
 
-            <div class="card-block table-responsive">
+             <div class="card-block table-responsive">
                 <table class="table table-inverse">
                     <thead>
                         <tr>
-                            <th>Camino Directo</th>
+                            <th>Retardos por Camino Directo</th>
                             <th>Tx 1</th>
                             <th>Tx 2</th>
                             <th>Tx 3</th>
@@ -253,15 +250,17 @@
                     <tbody>
                         <tr>
                             <th scope="row">Rx 1</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><p id="testtiempoTx1Rx1"></p></td>
+                            <td><p id="testtiempoTx2Rx1"></p></td>
+                            <td><p id="testtiempoTx3Rx1"></p></td>
+                            <td><p id="testtiempoTx4Rx1"></p></td>
                         </tr>
                         <tr>
                             <th scope="row">Rx 2</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><p id="testtiempoTx1Rx2"> </p></td>
+                            <td><p id="testtiempoTx2Rx2"></p></td>
+                            <td><p id="testtiempoTx3Rx2"></p></td>
+                            <td><p id="testtiempoTx4Rx2"></p></td>
                         </tr>
                     </tbody>
                 </table>
@@ -271,7 +270,7 @@
                 <table class="table table-inverse">
                     <thead>
                         <tr>
-                            <th>Camino Reflejado</th>
+                            <th>Retardos por Camino Reflejado</th>
                             <th>Tx 1</th>
                             <th>Tx 2</th>
                             <th>Tx 3</th>
@@ -281,26 +280,27 @@
                     <tbody>
                         <tr>
                             <th scope="row">Rx 1</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><p id="testtiempoTx1Ob"></p></td>
+                            <td><p id="testtiempoTx2Rx1CR"></p></td>
+                            <td><p id="testtiempoTx3Rx1CR"></p></td>
+                            <td><p id="testtiempoTx4Rx1CR"></p></td>
                         </tr>
                         <tr>
                             <th scope="row">Rx 2</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><p id="testtiempoTx1Rx2CR"></p></td>
+                            <td><p id="testtiempoTx2Rx2CR"></p></td>
+                            <td><p id="testtiempoTx3Rx2CR"></p></td>
+                            <td><p id="testtiempoTx4Rx2CR"></p></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
              <button 
      type="button"
       class="btn btn-sm btn-secondary"
-      [disabled]= "!recep"
-      data-toggle="tooltip" data-placement="top" title="Seleccione el Receptor"
+      data-toggle="tooltip" data-placement="top" title=""
       (click)="show()">Calcular</button> <br>
-
                         </ng-template>
                     </ngb-tab>  
                     <ngb-tab title="Ventana de Sincronizacion">

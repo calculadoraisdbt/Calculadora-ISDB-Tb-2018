@@ -102,6 +102,8 @@ export class BlankPageComponent implements OnInit {
     mostLongi5 : string ;
     mostLati6 : string ;
     mostLongi6 : string ;
+    distanciaTab : boolean = false;
+    tiempoTab : boolean = false;
    // nombreMarcador : string;
    // latitudMarcador: string;
    // longitudMarcador: string;
@@ -157,42 +159,128 @@ export class BlankPageComponent implements OnInit {
             this._markerService.actualizarMarcador(actuaMarcador, nuevaLati, nuevaLongi);
             
     }
-
     
-    show (){
-            
-           if(this.tra1 === true ){
-            
+show (){
+    if(this.distanciaTab === true){            
+        if(this.tra1 === true && this.recep === true  ){              //TRANSMIOR 2
+                   
             this._markerService.computeDistanceBetween();
-            this._markerService.computeDistanceBetweenTx1Rx2()
+        }else;
+        if(this.tra0 === true && this.recep2 === true){             //TRANSMISOR 1
+            this._markerService.computeDistanceBetweenTx1Rx2();
+        }else;
 
-           }else;
-
-           if(this.tra0 === true ){
-
+        if(this.tra0 === true  && this.recep === true ){            //TRANSMISOR 1
+                  
             this._markerService.computeDistanceBetween1();
-            this._markerService.computeDistanceBetweenTx2Rx2()
-
-           }else;
-           if(this.tra2 === true ){
-
+                    
+        }else;
+        if(this.tra1 === true  && this.recep2 === true){            //TRANSMIOR 2
+            this._markerService.computeDistanceBetweenTx2Rx2();
+        }else;
+        if(this.tra2 === true && this.recep === true){
             this._markerService.computeDistanceBetweenTx3Rx1();
+        }else;
+        if(this.tra2 === true && this.recep2 === true ){
             this._markerService.computeDistanceBetweenTx3Rx2();
-           }else;
-          if(this.tra3 === true ){
+        }else;
 
+        if(this.tra3 === true && this.recep === true ){
             this._markerService.computeDistanceBetweenTx4Rx1();
+        }
+        if(this.tra3 === true && this.recep2 === true){
             this._markerService.computeDistanceBetweenTx4Rx2();
-           }else;
+        }else;
 
-           if(this.obst === true ){
+        if(this.obst === true && this.recep === true && this.tra1 === true ){
+          //   this._markerService.computeDistanceBetweenTx2Ob();
+        }else;
+        if(this.obst === true && this.recep === true && this.tra0 === true){            //TRANSMISOR 1
+              this._markerService.computeDistanceBetweenTx1Ob();
+        }else;
+        if(this.obst === true && this.recep2 === true && this.tra0 === true){       //TRANSMISOR 1
+              this._markerService.computeDistanceBetweenTx1Rx2CR();
+        }else;
+        if(this.obst === true && this.recep === true && this.tra1 === true ){
+             this._markerService.computeDistanceBetweenTx2Rx1CR();
+        }
+        if(this.obst === true && this.recep2 === true && this.tra1 === true ){
+             this._markerService.computeDistanceBetweenTx2Rx2CR();
+        }
+        if(this.obst === true && this.recep === true && this.tra2 === true){
+            this._markerService.computeDistanceBetweenTx3Rx1CR();
+        }
+        if(this.obst === true && this.recep2 === true && this.tra2 === true){
+            this._markerService.computeDistanceBetweenTx3Rx2CR();
+        }
 
-            this._markerService.computeDistanceBetweenTx1Ob();
-             this._markerService.computeDistanceBetweenTx2Ob()
-
-           }else;
+        if(this.obst === true && this.recep === true && this.tra3 === true){
+            this._markerService.computeDistanceBetweenTx4Rx1CR();
+        }
+         if(this.obst === true && this.recep2 === true && this.tra3 === true){
+            this._markerService.computeDistanceBetweenTx4Rx2CR();
+        }
+            
+    
+    }
            
-          
+    if(this.tiempoTab === true){
+            if(this.tra0 === true  && this.recep === true ){     
+            this._markerService.computeTimeBetweenTx1Rx1();
+    }else;
+    if(this.tra0 === true && this.recep2 === true){  
+            this._markerService.computeTimeBetweenTx1Rx2();
+    }else;   
+
+    if(this.recep === true && this.tra1 === true){
+            this._markerService.computeTimeBetweenTx2Rx1();
+    }else; 
+    if( this.recep2 === true && this.tra1 === true ){
+             this._markerService.computeTimeBetweenTx2Rx2();
+    }else; 
+    if(this.recep === true && this.tra2 === true){
+            this._markerService.computeTimeBetweenTx3Rx1();
+    }  else;       
+    if(this.tra2 === true && this.recep2 === true){
+            this._markerService.computeTimeBetweenTx3Rx2();
+    }else; 
+    if(this.tra3 === true && this.recep === true){
+            this._markerService.computeTimeBetweenTx4Rx1();
+    }else; 
+    if(this.recep2 === true && this.tra3 === true){
+            this._markerService.computeTimeBetweenTx4Rx2();  
+    }else; 
+    if(this.obst === true && this.recep === true && this.tra0 === true){
+            this._markerService.computeTimeBetweenTx1Ob();
+
+    }else; 
+    if(this.obst === true && this.recep2 === true && this.tra0 === true){
+            this._markerService.computeTimeBetweenTx1Rx2CR();
+    }else; 
+    if(this.obst === true && this.recep === true && this.tra1 === true ){
+            this._markerService.computeTimeBetweenTx2Rx1CR();
+    }else; 
+    if(this.obst === true && this.recep2 === true && this.tra1 === true){
+            this._markerService.computeTimeBetweenTx2Rx2CR();
+    }else; 
+    if(this.obst === true && this.recep === true && this.tra2 === true){
+        this._markerService.computeTimeBetweenTx3Rx1CR();
+    }else; 
+    if(this.obst === true && this.recep2 === true && this.tra2 === true){
+        this._markerService.computeTimeBetweenTx3Rx2CR();
+    }else; 
+    if(this.obst === true && this.recep === true && this.tra3 === true){
+       this._markerService.computeTimeBetweenTx4Rx1CR();
+    }
+    if(this.obst === true && this.recep2 === true && this.tra3 === true){
+        this._markerService.computeTimeBetweenTx4Rx2CR();
+    }
+
+
+
+
+    }      
+      
     }
 
     uploadTx1(){
