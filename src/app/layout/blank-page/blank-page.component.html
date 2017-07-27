@@ -101,8 +101,8 @@
                             <td> <input [(ngModel)]="newLatTx1"  placeholder="Latitud" name="newLatTx1" id="newLatTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"  /> </td>
                             <td> <input [(ngModel)]="newLongTx1"  placeholder="Longitud" name="newLongTx1" id="newLongTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button [disabled]=!frmTx1.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
-                            <td>{{mostLati}}</td>
-                            <td>{{mostLongi}}</td>
+                            <td> {{mostLati}}</td>
+                            <td>{{ mostLongi}}</td>
                             </form >
                         </tr>
                         <tr>
@@ -165,18 +165,103 @@
                         </tr>
                     </tbody>
                 </table> <br>
-                <h4>Seleccione los parametros que desea calcular</h4>
+                
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="Retardos">
+                        <ng-template ngbTabContent>
+                            <div class="card-block table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Equipment ID</th>
+                                            <th>Time-Offset (x100 ns)</th>
+                                            <th>Polarity</th>
+                                            <th>Dynamic-Static</th>
+                                            <th>Enable</th>
+                                        </tr>
+                                    </thead>
+                    <tbody>
+                         <tr>
+                            <th scope="row">Tx 1</th>
+                            <td> <input type="text" class="form-control"    aria-describedby="basic-addon1"> </td>
+                            <td><input type="text" class="form-control"    aria-describedby="basic-addon1"> </td>
+                            <td> <select>
+                                <option>Positive</option>
+                                <option>Negative</option>
+                              </select>
+                        </td>
+                            <td><select>
+                                <option>Dynamic</option>
+                                <option>Static</option>
+                              </select></td>
+                            <td><input type="checkbox"  name="Enable" id="Enable" ></td>
+                        </tr>
+                         <tr>
+                            <th scope="row">Tx 2</th>
+                            <td> <input type="text" class="form-control"    aria-describedby="basic-addon1"> </td>
+                            <td> <input type="text" class="form-control"    aria-describedby="basic-addon1"></td>
+                            <td><select>
+                                <option>Positive</option>
+                                <option>Negative</option>
+                              </select></td>
+                            <td><select>
+                                <option>Dynamic</option>
+                                <option>Static</option>
+                              </select></td>
+                            <td><input type="checkbox"    name="Enable" id="Enable" ></td>
+                            
+                        </tr>
+                         <tr>
+                            <th scope="row">Tx 3</th>
+                            <td><input type="text" class="form-control"    aria-describedby="basic-addon1"> </td>
+                            <td><input type="text" class="form-control"    aria-describedby="basic-addon1"> </td>
+                            <td><select>
+                                <option>Positive</option>
+                                <option>Negative</option>
+                              </select></td>
+                            <td><select>
+                                <option>Dynamic</option>
+                                <option>Static</option>
+                              </select></td>
+                            <td><input type="checkbox"    name="Enable" id="Enable" ></td>
+                        </tr>
+                         <tr>
+                            <th scope="row">Tx 4</th>
+                            <td> <input type="text" class="form-control"    aria-describedby="basic-addon1"> </td>
+                            <td> <input type="text" class="form-control"    aria-describedby="basic-addon1"></td>
+                            <td><select>
+                                <option>Positive</option>
+                                <option>Negative</option>
+                              </select></td>
+                            <td><select>
+                                <option>Dynamic</option>
+                                <option>Static</option>
+                              </select></td>
+                            <td><input type="checkbox"  name="Enable" id="Enable" ></td>
+                        </tr>
+                    </tbody>
+                                </table>
+                            </div>
+                        </ng-template>
+                        </ngb-tab>
+                    <ngb-tab title="Resultados" >
+                        <ng-template ngbTabContent>
+                            <h4>Seleccione los parametros que desea calcular</h4>
                 <div>
                     <input type="checkbox" [(ngModel)]="distanciaTab"  name="distanciaTab" id="distanciaTab" > DISTANCIAS
                 </div>
                  <div>
                     <input type="checkbox" [(ngModel)]="tiempoTab"  name="tiempoTab" id="tiempoTab" > TIEMPOS
-                </div>
-                        </ng-template>
-                    </ngb-tab>
-                    <ngb-tab title="Resultados" >
-                        <ng-template ngbTabContent>
-  <div class="card-block table-responsive">
+                </div><br>
+                 <button 
+     type="button"
+      class="btn btn-sm btn-secondary"
+      data-toggle="tooltip" data-placement="top" title=""
+      (click)="show()">Calcular</button> <br>
+
+  <div class="card-block table-responsive" *ngIf="distanciaTab">
                 <table class="table ">
                     <thead>
                         <tr>
@@ -206,7 +291,7 @@
                 </table>
             </div>
 
-                     <div class="card-block table-responsive">
+                     <div class="card-block table-responsive" *ngIf="distanciaTab">
                 <table class="table ">
                     <thead>
                         <tr>
@@ -236,7 +321,7 @@
                 </table>
             </div>
 
-             <div class="card-block table-responsive">
+             <div class="card-block table-responsive" *ngIf="tiempoTab">
                 <table class="table table-inverse">
                     <thead>
                         <tr>
@@ -266,7 +351,7 @@
                 </table>
             </div>
 
-                     <div class="card-block table-responsive">
+                     <div class="card-block table-responsive"  *ngIf="tiempoTab">
                 <table class="table table-inverse">
                     <thead>
                         <tr>
@@ -294,13 +379,9 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> <br>
 
-             <button 
-     type="button"
-      class="btn btn-sm btn-secondary"
-      data-toggle="tooltip" data-placement="top" title=""
-      (click)="show()">Calcular</button> <br>
+            
                         </ng-template>
                     </ngb-tab>  
                     <ngb-tab title="Ventana de Sincronizacion">
