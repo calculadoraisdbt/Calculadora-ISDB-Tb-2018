@@ -17,6 +17,8 @@ const routes: Routes = [
             { path: 'modulador', loadChildren: './modulador/resumen/resumen.module#ResumenModule' },
             { path: 'globales', loadChildren: './modulador/globales/globales.module#GlobalesModule' },
             { path: 'codificador', loadChildren: './codificador/codificador.module#CodificadorModule' },
+            { path: 'remux', loadChildren: './remux/remux.module#RemuxModule' },
+            { path: 'multiplexor', loadChildren: './multiplexor/multiplexor.module#MultiplexorModule' },
         ]
     }
 ];

@@ -174,6 +174,25 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
+                                            <th>Static Parameters</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                         <tbody>
+                         <tr>
+                            <th scope="row">Maximun Delay: (x100 ns)</th>
+                            <td> <input type="text" class="form-control" [(ngModel)]="retardoRed"   aria-describedby="basic-addon1"> </td>
+                        </tr>
+                                    </tbody>
+                                </table> <br>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Stations Parameters</th>
+                                        </tr>
+                                    </thead>
+                                    <thead>
+                                        <tr>
                                             <th>#</th>
                                             <th>Equipment ID</th>
                                             <th>Time-Offset (x100 ns)</th>
@@ -185,59 +204,59 @@
                     <tbody>
                          <tr>
                             <th scope="row">Tx 1</th>
-                            <td> <input type="text" class="form-control"    aria-describedby="basic-addon1"> </td>
-                            <td><input type="text" class="form-control"    aria-describedby="basic-addon1"> </td>
-                            <td> <select>
+                            <td> <input type="text" class="form-control"  title="equipmentIdTx1"   aria-describedby="basic-addon1"> </td>
+                            <td><input type="text" class="form-control" [(ngModel)]="retardos[0]" title="timeOffsetTx1"  aria-describedby="basic-addon1"> </td>
+                            <td> <select (change)="cambio($event.target.value, 'Tx1')">
                                 <option>Positive</option>
                                 <option>Negative</option>
                               </select>
                         </td>
-                            <td><select>
-                                <option>Dynamic</option>
-                                <option>Static</option>
+                            <td><select [disabled]="negativeOn1">
+                                <option >Dynamic</option>
+                                <option *ngIf="!negativeOn1">Static</option>
                               </select></td>
                             <td><input type="checkbox"  name="Enable" id="Enable" ></td>
                         </tr>
                          <tr>
                             <th scope="row">Tx 2</th>
-                            <td> <input type="text" class="form-control"    aria-describedby="basic-addon1"> </td>
-                            <td> <input type="text" class="form-control"    aria-describedby="basic-addon1"></td>
-                            <td><select>
+                            <td> <input type="text" class="form-control"  title="equipmentIdTx2"    aria-describedby="basic-addon1"> </td>
+                            <td> <input type="text" class="form-control"  [(ngModel)]="retardos[1]" title="timeOffsetTx2"   aria-describedby="basic-addon1"></td>
+                            <td><select (change)="cambio($event.target.value, 'Tx2')">
                                 <option>Positive</option>
                                 <option>Negative</option>
                               </select></td>
-                            <td><select>
+                            <td><select [disabled]="negativeOn2">
                                 <option>Dynamic</option>
-                                <option>Static</option>
+                                <option *ngIf="!negativeOn2">Static</option>
                               </select></td>
                             <td><input type="checkbox"    name="Enable" id="Enable" ></td>
                             
                         </tr>
                          <tr>
                             <th scope="row">Tx 3</th>
-                            <td><input type="text" class="form-control"    aria-describedby="basic-addon1"> </td>
-                            <td><input type="text" class="form-control"    aria-describedby="basic-addon1"> </td>
-                            <td><select>
+                            <td><input type="text" class="form-control"  title="equipmentIdTx3"    aria-describedby="basic-addon1"> </td>
+                            <td><input type="text" class="form-control" [(ngModel)]="retardos[2]" title="timeOffsetTx3"   aria-describedby="basic-addon1"> </td>
+                            <td><select (change)="cambio($event.target.value, 'Tx3')">
                                 <option>Positive</option>
                                 <option>Negative</option>
                               </select></td>
-                            <td><select>
+                            <td><select [disabled]="negativeOn3">
                                 <option>Dynamic</option>
-                                <option>Static</option>
+                                <option *ngIf="!negativeOn3" >Static</option>
                               </select></td>
                             <td><input type="checkbox"    name="Enable" id="Enable" ></td>
                         </tr>
                          <tr>
                             <th scope="row">Tx 4</th>
-                            <td> <input type="text" class="form-control"    aria-describedby="basic-addon1"> </td>
-                            <td> <input type="text" class="form-control"    aria-describedby="basic-addon1"></td>
-                            <td><select>
+                            <td> <input type="text" class="form-control"   title="equipmentIdTx4"   aria-describedby="basic-addon1"> </td>
+                            <td> <input type="text" class="form-control"  [(ngModel)]="retardos[3]" title="timeOffsetTx4"  aria-describedby="basic-addon1"></td>
+                            <td><select (change)="cambio($event.target.value, 'Tx4')">
                                 <option>Positive</option>
                                 <option>Negative</option>
                               </select></td>
-                            <td><select>
+                            <td><select [disabled]="negativeOn4">
                                 <option>Dynamic</option>
-                                <option>Static</option>
+                                <option *ngIf="!negativeOn4">Static</option>
                               </select></td>
                             <td><input type="checkbox"  name="Enable" id="Enable" ></td>
                         </tr>
@@ -260,6 +279,7 @@
       class="btn btn-sm btn-secondary"
       data-toggle="tooltip" data-placement="top" title=""
       (click)="show()">Calcular</button> <br>
+       
 
   <div class="card-block table-responsive" *ngIf="distanciaTab">
                 <table class="table ">
@@ -392,7 +412,16 @@
                 </canvas>
             </div>
                     </ng-template>
-                    </ngb-tab>      
+                    </ngb-tab> 
+                <ngb-tab title="Verificacion Funcionamiento SFN">
+                    <ng-template ngbTabContent >
+                           <button 
+                                 type="button"
+                                 class="btn btn-sm btn-secondary"
+                                data-toggle="tooltip" data-placement="top" title=""
+                                (click)="calculoDistanciasRx1()">Menor</button> <br>
+                    </ng-template>
+                </ngb-tab>     
                 </ngb-tabset>
             </div>
         </div>

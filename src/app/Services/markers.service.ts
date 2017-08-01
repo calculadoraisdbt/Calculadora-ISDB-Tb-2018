@@ -50,6 +50,7 @@ declare var google: any;
   var tiempoTx3Rx2CR : number = 0;
   var tiempoTx4Rx1CR : number = 0;
   var tiempoTx4Rx2CR : number = 0;
+  var menorRx1 : number = 0;
 @Injectable()
 export class MarkersService extends Init {
 
@@ -157,6 +158,54 @@ export class MarkersService extends Init {
         localStorage.setItem('markers', JSON.stringify(markers));
      
    }
+
+     distanciaMenorRx1(){
+         var markers = JSON.parse(localStorage.getItem('markers'));
+                var i =0;
+                if(i === 0){
+                            var pos_0 = new google.maps.LatLng(markers[0].lati, markers[0].longi); 
+                            var pos_1 = new google.maps.LatLng(markers[1].lati, markers[1].longi);
+                            var pos_4 = new google.maps.LatLng(markers[4].lati, markers[4].longi);
+                            var pos_2 = new google.maps.LatLng( markers[2].lati, markers[2].longi);
+                            var pos_5 = new google.maps.LatLng( markers[5].lati, markers[5].longi);
+                                
+                            i++;
+
+                }else{
+                            var pos_0 = new google.maps.LatLng(lat0,lng0);
+                            var pos_2 = new google.maps.LatLng(lat2,lng2);
+                            var pos_1 = new google.maps.LatLng(lat1,lng1);
+                            var pos_4 = new google.maps.LatLng(lat4,lng4);
+                            var pos_5 = new google.maps.LatLng(lat5,lng5);
+                }
+
+                
+             
+                
+
+               var tx1rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_2).toFixed(2)); 
+               tx1rx1 = (tx1rx1/1000);
+               var tx2rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_2).toFixed(2));
+               tx2rx1 = (tx2rx1/1000);
+               var tx3rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_2).toFixed(2)); 
+               tx3rx1 = (tx3rx1/1000);
+               var tx4rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_2).toFixed(2)); 
+               tx4rx1 = (tx4rx1/1000);
+
+        menorRx1 = Math.min(tx1rx1, tx2rx1,tx3rx1, tx4rx1  ) ; 
+        console.log(menorRx1);
+        var DeltaT1 = (tx1rx1-menorRx1) ;
+                console.log(DeltaT1);
+        var DeltaT2 = (tx2rx1-menorRx1 ) ;
+                console.log(DeltaT2);
+        var DeltaT3 = (tx3rx1-menorRx1) ;
+                console.log(DeltaT3);
+        var DeltaT4 = (tx4rx1-menorRx1) ;    
+                console.log(DeltaT4);
+
+    }   
+
+
 //Distancia TX1-RX1
 computeDistanceBetween1(){
                 var markers = JSON.parse(localStorage.getItem('markers'));
@@ -184,6 +233,7 @@ computeDistanceBetween1(){
 
     }
 
+  
 // TIEMPO TX1 -RX1
 computeTimeBetweenTx1Rx1(){
                 var markers = JSON.parse(localStorage.getItem('markers'));

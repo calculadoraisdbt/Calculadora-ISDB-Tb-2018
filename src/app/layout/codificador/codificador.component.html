@@ -20,148 +20,148 @@
                         <tr>
                             <th scope="row">Video Source</th>
                             <td>
-                              <select>
-                                <option>SDI</option>
-                                <option>HDMI</option>
-                                <option>Component</option>
-                                <option>Composite</option>
+                              <select [value]="videoSource[0]" (change)="videoSourceSelected($event.target.value,'E1')">
+                                <option value="SDI">SDI</option>
+                                <option value="HDMI">HDMI</option>
+                                <option value="Component">Component</option>
+                                <option value="Composite">Composite</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Audio Source</th>
                             <td>
-                              <select>
-                                <option>Analog Jacks</option>
-                                <option>Channnels 1+2</option>
-                                <option>Channnels 3+4</option>
-                                <option>Channnels 5+6</option>
-                                <option>Channnels 7+8</option>
+                              <select [value]="audioSource[0]" (change)="audioSourceSelected($event.target.value,'E1')">
+                                 <option  value="Analog Jacks">Analog Jacks</option>
+                                <option  value="Channnels 1+2">Channnels 1+2</option>
+                                <option  value="Channnels 3+4">Channnels 3+4</option>
+                                <option  value="Channnels 5+6">Channnels 5+6</option>
+                                <option  value="Channnels 7+8">Channnels 7+8</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Audio Codec</th>
                             <td>
-                              <select>
-                                <option>AAC-LC ADTS</option>
-                                <option>AAC-LC LATM</option>
-                                <option>PMC</option>
-                                <option>AC-3 Passthru</option>
-                                <option>None</option>
+                              <select [value]="audioCodec[0]" (change)="audioCodecSelected($event.target.value,'E1')">
+                                <option value="AAC-LC ADTS">AAC-LC ADTS</option>
+                                <option value="AAC-LC LATM">AAC-LC LATM</option>
+                                <option value="PMC">PMC</option>
+                                <option value="AC-3 Passthru">AC-3 Passthru</option>
+                                <option value="None">None</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Audio Bit Rate</th>
                             <td>
-                              <select>
-                                <option>64 kbits</option>
-                                <option>96 kbits</option>
-                                <option>128 kbits</option>
-                                <option>192 kbits</option>
+                              <select [value]="audioBitRate[0]" (change)="audioBitRateSelected($event.target.value,'E1')">
+                                <option value="64 kbits">64 kbits</option>
+                                <option value="96 kbits">96 kbits</option>
+                                <option value="128 kbits">128 kbits</option>
+                                <option value="192 kbits">192 kbits</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Video Resolution</th>
                            <td>
-                              <select>
-                                <option>Follow Input</option>
-                                <option>1080i (1920x1080)</option>
-                                <option>1080p (1920x1080)</option>
-                                <option>3/4 1080i (1440x1080)</option>
-                                <option>720p (1280x720)</option>
-                                <option>4/5 720p (1024x720)</option>
-                                <option>16:9 PAL (1024x576)</option>
-                                <option>D1 NTSC (720x480)</option>
-                                <option>D1 PAL (720x576)</option>
-                                <option>4-CIF (704x576)</option>
-                                <option>VGA (640X480)</option>
-                                <option>640X360</option>
-                                <option>2-CIF (352x576)</option>
-                                <option>2-SIF (352x480)</option>
-                                <option>CIF (352x288)</option>
-                                <option>SIF (352x240)</option>
-                                <option>QVGA(320x240)</option>
-                                <option>WQVGA(320x180)</option>
+                              <select  [value]="videoResolution[0]" (change)="videoResolutionSelected($event.target.value,'E1')">
+                                <option value="Follow Input">Follow Input</option>
+                                <option value="1080i (1920x1080)">1080i (1920x1080)</option>
+                                <option value="1080p (1920x1080)">1080p (1920x1080)</option>
+                                <option value="3/4 1080i (1440x1080)">3/4 1080i (1440x1080)</option>
+                                <option value="720p (1280x720)">720p (1280x720)</option>
+                                <option value="4/5 720p (1024x720)">4/5 720p (1024x720)</option>
+                                <option value="16:9 PAL (1024x576)">16:9 PAL (1024x576)</option>
+                                <option value="D1 NTSC (720x480)">D1 NTSC (720x480)</option>
+                                <option value="D1 PAL (720x576)">D1 PAL (720x576)</option>
+                                <option value="4-CIF (704x576)">4-CIF (704x576)</option>
+                                <option value="VGA (640X480)">VGA (640X480)</option>
+                                <option value="640X360">640X360</option>
+                                <option value="2-CIF (352x576)">2-CIF (352x576)</option>
+                                <option value="2-SIF (352x480)">2-SIF (352x480)</option>
+                                <option value="CIF (352x288)">CIF (352x288)</option>
+                                <option value="SIF (352x240)">SIF (352x240)</option>
+                                <option value="QVGA(320x240)">QVGA(320x240)</option>
+                                <option value="WQVGA(320x180)">WQVGA(320x180)</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Rate Control</th>
                             <td>
-                              <select>
-                                <option>CBR</option>
-                                <option>VBR</option>
+                              <select  [value]="rateControl[0]" (change)="rateControlSelected($event.target.value,'E1')">
+                                <option value="CBR">CBR</option>
+                                <option value="VBR">VBR</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Video Bit Rate</th>
                            <td>
-                              <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                              <input type="text" class="form-control"  [(ngModel)] = "videoBitRate[0]"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Video Profile</th>
                            <td>
-                              <select>
-                                <option>Baseline</option>
-                                <option>Main</option>
-                                <option>High</option>
+                              <select  [value]="videoProfile[0]" (change)="videoProfileSelected($event.target.value,'E1')">
+                                <option value="Baseline">Baseline</option>
+                                <option value="Main">Main</option>
+                                <option value="High">High</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Gop Size</th>
                             <td>
-                              <select>
-                                <option>15 Frames</option>
-                                <option>30 Frames</option>
-                                <option>60 Frames</option>
-                                <option>120 Frames</option>
-                                <option>240 Frames</option>
+                              <select [value]="gopSize[0]" (change)="gopSizeSelected($event.target.value,'E1')">
+                                <option value="15 Frames">15 Frames</option>
+                                <option value="30 Frames">30 Frames</option>
+                                <option value="60 Frames">60 Frames</option>
+                                <option value="120 Frames">120 Frames</option>
+                                <option value="240 Frames">240 Frames</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Video burst size</th>
                             <td>
-                              <select>
-                                <option>150ms</option>
-                                <option>200ms</option>
-                                <option>300ms</option>
-                                <option>400ms</option>
-                                <option>500ms</option>
-                                <option>600ms</option>
-                                <option>800ms</option>
-                                <option>1000ms</option>
-                                <option>1200ms</option>
-                                <option>1400ms</option>
-                                <option>1600ms</option>
-                                <option>1800ms</option>
-                                <option>2000ms</option>
+                              <select [value]="videoBurstSize[0]" (change)="videoBurstSizeSelected($event.target.value,'E1')">
+                                <option value="150ms">150ms</option>
+                                <option value="200ms">200ms</option>
+                                <option value="300ms">300ms</option>
+                                <option value="400ms">400ms</option>
+                                <option value="500ms">500ms</option>
+                                <option value="600ms">600ms</option>
+                                <option value="800ms">800ms</option>
+                                <option value="1000ms">1000ms</option>
+                                <option value="1200ms">1200ms</option>
+                                <option value="1400ms">1400ms</option>
+                                <option value="1600ms">1600ms</option>
+                                <option value="1800ms">1800ms</option>
+                                <option value="2000ms">2000ms</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Video Codec</th>
                            <td>
-                              <select>
-                                <option>H.264</option>
-                                <option>MPEG-2</option>
+                              <select [value]="videoCodec[0]" (change)="videoCodecSelected($event.target.value,'E1')">
+                                <option value="H.264">H.264</option>
+                                <option value="MPEG-2">MPEG-2</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Frame Decimation</th>
                            <td>
-                              <select>
-                                <option>None</option>
-                                <option>1/2</option>
-                                <option>1/3</option>
-                                <option>1/4</option>
+                              <select [value]="frameDecimation[0]" (change)="frameDecimationSelected($event.target.value,'E1')">
+                                <option value="None">None</option>
+                                <option value="1/2">1/2</option>
+                                <option value="1/3">1/3</option>
+                                <option value="1/4">1/4</option>
                               </select>
                             </td>
                         </tr>
@@ -180,44 +180,44 @@
                         <tr>
                             <th scope="row">Output Interface</th>
                             <td>
-                               <select>
-                                <option>Ethernet(VBR)</option>
-                                <option>ASI</option>
-                                <option>ASI + Ethernet(CBR)</option>
+                               <select [value]="outputInterface[0]" (change)="outputInterfaceSelected($event.target.value,'E1')">
+                                <option value="Ethernet(VBR)">Ethernet(VBR)</option>
+                                <option value="ASI">ASI</option>
+                                <option value="ASI + Ethernet(CBR)">ASI + Ethernet(CBR)</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Output Format</th>
                             <td>
-                               <select>
-                                <option>RTP</option>
-                                <option>MPEG-2 TS</option>
+                               <select [value]="outputFormat[0]" (change)="outputFormatSelected($event.target.value,'E1')">
+                                <option value="RTP">RTP</option>
+                                <option value="MPEG-2 TS">MPEG-2 TS</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Dest IP Address</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] ="destIpAddress[0]"   aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Dest Port</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] ="destPort[0]"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">TS Bitrate</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" [(ngModel)] ="TsBitrate[0]"   aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">ASI PCI Interval</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] ="AsiPciInterval[0]"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
@@ -239,21 +239,21 @@
                         <tr>
                             <td>Local iP Address</td>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] ="LocalIpAddress[1]" aria-describedby="basic-addon1">
                             </td>
                            
                         </tr>
                         <tr>
                             <td>Local Netmask</td>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] ="LocalNetmask[1]"  aria-describedby="basic-addon1">
                             </td>
                            
                         </tr>
                         <tr>
                             <td>Default Gateway</td>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] ="DefaultGateway[1]"  aria-describedby="basic-addon1">
                             </td>
                             
                         </tr>
@@ -280,148 +280,148 @@
                         <tr>
                             <th scope="row">Video Source</th>
                             <td>
-                              <select>
-                                 <option>SDI</option>
-                                <option>HDMI</option>
-                                <option>Component</option>
-                                <option>Composite</option>
+                              <select  [value]="videoSource[1]" (change)=" videoSourceSelected($event.target.value, 'E2')">
+                                 <option value="SDI">SDI</option>
+                                <option value="HDMI">HDMI</option>
+                                <option value="Component">Component</option>
+                                <option value="Composite">Composite</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Audio Source</th>
                             <td>
-                              <select>
-                                <option>Analog Jacks</option>
-                                <option>Channnels 1+2</option>
-                                <option>Channnels 3+4</option>
-                                <option>Channnels 5+6</option>
-                                <option>Channnels 7+8</option>
+                              <select [value]="audioSource[1]" (change)="audioSourceSelected($event.target.value,'E2')">
+                               <option  value="Analog Jacks">Analog Jacks</option>
+                                <option  value="Channnels 1+2">Channnels 1+2</option>
+                                <option  value="Channnels 3+4">Channnels 3+4</option>
+                                <option  value="Channnels 5+6">Channnels 5+6</option>
+                                <option  value="Channnels 7+8">Channnels 7+8</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Audio Codec</th>
                             <td>
-                              <select>
-                                 <option>AAC-LC ADTS</option>
-                                <option>AAC-LC LATM</option>
-                                <option>PMC</option>
-                                <option>AC-3 Passthru</option>
-                                <option>None</option>
+                              <select [value]="audioCodec[1]" (change)="audioCodecSelected($event.target.value,'E2')">
+                                <option value="AAC-LC ADTS">AAC-LC ADTS</option>
+                                <option value="AAC-LC LATM">AAC-LC LATM</option>
+                                <option value="PMC">PMC</option>
+                                <option value="AC-3 Passthru">AC-3 Passthru</option>
+                                <option value="None">None</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Audio Bit Rate</th>
                             <td>
-                              <select>
-                                 <option>64 kbits</option>
-                                <option>96 kbits</option>
-                                <option>128 kbits</option>
-                                <option>192 kbits</option>
+                               <select [value]="audioBitRate[1]" (change)="audioBitRateSelected($event.target.value,'E2')">
+                                <option value="64 kbits">64 kbits</option>
+                                <option value="96 kbits">96 kbits</option>
+                                <option value="128 kbits">128 kbits</option>
+                                <option value="192 kbits">192 kbits</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Video Resolution</th>
                            <td>
-                              <select>
-                                <option>Follow Input</option>
-                                <option>1080i (1920x1080)</option>
-                                <option>1080p (1920x1080)</option>
-                                <option>3/4 1080i (1440x1080)</option>
-                                <option>720p (1280x720)</option>
-                                <option>4/5 720p (1024x720)</option>
-                                <option>16:9 PAL (1024x576)</option>
-                                <option>D1 NTSC (720x480)</option>
-                                <option>D1 PAL (720x576)</option>
-                                <option>4-CIF (704x576)</option>
-                                <option>VGA (640X480)</option>
-                                <option>640X360</option>
-                                <option>2-CIF (352x576)</option>
-                                <option>2-SIF (352x480)</option>
-                                <option>CIF (352x288)</option>
-                                <option>SIF (352x240)</option>
-                                <option>QVGA(320x240)</option>
-                                <option>WQVGA(320x180)</option>
+                             <select  [value]="videoResolution[1]" (change)="videoResolutionSelected($event.target.value,'E2')">
+                                <option value="Follow Input">Follow Input</option>
+                                <option value="1080i (1920x1080)">1080i (1920x1080)</option>
+                                <option value="1080p (1920x1080)">1080p (1920x1080)</option>
+                                <option value="3/4 1080i (1440x1080)">3/4 1080i (1440x1080)</option>
+                                <option value="720p (1280x720)">720p (1280x720)</option>
+                                <option value="4/5 720p (1024x720)">4/5 720p (1024x720)</option>
+                                <option value="16:9 PAL (1024x576)">16:9 PAL (1024x576)</option>
+                                <option value="D1 NTSC (720x480)">D1 NTSC (720x480)</option>
+                                <option value="D1 PAL (720x576)">D1 PAL (720x576)</option>
+                                <option value="4-CIF (704x576)">4-CIF (704x576)</option>
+                                <option value="VGA (640X480)">VGA (640X480)</option>
+                                <option value="640X360">640X360</option>
+                                <option value="2-CIF (352x576)">2-CIF (352x576)</option>
+                                <option value="2-SIF (352x480)">2-SIF (352x480)</option>
+                                <option value="CIF (352x288)">CIF (352x288)</option>
+                                <option value="SIF (352x240)">SIF (352x240)</option>
+                                <option value="QVGA(320x240)">QVGA(320x240)</option>
+                                <option value="WQVGA(320x180)">WQVGA(320x180)</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Rate Control</th>
                             <td>
-                              <select>
-                                <option>CBR</option>
-                                <option>VBR</option>
+                              <select  [value]="rateControl[1]" (change)="rateControlSelected($event.target.value,'E2')">
+                                <option value="CBR">CBR</option>
+                                <option value="VBR">VBR</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Video Bit Rate</th>
                            <td>
-                              <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                              <input type="text" class="form-control"    [(ngModel)] = "videoBitRate[1]"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Video Profile</th>
                            <td>
-                              <select>
-                                <option>Baseline</option>
-                                <option>Main</option>
-                                <option>High</option>
+                            <select  [value]="videoProfile[1]" (change)="videoProfileSelected($event.target.value,'E2')">
+                                <option value="Baseline">Baseline</option>
+                                <option value="Main">Main</option>
+                                <option value="High">High</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Gop Size</th>
                             <td>
-                              <select>
-                                <option>15 Frames</option>
-                                <option>30 Frames</option>
-                                <option>60 Frames</option>
-                                <option>120 Frames</option>
-                                <option>240 Frames</option>
+                              <select [value]="gopSize[1]" (change)="gopSizeSelected($event.target.value,'E2')">
+                                <option value="15 Frames">15 Frames</option>
+                                <option value="30 Frames">30 Frames</option>
+                                <option value="60 Frames">60 Frames</option>
+                                <option value="120 Frames">120 Frames</option>
+                                <option value="240 Frames">240 Frames</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Video burst size</th>
                             <td>
-                              <select>
-                                <option>150ms</option>
-                                <option>200ms</option>
-                                <option>300ms</option>
-                                <option>400ms</option>
-                                <option>500ms</option>
-                                <option>600ms</option>
-                                <option>800ms</option>
-                                <option>1000ms</option>
-                                <option>1200ms</option>
-                                <option>1400ms</option>
-                                <option>1600ms</option>
-                                <option>1800ms</option>
-                                <option>2000ms</option>
+                             <select [value]="videoBurstSize[1]" (change)="videoBurstSizeSelected($event.target.value,'E2')">
+                                <option value="150ms">150ms</option>
+                                <option value="200ms">200ms</option>
+                                <option value="300ms">300ms</option>
+                                <option value="400ms">400ms</option>
+                                <option value="500ms">500ms</option>
+                                <option value="600ms">600ms</option>
+                                <option value="800ms">800ms</option>
+                                <option value="1000ms">1000ms</option>
+                                <option value="1200ms">1200ms</option>
+                                <option value="1400ms">1400ms</option>
+                                <option value="1600ms">1600ms</option>
+                                <option value="1800ms">1800ms</option>
+                                <option value="2000ms">2000ms</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Video Codec</th>
                            <td>
-                              <select>
-                                <option>H.264</option>
-                                <option>MPEG-2</option>
+                              <select [value]="videoCodec[1]" (change)="videoCodecSelected($event.target.value,'E2')">
+                                <option value="H.264">H.264</option>
+                                <option value="MPEG-2">MPEG-2</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Frame Decimation</th>
                            <td>
-                              <select>
-                                 <option>None</option>
-                                <option>1/2</option>
-                                <option>1/3</option>
-                                <option>1/4</option>
+                            <select [value]="frameDecimation[1]" (change)="frameDecimationSelected($event.target.value,'E2')">
+                                <option value="None">None</option>
+                                <option value="1/2">1/2</option>
+                                <option value="1/3">1/3</option>
+                                <option value="1/4">1/4</option>
                               </select>
                             </td>
                         </tr>
@@ -440,41 +440,44 @@
                         <tr>
                             <th scope="row">Output Interface</th>
                             <td>
-                               <select>
-                                <option>ASI + Ethernet(CBR)</option>
+                              <select [value]="outputInterface[1]" (change)="outputInterfaceSelected($event.target.value,'E2')">
+                                <option value="Ethernet(VBR)">Ethernet(VBR)</option>
+                                <option value="ASI">ASI</option>
+                                <option value="ASI + Ethernet(CBR)">ASI + Ethernet(CBR)</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Output Format</th>
                             <td>
-                               <select>
-                                <option>MPEG-2 TS</option>
+                             <select [value]="outputFormat[1]" (change)="outputFormatSelected($event.target.value,'E2')">
+                                <option value="RTP">RTP</option>
+                                <option value="MPEG-2 TS">MPEG-2 TS</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Dest IP Address</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] = "destIpAddress[2]"   aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Dest Port</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] = "destPort[2]"   aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">TS Bitrate</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] = "TsBitrate[2]"    aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">ASI PCI Interval</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] = "AsiPciInterval[2]"    aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
@@ -496,21 +499,21 @@
                         <tr>
                             <td>Local iP Address</td>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] = "LocalIpAddress[2]"    aria-describedby="basic-addon1">
                             </td>
                            
                         </tr>
                         <tr>
                             <td>Local Netmask</td>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] = "LocalNetmask[2]"    aria-describedby="basic-addon1">
                             </td>
                            
                         </tr>
                         <tr>
                             <td>Default Gateway</td>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" [(ngModel)] = "DefaultGateway[2]"   aria-describedby="basic-addon1">
                             </td>
                             
                         </tr>
@@ -537,148 +540,148 @@
                         <tr>
                             <th scope="row">Video Source</th>
                             <td>
-                              <select>
-                                 <option>SDI</option>
-                                <option>HDMI</option>
-                                <option>Component</option>
-                                <option>Composite</option>
+                              <select  [value]="videoSource[2]" (change)=" videoSourceSelected($event.target.value, 'E3')">
+                                 <option value="SDI">SDI</option>
+                                <option value="HDMI">HDMI</option>
+                                <option value="Component">Component</option>
+                                <option value="Composite">Composite</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Audio Source</th>
                             <td>
-                              <select>
-                                <option>Analog Jacks</option>
-                                <option>Channnels 1+2</option>
-                                <option>Channnels 3+4</option>
-                                <option>Channnels 5+6</option>
-                                <option>Channnels 7+8</option>
+                              <select  [value]="audioSource[2]" (change)="audioSourceSelected($event.target.value,'E3')">
+                                <option  value="Analog Jacks">Analog Jacks</option>
+                                <option  value="Channnels 1+2">Channnels 1+2</option>
+                                <option  value="Channnels 3+4">Channnels 3+4</option>
+                                <option  value="Channnels 5+6">Channnels 5+6</option>
+                                <option  value="Channnels 7+8">Channnels 7+8</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Audio Codec</th>
                             <td>
-                              <select>
-                                 <option>AAC-LC ADTS</option>
-                                <option>AAC-LC LATM</option>
-                                <option>PMC</option>
-                                <option>AC-3 Passthru</option>
-                                <option>None</option>
+                             <select [value]="audioCodec[2]" (change)="audioCodecSelected($event.target.value,'E3')">
+                                <option value="AAC-LC ADTS">AAC-LC ADTS</option>
+                                <option value="AAC-LC LATM">AAC-LC LATM</option>
+                                <option value="PMC">PMC</option>
+                                <option value="AC-3 Passthru">AC-3 Passthru</option>
+                                <option value="None">None</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Audio Bit Rate</th>
                             <td>
-                              <select>
-                                <option>64 kbits</option>
-                                <option>96 kbits</option>
-                                <option>128 kbits</option>
-                                <option>192 kbits</option>
+                              <select [value]="audioBitRate[2]" (change)="audioBitRateSelected($event.target.value,'E3')">
+                                <option value="64 kbits">64 kbits</option>
+                                <option value="96 kbits">96 kbits</option>
+                                <option value="128 kbits">128 kbits</option>
+                                <option value="192 kbits">192 kbits</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Video Resolution</th>
                            <td>
-                              <select>
-                                <option>Follow Input</option>
-                                <option>1080i (1920x1080)</option>
-                                <option>1080p (1920x1080)</option>
-                                <option>3/4 1080i (1440x1080)</option>
-                                <option>720p (1280x720)</option>
-                                <option>4/5 720p (1024x720)</option>
-                                <option>16:9 PAL (1024x576)</option>
-                                <option>D1 NTSC (720x480)</option>
-                                <option>D1 PAL (720x576)</option>
-                                <option>4-CIF (704x576)</option>
-                                <option>VGA (640X480)</option>
-                                <option>640X360</option>
-                                <option>2-CIF (352x576)</option>
-                                <option>2-SIF (352x480)</option>
-                                <option>CIF (352x288)</option>
-                                <option>SIF (352x240)</option>
-                                <option>QVGA(320x240)</option>
-                                <option>WQVGA(320x180)</option>
+                             <select  [value]="videoResolution[2]" (change)="videoResolutionSelected($event.target.value,'E3')">
+                                <option value="Follow Input">Follow Input</option>
+                                <option value="1080i (1920x1080)">1080i (1920x1080)</option>
+                                <option value="1080p (1920x1080)">1080p (1920x1080)</option>
+                                <option value="3/4 1080i (1440x1080)">3/4 1080i (1440x1080)</option>
+                                <option value="720p (1280x720)">720p (1280x720)</option>
+                                <option value="4/5 720p (1024x720)">4/5 720p (1024x720)</option>
+                                <option value="16:9 PAL (1024x576)">16:9 PAL (1024x576)</option>
+                                <option value="D1 NTSC (720x480)">D1 NTSC (720x480)</option>
+                                <option value="D1 PAL (720x576)">D1 PAL (720x576)</option>
+                                <option value="4-CIF (704x576)">4-CIF (704x576)</option>
+                                <option value="VGA (640X480)">VGA (640X480)</option>
+                                <option value="640X360">640X360</option>
+                                <option value="2-CIF (352x576)">2-CIF (352x576)</option>
+                                <option value="2-SIF (352x480)">2-SIF (352x480)</option>
+                                <option value="CIF (352x288)">CIF (352x288)</option>
+                                <option value="SIF (352x240)">SIF (352x240)</option>
+                                <option value="QVGA(320x240)">QVGA(320x240)</option>
+                                <option value="WQVGA(320x180)">WQVGA(320x180)</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Rate Control</th>
                             <td>
-                              <select>
-                               <option>CBR</option>
-                                <option>VBR</option>
+                              <select  [value]="rateControl[2]" (change)="rateControlSelected($event.target.value,'E3')">
+                                <option value="CBR">CBR</option>
+                                <option value="VBR">VBR</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Video Bit Rate</th>
                            <td>
-                              <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                              <input type="text" class="form-control"   [(ngModel)] = "videoBitRate[2]"   aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Video Profile</th>
                            <td>
-                              <select>
-                                <option>Baseline</option>
-                                <option>Main</option>
-                                <option>High</option>
+                             <select  [value]="videoProfile[2]" (change)="videoProfileSelected($event.target.value,'E3')">
+                                <option value="Baseline">Baseline</option>
+                                <option value="Main">Main</option>
+                                <option value="High">High</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Gop Size</th>
                             <td>
-                              <select>
-                                <option>15 Frames</option>
-                                <option>30 Frames</option>
-                                <option>60 Frames</option>
-                                <option>120 Frames</option>
-                                <option>240 Frames</option>
+                               <select [value]="gopSize[2]" (change)="gopSizeSelected($event.target.value,'E3')">
+                                <option value="15 Frames">15 Frames</option>
+                                <option value="30 Frames">30 Frames</option>
+                                <option value="60 Frames">60 Frames</option>
+                                <option value="120 Frames">120 Frames</option>
+                                <option value="240 Frames">240 Frames</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Video burst size</th>
                             <td>
-                              <select>
-                                <option>150ms</option>
-                                <option>200ms</option>
-                                <option>300ms</option>
-                                <option>400ms</option>
-                                <option>500ms</option>
-                                <option>600ms</option>
-                                <option>800ms</option>
-                                <option>1000ms</option>
-                                <option>1200ms</option>
-                                <option>1400ms</option>
-                                <option>1600ms</option>
-                                <option>1800ms</option>
-                                <option>2000ms</option>
+                             <select [value]="videoBurstSize[2]" (change)="videoBurstSizeSelected($event.target.value,'E3')">
+                                <option value="150ms">150ms</option>
+                                <option value="200ms">200ms</option>
+                                <option value="300ms">300ms</option>
+                                <option value="400ms">400ms</option>
+                                <option value="500ms">500ms</option>
+                                <option value="600ms">600ms</option>
+                                <option value="800ms">800ms</option>
+                                <option value="1000ms">1000ms</option>
+                                <option value="1200ms">1200ms</option>
+                                <option value="1400ms">1400ms</option>
+                                <option value="1600ms">1600ms</option>
+                                <option value="1800ms">1800ms</option>
+                                <option value="2000ms">2000ms</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Video Codec</th>
                            <td>
-                              <select>
-                                <option>H.264</option>
-                                <option>MPEG-2</option>
+                              <select [value]="videoCodec[2]" (change)="videoCodecSelected($event.target.value,'E3')">
+                                <option value="H.264">H.264</option>
+                                <option value="MPEG-2">MPEG-2</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Frame Decimation</th>
                            <td>
-                              <select>
-                                 <option>None</option>
-                                <option>1/2</option>
-                                <option>1/3</option>
-                                <option>1/4</option>
+                             <select [value]="frameDecimation[2]" (change)="frameDecimationSelected($event.target.value,'E3')">
+                                <option value="None">None</option>
+                                <option value="1/2">1/2</option>
+                                <option value="1/3">1/3</option>
+                                <option value="1/4">1/4</option>
                               </select>
                             </td>
                         </tr>
@@ -697,41 +700,44 @@
                         <tr>
                             <th scope="row">Output Interface</th>
                             <td>
-                               <select>
-                                <option>ASI + Ethernet(CBR)</option>
+                             <select [value]="outputInterface[2]" (change)="outputInterfaceSelected($event.target.value,'E3')">
+                                <option value="Ethernet(VBR)">Ethernet(VBR)</option>
+                                <option value="ASI">ASI</option>
+                                <option value="ASI + Ethernet(CBR)">ASI + Ethernet(CBR)</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Output Format</th>
                             <td>
-                               <select>
-                                <option>MPEG-2 TS</option>
+                              <select [value]="outputFormat[2]" (change)="outputFormatSelected($event.target.value,'E3')">
+                                <option value="RTP">RTP</option>
+                                <option value="MPEG-2 TS">MPEG-2 TS</option>
                               </select>
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Dest IP Address</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] = "destIpAddress[2]"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Dest Port</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] = "destPort[2]"   aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">TS Bitrate</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] = "TsBitrate[2]"     aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">ASI PCI Interval</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] = "AsiPciInterval[2]"   aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
@@ -753,21 +759,21 @@
                         <tr>
                             <td>Local iP Address</td>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] = "LocalIpAddress[2]"   aria-describedby="basic-addon1">
                             </td>
                            
                         </tr>
                         <tr>
                             <td>Local Netmask</td>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] = "LocalNetmask[2]"   aria-describedby="basic-addon1">
                             </td>
                            
                         </tr>
                         <tr>
                             <td>Default Gateway</td>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] = "DefaultGateway[2]"  aria-describedby="basic-addon1">
                             </td>
                             
                         </tr>

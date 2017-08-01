@@ -1,7 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import { Marker } from './marker';
 import { MarkersService } from 'app/Services/markers.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup,  } from '@angular/forms';
 
 
 
@@ -104,9 +104,15 @@ export class BlankPageComponent implements OnInit {
     mostLongi6 : string ;
     distanciaTab : boolean = false;
     tiempoTab : boolean = false;
-   // nombreMarcador : string;
-   // latitudMarcador: string;
-   // longitudMarcador: string;
+
+    //Retardos
+    negativeOn1 : boolean = false ;    
+    negativeOn2 : boolean = false ; 
+    negativeOn3 : boolean = false ; 
+    negativeOn4 : boolean = false ; 
+    retardoRed = 0;
+    retardos = [0,0,0,0];    
+
     posicionFinalMarcador(marcador:any,$event:any){
 
             console.log($event);
@@ -423,6 +429,59 @@ show (){
      //       this._markerService.agregarMarcador(nuevoMarcador);   
    // }
 
+
+   calculoDistanciasRx1(){
+    console.log(this.retardos[0])
+    console.log(this.retardos[1])
+    console.log(this.retardos[2])
+    console.log(this.retardos[3])
+  //  this._markerService.distanciaMenorRx1();
+
 }
+
+cambio(value, id){
+ console.log(value, id);
+   
+       
+        if(id === 'Tx1'){
+             if(value === "Negative" ){
+                this.negativeOn1 = true;
+             }     
+        
+        else{
+             this.negativeOn1 = false;
+        }
+        }
+        if(id === 'Tx2'){
+             if(value === "Negative" ){
+                this.negativeOn2 = true;
+             }     
+        
+        else{
+             this.negativeOn2 = false;
+        }  
+        }  
+        if(id === 'Tx3'){
+             if(value === "Negative" ){
+                this.negativeOn3 = true;
+             }     
+
+        else{
+             this.negativeOn3 = false;
+        }
+        }
+        if(id === 'Tx4'){
+             if(value === "Negative" ){
+                this.negativeOn4 = true;
+             }     
+        
+        else{
+             this.negativeOn4 = false;
+        } 
+        }
+}
+}
+
+
 
   
