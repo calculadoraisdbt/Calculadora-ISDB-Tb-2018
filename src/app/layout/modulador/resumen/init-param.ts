@@ -21,10 +21,14 @@ load(){
             localStorage.setItem('modoSelected', JSON.stringify(modoSelected));
             localStorage.setItem('esqModSelected', JSON.stringify(esqModSelected));
             localStorage.setItem('codConSelected', JSON.stringify(codConSelected));
-           localStorage.setItem('select1', JSON.stringify(select1));
+            localStorage.setItem('select1', JSON.stringify(select1));
             localStorage.setItem('select2', JSON.stringify(select2));
             localStorage.setItem('select3', JSON.stringify(select3));
             localStorage.setItem('activado', JSON.stringify(activado));
+            //resultados
+            var intGua =7.875;
+            localStorage.setItem('intGua', JSON.stringify(intGua));
+           
         }else{
                 console.log('Cargando parametros...');
         }

@@ -38,6 +38,7 @@ export class ResumenComponent implements OnInit {
   ls2 : number = 216;
   ls3 : number = 432;
   f : number = 204;
+  intGua : number ;
 
   constructor(private _moduladorService:ModuladorService) {
 
@@ -49,6 +50,7 @@ export class ResumenComponent implements OnInit {
          this.select2 = this._moduladorService.obtenerSegmentoB();
            this.select3 = this._moduladorService.obtenerSegmentoC();
            this.activado = this._moduladorService.obtenerActivado();
+           this.intGua = this._moduladorService.obtenerIntGua();
    }
 
    
@@ -203,6 +205,7 @@ calculoIntervaloGuarda(valor : any ) {
      if (valor == "1/4"){
 
             this.tg1=(this.tu1)/4;
+            this._moduladorService.actualizarIntGua(this.tg1);
             this.tg2=(this.tu2)/4;
             this.tg3=(this.tu3)/4;
 
@@ -211,6 +214,7 @@ calculoIntervaloGuarda(valor : any ) {
         if (valor == "1/8"){
 
             this.tg1=(this.tu1)/8;
+            this._moduladorService.actualizarIntGua(this.tg1);
             this.tg2=(this.tu2)/8;
             this.tg3=(this.tu3)/8;
 
@@ -219,6 +223,7 @@ calculoIntervaloGuarda(valor : any ) {
         if (valor == "1/16"){
 
             this.tg1=(this.tu1)/16;
+            this._moduladorService.actualizarIntGua(this.tg1);
             this.tg2=(this.tu2)/16;
             this.tg3=(this.tu3)/16;
 
@@ -227,6 +232,7 @@ calculoIntervaloGuarda(valor : any ) {
         if (valor == "1/32"){
 
             this.tg1=(this.tu1)/32;
+            this._moduladorService.actualizarIntGua(this.tg1);
             this.tg2=(this.tu2)/32;
             this.tg3=(this.tu3)/32;
 

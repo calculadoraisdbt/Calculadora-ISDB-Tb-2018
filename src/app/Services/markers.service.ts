@@ -51,6 +51,16 @@ declare var google: any;
   var tiempoTx4Rx1CR : number = 0;
   var tiempoTx4Rx2CR : number = 0;
   var menorRx1 : number = 0;
+  var DeltaT1 : number; 
+  var DeltaT2 : number; 
+  var DeltaT3 : number; 
+  var DeltaT4 : number; 
+  var DeltaT1CR : number; 
+  var DeltaT2CR : number; 
+  var DeltaT3CR : number; 
+  var DeltaT4CR : number; 
+  var Deltas = [] ;
+
 @Injectable()
 export class MarkersService extends Init {
 
@@ -163,47 +173,79 @@ export class MarkersService extends Init {
          var markers = JSON.parse(localStorage.getItem('markers'));
                 var i =0;
                 if(i === 0){
-                            var pos_0 = new google.maps.LatLng(markers[0].lati, markers[0].longi); 
-                            var pos_1 = new google.maps.LatLng(markers[1].lati, markers[1].longi);
-                            var pos_4 = new google.maps.LatLng(markers[4].lati, markers[4].longi);
-                            var pos_2 = new google.maps.LatLng( markers[2].lati, markers[2].longi);
-                            var pos_5 = new google.maps.LatLng( markers[5].lati, markers[5].longi);
-                                
+                            var pos_0 = new google.maps.LatLng(markers[0].lati, markers[0].longi); //TX1
+                            var pos_1 = new google.maps.LatLng(markers[1].lati, markers[1].longi); //TX2
+                            var pos_4 = new google.maps.LatLng(markers[4].lati, markers[4].longi); //TX3
+                            var pos_5 = new google.maps.LatLng( markers[5].lati, markers[5].longi);//TX4
+                            var pos_2 = new google.maps.LatLng( markers[2].lati, markers[2].longi);//RX1                      
+                            var pos_3 = new google.maps.LatLng( markers[3].lati, markers[3].longi);//OBST      
                             i++;
 
                 }else{
                             var pos_0 = new google.maps.LatLng(lat0,lng0);
-                            var pos_2 = new google.maps.LatLng(lat2,lng2);
                             var pos_1 = new google.maps.LatLng(lat1,lng1);
                             var pos_4 = new google.maps.LatLng(lat4,lng4);
                             var pos_5 = new google.maps.LatLng(lat5,lng5);
+                            var pos_2 = new google.maps.LatLng(lat2,lng2);
+                            var pos_3 = new google.maps.LatLng(lat3,lng3);
+
+
                 }
 
                 
              
                 
-
+                    //TX1 -RX1
                var tx1rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_2).toFixed(2)); 
                tx1rx1 = (tx1rx1/1000);
+                    //TX2 - RX1
                var tx2rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_2).toFixed(2));
                tx2rx1 = (tx2rx1/1000);
+                    //TX3 - RX1
                var tx3rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_2).toFixed(2)); 
                tx3rx1 = (tx3rx1/1000);
+                    //TX4 - RX1
                var tx4rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_2).toFixed(2)); 
                tx4rx1 = (tx4rx1/1000);
+                    //OBST - RX1
+               var obstrx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_3, pos_2).toFixed(2));        
+               obstrx1 = (obstrx1/1000);
+                    //TX1 -OBST
+               var tx1obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_3).toFixed(2)); 
+               tx1obst = (tx1obst/1000);
+                    //TX2 - OBST
+               var tx2obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_3).toFixed(2));
+               tx2obst = (tx2obst/1000);
+                    //TX3 - OBST
+               var tx3obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_3).toFixed(2)); 
+               tx3obst = (tx3obst/1000);
+                    //TX4 - OBST
+               var tx4obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_3).toFixed(2)); 
+               tx4obst = (tx4obst/1000);
 
-        menorRx1 = Math.min(tx1rx1, tx2rx1,tx3rx1, tx4rx1  ) ; 
+               // sumatorias tx - obst - rx
+              var  tx1obstrx1= tx1obst + obstrx1;
+              var  tx2obstrx1= tx2obst + obstrx1;
+              var  tx3obstrx1= tx3obst + obstrx1;
+              var  tx4obstrx1= tx4obst + obstrx1;
+
+
+        menorRx1 = Math.min(tx1rx1, tx2rx1,tx3rx1, tx4rx1 ,tx1obstrx1 ,tx2obstrx1, tx3obstrx1 , tx4obstrx1 ) ; 
         console.log(menorRx1);
-        var DeltaT1 = (tx1rx1-menorRx1) ;
-                console.log(DeltaT1);
-        var DeltaT2 = (tx2rx1-menorRx1 ) ;
-                console.log(DeltaT2);
-        var DeltaT3 = (tx3rx1-menorRx1) ;
-                console.log(DeltaT3);
-        var DeltaT4 = (tx4rx1-menorRx1) ;    
-                console.log(DeltaT4);
-
+         DeltaT1 = (tx1rx1-menorRx1) ;
+         DeltaT2 = (tx2rx1-menorRx1 ) ;
+         DeltaT3 = (tx3rx1-menorRx1) ;
+         DeltaT4 = (tx4rx1-menorRx1) ;    
+         DeltaT1CR = (tx1obstrx1-menorRx1) ;
+         DeltaT2CR = (tx2obstrx1-menorRx1 ) ;
+         DeltaT3CR = (tx3obstrx1-menorRx1) ;
+         DeltaT4CR = (tx4obstrx1-menorRx1) ; 
+         Deltas = [DeltaT1,DeltaT2,DeltaT3,DeltaT4,DeltaT1CR,DeltaT2CR,DeltaT3CR,DeltaT4CR] ;             
     }   
+
+    getDeltaT1(){
+        return Deltas;
+    }
 
 
 //Distancia TX1-RX1
@@ -1153,7 +1195,6 @@ computeTimeBetweenTx2Rx1CR(){
 
 
 
-    
    
 
 }

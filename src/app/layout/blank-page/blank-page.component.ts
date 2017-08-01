@@ -2,6 +2,7 @@ import { Component, OnInit, } from '@angular/core';
 import { Marker } from './marker';
 import { MarkersService } from 'app/Services/markers.service';
 import { FormControl, FormGroup,  } from '@angular/forms';
+import { ModuladorService } from 'app/Services/modulador.service';
 
 
 
@@ -10,7 +11,7 @@ import { FormControl, FormGroup,  } from '@angular/forms';
     selector: 'app-blank-page',
     templateUrl: './blank-page.component.html',
     styleUrls: ['./blank-page.component.scss'],
-    providers: [MarkersService]
+    providers: [MarkersService,ModuladorService ]
 })
 export class BlankPageComponent implements OnInit {
        // bar chart
@@ -58,8 +59,9 @@ export class BlankPageComponent implements OnInit {
     }
         resultDist : number = 0;
          markers : Marker[];
-        constructor( private _markerService:MarkersService) { 
+        constructor( private _markerService:MarkersService ,private _moduladorService:ModuladorService ) { 
             this.markers = this._markerService.obtenerMarcadores();
+            this.intGua =  this._moduladorService.obtenerIntGua();
           
         }
         ngOnInit() {}
@@ -112,6 +114,7 @@ export class BlankPageComponent implements OnInit {
     negativeOn4 : boolean = false ; 
     retardoRed = 0;
     retardos = [0,0,0,0];    
+    intGua : number;
 
     posicionFinalMarcador(marcador:any,$event:any){
 
@@ -431,16 +434,19 @@ show (){
 
 
    calculoDistanciasRx1(){
-    console.log(this.retardos[0])
-    console.log(this.retardos[1])
-    console.log(this.retardos[2])
-    console.log(this.retardos[3])
-  //  this._markerService.distanciaMenorRx1();
+       this._markerService.distanciaMenorRx1();
+       var c = 0.299792458;
+       var distIntGua = ((this.intGua)*c);
+       var Deltas = this._markerService.getDeltaT1();
+
+    console.log(distIntGua ,Deltas );
+
+  
 
 }
 
 cambio(value, id){
- console.log(value, id);
+
    
        
         if(id === 'Tx1'){

@@ -16,6 +16,25 @@ export class ModuladorService extends InitParam {
 
    }
 
+    obtenerIntGua(){
+
+      var intGua = JSON.parse(localStorage.getItem('intGua'));
+      return intGua;
+
+   }
+
+    actualizarIntGua(newParam : any){
+
+          var intGua = JSON.parse(localStorage.getItem('intGua'));
+
+          intGua = newParam;
+
+          localStorage.setItem('intGua', JSON.stringify(intGua));
+
+
+   }
+
+
    actualizarIntervalo(newParam : any){
 
           var intSelected = JSON.parse(localStorage.getItem('intSelected'));
@@ -190,5 +209,12 @@ export class ModuladorService extends InitParam {
       return activado;
 
    }
+
+   
+getIntervaloDeGuarda(){
+
+    
+    
+}
 
 }
