@@ -158,7 +158,7 @@
                             <th scope="row"> <input type="checkbox" [(ngModel)]="obst"  name="obst" id="obst" >Obst</th>
                             <td> <input [(ngModel)]="newLatOb"  placeholder="Latitud" name="newLatOb" id="newLatOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td>  <input [(ngModel)]="newLongOb"  placeholder="Longitud" name="newLongOb" id="newLongOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
-                            <td> <button  [disabled]=!frmTx4.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
+                            <td> <button  [disabled]=!frmOb.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
                             <td>{{mostLati3}}</td>
                             <td>{{mostLongi3}}</td>
                              </form>
@@ -171,6 +171,9 @@
                     <ngb-tab title="Retardos">
                         <ng-template ngbTabContent>
                             <div class="card-block table-responsive">
+                                <div class="alert alert-warning" role="alert"> 
+  <strong>Atencion!</strong> Luego de realizar las modificaciones recuerda APLICAR LOS CAMBIOS!
+</div>
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -185,6 +188,7 @@
                         </tr>
                                     </tbody>
                                 </table> <br>
+                                  <form  (ngSubmit)="aplicarCambios()" #frmRetardos="ngForm"> 
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -201,11 +205,13 @@
                                             <th>Enable</th>
                                         </tr>
                                     </thead>
+                                 
                     <tbody>
+                        
                          <tr>
                             <th scope="row">Tx 1</th>
                             <td> <input type="text" class="form-control"  title="equipmentIdTx1"   aria-describedby="basic-addon1"> </td>
-                            <td><input type="text" class="form-control" [(ngModel)]="retardos[0]" title="timeOffsetTx1"  aria-describedby="basic-addon1"> </td>
+                            <td><input type="text" class="form-control" [(ngModel)]="retardos[0]" name="retardoTx1" title="timeOffsetTx1" pattern="[-0-9.]{1,10}"  aria-describedby="basic-addon1"> </td>
                             <td> <select (change)="cambio($event.target.value, 'Tx1')">
                                 <option>Positive</option>
                                 <option>Negative</option>
@@ -215,12 +221,12 @@
                                 <option >Dynamic</option>
                                 <option *ngIf="!negativeOn1">Static</option>
                               </select></td>
-                            <td><input type="checkbox"  name="Enable" id="Enable" ></td>
+                            <td><input type="checkbox"  [(ngModel)]="retardosState[0]"  name="booleanRetardoTx1" id="booleanRetardoTx1"  ></td>
                         </tr>
                          <tr>
                             <th scope="row">Tx 2</th>
                             <td> <input type="text" class="form-control"  title="equipmentIdTx2"    aria-describedby="basic-addon1"> </td>
-                            <td> <input type="text" class="form-control"  [(ngModel)]="retardos[1]" title="timeOffsetTx2"   aria-describedby="basic-addon1"></td>
+                            <td> <input type="text" class="form-control"  [(ngModel)]="retardos[1]"  name="retardoTx2" title="timeOffsetTx2"   aria-describedby="basic-addon1"></td>
                             <td><select (change)="cambio($event.target.value, 'Tx2')">
                                 <option>Positive</option>
                                 <option>Negative</option>
@@ -229,13 +235,13 @@
                                 <option>Dynamic</option>
                                 <option *ngIf="!negativeOn2">Static</option>
                               </select></td>
-                            <td><input type="checkbox"    name="Enable" id="Enable" ></td>
+                            <td><input type="checkbox"    [(ngModel)]="retardosState[1]"  name="booleanRetardoTx2" id="booleanRetardoTx2" ></td>
                             
                         </tr>
                          <tr>
                             <th scope="row">Tx 3</th>
                             <td><input type="text" class="form-control"  title="equipmentIdTx3"    aria-describedby="basic-addon1"> </td>
-                            <td><input type="text" class="form-control" [(ngModel)]="retardos[2]" title="timeOffsetTx3"   aria-describedby="basic-addon1"> </td>
+                            <td><input type="text" class="form-control" [(ngModel)]="retardos[2]"  name="retardoTx3" title="timeOffsetTx3"   aria-describedby="basic-addon1"> </td>
                             <td><select (change)="cambio($event.target.value, 'Tx3')">
                                 <option>Positive</option>
                                 <option>Negative</option>
@@ -244,12 +250,12 @@
                                 <option>Dynamic</option>
                                 <option *ngIf="!negativeOn3" >Static</option>
                               </select></td>
-                            <td><input type="checkbox"    name="Enable" id="Enable" ></td>
+                            <td><input type="checkbox"    [(ngModel)]="retardosState[2]"  name="booleanRetardoTx3" id="booleanRetardoTx3" ></td>
                         </tr>
                          <tr>
                             <th scope="row">Tx 4</th>
                             <td> <input type="text" class="form-control"   title="equipmentIdTx4"   aria-describedby="basic-addon1"> </td>
-                            <td> <input type="text" class="form-control"  [(ngModel)]="retardos[3]" title="timeOffsetTx4"  aria-describedby="basic-addon1"></td>
+                            <td> <input type="text" class="form-control"  [(ngModel)]="retardos[3]"  name="retardoTx4" title="timeOffsetTx4"  aria-describedby="basic-addon1"></td>
                             <td><select (change)="cambio($event.target.value, 'Tx4')">
                                 <option>Positive</option>
                                 <option>Negative</option>
@@ -258,10 +264,15 @@
                                 <option>Dynamic</option>
                                 <option *ngIf="!negativeOn4">Static</option>
                               </select></td>
-                            <td><input type="checkbox"  name="Enable" id="Enable" ></td>
-                        </tr>
+                            <td><input type="checkbox" [(ngModel)]="retardosState[3]"  name="booleanRetardoTx4" id="booleanRetardoTx4" ></td>
+                        </tr> <br>
+                         
+                      
                     </tbody>
+                        
                                 </table>
+                <button  type="submit" class="btn btn-sm btn-secondary" > Aplicar Cambios </button>
+                                  </form>
                             </div>
                         </ng-template>
                         </ngb-tab>
@@ -415,7 +426,49 @@
                     </ngb-tab> 
                 <ngb-tab title="Verificacion Funcionamiento SFN">
                     <ng-template ngbTabContent >
-                           <button 
+                           
+                                 <table class="table ">
+                    <thead>
+                        <tr>
+                            <th>Interferencia Camino Directo </th>
+                            <th>Tx 1</th>
+                            <th>Tx 2</th>
+                            <th>Tx 3</th>
+                            <th>Tx 4</th>
+                        </tr>
+                    </thead>
+  <tbody>
+                        <tr>
+                            <th scope="row">Rx 1</th>
+                            <td>{{interfTx[0]}}</td>
+                            <td>{{interfTx[1]}}</td>
+                            <td>{{interfTx[2]}}</td>
+                            <td>{{interfTx[3]}}</td>
+                        </tr>
+  </tbody>
+                                 </table> <br>
+<table class="table ">
+                    <thead>
+                        <tr>
+                            <th>Interferencia Camino Reflejado </th>
+                            <th>Tx 1</th>
+                            <th>Tx 2</th>
+                            <th>Tx 3</th>
+                            <th>Tx 4</th>
+                        </tr>
+                    </thead>
+  <tbody>
+                        <tr>
+                            <th scope="row">Rx 1</th>
+                            <td>{{interfTx[4]}}</td>
+                            <td>{{interfTx[5]}}</td>
+                            <td>{{interfTx[6]}}</td>
+                            <td>{{interfTx[7]}}</td>
+                        </tr>
+  </tbody>
+                                 </table>
+
+                            <button 
                                  type="button"
                                  class="btn btn-sm btn-secondary"
                                 data-toggle="tooltip" data-placement="top" title=""

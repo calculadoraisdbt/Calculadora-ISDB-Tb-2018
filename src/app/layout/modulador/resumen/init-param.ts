@@ -26,7 +26,7 @@ load(){
             localStorage.setItem('select3', JSON.stringify(select3));
             localStorage.setItem('activado', JSON.stringify(activado));
             //resultados
-            var intGua =7.875;
+            var intGua =63;
             localStorage.setItem('intGua', JSON.stringify(intGua));
            
         }else{

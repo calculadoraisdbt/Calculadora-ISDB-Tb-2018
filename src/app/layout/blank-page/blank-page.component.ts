@@ -62,6 +62,9 @@ export class BlankPageComponent implements OnInit {
         constructor( private _markerService:MarkersService ,private _moduladorService:ModuladorService ) { 
             this.markers = this._markerService.obtenerMarcadores();
             this.intGua =  this._moduladorService.obtenerIntGua();
+            this.retardos = this._markerService.obtenerRetardos();
+            this.retardosState = this._markerService.obtenerRetardosState();
+
           
         }
         ngOnInit() {}
@@ -106,6 +109,7 @@ export class BlankPageComponent implements OnInit {
     mostLongi6 : string ;
     distanciaTab : boolean = false;
     tiempoTab : boolean = false;
+    interfTx = [];
 
     //Retardos
     negativeOn1 : boolean = false ;    
@@ -113,8 +117,10 @@ export class BlankPageComponent implements OnInit {
     negativeOn3 : boolean = false ; 
     negativeOn4 : boolean = false ; 
     retardoRed = 0;
-    retardos = [0,0,0,0];    
+    retardos = [];    
     intGua : number;
+    retardosState = [];
+
 
     posicionFinalMarcador(marcador:any,$event:any){
 
@@ -151,7 +157,6 @@ export class BlankPageComponent implements OnInit {
                     this.mostLongi6 = $event.coords.lng;
             }
             
-            console.log( this.mostLati, this.mostLongi );
             var actuaMarcador = {
 
                 nombre: marcador.nombre,
@@ -199,10 +204,6 @@ show (){
         }
         if(this.tra3 === true && this.recep2 === true){
             this._markerService.computeDistanceBetweenTx4Rx2();
-        }else;
-
-        if(this.obst === true && this.recep === true && this.tra1 === true ){
-          //   this._markerService.computeDistanceBetweenTx2Ob();
         }else;
         if(this.obst === true && this.recep === true && this.tra0 === true){            //TRANSMISOR 1
               this._markerService.computeDistanceBetweenTx1Ob();
@@ -417,29 +418,66 @@ show (){
     }
 
    
-    
-   // agregarMarcador(){
-   //         console.log('Agregando Marcador');
-//
-    //        var nuevoMarcador = {
-//
-    //            nombre: this.nombreMarcador,
-    //            lati: parseFloat(this.latitudMarcador),
-     //           longi: parseFloat(this.longitudMarcador),
-     //           arrastrable: true
-     ///       }
-     //       this.markers.push(nuevoMarcador);  
-     //       this._markerService.agregarMarcador(nuevoMarcador);   
-   // }
-
-
    calculoDistanciasRx1(){
        this._markerService.distanciaMenorRx1();
-       var c = 0.299792458;
+       var c = 29.9792458;
        var distIntGua = ((this.intGua)*c);
        var Deltas = this._markerService.getDeltaT1();
+       console.log( this.intGua)
+       if(distIntGua <= Deltas[0] ){
+            this.interfTx[0] = "si";
+       }else{
+            this.interfTx[0] = "no";
+       }
+         if(distIntGua <= Deltas[1] ){
+            this.interfTx[1] = "si";
+       }else{
+            this.interfTx[1] = "no";
+       }
+         if(distIntGua <= Deltas[2] ){
+            this.interfTx[2] = "si";
+       }else{
+            this.interfTx[2] = "no";
+       }
+         if(distIntGua <= Deltas[3] ){
+            this.interfTx[3] = "si";
+       }else{
+            this.interfTx[3] = "no";
+       }
+        if(distIntGua <= Deltas[4] ){
+            this.interfTx[4] = "si";
+       }else{
+            this.interfTx[4] = "no";
+       }
+        if(distIntGua <= Deltas[5] ){
+            this.interfTx[5] = "si";
+       }else{
+            this.interfTx[5] = "no";
+       }
+        if(distIntGua <= Deltas[6] ){
+            this.interfTx[6] = "si";
+       }else{
+            this.interfTx[6] = "no";
+       }
+        if(distIntGua <= Deltas[7] ){
+            this.interfTx[7] = "si";
+       }else{
+            this.interfTx[7] = "no";
+       }
 
-    console.log(distIntGua ,Deltas );
+    
+
+  
+
+}
+
+   calculoDistanciasRx2(){
+       this._markerService.distanciaMenorRx2();
+       var c = 0.299792458;
+       var distIntGua = ((this.intGua)*c);
+       var Deltas2 = this._markerService.getDeltaT2();
+
+   console.log(distIntGua ,Deltas2 );
 
   
 
@@ -485,7 +523,37 @@ cambio(value, id){
              this.negativeOn4 = false;
         } 
         }
+}   
+
+aplicarCambios(){
+    if(this.retardosState[0]){
+            this._markerService.sumaRetardoTx1(this.retardos[0], this.retardosState[0]);
+    }else{
+         this.retardos[0] = 0;
+        this._markerService.sumaRetardoTx1(this.retardos[0], this.retardosState[0]);}
+
+    if(this.retardosState[1]){
+            this._markerService.sumaRetardoTx2(this.retardos[1], this.retardosState[1]);
+    }else{
+         this.retardos[1] = 0;
+        this._markerService.sumaRetardoTx2(this.retardos[1], this.retardosState[1]);}
+
+    if(this.retardosState[2]){
+            this._markerService.sumaRetardoTx3(this.retardos[2], this.retardosState[2]);
+    }else{
+         this.retardos[2] = 0;
+        this._markerService.sumaRetardoTx3(this.retardos[2], this.retardosState[2]);}
+
+    if(this.retardosState[3]){
+            this._markerService.sumaRetardoTx4(this.retardos[3], this.retardosState[3]);
+    }else{
+         this.retardos[3] = 0;
+        this._markerService.sumaRetardoTx4(this.retardos[3], this.retardosState[3]);}
+        
+
 }
+
+
 }
 
 

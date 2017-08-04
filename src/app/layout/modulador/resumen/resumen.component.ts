@@ -205,36 +205,70 @@ calculoIntervaloGuarda(valor : any ) {
      if (valor == "1/4"){
 
             this.tg1=(this.tu1)/4;
-            this._moduladorService.actualizarIntGua(this.tg1);
             this.tg2=(this.tu2)/4;
             this.tg3=(this.tu3)/4;
+
+            if(this.modoSelected === 'MODO 1'){
+                this._moduladorService.actualizarIntGua(this.tg1);
+            }
+             if(this.modoSelected === 'MODO 2'){
+                this._moduladorService.actualizarIntGua(this.tg2);
+            }
+             if(this.modoSelected === 'MODO 3'){
+                this._moduladorService.actualizarIntGua(this.tg3);
+            }
+            
 
 
      }
         if (valor == "1/8"){
 
             this.tg1=(this.tu1)/8;
-            this._moduladorService.actualizarIntGua(this.tg1);
             this.tg2=(this.tu2)/8;
             this.tg3=(this.tu3)/8;
+             if(this.modoSelected === 'MODO 1'){
+                this._moduladorService.actualizarIntGua(this.tg1);
+            }
+             if(this.modoSelected === 'MODO 2'){
+                this._moduladorService.actualizarIntGua(this.tg2);
+            }
+             if(this.modoSelected === 'MODO 3'){
+                this._moduladorService.actualizarIntGua(this.tg3);
+            }
 
 
      }
         if (valor == "1/16"){
 
             this.tg1=(this.tu1)/16;
-            this._moduladorService.actualizarIntGua(this.tg1);
             this.tg2=(this.tu2)/16;
             this.tg3=(this.tu3)/16;
+            if(this.modoSelected === 'MODO 1'){
+                this._moduladorService.actualizarIntGua(this.tg1);
+            }
+             if(this.modoSelected === 'MODO 2'){
+                this._moduladorService.actualizarIntGua(this.tg2);
+            }
+             if(this.modoSelected === 'MODO 3'){
+                this._moduladorService.actualizarIntGua(this.tg3);
+            }
 
 
      }
         if (valor == "1/32"){
 
             this.tg1=(this.tu1)/32;
-            this._moduladorService.actualizarIntGua(this.tg1);
             this.tg2=(this.tu2)/32;
             this.tg3=(this.tu3)/32;
+            if(this.modoSelected === 'MODO 1'){
+                this._moduladorService.actualizarIntGua(this.tg1);
+            }
+             if(this.modoSelected === 'MODO 2'){
+                this._moduladorService.actualizarIntGua(this.tg2);
+            }
+             if(this.modoSelected === 'MODO 3'){
+                this._moduladorService.actualizarIntGua(this.tg3);
+            }
 
      }
 

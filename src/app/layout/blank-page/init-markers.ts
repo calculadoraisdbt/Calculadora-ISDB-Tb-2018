@@ -52,13 +52,18 @@ load(){
                 },
 
             ]; 
+
+            var retardos = [0,0,0,0];
+            var retardosState = [false,false,false,false];
             
             localStorage.setItem('markers', JSON.stringify(markers));
-        }else{
-                console.log('Cargando marcadores...');
-        }
+            localStorage.setItem('retardos', JSON.stringify(retardos));
+            localStorage.setItem('retardosState', JSON.stringify(retardosState));
+            }else{
+                    console.log('Cargando marcadores...');
+            }
 
-             
+                
 
     }
 }
