@@ -1,4 +1,5 @@
 
+
 <h4>RED DE FRECUENCIA UNICA</h4>
 <div>
     <agm-map
@@ -417,11 +418,19 @@
                     </ngb-tab>  
                     <ngb-tab title="Ventana de Sincronizacion">
                         <ng-template ngbTabContent>
-                          
-            <div class="card-block">
-                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
-                </canvas>
-            </div>
+<div>
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+  <button (click)="randomize()">Update</button>
+</div>
                     </ng-template>
                     </ngb-tab> 
                 <ngb-tab title="Verificacion Funcionamiento SFN">

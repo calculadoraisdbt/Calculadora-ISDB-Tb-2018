@@ -13,50 +13,36 @@ import { ModuladorService } from 'app/Services/modulador.service';
     styleUrls: ['./blank-page.component.scss'],
     providers: [MarkersService,ModuladorService ]
 })
+
 export class BlankPageComponent implements OnInit {
-       // bar chart
-    public barChartOptions: any = {
-        scaleShowVerticalLines: false,
-        responsive: true
-    };
-    public barChartLabels: string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-    public barChartType: string = 'bar';
-    public barChartLegend: boolean = true;
+    public barChartOptions:any = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+   public barChartLabels: any[] ;
+  public barChartType:string = 'bar';
+  public barChartLegend:boolean = true;
+ 
+  public barChartData:any[] = [
+    {data: [1, 0, 0, 0, 0], label: 'Tx1'},
+    {data: [0, 1, 0, 0, 0], label: 'Tx2'},
+    {data: [0, 0, 1, 0, 0], label: 'Tx3'},
+    {data: [0, 0, 0, 1, 0], label: 'Tx4'},
+    {data: [0, 0, 0, 0, 1], label: 'IG'},
+  ];
+ 
+  // events
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+ 
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
+ 
+   
 
-    public barChartData: any[] = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
-    ];
- // events
-    public chartClicked(e: any): void {
-        // console.log(e);
-    }
-
-    public chartHovered(e: any): void {
-        // console.log(e);
-    }
-
-    public randomize(): void {
-        // Only Change 3 values
-        const data = [
-            Math.round(Math.random() * 100),
-            59,
-            80,
-            (Math.random() * 100),
-            56,
-            (Math.random() * 100),
-            40
-        ];
-        const clone = JSON.parse(JSON.stringify(this.barChartData));
-        clone[0].data = data;
-        this.barChartData = clone;
-        /**
-        * (My guess), for Angular to recognize the change in the dataset
-        * it has to change the dataset variable directly,
-        * so one way around it, is to clone the data, change it and then
-        * assign it;
-        */
-    }
+  
         resultDist : number = 0;
          markers : Marker[];
         constructor( private _markerService:MarkersService ,private _moduladorService:ModuladorService ) { 
@@ -64,10 +50,13 @@ export class BlankPageComponent implements OnInit {
             this.intGua =  this._moduladorService.obtenerIntGua();
             this.retardos = this._markerService.obtenerRetardos();
             this.retardosState = this._markerService.obtenerRetardosState();
-
-          
+            this.retardoRed = this._markerService.obtenerRetardoRed();
+            
+            
         }
-        ngOnInit() {}
+        ngOnInit() {
+
+        }
     //Posicion inicial Mapa
     lat: number = -31.416667 ;
     lng: number = -64.183333; 
@@ -116,11 +105,36 @@ export class BlankPageComponent implements OnInit {
     negativeOn2 : boolean = false ; 
     negativeOn3 : boolean = false ; 
     negativeOn4 : boolean = false ; 
-    retardoRed = 0;
+    retardoRed;
     retardos = [];    
     intGua : number;
     retardosState = [];
+    retardosPrueba = [] ;
 
+
+     randomize():void {
+        var c = 29.9792458;
+       var distIntGua = ((this.intGua)*c);
+       this.retardosPrueba = this._markerService.getDeltaT1();
+        this.barChartLabels = [this.retardosPrueba[0],this.retardosPrueba[1],this.retardosPrueba[2],this.retardosPrueba[3],distIntGua];
+        var someArray = [];
+        someArray[this.barChartLabels[0]] = this.barChartData[0].label;
+        console.log(someArray[this.barChartLabels[0]])
+        someArray[this.barChartLabels[1]] = this.barChartData[1].label;
+        someArray[this.barChartLabels[2]] = this.barChartData[2].label;
+        someArray[this.barChartLabels[3]] = this.barChartData[3].label;
+        someArray[this.barChartLabels[4]] = this.barChartData[4].label;
+        this.barChartLabels.sort(function(a, b) {
+        return a - b;
+}); 
+        this.barChartData[0].label = someArray[this.barChartLabels[0]];
+        console.log(this.barChartData[0].label)
+        this.barChartData[1].label = someArray[this.barChartLabels[1]];
+        this.barChartData[2].label = someArray[this.barChartLabels[2]];
+        this.barChartData[3].label = someArray[this.barChartLabels[3]];
+        this.barChartData[4].label = someArray[this.barChartLabels[4]];
+        
+  }
 
     posicionFinalMarcador(marcador:any,$event:any){
 
@@ -423,43 +437,43 @@ show (){
        var c = 29.9792458;
        var distIntGua = ((this.intGua)*c);
        var Deltas = this._markerService.getDeltaT1();
-       console.log( this.intGua)
-       if(distIntGua <= Deltas[0] ){
+       console.log( "tiempo", this.intGua, "distancia", distIntGua)
+       if(Deltas[0] >= distIntGua){
             this.interfTx[0] = "si";
        }else{
             this.interfTx[0] = "no";
        }
-         if(distIntGua <= Deltas[1] ){
+         if(Deltas[1] >= distIntGua ){
             this.interfTx[1] = "si";
        }else{
             this.interfTx[1] = "no";
        }
-         if(distIntGua <= Deltas[2] ){
+         if(Deltas[2] >= distIntGua){
             this.interfTx[2] = "si";
        }else{
             this.interfTx[2] = "no";
        }
-         if(distIntGua <= Deltas[3] ){
+         if(Deltas[3] >= distIntGua ){
             this.interfTx[3] = "si";
        }else{
             this.interfTx[3] = "no";
        }
-        if(distIntGua <= Deltas[4] ){
+        if(Deltas[4] >= distIntGua ){
             this.interfTx[4] = "si";
        }else{
             this.interfTx[4] = "no";
        }
-        if(distIntGua <= Deltas[5] ){
+        if(Deltas[5] >= distIntGua){
             this.interfTx[5] = "si";
        }else{
             this.interfTx[5] = "no";
        }
-        if(distIntGua <= Deltas[6] ){
+        if(Deltas[6] >= distIntGua){
             this.interfTx[6] = "si";
        }else{
             this.interfTx[6] = "no";
        }
-        if(distIntGua <= Deltas[7] ){
+        if(Deltas[7] >= distIntGua ){
             this.interfTx[7] = "si";
        }else{
             this.interfTx[7] = "no";
@@ -526,6 +540,7 @@ cambio(value, id){
 }   
 
 aplicarCambios(){
+    this._markerService.actualizarRetardoRed(this.retardoRed);
     if(this.retardosState[0]){
             this._markerService.sumaRetardoTx1(this.retardos[0], this.retardosState[0]);
     }else{
@@ -549,6 +564,8 @@ aplicarCambios(){
     }else{
          this.retardos[3] = 0;
         this._markerService.sumaRetardoTx4(this.retardos[3], this.retardosState[3]);}
+
+        
         
 
 }

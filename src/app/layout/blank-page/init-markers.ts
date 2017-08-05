@@ -4,7 +4,7 @@ export class Init {
 
 load(){
         
-        if(localStorage.getItem('markers')=== null ){
+        if(localStorage.getItem('markers')=== null || localStorage.getItem('retardoRed')=== null ){
             console.log('No se encontraron marcadores...');
 
             var markers = [
@@ -55,10 +55,12 @@ load(){
 
             var retardos = [0,0,0,0];
             var retardosState = [false,false,false,false];
+            var retardoRed = 0;
             
             localStorage.setItem('markers', JSON.stringify(markers));
             localStorage.setItem('retardos', JSON.stringify(retardos));
             localStorage.setItem('retardosState', JSON.stringify(retardosState));
+            localStorage.setItem('retardoRed', JSON.stringify(retardoRed));
             }else{
                     console.log('Cargando marcadores...');
             }
