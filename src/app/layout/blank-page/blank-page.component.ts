@@ -15,22 +15,81 @@ import { ModuladorService } from 'app/Services/modulador.service';
 })
 
 export class BlankPageComponent implements OnInit {
-    public barChartOptions:any = {
-    scaleShowVerticalLines: false,
-    responsive: true
+
+Deltas = this._markerService.getDeltasRx1();
+intGua =  this._moduladorService.obtenerIntGua();
+public lineChartData:Array<any> =  [
+                 { label: 'IG',data : [{x: this.intGua ,y: 10,}, {x: this.intGua,y: 0}]},
+                 { label: 'Tx1',data : [{x: this.Deltas[0],y: 10,}, {x: this.Deltas[0],y: 0}]},
+                 { label: 'Tx2',data : [{x: this.Deltas[1],y: 10,}, {x: this.Deltas[1],y: 0}]},
+                 { label: 'Tx3',data : [{x: this.Deltas[2],y: 10,}, {x: this.Deltas[2],y: 0}]},
+                 { label: 'Tx4',data : [{x: this.Deltas[3],y: 10,}, {x: this.Deltas[3],y: 0}]}
+      
+];
+
+public  lineChartOptions: any = {
+    responsive: true,
+    animation: false,
+    scales: {
+            xAxes: [{
+                type: 'linear',
+                position: 'bottom'
+            }]
+        }
   };
-   public barChartLabels: any[] ;
-  public barChartType:string = 'bar';
-  public barChartLegend:boolean = true;
- 
-  public barChartData:any[] = [
-    {data: [1, 0, 0, 0, 0], label: 'Tx1'},
-    {data: [0, 1, 0, 0, 0], label: 'Tx2'},
-    {data: [0, 0, 1, 0, 0], label: 'Tx3'},
-    {data: [0, 0, 0, 1, 0], label: 'Tx4'},
-    {data: [0, 0, 0, 0, 1], label: 'IG'},
+public lineChartColors: Array<any> = [
+    { // grey
+      backgroundColor: 'rgba(33,150,243,0.2)',
+      borderColor: 'rgba(33,150,243,1)',
+      pointBackgroundColor: 'rgba(33,150,243,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(33,150,243,0.8)'
+    },
+    { // dark grey
+      backgroundColor: 'rgba(76,175,80,0.2)',
+      borderColor: 'rgba(76,175,80,1)',
+      pointBackgroundColor: 'rgba(76,175,80,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(76,175,80,1)'
+    },
+    { // grey
+      backgroundColor: 'rgba(244,67,54,0.2)',
+      borderColor: 'rgba(244,67,54,1)',
+      pointBackgroundColor: 'rgba(244,67,54,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(244,67,54,0.8)'
+    },
+    { // grey
+      backgroundColor: 'rgba(103,58,183,0.2)',
+      borderColor: 'rgba(103,58,183,1)',
+      pointBackgroundColor: 'rgba(103,58,183,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(103,58,183,0.8)'
+    },
+    { // grey
+      backgroundColor: 'rgba(255,152,0,0.2)',
+      borderColor: 'rgba(255,152,0,1)',
+      pointBackgroundColor: 'rgba(255,152,0,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(255,152,0,0.8)'
+    },
+    { // grey
+      backgroundColor: 'rgba(96,125,139,0.2)',
+      borderColor: 'rgba(96,125,139,1)',
+      pointBackgroundColor: 'rgba(96,125,139,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(96,125,139,0.8)'
+    }    
   ];
- 
+
+  public lineChartLegend: boolean = true;
+  public lineChartType: string = 'scatter';
   // events
   public chartClicked(e:any):void {
     console.log(e);
@@ -51,11 +110,12 @@ export class BlankPageComponent implements OnInit {
             this.retardos = this._markerService.obtenerRetardos();
             this.retardosState = this._markerService.obtenerRetardosState();
             this.retardoRed = this._markerService.obtenerRetardoRed();
+            this.Deltas = this._markerService.getDeltasRx1();
             
             
         }
         ngOnInit() {
-
+            
         }
     //Posicion inicial Mapa
     lat: number = -31.416667 ;
@@ -98,8 +158,8 @@ export class BlankPageComponent implements OnInit {
     mostLongi6 : string ;
     distanciaTab : boolean = false;
     tiempoTab : boolean = false;
-    interfTx = [];
-
+    interfTx = [] ;
+    interfTxRx2 = [] ;
     //Retardos
     negativeOn1 : boolean = false ;    
     negativeOn2 : boolean = false ; 
@@ -107,33 +167,29 @@ export class BlankPageComponent implements OnInit {
     negativeOn4 : boolean = false ; 
     retardoRed;
     retardos = [];    
-    intGua : number;
     retardosState = [];
     retardosPrueba = [] ;
+    interfBoolean = [] ;
+    interfBooleanRx2 = [] ;
+    DeltasRx2 = [] ;
 
 
-     randomize():void {
-        var c = 29.9792458;
-       var distIntGua = ((this.intGua)*c);
-       this.retardosPrueba = this._markerService.getDeltaT1();
-        this.barChartLabels = [this.retardosPrueba[0],this.retardosPrueba[1],this.retardosPrueba[2],this.retardosPrueba[3],distIntGua];
-        var someArray = [];
-        someArray[this.barChartLabels[0]] = this.barChartData[0].label;
-        console.log(someArray[this.barChartLabels[0]])
-        someArray[this.barChartLabels[1]] = this.barChartData[1].label;
-        someArray[this.barChartLabels[2]] = this.barChartData[2].label;
-        someArray[this.barChartLabels[3]] = this.barChartData[3].label;
-        someArray[this.barChartLabels[4]] = this.barChartData[4].label;
-        this.barChartLabels.sort(function(a, b) {
-        return a - b;
-}); 
-        this.barChartData[0].label = someArray[this.barChartLabels[0]];
-        console.log(this.barChartData[0].label)
-        this.barChartData[1].label = someArray[this.barChartLabels[1]];
-        this.barChartData[2].label = someArray[this.barChartLabels[2]];
-        this.barChartData[3].label = someArray[this.barChartLabels[3]];
-        this.barChartData[4].label = someArray[this.barChartLabels[4]];
-        
+     randomize() {
+         console.log(this.tra0,this.tra1,this.tra2,this.tra3)
+             this.intGua =  this._moduladorService.obtenerIntGua();
+             this.Deltas = this._markerService.getDeltasRx1();
+             this.lineChartData =  [
+                 { label: 'IG',data : [{x: this.intGua ,y: 10,}, {x: this.intGua,y: 0}]},
+                 { label: 'Tx1',data : [{x: this.Deltas[0],y: 10,}, {x: this.Deltas[0],y: 0}]},
+                 { label: 'Tx2',data : [{x: this.Deltas[1],y: 10,}, {x: this.Deltas[1],y: 0}]},
+                 { label: 'Tx3',data : [{x: this.Deltas[2],y: 10,}, {x: this.Deltas[2],y: 0}]},
+                 { label: 'Tx4',data : [{x: this.Deltas[3],y: 10,}, {x: this.Deltas[3],y: 0}]}
+                
+                ];
+
+
+
+
   }
 
     posicionFinalMarcador(marcador:any,$event:any){
@@ -433,67 +489,122 @@ show (){
 
    
    calculoDistanciasRx1(){
+       
        this._markerService.distanciaMenorRx1();
-       var c = 29.9792458;
-       var distIntGua = ((this.intGua)*c);
-       var Deltas = this._markerService.getDeltaT1();
-       console.log( "tiempo", this.intGua, "distancia", distIntGua)
-       if(Deltas[0] >= distIntGua){
-            this.interfTx[0] = "si";
+       this.Deltas  = this._markerService.getDeltasRx1();
+       this.Deltas[0] = ((this.Deltas[0]/299792458)*1000000).toFixed(2);
+       this.Deltas[1] = ((this.Deltas[1]/299792458)*1000000).toFixed(2);
+       this.Deltas[2] = ((this.Deltas[2]/299792458)*1000000).toFixed(2);
+       this.Deltas[3] = ((this.Deltas[3]/299792458)*1000000).toFixed(2);
+       this.Deltas[4] = ((this.Deltas[4]/299792458)*1000000).toFixed(2);
+       this.Deltas[5] = ((this.Deltas[5]/299792458)*1000000).toFixed(2);
+       this.Deltas[6] = ((this.Deltas[6]/299792458)*1000000).toFixed(2);
+       this.Deltas[7] = ((this.Deltas[7]/299792458)*1000000).toFixed(2);
+
+       this.interfTx = this.Deltas;  
+       
+     if(this.Deltas[0] >= this.intGua){
+           this.interfBoolean[0] = true;
        }else{
-            this.interfTx[0] = "no";
+            this.interfBoolean[0] = false;
        }
-         if(Deltas[1] >= distIntGua ){
-            this.interfTx[1] = "si";
+         if(this.Deltas[1] >= this.intGua ){
+           this.interfBoolean[1] = true;
        }else{
-            this.interfTx[1] = "no";
+            this.interfBoolean[1] = false;
        }
-         if(Deltas[2] >= distIntGua){
-            this.interfTx[2] = "si";
+         if(this.Deltas[2] >= this.intGua){
+           this.interfBoolean[2] = true;
        }else{
-            this.interfTx[2] = "no";
+            this.interfBoolean[2] = false;
        }
-         if(Deltas[3] >= distIntGua ){
-            this.interfTx[3] = "si";
+         if(this.Deltas[3] >= this.intGua ){
+           this.interfBoolean[3] = true;
        }else{
-            this.interfTx[3] = "no";
+            this.interfBoolean[3] = false;
        }
-        if(Deltas[4] >= distIntGua ){
-            this.interfTx[4] = "si";
+        if(this.Deltas[4] >= this.intGua ){
+           this.interfBoolean[4] = true;
        }else{
-            this.interfTx[4] = "no";
+           this.interfBoolean[4] = false;
        }
-        if(Deltas[5] >= distIntGua){
-            this.interfTx[5] = "si";
+        if(this.Deltas[5] >= this.intGua){
+           this.interfBoolean[5] = true;
        }else{
-            this.interfTx[5] = "no";
+            this.interfBoolean[5] = false;
        }
-        if(Deltas[6] >= distIntGua){
-            this.interfTx[6] = "si";
+        if(this.Deltas[6] >= this.intGua){
+           this.interfBoolean[6] = true;
        }else{
-            this.interfTx[6] = "no";
+            this.interfBoolean[6] = false;
        }
-        if(Deltas[7] >= distIntGua ){
-            this.interfTx[7] = "si";
+        if(this.Deltas[7] >= this.intGua ){
+           this.interfBoolean[7] = true;
        }else{
-            this.interfTx[7] = "no";
+            this.interfBoolean[7] = false;
        }
 
     
 
-  
-
 }
 
    calculoDistanciasRx2(){
+       
        this._markerService.distanciaMenorRx2();
-       var c = 0.299792458;
-       var distIntGua = ((this.intGua)*c);
-       var Deltas2 = this._markerService.getDeltaT2();
+       this.DeltasRx2  = this._markerService.getDeltasRx2();
+       this.DeltasRx2[0] = ((this.DeltasRx2[0]/299792458)*1000000).toFixed(2);
+       this.DeltasRx2[1] = ((this.DeltasRx2[1]/299792458)*1000000).toFixed(2);
+       this.DeltasRx2[2] = ((this.DeltasRx2[2]/299792458)*1000000).toFixed(2);
+       this.DeltasRx2[3] = ((this.DeltasRx2[3]/299792458)*1000000).toFixed(2);
+       this.DeltasRx2[4] = ((this.DeltasRx2[4]/299792458)*1000000).toFixed(2);
+       this.DeltasRx2[5] = ((this.DeltasRx2[5]/299792458)*1000000).toFixed(2);
+       this.DeltasRx2[6] = ((this.DeltasRx2[6]/299792458)*1000000).toFixed(2);
+       this.DeltasRx2[7] = ((this.DeltasRx2[7]/299792458)*1000000).toFixed(2);
 
-   console.log(distIntGua ,Deltas2 );
+       this.interfTxRx2 = this.DeltasRx2;  
+       
+     if(this.DeltasRx2[0] >= this.intGua){
+           this.interfBooleanRx2[0] = true;
+       }else{
+            this.interfBooleanRx2[0] = false;
+       }
+         if(this.DeltasRx2[1] >= this.intGua ){
+           this.interfBooleanRx2[1] = true;
+       }else{
+            this.interfBooleanRx2[1] = false;
+       }
+         if(this.DeltasRx2[2] >= this.intGua){
+           this.interfBooleanRx2[2] = true;
+       }else{
+            this.interfBooleanRx2[2] = false;
+       }
+         if(this.DeltasRx2[3] >= this.intGua ){
+           this.interfBooleanRx2[3] = true;
+       }else{
+            this.interfBooleanRx2[3] = false;
+       }
+        if(this.DeltasRx2[4] >= this.intGua ){
+           this.interfBooleanRx2[4] = true;
+       }else{
+           this.interfBooleanRx2[4] = false;
+       }
+        if(this.DeltasRx2[5] >= this.intGua){
+           this.interfBooleanRx2[5] = true;
+       }else{
+            this.interfBooleanRx2[5] = false;
+       }
+        if(this.DeltasRx2[6] >= this.intGua){
+           this.interfBooleanRx2[6] = true;
+       }else{
+            this.interfBooleanRx2[6] = false;
+       }
+        if(this.DeltasRx2[7] >= this.intGua ){
+           this.interfBooleanRx2[7] = true;
+       }else{
+            this.interfBooleanRx2[7] = false;
+       }
 
-  
+    
 
 }
 

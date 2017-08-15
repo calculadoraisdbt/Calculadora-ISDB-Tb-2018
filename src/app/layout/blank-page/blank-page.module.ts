@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { BlankPageRoutingModule } from './blank-page-routing.module';
 import { BlankPageComponent } from './blank-page.component';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
-import { ChartsModule } from 'ng2-charts';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 

@@ -61,15 +61,15 @@ declare var google: any;
   var DeltaT4CR : number; 
   var Deltas = [] ;
   var menorRx2 : number = 0;
-  var DeltaT1rx2 : number; 
-  var DeltaT2rx2 : number; 
-  var DeltaT3rx2 : number; 
-  var DeltaT4rx2 : number; 
-  var DeltaT1CRrx2 : number; 
-  var DeltaT2CRrx2 : number; 
-  var DeltaT3CRrx2 : number; 
-  var DeltaT4CRrx2 : number; 
-  var Deltasrx2 = [] ;
+  var DeltaT1Rx2 : number; 
+  var DeltaT2Rx2 : number; 
+  var DeltaT3Rx2 : number; 
+  var DeltaT4Rx2 : number; 
+  var DeltaT1CRRx2 : number; 
+  var DeltaT2CRRx2 : number; 
+  var DeltaT3CRRx2 : number; 
+  var DeltaT4CRRx2 : number; 
+  var DeltasRx2 = [] ;
   var retardosForChart = [];
 
 @Injectable()
@@ -301,7 +301,6 @@ export class MarkersService extends Init {
                     }                                                                                
 
          menorRx1 = Math.min(tx1rx1, tx2rx1,tx3rx1, tx4rx1 ,tx1obstrx1 ,tx2obstrx1, tx3obstrx1 , tx4obstrx1 ) ; 
-         console.log("menor", menorRx1)
          DeltaT1 = (tx1rx1-menorRx1) ;
          DeltaT2 = (tx2rx1-menorRx1 ) ;
          DeltaT3 = (tx3rx1-menorRx1) ;
@@ -311,9 +310,9 @@ export class MarkersService extends Init {
          DeltaT3CR = (tx3obstrx1-menorRx1) ;
          DeltaT4CR = (tx4obstrx1-menorRx1) ; 
          Deltas = [DeltaT1,DeltaT2,DeltaT3,DeltaT4,DeltaT1CR,DeltaT2CR,DeltaT3CR,DeltaT4CR] ;   
-         console.log("deltas",Deltas)        
+
     }  
-    getDeltaT1(){
+    getDeltasRx1(){
         return Deltas;
     }
 
@@ -324,7 +323,11 @@ export class MarkersService extends Init {
 
 
  distanciaMenorRx2(){
-         var markers = JSON.parse(localStorage.getItem('markers'));
+           var markers = JSON.parse(localStorage.getItem('markers'));
+         var retardos = JSON.parse(localStorage.getItem('retardos'));
+         var retartdosState = JSON.parse(localStorage.getItem('retardosState'));
+         var retardoRed = JSON.parse(localStorage.getItem('retardoRed'));
+         retardoRed = retardoRed*29.9792458;
                 var i =0;
                 if(i === 0){
                             var pos_0 = new google.maps.LatLng(markers[0].lati, markers[0].longi); //TX1
@@ -342,63 +345,127 @@ export class MarkersService extends Init {
                             var pos_5 = new google.maps.LatLng(lat5,lng5);
                             var pos_6 = new google.maps.LatLng(lat6,lng6);
                             var pos_3 = new google.maps.LatLng(lat3,lng3);
+                        }
 
-
-                }
-
-                
-             
-                
                     //TX1 -RX2
-               var tx1rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_6).toFixed(2)); 
-               tx1rx2 = (tx1rx2/1000);
-                    //TX2 - RX1
-               var tx2rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_6).toFixed(2));
-               tx2rx2 = (tx2rx2/1000);
-                    //TX3 - RX1
-               var tx3rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_6).toFixed(2)); 
-               tx3rx2 = (tx3rx2/1000);
-                    //TX4 - RX1
-               var tx4rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_6).toFixed(2)); 
-               tx4rx2 = (tx4rx2/1000);
-                    //OBST - RX1
+                    if(retartdosState[0] === true){
+                        var tx1rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_6).toFixed(2)); 
+                        var retarditen = retardos[0]*0.000000100*299792458;
+                        tx1rx2 = tx1rx2 + retarditen + retardoRed ;
+                        retardosForChart[0] = tx1rx2;
+                    } 
+                    if (retartdosState[0] === false){
+                        var tx1rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_6).toFixed(2)); 
+                        tx1rx2 = tx1rx2 + retardoRed ;  
+                        retardosForChart[0] = tx1rx2;
+                        
+                    }
+                    //TX2 - RX2
+                    if(retartdosState[1] === true){
+                        var tx2rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_6).toFixed(2));
+                        var retarditen = retardos[1]*0.000000100*299792458;
+                        tx2rx2 = tx2rx2 + retarditen + retardoRed ;
+                        retardosForChart[1] = tx2rx2;
+                    }
+                    if(retartdosState[1] === false){
+                        var tx2rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_6).toFixed(2));
+                        tx2rx2 =  tx2rx2  + retardoRed ;
+                        retardosForChart[1] = tx2rx2;
+                    }
+                    //TX3 - RX2
+                    if(retartdosState[2] === true){
+                        var tx3rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_6).toFixed(2));
+                        var retarditen = retardos[2]*0.000000100*299792458;
+                        tx3rx2 = tx3rx2 + retarditen + retardoRed ;
+                        retardosForChart[2] = tx3rx2;
+                    }
+                    if(retartdosState[2] === false){
+                        var tx3rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_6).toFixed(2)); 
+                        tx3rx2 =  tx3rx2  + retardoRed ;
+                        retardosForChart[2] = tx3rx2;  
+
+                    }                    
+                    //TX4 - RX2
+                    if(retartdosState[3] === true){
+                        var tx4rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_6).toFixed(2));
+                        var retarditen = retardos[3]*0.000000100*299792458;
+                        tx4rx2 = tx4rx2 + retarditen + retardoRed ;
+                        retardosForChart[3] = tx4rx2;
+                    }
+                    if(retartdosState[3] === false){
+                        var tx4rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_6).toFixed(2)); 
+                        tx4rx2 =  tx4rx2  + retardoRed ; 
+                        retardosForChart[3] = tx4rx2; 
+                    }                                        
+                    //OBST - RX2
                var obstrx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_3, pos_6).toFixed(2));        
-               obstrx2 = (obstrx2/1000);
                     //TX1 -OBST
-               var tx1obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_3).toFixed(2)); 
-               tx1obst = (tx1obst/1000);
+                    if(retartdosState[0] === true){
+                        var tx1obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_3).toFixed(2));
+                        var retarditen = retardos[0]*0.000000100*299792458;
+                        tx1obst = tx1obst + retarditen + retardoRed ;
+                        var  tx1obstrx1= tx1obst + obstrx2;
+                    } 
+                    if (retartdosState[0] === false){
+                        var tx1obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_3).toFixed(2));   
+                        var  tx1obstrx2= tx1obst + obstrx2 ; 
+                        tx1obstrx2 = tx1obstrx2 + retardoRed ;
+
+                    }                    
                     //TX2 - OBST
-               var tx2obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_3).toFixed(2));
-               tx2obst = (tx2obst/1000);
+                    if(retartdosState[1] === true){
+                        var tx2obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_3).toFixed(2));
+                        var retarditen = retardos[1]*0.000000100*299792458;
+                        tx2obst = tx2obst + retarditen + retardoRed ;
+                        var  tx2obstrx2= tx2obst + obstrx2;
+                    } 
+                    if (retartdosState[1] === false){
+                        var tx2obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_3).toFixed(2)); 
+                        var  tx2obstrx2= tx2obst + obstrx2;   
+                        tx2obstrx2 = tx2obstrx2 + retardoRed ;
+                    }                                        
                     //TX3 - OBST
-               var tx3obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_3).toFixed(2)); 
-               tx3obst = (tx3obst/1000);
+                    if(retartdosState[2] === true){
+                        var tx3obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_3).toFixed(2)); 
+                        var retarditen = retardos[2]*0.000000100*299792458;
+                        tx3obst = tx3obst + retarditen + retardoRed ;
+                        var  tx3obstrx2= tx3obst + obstrx2;
+                    } 
+                    if (retartdosState[2] === false){
+                        var tx3obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_3).toFixed(2)); 
+                        var  tx3obstrx2= tx3obst + obstrx2;   
+                        tx3obstrx2 = tx3obstrx2 + retardoRed ; 
+                    }                                                            
                     //TX4 - OBST
-               var tx4obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_3).toFixed(2)); 
-               tx4obst = (tx4obst/1000);
+                    if(retartdosState[3] === true){
+                        var tx4obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_3).toFixed(2)); 
+                        var retarditen = retardos[3]*0.000000100*299792458;
+                        tx4obst = tx4obst + retarditen + retardoRed ;
+                        var  tx4obstrx2= tx4obst + obstrx2;
+                    } 
+                    if (retartdosState[3] === false){
+                        var tx4obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_3).toFixed(2)); 
+                        var  tx4obstrx2= tx4obst + obstrx2;  
+                        tx4obstrx2 = tx4obstrx2 + retardoRed ;  
+                    }                                                                                
 
-               // sumatorias tx - obst - rx
-              var  tx1obstrx2= tx1obst + obstrx2;
-              var  tx2obstrx2= tx2obst + obstrx2;
-              var  tx3obstrx2= tx3obst + obstrx2;
-              var  tx4obstrx2= tx4obst + obstrx2;
+         menorRx2 = Math.min(tx1rx2, tx2rx2,tx3rx2, tx4rx2 ,tx1obstrx2 ,tx2obstrx2, tx3obstrx2 , tx4obstrx2 ) ; 
+         DeltaT1Rx2 = (tx1rx2-menorRx2) ;
+         DeltaT2Rx2 = (tx2rx2-menorRx2 ) ;
+         DeltaT3Rx2 = (tx3rx2-menorRx2) ;
+         DeltaT4Rx2 = (tx4rx2-menorRx2) ;    
+         DeltaT1CRRx2 = (tx1obstrx2-menorRx2) ;
+         DeltaT2CRRx2 = (tx2obstrx2-menorRx2 ) ;
+         DeltaT3CRRx2 = (tx3obstrx2-menorRx2) ;
+         DeltaT4CRRx2 = (tx4obstrx2-menorRx2) ; 
+         console.log(DeltaT4CRRx2)
+         DeltasRx2 = [DeltaT1Rx2,DeltaT2Rx2,DeltaT3Rx2,DeltaT4Rx2,DeltaT1CRRx2,DeltaT2CRRx2,DeltaT3CRRx2,DeltaT4CRRx2] ;   
 
-
-        menorRx2 = Math.min(tx1rx2, tx2rx2,tx3rx2, tx4rx2 ,tx1obstrx2 ,tx2obstrx2, tx3obstrx2 , tx4obstrx2 ) ; 
-        console.log(menorRx2);
-         DeltaT1rx2 = (tx1rx2-menorRx2) ;
-         DeltaT2rx2 = (tx2rx2-menorRx2 ) ;
-         DeltaT3rx2 = (tx3rx2-menorRx2) ;
-         DeltaT4rx2 = (tx4rx2-menorRx2) ;    
-         DeltaT1CRrx2 = (tx1obstrx2-menorRx2) ;
-         DeltaT2CRrx2 = (tx2obstrx2-menorRx2 ) ;
-         DeltaT3CRrx2 = (tx3obstrx2-menorRx2) ;
-         DeltaT4CRrx2 = (tx4obstrx2-menorRx2) ; 
-         Deltasrx2 = [DeltaT1rx2,DeltaT2rx2,DeltaT3rx2,DeltaT4rx2,DeltaT1CRrx2,DeltaT2CRrx2,DeltaT3CRrx2,DeltaT4CRrx2] ;             
+          console.log(DeltasRx2)
     }   
 
-    getDeltaT2(){
-        return Deltasrx2;
+    getDeltasRx2(){
+        return DeltasRx2;
     }
     
 

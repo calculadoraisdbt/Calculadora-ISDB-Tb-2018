@@ -68,7 +68,7 @@ export class ResumenComponent implements OnInit {
      this._moduladorService.actualizarIntervalo(this.intSelected);
 
     this.calculoIntervaloGuarda(value);
-       
+    this.intGua = this._moduladorService.obtenerIntGua();   
 
         
   }
