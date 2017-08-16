@@ -416,6 +416,166 @@
             
                         </ng-template>
                     </ngb-tab>  
+                    <ngb-tab title="Verificacion Funcionamiento SFN">
+                        <ng-template ngbTabContent >
+                               
+                                     <table class="table ">
+                        <thead>
+                            <tr>
+                                <th>Interferencia Camino Directo [µs] </th>
+                                <th>Tx 1</th>
+                                <th>Tx 2</th>
+                                <th>Tx 3</th>
+                                <th>Tx 4</th>
+                            </tr>
+                        </thead>
+      <tbody>
+                            <tr>
+                                <th scope="row">Rx 1</th>
+                                <td>
+                                 <span *ngIf="interfBoolean[0]" style="color:red"  >{{interfTx[0]}}</span>
+                                 <span *ngIf="!interfBoolean[0]" style="color:black"  >{{interfTx[0]}}</span>
+                                </td>
+                                <td>
+                                 <span *ngIf="interfBoolean[1]" style="color:red"  >{{interfTx[1]}}</span>
+                                 <span *ngIf="!interfBoolean[1]" style="color:black"  >{{interfTx[1]}}</span>
+    
+                                 </td>
+                                <td>
+                                 <span *ngIf="interfBoolean[2]" style="color:red"  >{{interfTx[2]}}</span>
+                                 <span *ngIf="!interfBoolean[2]" style="color:black"  >{{interfTx[2]}}</span>
+    
+                                 </td>
+                                <td>
+                                 <span *ngIf="interfBoolean[3]" style="color:red"  >{{interfTx[3]}}</span>
+                                 <span *ngIf="!interfBoolean[3]" style="color:black"  >{{interfTx[3]}}</span>
+    
+                                 </td>
+                               
+                            </tr>
+      </tbody>
+                                     </table> <br>
+    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th>Interferencia Camino Reflejado [µs]  </th>
+                                <th>Tx 1</th>
+                                <th>Tx 2</th>
+                                <th>Tx 3</th>
+                                <th>Tx 4</th>
+                            </tr>
+                        </thead>
+      <tbody>
+                            <tr>
+                                <th scope="row">Rx 1</th>
+                               <td>
+                                 <span *ngIf="interfBoolean[4]" style="color:red"  >{{interfTx[4]}}</span>
+                                 <span *ngIf="!interfBoolean[4]" style="color:black"  >{{interfTx[4]}}</span>
+                                </td>
+                                <td>
+                                 <span *ngIf="interfBoolean[5]" style="color:red"  >{{interfTx[5]}}</span>
+                                 <span *ngIf="!interfBoolean[5]" style="color:black"  >{{interfTx[5]}}</span>
+    
+                                 </td>
+                                <td>
+                                 <span *ngIf="interfBoolean[6]" style="color:red"  >{{interfTx[6]}}</span>
+                                 <span *ngIf="!interfBoolean[6]" style="color:black"  >{{interfTx[6]}}</span>
+    
+                                 </td>
+                                <td>
+                                 <span *ngIf="interfBoolean[7]" style="color:red"  >{{interfTx[7]}}</span>
+                                 <span *ngIf="!interfBoolean[7]" style="color:black"  >{{interfTx[7]}}</span>
+    
+                                 </td>
+                            </tr>
+      </tbody>
+                                     </table>
+                               
+                                     <table class="table ">
+                        <thead>
+                            <tr>
+                                <th>Interferencia Camino Directo [µs] </th>
+                                <th>Tx 1</th>
+                                <th>Tx 2</th>
+                                <th>Tx 3</th>
+                                <th>Tx 4</th>
+                            </tr>
+                        </thead>
+      <tbody>
+                            <tr>
+                                <th scope="row">Rx 2</th>
+                                <td>
+                                 <span *ngIf="interfBooleanRx2[0]" style="color:red"  >{{interfTxRx2[0]}}</span>
+                                 <span *ngIf="!interfBooleanRx2[0]" style="color:black"  >{{interfTxRx2[0]}}</span>
+                                </td>
+                                <td>
+                                 <span *ngIf="interfBooleanRx2[1]" style="color:red"  >{{interfTxRx2[1]}}</span>
+                                 <span *ngIf="!interfBooleanRx2[1]" style="color:black"  >{{interfTxRx2[1]}}</span>
+    
+                                 </td>
+                                <td>
+                                 <span *ngIf="interfBooleanRx2[2]" style="color:red"  >{{interfTxRx2[2]}}</span>
+                                 <span *ngIf="!interfBooleanRx2[2]" style="color:black"  >{{interfTxRx2[2]}}</span>
+    
+                                 </td>
+                                <td>
+                                 <span *ngIf="interfBooleanRx2[3]" style="color:red"  >{{interfTxRx2[3]}}</span>
+                                 <span *ngIf="!interfBooleanRx2[3]" style="color:black"  >{{interfTxRx2[3]}}</span>
+    
+                                 </td>
+                               
+                            </tr>
+      </tbody>
+                                     </table> <br>
+    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th>Interferencia Camino Reflejado [µs]  </th>
+                                <th>Tx 1</th>
+                                <th>Tx 2</th>
+                                <th>Tx 3</th>
+                                <th>Tx 4</th>
+                            </tr>
+                        </thead>
+      <tbody>
+                            <tr>
+                                <th scope="row">Rx 2</th>
+                               <td>
+                                 <span *ngIf="interfBooleanRx2[4]" style="color:red"  >{{interfTxRx2[4]}}</span>
+                                 <span *ngIf="!interfBooleanRx2[4]" style="color:black"  >{{interfTxRx2[4]}}</span>
+                                </td>
+                                <td>
+                                 <span *ngIf="interfBooleanRx2[5]" style="color:red"  >{{interfTxRx2[5]}}</span>
+                                 <span *ngIf="!interfBooleanRx2[5]" style="color:black"  >{{interfTxRx2[5]}}</span>
+    
+                                 </td>
+                                <td>
+                                 <span *ngIf="interfBooleanRx2[6]" style="color:red"  >{{interfTxRx2[6]}}</span>
+                                 <span *ngIf="!interfBooleanRx2[6]" style="color:black"  >{{interfTxRx2[6]}}</span>
+    
+                                 </td>
+                                <td>
+                                 <span *ngIf="interfBooleanRx2[7]" style="color:red"  >{{interfTxRx2[7]}}</span>
+                                 <span *ngIf="!interfBooleanRx2[7]" style="color:black"  >{{interfTxRx2[7]}}</span>
+    
+                                 </td>
+                            </tr>
+      </tbody>
+                                     </table>
+    
+                                <button 
+                                     type="button"
+                                     class="btn btn-sm btn-secondary"
+                                    data-toggle="tooltip" data-placement="top" title=""
+                                    (click)="calculoDistanciasRx1()">Verificar Rx1</button> <br>
+                                     <button 
+                                     type="button"
+                                     class="btn btn-sm btn-secondary"
+                                    data-toggle="tooltip" data-placement="top" title=""
+                                    (click)="calculoDistanciasRx2()">Verificar Rx2</button> <br>
+                        </ng-template>
+                    </ngb-tab>     
+    
                     <ngb-tab title="Ventana de Sincronizacion">
                         <ng-template ngbTabContent>
 <div>
@@ -436,169 +596,10 @@
                                  type="button"
                                  class="btn btn-sm btn-secondary"
                                 data-toggle="tooltip" data-placement="top" title=""
-                                (click)="randomize()">boton</button> <br>
+                                (click)="ventanaSincro()">Actualizar</button> <br>
 </div>
                     </ng-template>
                     </ngb-tab> 
-                <ngb-tab title="Verificacion Funcionamiento SFN">
-                    <ng-template ngbTabContent >
-                           
-                                 <table class="table ">
-                    <thead>
-                        <tr>
-                            <th>Interferencia Camino Directo [µs] </th>
-                            <th>Tx 1</th>
-                            <th>Tx 2</th>
-                            <th>Tx 3</th>
-                            <th>Tx 4</th>
-                        </tr>
-                    </thead>
-  <tbody>
-                        <tr>
-                            <th scope="row">Rx 1</th>
-                            <td>
-                             <span *ngIf="interfBoolean[0]" style="color:red"  >{{interfTx[0]}}</span>
-                             <span *ngIf="!interfBoolean[0]" style="color:black"  >{{interfTx[0]}}</span>
-                            </td>
-                            <td>
-                             <span *ngIf="interfBoolean[1]" style="color:red"  >{{interfTx[1]}}</span>
-                             <span *ngIf="!interfBoolean[1]" style="color:black"  >{{interfTx[1]}}</span>
-
-                             </td>
-                            <td>
-                             <span *ngIf="interfBoolean[2]" style="color:red"  >{{interfTx[2]}}</span>
-                             <span *ngIf="!interfBoolean[2]" style="color:black"  >{{interfTx[2]}}</span>
-
-                             </td>
-                            <td>
-                             <span *ngIf="interfBoolean[3]" style="color:red"  >{{interfTx[3]}}</span>
-                             <span *ngIf="!interfBoolean[3]" style="color:black"  >{{interfTx[3]}}</span>
-
-                             </td>
-                           
-                        </tr>
-  </tbody>
-                                 </table> <br>
-<table class="table ">
-                    <thead>
-                        <tr>
-                            <th>Interferencia Camino Reflejado [µs]  </th>
-                            <th>Tx 1</th>
-                            <th>Tx 2</th>
-                            <th>Tx 3</th>
-                            <th>Tx 4</th>
-                        </tr>
-                    </thead>
-  <tbody>
-                        <tr>
-                            <th scope="row">Rx 1</th>
-                           <td>
-                             <span *ngIf="interfBoolean[4]" style="color:red"  >{{interfTx[4]}}</span>
-                             <span *ngIf="!interfBoolean[4]" style="color:black"  >{{interfTx[4]}}</span>
-                            </td>
-                            <td>
-                             <span *ngIf="interfBoolean[5]" style="color:red"  >{{interfTx[5]}}</span>
-                             <span *ngIf="!interfBoolean[5]" style="color:black"  >{{interfTx[5]}}</span>
-
-                             </td>
-                            <td>
-                             <span *ngIf="interfBoolean[6]" style="color:red"  >{{interfTx[6]}}</span>
-                             <span *ngIf="!interfBoolean[6]" style="color:black"  >{{interfTx[6]}}</span>
-
-                             </td>
-                            <td>
-                             <span *ngIf="interfBoolean[7]" style="color:red"  >{{interfTx[7]}}</span>
-                             <span *ngIf="!interfBoolean[7]" style="color:black"  >{{interfTx[7]}}</span>
-
-                             </td>
-                        </tr>
-  </tbody>
-                                 </table>
-                           
-                                 <table class="table ">
-                    <thead>
-                        <tr>
-                            <th>Interferencia Camino Directo [µs] </th>
-                            <th>Tx 1</th>
-                            <th>Tx 2</th>
-                            <th>Tx 3</th>
-                            <th>Tx 4</th>
-                        </tr>
-                    </thead>
-  <tbody>
-                        <tr>
-                            <th scope="row">Rx 2</th>
-                            <td>
-                             <span *ngIf="interfBooleanRx2[0]" style="color:red"  >{{interfTxRx2[0]}}</span>
-                             <span *ngIf="!interfBooleanRx2[0]" style="color:black"  >{{interfTxRx2[0]}}</span>
-                            </td>
-                            <td>
-                             <span *ngIf="interfBooleanRx2[1]" style="color:red"  >{{interfTxRx2[1]}}</span>
-                             <span *ngIf="!interfBooleanRx2[1]" style="color:black"  >{{interfTxRx2[1]}}</span>
-
-                             </td>
-                            <td>
-                             <span *ngIf="interfBooleanRx2[2]" style="color:red"  >{{interfTxRx2[2]}}</span>
-                             <span *ngIf="!interfBooleanRx2[2]" style="color:black"  >{{interfTxRx2[2]}}</span>
-
-                             </td>
-                            <td>
-                             <span *ngIf="interfBooleanRx2[3]" style="color:red"  >{{interfTxRx2[3]}}</span>
-                             <span *ngIf="!interfBooleanRx2[3]" style="color:black"  >{{interfTxRx2[3]}}</span>
-
-                             </td>
-                           
-                        </tr>
-  </tbody>
-                                 </table> <br>
-<table class="table ">
-                    <thead>
-                        <tr>
-                            <th>Interferencia Camino Reflejado [µs]  </th>
-                            <th>Tx 1</th>
-                            <th>Tx 2</th>
-                            <th>Tx 3</th>
-                            <th>Tx 4</th>
-                        </tr>
-                    </thead>
-  <tbody>
-                        <tr>
-                            <th scope="row">Rx 2</th>
-                           <td>
-                             <span *ngIf="interfBooleanRx2[4]" style="color:red"  >{{interfTxRx2[4]}}</span>
-                             <span *ngIf="!interfBooleanRx2[4]" style="color:black"  >{{interfTxRx2[4]}}</span>
-                            </td>
-                            <td>
-                             <span *ngIf="interfBooleanRx2[5]" style="color:red"  >{{interfTxRx2[5]}}</span>
-                             <span *ngIf="!interfBooleanRx2[5]" style="color:black"  >{{interfTxRx2[5]}}</span>
-
-                             </td>
-                            <td>
-                             <span *ngIf="interfBooleanRx2[6]" style="color:red"  >{{interfTxRx2[6]}}</span>
-                             <span *ngIf="!interfBooleanRx2[6]" style="color:black"  >{{interfTxRx2[6]}}</span>
-
-                             </td>
-                            <td>
-                             <span *ngIf="interfBooleanRx2[7]" style="color:red"  >{{interfTxRx2[7]}}</span>
-                             <span *ngIf="!interfBooleanRx2[7]" style="color:black"  >{{interfTxRx2[7]}}</span>
-
-                             </td>
-                        </tr>
-  </tbody>
-                                 </table>
-
-                            <button 
-                                 type="button"
-                                 class="btn btn-sm btn-secondary"
-                                data-toggle="tooltip" data-placement="top" title=""
-                                (click)="calculoDistanciasRx1()">Verificar Rx1</button> <br>
-                                 <button 
-                                 type="button"
-                                 class="btn btn-sm btn-secondary"
-                                data-toggle="tooltip" data-placement="top" title=""
-                                (click)="calculoDistanciasRx2()">Verificar Rx2</button> <br>
-                    </ng-template>
-                </ngb-tab>     
                 </ngb-tabset>
             </div>
         </div>

@@ -16,14 +16,16 @@ import { ModuladorService } from 'app/Services/modulador.service';
 
 export class BlankPageComponent implements OnInit {
 
-Deltas = this._markerService.getDeltasRx1();
+Deltas : any = this._markerService.getDeltasRx1();
+
+
 intGua =  this._moduladorService.obtenerIntGua();
 public lineChartData:Array<any> =  [
-                 { label: 'IG',data : [{x: this.intGua ,y: 10,}, {x: this.intGua,y: 0}]},
-                 { label: 'Tx1',data : [{x: this.Deltas[0],y: 10,}, {x: this.Deltas[0],y: 0}]},
-                 { label: 'Tx2',data : [{x: this.Deltas[1],y: 10,}, {x: this.Deltas[1],y: 0}]},
-                 { label: 'Tx3',data : [{x: this.Deltas[2],y: 10,}, {x: this.Deltas[2],y: 0}]},
-                 { label: 'Tx4',data : [{x: this.Deltas[3],y: 10,}, {x: this.Deltas[3],y: 0}]}
+                 { label: 'IG',data : [{x: this.intGua ,y: 10,}, {x: this.intGua,y: 0}], borderDash : [ 10 , 5] },
+                 { label: 'Tx1',data : [{x: this.Deltas[0],y: 0,}, {x: this.Deltas[0],y: 0}]},
+                 { label: 'Tx2',data : [{x: this.Deltas[1],y: 0,}, {x: this.Deltas[1],y: 0}]},
+                 { label: 'Tx3',data : [{x: this.Deltas[2],y: 0,}, {x: this.Deltas[2],y: 0}]},
+                 { label: 'Tx4',data : [{x: this.Deltas[3],y: 0,}, {x: this.Deltas[3],y: 0}]}
       
 ];
 
@@ -172,18 +174,67 @@ public lineChartColors: Array<any> = [
     interfBoolean = [] ;
     interfBooleanRx2 = [] ;
     DeltasRx2 = [] ;
+    altura0 ;
+    altura1 ;
+    altura2 ;
+    altura3 ;
 
 
-     randomize() {
-         console.log(this.tra0,this.tra1,this.tra2,this.tra3)
+     ventanaSincro() {
              this.intGua =  this._moduladorService.obtenerIntGua();
              this.Deltas = this._markerService.getDeltasRx1();
+             var DeltaPrueba : any = [ this.Deltas[0], this.Deltas[1], this.Deltas[2], this.Deltas[3]];
+            console.log("aca",DeltaPrueba);
+             
+             for(var i = 0 ; i < 4 ; i++){
+                
+                 if(i === 0 ){
+                     var altura = 10;
+
+                 }
+                 if(i === 1 ){
+                    var altura = 8;
+                }
+                if(i === 2 ){
+                    var altura = 5;
+                }
+                if(i === 3 ){
+                    var altura = 3;
+                }
+                
+                var menor = Math.min.apply(Math, DeltaPrueba);
+                    console.log(menor)
+                               if(menor === parseFloat(this.Deltas[0])  ){
+                                   var index = DeltaPrueba.indexOf(this.Deltas[0]);
+                                    DeltaPrueba.splice(index,1);
+                                   this.altura0 = altura;
+                                 }
+                                 if(menor === parseFloat(this.Deltas[1]) ){
+                                    var index = DeltaPrueba.indexOf(this.Deltas[1]);
+                                    DeltaPrueba.splice(index,1);
+                                    this.altura1 = altura;
+                                    
+                                }
+                                 if(menor === parseFloat(this.Deltas[2]) ){
+                                    var index = DeltaPrueba.indexOf(this.Deltas[2]);
+                                    DeltaPrueba.splice(index,1);
+                                   this.altura2 = altura;
+                                 }
+                                 if(menor === parseFloat(this.Deltas[3]) ){
+                                    var index = DeltaPrueba.indexOf(this.Deltas[3]);
+                                    DeltaPrueba.splice(index    ,1);
+                                   this.altura3 = altura;
+                                }
+
+             }
+           
+
              this.lineChartData =  [
-                 { label: 'IG',data : [{x: this.intGua ,y: 10,}, {x: this.intGua,y: 0}]},
-                 { label: 'Tx1',data : [{x: this.Deltas[0],y: 10,}, {x: this.Deltas[0],y: 0}]},
-                 { label: 'Tx2',data : [{x: this.Deltas[1],y: 10,}, {x: this.Deltas[1],y: 0}]},
-                 { label: 'Tx3',data : [{x: this.Deltas[2],y: 10,}, {x: this.Deltas[2],y: 0}]},
-                 { label: 'Tx4',data : [{x: this.Deltas[3],y: 10,}, {x: this.Deltas[3],y: 0}]}
+                 { label: 'IG',data : [{x: this.intGua ,y: 10,}, {x: this.intGua,y: 0}], borderDash : [ 10 , 5]},
+                 { label: 'Tx1',data : [{x: this.Deltas[0],y: this.altura0,}, {x: this.Deltas[0],y: 0}]},
+                 { label: 'Tx2',data : [{x: this.Deltas[1],y: this.altura1,}, {x: this.Deltas[1],y: 0}]},
+                 { label: 'Tx3',data : [{x: this.Deltas[2],y: this.altura2,}, {x: this.Deltas[2],y: 0}]},
+                 { label: 'Tx4',data : [{x: this.Deltas[3],y: this.altura3,}, {x: this.Deltas[3],y: 0}]}
                 
                 ];
 

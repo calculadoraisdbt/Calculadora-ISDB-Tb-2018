@@ -59,7 +59,7 @@ declare var google: any;
   var DeltaT2CR : number; 
   var DeltaT3CR : number; 
   var DeltaT4CR : number; 
-  var Deltas = [] ;
+  var Deltas  = [] ;
   var menorRx2 : number = 0;
   var DeltaT1Rx2 : number; 
   var DeltaT2Rx2 : number; 
@@ -309,7 +309,7 @@ export class MarkersService extends Init {
          DeltaT2CR = (tx2obstrx1-menorRx1 ) ;
          DeltaT3CR = (tx3obstrx1-menorRx1) ;
          DeltaT4CR = (tx4obstrx1-menorRx1) ; 
-         Deltas = [DeltaT1,DeltaT2,DeltaT3,DeltaT4,DeltaT1CR,DeltaT2CR,DeltaT3CR,DeltaT4CR] ;   
+         Deltas  = [DeltaT1,DeltaT2,DeltaT3,DeltaT4,DeltaT1CR,DeltaT2CR,DeltaT3CR,DeltaT4CR] ;   
 
     }  
     getDeltasRx1(){

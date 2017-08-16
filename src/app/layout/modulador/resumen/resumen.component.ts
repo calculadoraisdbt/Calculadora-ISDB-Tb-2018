@@ -68,7 +68,6 @@ export class ResumenComponent implements OnInit {
      this._moduladorService.actualizarIntervalo(this.intSelected);
 
     this.calculoIntervaloGuarda(value);
-    this.intGua = this._moduladorService.obtenerIntGua();   
 
         
   }
@@ -94,6 +93,7 @@ modo(value){
 
      this.modoSelected = value;
      this._moduladorService.actualizarModo(this.modoSelected);
+     this.calculoIntervaloGuarda(this.intSelected);
 
 
 
