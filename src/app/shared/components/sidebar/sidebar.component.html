@@ -1,26 +1,5 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
     <ul class="list-group">
-        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'dashboard' | translate }}
-        </a>
-        <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;{{ 'charts' | translate }}
-        </a>
-        <a [routerLink]="['/tables']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-table"></i>&nbsp;{{ 'tables' | translate }}
-        </a>
-        <a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-edit"></i>&nbsp;{{ 'forms' | translate }}
-        </a>
-        <a [routerLink]="['/bs-element']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-desktop"></i>&nbsp;{{ 'boostrapElement' | translate }}
-        </a>
-        <a [routerLink]="['/grid']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-wrench"></i>&nbsp;{{ 'boostrapGrid' | translate }}
-        </a>
-        <a [routerLink]="['/components']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-th-list"></i>&nbsp;{{ 'component' | translate }}
-        </a>
         <a [routerLink]="['/codificador']" [routerLinkActive]="['router-link-active']" class="list-group-item">
            &nbsp;{{ 'Codificador A/V' | translate }}
         </a>
@@ -38,8 +17,5 @@
            &nbsp;{{ 'Red Frecuencia Unica' | translate }}
         </a>
         
-        <a class="list-group-item more-themes" href="http://www.strapui.com/" >
-            {{ 'moretheme' | translate }}
-        </a>
     </ul>
 </nav>

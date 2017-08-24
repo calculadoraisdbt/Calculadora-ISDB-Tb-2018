@@ -14,7 +14,7 @@ import { AuthGuard } from './shared';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
-    return new TranslateHttpLoader(http, '/start-angular/SB-Admin-BS4-Angular-4/master/dist/assets/i18n/', '.json');
+    
 }
 @NgModule({
     declarations: [

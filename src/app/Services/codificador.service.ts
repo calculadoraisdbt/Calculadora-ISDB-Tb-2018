@@ -20,9 +20,7 @@ export class CodificadorService extends InitCodificador {
     }
 
    actualizarVideoSource(newParam : any , id){ 
-  
-      if(id === ' E1') {
-
+      if(id === 'E1') {
          var videoSource = JSON.parse(localStorage.getItem('videoSource'));
 
           videoSource[0] = newParam;
@@ -31,7 +29,7 @@ export class CodificadorService extends InitCodificador {
 
     }
    
-     if(id === ' E2') {
+     if(id === 'E2') {
 
          var videoSource = JSON.parse(localStorage.getItem('videoSource'));
 
@@ -41,7 +39,7 @@ export class CodificadorService extends InitCodificador {
 
     }
 
-     if(id === ' E3') {
+     if(id === 'E3') {
 
          var videoSource = JSON.parse(localStorage.getItem('videoSource'));
 
@@ -63,7 +61,7 @@ export class CodificadorService extends InitCodificador {
 
    actualizarAudioSource(newParam : any , id){ 
   
-      if(id === ' E1') {
+      if(id === 'E1') {
 
          var audioSource = JSON.parse(localStorage.getItem('audioSource'));
 
@@ -73,7 +71,7 @@ export class CodificadorService extends InitCodificador {
 
     }
    
-     if(id === ' E2') {
+     if(id === 'E2') {
 
          var audioSource = JSON.parse(localStorage.getItem('audioSource'));
 
@@ -83,7 +81,7 @@ export class CodificadorService extends InitCodificador {
 
     }
 
-     if(id === ' E3') {
+     if(id === 'E3') {
 
          var audioSource = JSON.parse(localStorage.getItem('audioSource'));
 
@@ -104,7 +102,7 @@ export class CodificadorService extends InitCodificador {
 
    actualizarAudioCodec(newParam : any , id){ 
   
-      if(id === ' E1') {
+      if(id === 'E1') {
 
          var audioCodec = JSON.parse(localStorage.getItem('audioCodec'));
 
@@ -114,7 +112,7 @@ export class CodificadorService extends InitCodificador {
 
     }
    
-     if(id === ' E2') {
+     if(id === 'E2') {
 
          var audioCodec = JSON.parse(localStorage.getItem('audioCodec'));
 
@@ -124,7 +122,7 @@ export class CodificadorService extends InitCodificador {
 
     }
 
-     if(id === ' E3') {
+     if(id === 'E3') {
 
          var audioCodec = JSON.parse(localStorage.getItem('audioCodec'));
 
@@ -146,7 +144,7 @@ export class CodificadorService extends InitCodificador {
 
    actualizarAudioBitRate(newParam : any , id){ 
   
-      if(id === ' E1') {
+      if(id === 'E1') {
 
          var audioBitRate = JSON.parse(localStorage.getItem('audioBitRate'));
 
@@ -156,7 +154,7 @@ export class CodificadorService extends InitCodificador {
 
     }
    
-     if(id === ' E2') {
+     if(id === 'E2') {
 
          var audioBitRate = JSON.parse(localStorage.getItem('audioBitRate'));
 
@@ -166,7 +164,7 @@ export class CodificadorService extends InitCodificador {
 
     }
 
-     if(id === ' E3') {
+     if(id === 'E3') {
 
          var audioBitRate = JSON.parse(localStorage.getItem('audioBitRate'));
 
@@ -187,7 +185,7 @@ export class CodificadorService extends InitCodificador {
 
    actualizarVideoResolution(newParam : any , id){ 
   
-      if(id === ' E1') {
+      if(id === 'E1') {
 
          var videoResolution = JSON.parse(localStorage.getItem('videoResolution'));
 
@@ -197,7 +195,7 @@ export class CodificadorService extends InitCodificador {
 
     }
    
-     if(id === ' E2') {
+     if(id === 'E2') {
 
          var audioBitRate = JSON.parse(localStorage.getItem('videoResolution'));
 
@@ -207,7 +205,7 @@ export class CodificadorService extends InitCodificador {
 
     }
 
-     if(id === ' E3') {
+     if(id === 'E3') {
 
          var audioBitRate = JSON.parse(localStorage.getItem('videoResolution'));
 
@@ -227,7 +225,7 @@ export class CodificadorService extends InitCodificador {
 
    actualizarRateControl(newParam : any , id){ 
   
-      if(id === ' E1') {
+      if(id === 'E1') {
 
          var rateControl = JSON.parse(localStorage.getItem('rateControl'));
 
@@ -237,7 +235,7 @@ export class CodificadorService extends InitCodificador {
 
     }
    
-     if(id === ' E2') {
+     if(id === 'E2') {
 
          var rateControl = JSON.parse(localStorage.getItem('rateControl'));
 
@@ -247,7 +245,7 @@ export class CodificadorService extends InitCodificador {
 
     }
 
-     if(id === ' E3') {
+     if(id === 'E3') {
 
          var rateControl = JSON.parse(localStorage.getItem('rateControl'));
 
@@ -268,7 +266,7 @@ export class CodificadorService extends InitCodificador {
 
    actualizarVideoProfile(newParam : any , id){ 
   
-      if(id === ' E1') {
+      if(id === 'E1') {
 
          var videoProfile = JSON.parse(localStorage.getItem('videoProfile'));
 
@@ -278,7 +276,7 @@ export class CodificadorService extends InitCodificador {
 
     }
    
-     if(id === ' E2') {
+     if(id === 'E2') {
 
          var videoProfile = JSON.parse(localStorage.getItem('videoProfile'));
 
@@ -288,7 +286,7 @@ export class CodificadorService extends InitCodificador {
 
     }
 
-     if(id === ' E3') {
+     if(id === 'E3') {
 
          var videoProfile = JSON.parse(localStorage.getItem('videoProfile'));
 
@@ -308,7 +306,7 @@ getGopSize(){
 
    actualizarGopSize(newParam : any , id){ 
   
-      if(id === ' E1') {
+      if(id === 'E1') {
 
          var gopSize = JSON.parse(localStorage.getItem('gopSize'));
 
@@ -318,7 +316,7 @@ getGopSize(){
 
     }
    
-     if(id === ' E2') {
+     if(id === 'E2') {
 
          var gopSize = JSON.parse(localStorage.getItem('gopSize'));
 
@@ -328,7 +326,7 @@ getGopSize(){
 
     }
 
-     if(id === ' E3') {
+     if(id === 'E3') {
 
          var gopSize = JSON.parse(localStorage.getItem('gopSize'));
 
@@ -348,7 +346,7 @@ getVideoBurstSize(){
 
    actualizarVideoBurstSize(newParam : any , id){ 
   
-      if(id === ' E1') {
+      if(id === 'E1') {
 
          var videoBurstSize = JSON.parse(localStorage.getItem('videoBurstSize'));
 
@@ -358,7 +356,7 @@ getVideoBurstSize(){
 
     }
    
-     if(id === ' E2') {
+     if(id === 'E2') {
 
          var videoBurstSize = JSON.parse(localStorage.getItem('videoBurstSize'));
 
@@ -368,7 +366,7 @@ getVideoBurstSize(){
 
     }
 
-     if(id === ' E3') {
+     if(id === 'E3') {
 
          var videoBurstSize = JSON.parse(localStorage.getItem('videoBurstSize'));
 
@@ -388,7 +386,7 @@ getVideoCodec(){
 
    actualizarVideoCodec(newParam : any , id){ 
   
-      if(id === ' E1') {
+      if(id === 'E1') {
 
          var videoCodec = JSON.parse(localStorage.getItem('videoCodec'));
 
@@ -398,7 +396,7 @@ getVideoCodec(){
 
     }
    
-     if(id === ' E2') {
+     if(id === 'E2') {
 
          var videoCodec = JSON.parse(localStorage.getItem('videoCodec'));
 
@@ -408,7 +406,7 @@ getVideoCodec(){
 
     }
 
-     if(id === ' E3') {
+     if(id === 'E3') {
 
          var videoCodec = JSON.parse(localStorage.getItem('videoCodec'));
 
@@ -428,7 +426,7 @@ getFrameDecimation(){
 
    actualizarFrameDecimation(newParam : any , id){ 
   
-      if(id === ' E1') {
+      if(id === 'E1') {
 
          var frameDecimation = JSON.parse(localStorage.getItem('frameDecimation'));
 
@@ -438,7 +436,7 @@ getFrameDecimation(){
 
     }
    
-     if(id === ' E2') {
+     if(id === 'E2') {
 
          var frameDecimation = JSON.parse(localStorage.getItem('frameDecimation'));
 
@@ -448,7 +446,7 @@ getFrameDecimation(){
 
     }
 
-     if(id === ' E3') {
+     if(id === 'E3') {
 
          var frameDecimation = JSON.parse(localStorage.getItem('frameDecimation'));
 
@@ -468,7 +466,7 @@ getOutputInterface(){
 
    actualizarOutputInterface(newParam : any , id){ 
   
-      if(id === ' E1') {
+      if(id === 'E1') {
 
          var outputInterface = JSON.parse(localStorage.getItem('outputInterface'));
 
@@ -478,7 +476,7 @@ getOutputInterface(){
 
     }
    
-     if(id === ' E2') {
+     if(id === 'E2') {
 
          var outputInterface = JSON.parse(localStorage.getItem('outputInterface'));
 
@@ -488,7 +486,7 @@ getOutputInterface(){
 
     }
 
-     if(id === ' E3') {
+     if(id === 'E3') {
 
          var outputInterface = JSON.parse(localStorage.getItem('outputInterface'));
 
@@ -508,7 +506,7 @@ getOutputFormat(){
 
    actualizarOutputFormat(newParam : any , id){ 
   
-      if(id === ' E1') {
+      if(id === 'E1') {
 
          var outputFormat = JSON.parse(localStorage.getItem('outputFormat'));
 
@@ -518,7 +516,7 @@ getOutputFormat(){
 
     }
    
-     if(id === ' E2') {
+     if(id === 'E2') {
 
          var outputFormat = JSON.parse(localStorage.getItem('outputFormat'));
 
@@ -528,7 +526,7 @@ getOutputFormat(){
 
     }
 
-     if(id === ' E3') {
+     if(id === 'E3') {
 
          var outputFormat = JSON.parse(localStorage.getItem('outputFormat'));
 

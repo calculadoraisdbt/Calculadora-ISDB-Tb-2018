@@ -55,12 +55,27 @@ load(){
 
             var retardos = [0,0,0,0];
             var retardosState = [false,false,false,false];
-            var retardoRed = 0;
-            
+            var retardoRed = 0; 
+            var tra0 = false;
+            var tra1 = false;
+            var tra2 = false;
+            var tra3 = false;
+            var recep = false;
+            var recep2 = false;
+            var obst  = false;   
+            var polarity = ["Atraso","Atraso","Atraso","Atraso"]         
             localStorage.setItem('markers', JSON.stringify(markers));
             localStorage.setItem('retardos', JSON.stringify(retardos));
             localStorage.setItem('retardosState', JSON.stringify(retardosState));
             localStorage.setItem('retardoRed', JSON.stringify(retardoRed));
+            localStorage.setItem('tra0', JSON.stringify(tra0));
+            localStorage.setItem('tra1', JSON.stringify(tra1));
+            localStorage.setItem('tra2', JSON.stringify(tra2));
+            localStorage.setItem('tra3', JSON.stringify(tra3));
+            localStorage.setItem('recep', JSON.stringify(recep));
+            localStorage.setItem('recep2', JSON.stringify(recep2));
+            localStorage.setItem('obst', JSON.stringify(obst));
+            localStorage.setItem('polarity', JSON.stringify(polarity));
             }else{
                     console.log('Cargando marcadores...');
             }

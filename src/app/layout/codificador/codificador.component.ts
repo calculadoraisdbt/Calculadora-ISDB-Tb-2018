@@ -48,7 +48,6 @@ export class CodificadorComponent implements OnInit {
     this.frameDecimation = this._codificadorService.getFrameDecimation();
     this.outputInterface = this._codificadorService.getOutputInterface();
     this.outputFormat = this._codificadorService.getOutputFormat();
-    console.log(this.outputFormat)
 
    }  
 
@@ -60,6 +59,7 @@ export class CodificadorComponent implements OnInit {
             
              if(id === "E1"){ 
             this.videoSource[0] = value;  
+            
             this._codificadorService.actualizarVideoSource(this.videoSource[0], id); }
 
              if(id === "E2"){ 
@@ -129,9 +129,10 @@ export class CodificadorComponent implements OnInit {
   //VIDEO RESOLUTION
 
    videoResolutionSelected(value,id){
-            
+            console.log("aca video Rs",value)
              if(id === "E1"){ 
             this.videoResolution[0] = value;  
+            console.log("aca video Rs",this.videoResolution[0])
             this._codificadorService.actualizarVideoResolution(this.videoResolution[0], id); }
 
              if(id === "E2"){ 
@@ -264,15 +265,15 @@ outputInterfaceSelected(value,id){
            //OUTPUT FORMAT
 outputFormatSelected(value,id){
             
-             if(id === "E1"){ 
+             if(id === 'E1'){ 
             this.outputFormat[0] = value;  
             this._codificadorService.actualizarOutputFormat(this.outputFormat[0], id); }
 
-             if(id === "E2"){ 
+             if(id === 'E2'){ 
             this.outputFormat[1] = value;
             this._codificadorService.actualizarOutputFormat(this.outputFormat[1], id); }
 
-             if(id === "E3"){ 
+             if(id === 'E3'){ 
             this.outputFormat[2] = value;
             this._codificadorService.actualizarOutputFormat(this.outputFormat[2], id); }
 

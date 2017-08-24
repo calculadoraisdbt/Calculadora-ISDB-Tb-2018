@@ -3,7 +3,7 @@ import { Marker } from './marker';
 import { MarkersService } from 'app/Services/markers.service';
 import { FormControl, FormGroup,  } from '@angular/forms';
 import { ModuladorService } from 'app/Services/modulador.service';
-
+import { BaseChartDirective } from 'ng2-charts/ng2-charts';
 
 
 
@@ -14,20 +14,19 @@ import { ModuladorService } from 'app/Services/modulador.service';
     providers: [MarkersService,ModuladorService ]
 })
 
+
 export class BlankPageComponent implements OnInit {
 
 Deltas : any = this._markerService.getDeltasRx1();
 
 
 intGua =  this._moduladorService.obtenerIntGua();
-public lineChartData:Array<any> =  [
-                 { label: 'IG',data : [{x: this.intGua ,y: 10,}, {x: this.intGua,y: 0}], borderDash : [ 10 , 5] },
-                 { label: 'Tx1',data : [{x: this.Deltas[0],y: 0,}, {x: this.Deltas[0],y: 0}]},
-                 { label: 'Tx2',data : [{x: this.Deltas[1],y: 0,}, {x: this.Deltas[1],y: 0}]},
-                 { label: 'Tx3',data : [{x: this.Deltas[2],y: 0,}, {x: this.Deltas[2],y: 0}]},
-                 { label: 'Tx4',data : [{x: this.Deltas[3],y: 0,}, {x: this.Deltas[3],y: 0}]}
+public lineChartData:any[] =  [
+    { label: 'IG',data : [{x: this.intGua ,y: 60,}, {x: this.intGua,y: 0}], borderDash : [ 60 , 5]},
+    
       
 ];
+public chart_visible: boolean = true
 
 public  lineChartOptions: any = {
     responsive: true,
@@ -101,7 +100,78 @@ public lineChartColors: Array<any> = [
     console.log(e);
   }
  
-   
+ //CHART PARA RX2
+ 
+ public lineChartData2:any[] =  [
+    { label: 'IG',data : [{x: this.intGua ,y: 60,}, {x: this.intGua,y: 0}], borderDash : [ 60 , 5]},
+    
+      
+];
+public chart_visible2: boolean = true
+
+public  lineChartOptions2: any = {
+    responsive: true,
+    animation: false,
+    scales: {
+            xAxes: [{
+                type: 'linear',
+                position: 'bottom'
+            }]
+        }
+  };
+public lineChartColors2: Array<any> = [
+    { // grey
+      backgroundColor: 'rgba(33,150,243,0.2)',
+      borderColor: 'rgba(33,150,243,1)',
+      pointBackgroundColor: 'rgba(33,150,243,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(33,150,243,0.8)'
+    },
+    { // dark grey
+      backgroundColor: 'rgba(76,175,80,0.2)',
+      borderColor: 'rgba(76,175,80,1)',
+      pointBackgroundColor: 'rgba(76,175,80,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(76,175,80,1)'
+    },
+    { // grey
+      backgroundColor: 'rgba(244,67,54,0.2)',
+      borderColor: 'rgba(244,67,54,1)',
+      pointBackgroundColor: 'rgba(244,67,54,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(244,67,54,0.8)'
+    },
+    { // grey
+      backgroundColor: 'rgba(103,58,183,0.2)',
+      borderColor: 'rgba(103,58,183,1)',
+      pointBackgroundColor: 'rgba(103,58,183,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(103,58,183,0.8)'
+    },
+    { // grey
+      backgroundColor: 'rgba(255,152,0,0.2)',
+      borderColor: 'rgba(255,152,0,1)',
+      pointBackgroundColor: 'rgba(255,152,0,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(255,152,0,0.8)'
+    },
+    { // grey
+      backgroundColor: 'rgba(96,125,139,0.2)',
+      borderColor: 'rgba(96,125,139,1)',
+      pointBackgroundColor: 'rgba(96,125,139,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(96,125,139,0.8)'
+    }    
+  ];
+
+  public lineChartLegend2: boolean = true;
+  public lineChartType2: string = 'scatter';
 
   
         resultDist : number = 0;
@@ -113,7 +183,14 @@ public lineChartColors: Array<any> = [
             this.retardosState = this._markerService.obtenerRetardosState();
             this.retardoRed = this._markerService.obtenerRetardoRed();
             this.Deltas = this._markerService.getDeltasRx1();
-            
+            this.tra0 = this._markerService.obtenerTra0();
+            this.tra1 = this._markerService.obtenerTra1();
+            this.tra2 = this._markerService.obtenerTra2();
+            this.tra3 = this._markerService.obtenerTra3();
+            this.recep = this._markerService.obtenerRecep();
+            this.recep2 = this._markerService.obtenerRecep2();
+            this.obst = this._markerService.obtenerObst();
+            this.polarity = this._markerService.obtenerPolarity();
             
         }
         ngOnInit() {
@@ -123,13 +200,13 @@ public lineChartColors: Array<any> = [
     lat: number = -31.416667 ;
     lng: number = -64.183333; 
     zoom: number = 8;
-    tra0: boolean = false;
-    tra1: boolean = false;
-    recep: boolean = false;
-    recep2: boolean = false;
-    obst: boolean = false;
-    tra2: boolean = false;
-    tra3: boolean = false;
+    tra0;
+    tra1;
+    recep;
+    recep2;
+    obst;
+    tra2;
+    tra3;
     newLatTx1 : string ;     
     newLongTx1 : string ;    
     newLatTx2  : string ;  
@@ -178,70 +255,128 @@ public lineChartColors: Array<any> = [
     altura1 ;
     altura2 ;
     altura3 ;
-
+    polarity ;
 
      ventanaSincro() {
              this.intGua =  this._moduladorService.obtenerIntGua();
              this.Deltas = this._markerService.getDeltasRx1();
              var DeltaPrueba : any = [ this.Deltas[0], this.Deltas[1], this.Deltas[2], this.Deltas[3]];
-            console.log("aca",DeltaPrueba);
+             var DeltaCR : any = [ this.Deltas[4], this.Deltas[5], this.Deltas[6], this.Deltas[7]];
+             var DistanciaRx1 = this._markerService.getDistanacias();
+
              
-             for(var i = 0 ; i < 4 ; i++){
-                
-                 if(i === 0 ){
-                     var altura = 10;
+         
+            
 
-                 }
-                 if(i === 1 ){
-                    var altura = 8;
-                }
-                if(i === 2 ){
-                    var altura = 5;
-                }
-                if(i === 3 ){
-                    var altura = 3;
-                }
-                
-                var menor = Math.min.apply(Math, DeltaPrueba);
-                    console.log(menor)
-                               if(menor === parseFloat(this.Deltas[0])  ){
-                                   var index = DeltaPrueba.indexOf(this.Deltas[0]);
-                                    DeltaPrueba.splice(index,1);
-                                   this.altura0 = altura;
-                                 }
-                                 if(menor === parseFloat(this.Deltas[1]) ){
-                                    var index = DeltaPrueba.indexOf(this.Deltas[1]);
-                                    DeltaPrueba.splice(index,1);
-                                    this.altura1 = altura;
-                                    
-                                }
-                                 if(menor === parseFloat(this.Deltas[2]) ){
-                                    var index = DeltaPrueba.indexOf(this.Deltas[2]);
-                                    DeltaPrueba.splice(index,1);
-                                   this.altura2 = altura;
-                                 }
-                                 if(menor === parseFloat(this.Deltas[3]) ){
-                                    var index = DeltaPrueba.indexOf(this.Deltas[3]);
-                                    DeltaPrueba.splice(index    ,1);
-                                   this.altura3 = altura;
-                                }
-
-             }
+                let temp = [{  label: 'Tx1',data : [{x: this.Deltas[0],y: DistanciaRx1[0],}, {x: this.Deltas[0],y: 0}]},
+                { label: 'Tx2',data : [{x: this.Deltas[1],y: DistanciaRx1[1]}, {x: this.Deltas[1],y: 0}]},
+                { label: 'Tx3',data : [{x: this.Deltas[2],y: DistanciaRx1[2]}, {x: this.Deltas[2],y: 0}],},
+                { label: 'Tx4',data : [{x: this.Deltas[3],y: DistanciaRx1[3]}, {x: this.Deltas[3],y: 0}]},
+                { label: 'Tx1CR',data : [{x: this.Deltas[4],y: DistanciaRx1[4]}, {x: this.Deltas[4],y: 0}]},
+                { label: 'Tx2CR',data : [{x: this.Deltas[5],y: DistanciaRx1[5]}, {x: this.Deltas[5],y: 0}]},
+                { label: 'Tx3CR',data : [{x: this.Deltas[6],y: DistanciaRx1[6]}, {x: this.Deltas[6],y: 0}]},
+                { label: 'Tx4CR',data : [{x: this.Deltas[7],y: DistanciaRx1[7]}, {x: this.Deltas[7],y: 0}]},
+                ]
+   
            
-
-             this.lineChartData =  [
-                 { label: 'IG',data : [{x: this.intGua ,y: 10,}, {x: this.intGua,y: 0}], borderDash : [ 10 , 5]},
-                 { label: 'Tx1',data : [{x: this.Deltas[0],y: this.altura0,}, {x: this.Deltas[0],y: 0}]},
-                 { label: 'Tx2',data : [{x: this.Deltas[1],y: this.altura1,}, {x: this.Deltas[1],y: 0}]},
-                 { label: 'Tx3',data : [{x: this.Deltas[2],y: this.altura2,}, {x: this.Deltas[2],y: 0}]},
-                 { label: 'Tx4',data : [{x: this.Deltas[3],y: this.altura3,}, {x: this.Deltas[3],y: 0}]}
-                
-                ];
+            this.chart_visible = false
+            let lineChartData:any[] =  Object.assign([],[
+                 { label: 'IG',data : [{x: this.intGua ,y: 60,}, {x: this.intGua,y: 0}], borderDash : [ 60 , 5]},
+                 
+        
+                ]);
+            console.log('testing ---')
+           
+            for (let i=0; i<=3; i++){
+                let val = this['tra'+i];
+                console.log(val)
+                if (val){
+                    lineChartData.push(temp[i]);
+                }
+            }
+            if(this.obst && this.tra0){
+                lineChartData.push(temp[4]);
+            }    
+            if(this.obst && this.tra1){
+                lineChartData.push(temp[5]);
+            }    
+            if(this.obst && this.tra2){
+                lineChartData.push(temp[6]);
+            }    
+            if(this.obst && this.tra3){
+                lineChartData.push(temp[7]);
+            }    
+            this.lineChartData = Object.assign([],lineChartData)
+            this.lineChartOptions = Object.assign({}, this.lineChartOptions)
+            console.log(lineChartData)
+            setTimeout(()=>{
+                this.chart_visible = true
+            })
 
 
 
 
   }
+
+  ventanaSincro2() {
+    this.intGua =  this._moduladorService.obtenerIntGua();
+    this.Deltas = this._markerService.getDeltasRx2();
+   var DeltaPrueba : any = [ this.Deltas[0], this.Deltas[1], this.Deltas[2], this.Deltas[3]];
+   var DeltaCR : any = [ this.Deltas[4], this.Deltas[5], this.Deltas[6], this.Deltas[7]];
+    var DistanciaRx2 = this._markerService.getDistanacias2();
+    console.log("distanciasRX2", DistanciaRx2)
+   
+
+       let temp = [{  label: 'Tx1',data : [{x: this.Deltas[0],y: DistanciaRx2[0],}, {x: this.Deltas[0],y: 0}]},
+       { label: 'Tx2',data : [{x: this.Deltas[1],y: DistanciaRx2[1]}, {x: this.Deltas[1],y: 0}]},
+       { label: 'Tx3',data : [{x: this.Deltas[2],y: DistanciaRx2[2]}, {x: this.Deltas[2],y: 0}]},
+       { label: 'Tx4',data : [{x: this.Deltas[3],y: DistanciaRx2[3]}, {x: this.Deltas[3],y: 0}]},
+       { label: 'Tx1CR',data : [{x: this.Deltas[4],y: DistanciaRx2[4]}, {x: this.Deltas[4],y: 0}]},
+       { label: 'Tx2CR',data : [{x: this.Deltas[5],y: DistanciaRx2[5]}, {x: this.Deltas[5],y: 0}]},
+       { label: 'Tx3CR',data : [{x: this.Deltas[6],y: DistanciaRx2[6]}, {x: this.Deltas[6],y: 0}]},
+       { label: 'Tx4CR',data : [{x: this.Deltas[7],y: DistanciaRx2[7]}, {x: this.Deltas[7],y: 0}]},
+       ]
+
+  
+   this.chart_visible2 = false
+   let lineChartData2:any[] =  Object.assign([],[
+        { label: 'IG',data : [{x: this.intGua ,y: 60,}, {x: this.intGua,y: 0}], borderDash : [ 60 , 5]},
+        
+
+       ]);
+   console.log('testing ---')
+  
+   for (let i=0; i<=3; i++){
+       let val = this['tra'+i];
+       console.log(val)
+       if (val){
+           lineChartData2.push(temp[i]);
+       }
+   }
+   if(this.obst && this.tra0){
+       lineChartData2.push(temp[4]);
+   }    
+   if(this.obst && this.tra1){
+       lineChartData2.push(temp[5]);
+   }    
+   if(this.obst && this.tra2){
+       lineChartData2.push(temp[6]);
+   }    
+   if(this.obst && this.tra3){
+       lineChartData2.push(temp[7]);
+   }    
+   this.lineChartData2 = Object.assign([],lineChartData2)
+   this.lineChartOptions2 = Object.assign({}, this.lineChartOptions2)
+   console.log(lineChartData2)
+   setTimeout(()=>{
+       this.chart_visible2 = true
+   })
+
+
+
+
+}
+
 
     posicionFinalMarcador(marcador:any,$event:any){
 
@@ -659,69 +794,113 @@ show (){
 
 }
 
-cambio(value, id){
-
-   
-       
+/*cambio(value, id){
         if(id === 'Tx1'){
-             if(value === "Negative" ){
-                this.negativeOn1 = true;
+            this.polarity[0] = value;
+             if(value === "Adelanto" ){
+                this.retardos[0] = -Math.abs(this.retardos[0]);
+                console.log("negativo", this.retardos[0]);
              }     
         
         else{
-             this.negativeOn1 = false;
+            this.retardos[0] = Math.abs(this.retardos[0]);
+            console.log("positivo", this.retardos[0]);
         }
         }
         if(id === 'Tx2'){
-             if(value === "Negative" ){
-                this.negativeOn2 = true;
+            this.polarity[1] = value;
+            if(value === "Adelanto" ){
+                this.retardos[1] = - Math.abs(this.retardos[1]);
+                console.log("negativo", this.retardos[1]);
              }     
         
         else{
-             this.negativeOn2 = false;
+            this.retardos[1] = Math.abs(this.retardos[1]);
+            console.log("positivo", this.retardos[1]);
         }  
         }  
         if(id === 'Tx3'){
-             if(value === "Negative" ){
-                this.negativeOn3 = true;
+            this.polarity[2] = value;
+            if(value === "Adelanto" ){
+                this.retardos[2] = - Math.abs(this.retardos[2]);
+                console.log("negativo", this.retardos[2]);
              }     
 
         else{
-             this.negativeOn3 = false;
+            this.retardos[2] = Math.abs(this.retardos[2]);
+            console.log("positivo", this.retardos[2]);
         }
         }
         if(id === 'Tx4'){
-             if(value === "Negative" ){
-                this.negativeOn4 = true;
+            this.polarity[3] = value;
+            if(value === "Adelanto" ){
+                this.retardos[3] = - Math.abs(this.retardos[3]);
+                console.log("negativo", this.retardos[3]);
              }     
         
         else{
-             this.negativeOn4 = false;
+            this.retardos[3] = Math.abs(this.retardos[3]);
+            console.log("positivo", this.retardos[3]);
         } 
         }
-}   
+        this._markerService.actualizarPolarity(this.polarity);
+}   */
 
 aplicarCambios(){
     this._markerService.actualizarRetardoRed(this.retardoRed);
+    this._markerService.actualizarPolarity(this.polarity);
     if(this.retardosState[0]){
-            this._markerService.sumaRetardoTx1(this.retardos[0], this.retardosState[0]);
+            
+            if(this.polarity[0] === "Adelanto" ){
+                this.retardos[0] = -Math.abs(this.retardos[0]);
+                console.log("negativo", this.retardos[0]);
+             }     
+             if(this.polarity[0] === "Atraso" ){
+                    this.retardos[0] = Math.abs(this.retardos[0]);
+                    console.log("positivo", this.retardos[0]);
+                }
+    this._markerService.sumaRetardoTx1(this.retardos[0], this.retardosState[0]);            
     }else{
          this.retardos[0] = 0;
         this._markerService.sumaRetardoTx1(this.retardos[0], this.retardosState[0]);}
 
     if(this.retardosState[1]){
+        if(this.polarity[1] === "Adelanto" ){
+            this.retardos[1] = -Math.abs(this.retardos[1]);
+            console.log("negativo", this.retardos[0]);
+         }     
+         if(this.polarity[1] === "Atraso" ){
+                this.retardos[1] = Math.abs(this.retardos[1]);
+                console.log("positivo", this.retardos[1]);
+            }
             this._markerService.sumaRetardoTx2(this.retardos[1], this.retardosState[1]);
     }else{
          this.retardos[1] = 0;
         this._markerService.sumaRetardoTx2(this.retardos[1], this.retardosState[1]);}
 
     if(this.retardosState[2]){
+        if(this.polarity[2] === "Adelanto" ){
+            this.retardos[2] = -Math.abs(this.retardos[2]);
+            console.log("negativo", this.retardos[2]);
+         }     
+         if(this.polarity[2] === "Atraso" ){
+                this.retardos[2] = Math.abs(this.retardos[2]);
+                console.log("positivo", this.retardos[2]);
+            }
             this._markerService.sumaRetardoTx3(this.retardos[2], this.retardosState[2]);
     }else{
          this.retardos[2] = 0;
         this._markerService.sumaRetardoTx3(this.retardos[2], this.retardosState[2]);}
 
     if(this.retardosState[3]){
+        if(this.polarity[3] === "Adelanto" ){
+            this.retardos[3] = -Math.abs(this.retardos[3]);
+            console.log("negativo", this.retardos[3]);
+         }     
+         if(this.polarity[3] === "Atraso" ){
+                this.retardos[3] = Math.abs(this.retardos[3]);
+                console.log("positivo", this.retardos[3]);
+            }
             this._markerService.sumaRetardoTx4(this.retardos[3], this.retardosState[3]);
     }else{
          this.retardos[3] = 0;
@@ -730,6 +909,34 @@ aplicarCambios(){
         
         
 
+}
+
+cambioTx1(){
+    this._markerService.actualizarTra0(this.tra0);
+}
+
+cambioTx2(){
+    this._markerService.actualizarTra1(this.tra1);
+}
+
+cambioTx3(){
+    this._markerService.actualizarTra2(this.tra2);
+}
+
+cambioTx4(){
+    this._markerService.actualizarTra3(this.tra3);
+}
+
+cambioRx1(){
+    this._markerService.actualizarRecep(this.recep);
+}
+
+cambioRx2(){
+    this._markerService.actualizarRecep2(this.recep2);
+}
+
+cambioObst(){
+    this._markerService.actualizarObst(this.obst);
 }
 
 

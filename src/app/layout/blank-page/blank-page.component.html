@@ -98,7 +98,7 @@
                     <tbody>
                         <tr>
                           <form (ngSubmit)="uploadTx1()" #frmTx1="ngForm" >
-                            <th scope="row"><input type="checkbox" [(ngModel)]="tra0"   name="tra0" id="tra0"> Tx 1</th>
+                            <th scope="row"><input type="checkbox" [(ngModel)]="tra0" (change)="cambioTx1()" name="tra0" id="tra0"> Tx 1</th>
                             <td> <input [(ngModel)]="newLatTx1"  placeholder="Latitud" name="newLatTx1" id="newLatTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"  /> </td>
                             <td> <input [(ngModel)]="newLongTx1"  placeholder="Longitud" name="newLongTx1" id="newLongTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button [disabled]=!frmTx1.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
@@ -108,7 +108,7 @@
                         </tr>
                         <tr>
                           <form (ngSubmit)="uploadTx2()" #frmTx2="ngForm"> 
-                            <th scope="row"> <input type="checkbox" [(ngModel)]="tra1"    name="tra1" id="tra1"> Tx 2 </th>
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="tra1"  (change)="cambioTx2()"  name="tra1" id="tra1"> Tx 2 </th>
                             <td> <input [(ngModel)]="newLatTx2"  placeholder="Latitud" name="newLatTx2" id="newLatTx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <input [(ngModel)]="newLongTx2"  placeholder="Longitud" name="newLongTx2" id="newLongTx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <button  [disabled]=!frmTx2.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
@@ -118,7 +118,7 @@
                         </tr>
                         <tr>
                              <form (ngSubmit)="uploadTx3()" #frmTx3="ngForm">
-                            <th scope="row"> <input type="checkbox" [(ngModel)]="tra2"    name="tra2" id="tra2"> Tx 3</th>
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="tra2" (change)="cambioTx3()"   name="tra2" id="tra2"> Tx 3</th>
                             <td> <input [(ngModel)]="newLatTx3"  placeholder="Latitud" name="newLatTx3" id="newLatTx3" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <input [(ngModel)]="newLongTx3"  placeholder="Longitud" name="newLongTx3" id="newLongTx3" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button  [disabled]=!frmTx3.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
@@ -126,7 +126,7 @@
                             <td>{{mostLongi4}}</td>
                              </form>
                            <form (ngSubmit)="uploadTx4()" #frmTx4="ngForm">
-                            <th scope="row"> <input type="checkbox" [(ngModel)]="tra3"    name="tra3" id="tra3"> Tx 4</th>
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="tra3"  (change)="cambioTx4()"  name="tra3" id="tra3"> Tx 4</th>
                             <td> <input [(ngModel)]="newLatTx4"  placeholder="Latitud" name="newLatTx4" id="newLatTx4" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <input [(ngModel)]="newLongTx4"  placeholder="Longitud" name="newLongTx4" id="newLongTx4" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button  [disabled]=!frmTx4.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
@@ -136,7 +136,7 @@
                         </tr>
                              <tr>
                               <form (ngSubmit)="uploadRx()" #frmRx="ngForm">
-                            <th scope="row"> <input type="checkbox" [(ngModel)]="recep"   name="recep" id="recep"> Rx 1</th>
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="recep" (change)="cambioRx1()"  name="recep" id="recep"> Rx 1</th>
                             <td> <input [(ngModel)]="newLatRx"  placeholder="Latitud" name="newLatRx" id="newLatRx" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td>  <input [(ngModel)]="newLongRx"  placeholder="Longitud" name="newLongRx" id="newLongRx" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button [disabled]=!frmRx.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button></td>
@@ -146,7 +146,7 @@
                         </tr>
                              <tr>
                               <form (ngSubmit)="uploadRx2()" #frmRx2="ngForm">
-                            <th scope="row"> <input type="checkbox" [(ngModel)]="recep2"   name="recep2" id="recep2"> Rx 2</th>
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="recep2" (change)="cambioRx2()"  name="recep2" id="recep2"> Rx 2</th>
                             <td> <input [(ngModel)]="newLatRx2"  placeholder="Latitud" name="newLatRx2" id="newLatRx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td>  <input [(ngModel)]="newLongRx2"  placeholder="Longitud" name="newLongRx2" id="newLongRx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button [disabled]=!frmRx2.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button></td>
@@ -156,7 +156,7 @@
                         </tr>
                              <tr>
                              <form (ngSubmit)="uploadOb()" #frmOb="ngForm" >
-                            <th scope="row"> <input type="checkbox" [(ngModel)]="obst"  name="obst" id="obst" >Obst</th>
+                            <th scope="row"> <input type="checkbox" [(ngModel)]="obst" (change)="cambioObst()" name="obst" id="obst" >Obst</th>
                             <td> <input [(ngModel)]="newLatOb"  placeholder="Latitud" name="newLatOb" id="newLatOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td>  <input [(ngModel)]="newLongOb"  placeholder="Longitud" name="newLongOb" id="newLongOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <button  [disabled]=!frmOb.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
@@ -178,13 +178,13 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Static Parameters</th>
+                                            <th>Retardos</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                          <tbody>
                          <tr>
-                            <th scope="row">Maximun Delay: (x100 ns)</th>
+                            <th scope="row">Retardo de Red: (µs)</th>
                             <td> <input type="text" class="form-control" [(ngModel)]="retardoRed"   aria-describedby="basic-addon1"> </td>
                         </tr>
                                     </tbody>
@@ -193,16 +193,16 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Stations Parameters</th>
+                                            <th>Retardo adicional</th>
                                         </tr>
                                     </thead>
                                     <thead>
                                         <tr>
                                             <th>#</th>
                                             <th>Equipment ID</th>
-                                            <th>Time-Offset (x100 ns)</th>
-                                            <th>Polarity</th>
-                                            <th>Dynamic-Static</th>
+                                            <th>Time-Offset (µs)</th>
+                                            <th>Tipo</th>
+                                   <!--         <th>Dynamic-Static</th> -->
                                             <th>Enable</th>
                                         </tr>
                                     </thead>
@@ -213,29 +213,29 @@
                             <th scope="row">Tx 1</th>
                             <td> <input type="text" class="form-control"  title="equipmentIdTx1"   aria-describedby="basic-addon1"> </td>
                             <td><input type="text" class="form-control" [(ngModel)]="retardos[0]" name="retardoTx1" title="timeOffsetTx1" pattern="[-0-9.]{1,10}"  aria-describedby="basic-addon1"> </td>
-                            <td> <select (change)="cambio($event.target.value, 'Tx1')">
-                                <option>Positive</option>
-                                <option>Negative</option>
+                            <td> <select [(ngModel)]="polarity[0]" name="polarity[0]" title="polarity[0]" >
+                                <option>Atraso</option>
+                                <option *ngIf="retardoRed>0">Adelanto</option>
                               </select>
                         </td>
-                            <td><select [disabled]="negativeOn1">
+                 <!--           <td><select [disabled]="negativeOn1">
                                 <option >Dynamic</option>
                                 <option *ngIf="!negativeOn1">Static</option>
-                              </select></td>
+                              </select></td> -->
                             <td><input type="checkbox"  [(ngModel)]="retardosState[0]"  name="booleanRetardoTx1" id="booleanRetardoTx1"  ></td>
                         </tr>
                          <tr>
                             <th scope="row">Tx 2</th>
                             <td> <input type="text" class="form-control"  title="equipmentIdTx2"    aria-describedby="basic-addon1"> </td>
                             <td> <input type="text" class="form-control"  [(ngModel)]="retardos[1]"  name="retardoTx2" title="timeOffsetTx2"   aria-describedby="basic-addon1"></td>
-                            <td><select (change)="cambio($event.target.value, 'Tx2')">
-                                <option>Positive</option>
-                                <option>Negative</option>
+                            <td><select [(ngModel)]="polarity[1]" name="polarity[1]" title="polarity[1]">
+                                <option>Atraso</option>
+                                <option *ngIf="retardoRed>0">Adelanto</option>
                               </select></td>
-                            <td><select [disabled]="negativeOn2">
+              <!--                <td><select [disabled]="negativeOn2">
                                 <option>Dynamic</option>
                                 <option *ngIf="!negativeOn2">Static</option>
-                              </select></td>
+                              </select></td> -->
                             <td><input type="checkbox"    [(ngModel)]="retardosState[1]"  name="booleanRetardoTx2" id="booleanRetardoTx2" ></td>
                             
                         </tr>
@@ -243,28 +243,28 @@
                             <th scope="row">Tx 3</th>
                             <td><input type="text" class="form-control"  title="equipmentIdTx3"    aria-describedby="basic-addon1"> </td>
                             <td><input type="text" class="form-control" [(ngModel)]="retardos[2]"  name="retardoTx3" title="timeOffsetTx3"   aria-describedby="basic-addon1"> </td>
-                            <td><select (change)="cambio($event.target.value, 'Tx3')">
-                                <option>Positive</option>
-                                <option>Negative</option>
+                            <td><select [(ngModel)]="polarity[2]" name="polarity[2]" title="polarity[2]">
+                                <option>Atraso</option>
+                                <option *ngIf="retardoRed>0">Adelanto</option>
                               </select></td>
-                            <td><select [disabled]="negativeOn3">
+        <!--                    <td><select [disabled]="negativeOn3">
                                 <option>Dynamic</option>
                                 <option *ngIf="!negativeOn3" >Static</option>
-                              </select></td>
+                              </select></td> -->
                             <td><input type="checkbox"    [(ngModel)]="retardosState[2]"  name="booleanRetardoTx3" id="booleanRetardoTx3" ></td>
                         </tr>
                          <tr>
                             <th scope="row">Tx 4</th>
                             <td> <input type="text" class="form-control"   title="equipmentIdTx4"   aria-describedby="basic-addon1"> </td>
                             <td> <input type="text" class="form-control"  [(ngModel)]="retardos[3]"  name="retardoTx4" title="timeOffsetTx4"  aria-describedby="basic-addon1"></td>
-                            <td><select (change)="cambio($event.target.value, 'Tx4')">
-                                <option>Positive</option>
-                                <option>Negative</option>
+                            <td><select [(ngModel)]="polarity[3]" name="polarity[3]" title="polarity[3]">
+                                <option>Atraso</option>
+                                <option *ngIf="retardoRed>0">Adelanto</option>
                               </select></td>
-                            <td><select [disabled]="negativeOn4">
+   <!--                         <td><select [disabled]="negativeOn4">
                                 <option>Dynamic</option>
                                 <option *ngIf="!negativeOn4">Static</option>
-                              </select></td>
+                              </select></td> -->
                             <td><input type="checkbox" [(ngModel)]="retardosState[3]"  name="booleanRetardoTx4" id="booleanRetardoTx4" ></td>
                         </tr> <br>
                          
@@ -277,14 +277,14 @@
                             </div>
                         </ng-template>
                         </ngb-tab>
-                    <ngb-tab title="Resultados" >
+                    <ngb-tab title="Distancias" >
                         <ng-template ngbTabContent>
                             <h4>Seleccione los parametros que desea calcular</h4>
                 <div>
-                    <input type="checkbox" [(ngModel)]="distanciaTab"  name="distanciaTab" id="distanciaTab" > DISTANCIAS
+                    <input type="checkbox" [(ngModel)]="distanciaTab"  name="distanciaTab" id="distanciaTab" > Distancia en KM
                 </div>
                  <div>
-                    <input type="checkbox" [(ngModel)]="tiempoTab"  name="tiempoTab" id="tiempoTab" > TIEMPOS
+                    <input type="checkbox" [(ngModel)]="tiempoTab"  name="tiempoTab" id="tiempoTab" > Distancia en μseg
                 </div><br>
                  <button 
      type="button"
@@ -416,7 +416,7 @@
             
                         </ng-template>
                     </ngb-tab>  
-                    <ngb-tab title="Verificacion Funcionamiento SFN">
+                    <ngb-tab title="Generador Deltas SFN">
                         <ng-template ngbTabContent >
                                
                                      <table class="table ">
@@ -432,23 +432,23 @@
       <tbody>
                             <tr>
                                 <th scope="row">Rx 1</th>
-                                <td>
-                                 <span *ngIf="interfBoolean[0]" style="color:red"  >{{interfTx[0]}}</span>
-                                 <span *ngIf="!interfBoolean[0]" style="color:black"  >{{interfTx[0]}}</span>
+                                <td >
+                                 <span  *ngIf="interfBoolean[0] && tra0 && recep" style="color:red"  >{{interfTx[0]}}</span>
+                                 <span *ngIf="!interfBoolean[0] && tra0 && recep" style="color:black"  >{{interfTx[0]}}</span>
                                 </td>
                                 <td>
-                                 <span *ngIf="interfBoolean[1]" style="color:red"  >{{interfTx[1]}}</span>
-                                 <span *ngIf="!interfBoolean[1]" style="color:black"  >{{interfTx[1]}}</span>
+                                 <span *ngIf="interfBoolean[1] && tra1 && recep" style="color:red"  >{{interfTx[1]}}</span>
+                                 <span *ngIf="!interfBoolean[1] && tra1 && recep" style="color:black"  >{{interfTx[1]}}</span>
     
                                  </td>
                                 <td>
-                                 <span *ngIf="interfBoolean[2]" style="color:red"  >{{interfTx[2]}}</span>
-                                 <span *ngIf="!interfBoolean[2]" style="color:black"  >{{interfTx[2]}}</span>
+                                 <span *ngIf="interfBoolean[2] && tra2 && recep" style="color:red"  >{{interfTx[2]}}</span>
+                                 <span *ngIf="!interfBoolean[2] && tra2 && recep" style="color:black"  >{{interfTx[2]}}</span>
     
                                  </td>
                                 <td>
-                                 <span *ngIf="interfBoolean[3]" style="color:red"  >{{interfTx[3]}}</span>
-                                 <span *ngIf="!interfBoolean[3]" style="color:black"  >{{interfTx[3]}}</span>
+                                 <span *ngIf="interfBoolean[3] && tra3 && recep" style="color:red"  >{{interfTx[3]}}</span>
+                                 <span *ngIf="!interfBoolean[3] && tra3 && recep" style="color:black"  >{{interfTx[3]}}</span>
     
                                  </td>
                                
@@ -469,22 +469,22 @@
                             <tr>
                                 <th scope="row">Rx 1</th>
                                <td>
-                                 <span *ngIf="interfBoolean[4]" style="color:red"  >{{interfTx[4]}}</span>
-                                 <span *ngIf="!interfBoolean[4]" style="color:black"  >{{interfTx[4]}}</span>
+                                 <span *ngIf="interfBoolean[4] && tra0 && recep" style="color:red"  >{{interfTx[4]}}</span>
+                                 <span *ngIf="!interfBoolean[4] && tra0 && recep" style="color:black"  >{{interfTx[4]}}</span>
                                 </td>
                                 <td>
-                                 <span *ngIf="interfBoolean[5]" style="color:red"  >{{interfTx[5]}}</span>
-                                 <span *ngIf="!interfBoolean[5]" style="color:black"  >{{interfTx[5]}}</span>
+                                 <span *ngIf="interfBoolean[5] && tra1 && recep" style="color:red"  >{{interfTx[5]}}</span>
+                                 <span *ngIf="!interfBoolean[5] && tra1 && recep" style="color:black"  >{{interfTx[5]}}</span>
     
                                  </td>
                                 <td>
-                                 <span *ngIf="interfBoolean[6]" style="color:red"  >{{interfTx[6]}}</span>
-                                 <span *ngIf="!interfBoolean[6]" style="color:black"  >{{interfTx[6]}}</span>
+                                 <span *ngIf="interfBoolean[6] && tra2 && recep" style="color:red"  >{{interfTx[6]}}</span>
+                                 <span *ngIf="!interfBoolean[6] && tra2 && recep" style="color:black"  >{{interfTx[6]}}</span>
     
                                  </td>
                                 <td>
-                                 <span *ngIf="interfBoolean[7]" style="color:red"  >{{interfTx[7]}}</span>
-                                 <span *ngIf="!interfBoolean[7]" style="color:black"  >{{interfTx[7]}}</span>
+                                 <span *ngIf="interfBoolean[7] && tra3 && recep" style="color:red"  >{{interfTx[7]}}</span>
+                                 <span *ngIf="!interfBoolean[7] && tra3 && recep" style="color:black"  >{{interfTx[7]}}</span>
     
                                  </td>
                             </tr>
@@ -505,22 +505,22 @@
                             <tr>
                                 <th scope="row">Rx 2</th>
                                 <td>
-                                 <span *ngIf="interfBooleanRx2[0]" style="color:red"  >{{interfTxRx2[0]}}</span>
-                                 <span *ngIf="!interfBooleanRx2[0]" style="color:black"  >{{interfTxRx2[0]}}</span>
+                                 <span *ngIf="interfBooleanRx2[0] && tra0 && recep2" style="color:red"  >{{interfTxRx2[0]}}</span>
+                                 <span *ngIf="!interfBooleanRx2[0] && tra0 && recep2" style="color:black"  >{{interfTxRx2[0]}}</span>
                                 </td>
                                 <td>
-                                 <span *ngIf="interfBooleanRx2[1]" style="color:red"  >{{interfTxRx2[1]}}</span>
-                                 <span *ngIf="!interfBooleanRx2[1]" style="color:black"  >{{interfTxRx2[1]}}</span>
+                                 <span *ngIf="interfBooleanRx2[1] && tra1 && recep2" style="color:red"  >{{interfTxRx2[1]}}</span>
+                                 <span *ngIf="!interfBooleanRx2[1] && tra1 && recep2" style="color:black"  >{{interfTxRx2[1]}}</span>
     
                                  </td>
                                 <td>
-                                 <span *ngIf="interfBooleanRx2[2]" style="color:red"  >{{interfTxRx2[2]}}</span>
-                                 <span *ngIf="!interfBooleanRx2[2]" style="color:black"  >{{interfTxRx2[2]}}</span>
+                                 <span *ngIf="interfBooleanRx2[2] && tra2 && recep2" style="color:red"  >{{interfTxRx2[2]}}</span>
+                                 <span *ngIf="!interfBooleanRx2[2] && tra2 && recep2" style="color:black"  >{{interfTxRx2[2]}}</span>
     
                                  </td>
                                 <td>
-                                 <span *ngIf="interfBooleanRx2[3]" style="color:red"  >{{interfTxRx2[3]}}</span>
-                                 <span *ngIf="!interfBooleanRx2[3]" style="color:black"  >{{interfTxRx2[3]}}</span>
+                                 <span *ngIf="interfBooleanRx2[3] && tra3 && recep2" style="color:red"  >{{interfTxRx2[3]}}</span>
+                                 <span *ngIf="!interfBooleanRx2[3] && tra3 && recep2" style="color:black"  >{{interfTxRx2[3]}}</span>
     
                                  </td>
                                
@@ -541,22 +541,22 @@
                             <tr>
                                 <th scope="row">Rx 2</th>
                                <td>
-                                 <span *ngIf="interfBooleanRx2[4]" style="color:red"  >{{interfTxRx2[4]}}</span>
-                                 <span *ngIf="!interfBooleanRx2[4]" style="color:black"  >{{interfTxRx2[4]}}</span>
+                                 <span *ngIf="interfBooleanRx2[4] && tra0 && recep2" style="color:red"  >{{interfTxRx2[4]}}</span>
+                                 <span *ngIf="!interfBooleanRx2[4] && tra0 && recep2" style="color:black"  >{{interfTxRx2[4]}}</span>
                                 </td>
                                 <td>
-                                 <span *ngIf="interfBooleanRx2[5]" style="color:red"  >{{interfTxRx2[5]}}</span>
-                                 <span *ngIf="!interfBooleanRx2[5]" style="color:black"  >{{interfTxRx2[5]}}</span>
+                                 <span *ngIf="interfBooleanRx2[5] && tra1 && recep2" style="color:red"  >{{interfTxRx2[5]}}</span>
+                                 <span *ngIf="!interfBooleanRx2[5] && tra1 && recep2" style="color:black"  >{{interfTxRx2[5]}}</span>
     
                                  </td>
                                 <td>
-                                 <span *ngIf="interfBooleanRx2[6]" style="color:red"  >{{interfTxRx2[6]}}</span>
-                                 <span *ngIf="!interfBooleanRx2[6]" style="color:black"  >{{interfTxRx2[6]}}</span>
+                                 <span *ngIf="interfBooleanRx2[6] && tra2 && recep2" style="color:red"  >{{interfTxRx2[6]}}</span>
+                                 <span *ngIf="!interfBooleanRx2[6] && tra2 && recep2" style="color:black"  >{{interfTxRx2[6]}}</span>
     
                                  </td>
                                 <td>
-                                 <span *ngIf="interfBooleanRx2[7]" style="color:red"  >{{interfTxRx2[7]}}</span>
-                                 <span *ngIf="!interfBooleanRx2[7]" style="color:black"  >{{interfTxRx2[7]}}</span>
+                                 <span *ngIf="interfBooleanRx2[7] && tra3 && recep2" style="color:red"  >{{interfTxRx2[7]}}</span>
+                                 <span *ngIf="!interfBooleanRx2[7] && tra3 && recep2" style="color:black"  >{{interfTxRx2[7]}}</span>
     
                                  </td>
                             </tr>
@@ -578,9 +578,9 @@
     
                     <ngb-tab title="Ventana de Sincronizacion">
                         <ng-template ngbTabContent>
-<div>
+<div *ngIf="recep">
 <script src="node_modules/chart.js/src/chart.js"></script>
-<div >
+<div *ngIf="chart_visible">
 <canvas 
  baseChart height="100"
         [datasets]="lineChartData"
@@ -591,13 +591,35 @@
   ></canvas>
 
 </div>
-
- <button 
-                                 type="button"
-                                 class="btn btn-sm btn-secondary"
-                                data-toggle="tooltip" data-placement="top" title=""
-                                (click)="ventanaSincro()">Actualizar</button> <br>
+<button 
+type="button"
+class="btn btn-sm btn-secondary"
+data-toggle="tooltip" data-placement="top" title=""
+(click)="ventanaSincro()">Actualizar Rx1</button> <br>
 </div>
+
+<div *ngIf="recep2">
+<div *ngIf="chart_visible2">
+    <canvas 
+     baseChart height="100"
+            [datasets]="lineChartData2"
+            [options]="lineChartOptions2"
+            [colors]="lineChartColors2"
+            [legend]="lineChartLegend2"
+            [chartType]="lineChartType2"
+      ></canvas>
+    
+    </div>
+    <button 
+    type="button"
+    class="btn btn-sm btn-secondary"
+   data-toggle="tooltip" data-placement="top" title=""
+   (click)="ventanaSincro2()">Actualizar Rx2</button> <br>
+</div>
+
+
+                             
+
                     </ng-template>
                     </ngb-tab> 
                 </ngb-tabset>
