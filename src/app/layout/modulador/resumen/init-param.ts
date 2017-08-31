@@ -11,8 +11,8 @@ load(){
 
             var intSelected = '1/4';
             var modoSelected = 'MODO 1';
-            var esqModSelected = ['16-QAM','16-QAM','16-QAM'];
-            var codConSelected = ['1/2','1/2', '1/2'];
+            var esqModSelected = ['QPSK','QPSK','QPSK'];
+            var codConSelected = ["1/2","1/2","1/2"];
             var select1 = 0;
             var select2 = 0;
             var select3 = 0;
@@ -28,7 +28,10 @@ load(){
             //resultados
             var intGua =63;
             localStorage.setItem('intGua', JSON.stringify(intGua));
-           
+            var ki = [1/2,1/2,1/2];
+            localStorage.setItem('ki', JSON.stringify(ki));
+            var bp = [2,2,2];
+            localStorage.setItem('bp', JSON.stringify(bp));
         }else{
                 console.log('Cargando parametros...');
         }

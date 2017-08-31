@@ -1,5 +1,8 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
     <ul class="list-group">
+            <a [routerLink]="['/menu-interactivo']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                &nbsp;{{ 'Menu Interactivo' | translate }}
+             </a>
         <a [routerLink]="['/codificador']" [routerLinkActive]="['router-link-active']" class="list-group-item">
            &nbsp;{{ 'Codificador A/V' | translate }}
         </a>

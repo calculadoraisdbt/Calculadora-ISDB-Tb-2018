@@ -105,7 +105,26 @@ export class ModuladorService extends InitParam {
 
 
     }}
-
+    obtenerBp(){
+      
+            var bp = JSON.parse(localStorage.getItem('bp'));
+            return bp;
+           
+      
+         }
+   actualizarBp(newParam0 : any , newParam1 : any,newParam2 : any){
+            
+            
+                     var bp = JSON.parse(localStorage.getItem('bp'));
+            
+                     bp[0] = newParam0;
+                     bp[1] = newParam1;
+                     bp[2] = newParam2;
+            
+                      localStorage.setItem('bp', JSON.stringify(bp));
+            
+            
+               }
          //FUNCIONES PARA CODIFICACION CONVOLUCIONAL
     obtenerCodificacionConvolucional(){
 
@@ -150,6 +169,27 @@ export class ModuladorService extends InitParam {
 
    }
 
+   obtenerKi(){
+      
+            var ki = JSON.parse(localStorage.getItem('ki'));
+            return ki;
+           
+      
+         }
+   actualizarKi(newParam0 : any , newParam1 : any,newParam2 : any){
+            
+            
+                     var ki = JSON.parse(localStorage.getItem('ki'));
+            
+                      ki[0] = newParam0;
+                      ki[1] = newParam1;
+                      ki[2] = newParam2;
+            
+                      localStorage.setItem('ki', JSON.stringify(ki));
+            
+            
+               }
+            
    //FUNCION PARA LOS SEGMENTOS
 
    obtenerSegmentoA(){

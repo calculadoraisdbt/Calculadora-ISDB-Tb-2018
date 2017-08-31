@@ -6,9 +6,9 @@ const routes: Routes = [
     {
         path: '', component: LayoutComponent,
         children: [
+            { path: 'menu-interactivo', loadChildren: './menu-interactivo/menu-interactivo.module#MenuInteractivoModule' },
             { path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' },
             { path: 'modulador', loadChildren: './modulador/resumen/resumen.module#ResumenModule' },
-            { path: 'globales', loadChildren: './modulador/globales/globales.module#GlobalesModule' },
             { path: 'codificador', loadChildren: './codificador/codificador.module#CodificadorModule' },
             { path: 'remux', loadChildren: './remux/remux.module#RemuxModule' },
             { path: 'multiplexor', loadChildren: './multiplexor/multiplexor.module#MultiplexorModule' },

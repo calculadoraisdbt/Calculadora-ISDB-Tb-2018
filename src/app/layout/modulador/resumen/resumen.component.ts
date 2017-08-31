@@ -13,7 +13,7 @@ export class ResumenComponent implements OnInit {
   intSelected : string = "" ;
   modoSelected : string = "" ;
   esqModSelected : string [] ;
-  codConSelected : string [] ;
+  codConSelected ;
   oneSeg : boolean = false;
   mostMenos : boolean = true;
   oneSegseg : string = "";
@@ -39,6 +39,9 @@ export class ResumenComponent implements OnInit {
   ls3 : number = 432;
   f : number = 204;
   intGua : number ;
+  ki ;
+  deltaGuarda;
+  bp ;
 
   constructor(private _moduladorService:ModuladorService) {
 
@@ -51,6 +54,8 @@ export class ResumenComponent implements OnInit {
            this.select3 = this._moduladorService.obtenerSegmentoC();
            this.activado = this._moduladorService.obtenerActivado();
            this.intGua = this._moduladorService.obtenerIntGua();
+           this.ki = this._moduladorService.obtenerKi();
+           this.bp = this._moduladorService.obtenerBp();
    }
 
    
@@ -58,6 +63,9 @@ export class ResumenComponent implements OnInit {
 
   ngOnInit() {
                 this.calculoIntervaloGuarda(this.intSelected );
+                this.calculoKi(this.codConSelected[0],this.codConSelected[1],this.codConSelected[2]);
+                this.detDeltaGuarda(this.intSelected);
+                this.calculoBp(this.esqModSelected[0],this.esqModSelected[1],this.esqModSelected[2])
 
   }
 
@@ -68,8 +76,25 @@ export class ResumenComponent implements OnInit {
      this._moduladorService.actualizarIntervalo(this.intSelected);
 
     this.calculoIntervaloGuarda(value);
-
+    this.detDeltaGuarda(value);
         
+  }
+
+  detDeltaGuarda(value) {
+        if(value === "1/4"){
+            this.deltaGuarda = 1/4;
+        }
+        if(value === "1/8"){
+            this.deltaGuarda = 1/8;
+        }
+        if(value === "1/16"){
+            this.deltaGuarda = 1/16;
+        }
+        if(value === "1/32"){
+            this.deltaGuarda = 1/32;
+        }
+    
+
   }
 
 
@@ -97,6 +122,7 @@ modo(value){
 
 
 
+
 }
 
 esqModSelection(value, id){
@@ -119,30 +145,72 @@ esqModSelection(value, id){
 
     }
 
+    this.calculoBp(this.esqModSelected[0],this.esqModSelected[1],this.esqModSelected[2])
     
 
 }
 
+calculoBp(value0 : any,value1 : any,value2 : any){
+    if(value0 === 'QPSK'){
+        this.bp[0] = 2;
+    }
+    if(value0 === 'DQPSK'){
+        this.bp[0] = 2;
+    }
+    if(value0 === '16-QAM'){
+        this.bp[0] = 4;
+    }
+    if(value0 === '64-QAM'){
+        this.bp[0] = 6;
+    }
+    
+    if(value1 === 'QPSK'){
+        this.bp[1] = 2;
+    }
+    if(value1 === 'DQPSK'){
+        this.bp[1] = 2;
+    }
+    if(value1 === '16-QAM'){
+        this.bp[1] = 4;
+    }
+    if(value1 === '64-QAM'){
+        this.bp[1] = 6;
+    }
+
+    if(value2 === 'QPSK'){
+        this.bp[2] = 2;
+    }
+    if(value2 === 'DQPSK'){
+        this.bp[2] = 2;
+    }
+    if(value2 === '16-QAM'){
+        this.bp[2] = 4;
+    }
+    if(value2 === '64-QAM'){
+        this.bp[2] = 6;
+    }
+        
+}   
 codConSelection(value, id){
+    
     if(id === 'capa A') {
 
-        this.codConSelected[0] = value;
-         this._moduladorService. actualizarCodificacionConvolucional(this.codConSelected[0], id);   
+        this.codConSelected[0] = value ;
+        this._moduladorService.actualizarCodificacionConvolucional(this.codConSelected[0], id);   
 
     }
      if (id === 'capa B') {
-
         this.codConSelected[1] = value;
         this._moduladorService. actualizarCodificacionConvolucional(this.codConSelected[1], id);  
 
     }
     if(id === 'capa C') {
-
         this.codConSelected[2] = value;
         this._moduladorService. actualizarCodificacionConvolucional(this.codConSelected[2], id);  
 
     }
 
+    this.calculoKi(this.codConSelected[0], this.codConSelected[1],this.codConSelected[2]);
     
 
 }
@@ -275,6 +343,57 @@ calculoIntervaloGuarda(valor : any ) {
     
 }
 
+calculoKi(value0 : any, value1: any,value2: any){
+
+
+    if(value0 === "1/2"){
+        this.ki[0] = 1/2; 
+    }
+    if(value0 === "2/3"){
+        this.ki[0] = 2/3; 
+    }
+    if(value0 === "3/4"){
+        this.ki[0] = 3/4; 
+    }
+    if(value0 === "5/6"){
+        this.ki[0] = 5/6; 
+    }
+    if(value0 === "7/8"){
+        this.ki[0] = 7/8; 
+    }
+
+    if(value1 === "1/2"){
+        this.ki[1] = 1/2; 
+    }
+    if(value1 === "2/3"){
+        this.ki[1] = 2/3; 
+    }
+    if(value1 === "3/4"){
+        this.ki[1] = 3/4; 
+    }
+    if(value1 === "5/6"){
+        this.ki[1] = 5/6; 
+    }
+    if(value1 === "7/8"){
+        this.ki[1] = 7/8; 
+    }
+
+    if(value2 === "1/2"){
+        this.ki[2] = 1/2; 
+    }
+    if(value2 === "2/3"){
+        this.ki[2] = 2/3; 
+    }
+    if(value2 === "3/4"){
+        this.ki[2] = 3/4; 
+    }
+    if(value2 === "5/6"){
+        this.ki[2] = 5/6; 
+    }
+    if(value2 === "7/8"){
+        this.ki[2] = 7/8; 
+    }
+    this._moduladorService.actualizarKi(this.ki[0],this.ki[1],this.ki[2]);
 }
 
-
+}
