@@ -1,13 +1,11 @@
 
-
-
 <div class="row">
     <div class="col col-sm-6">
         <div class="card mb-3">
             <div class="card-header">
                 Parametros Variables
             </div>
-            <div class="card-block">
+            <div class="card-block table-responsive">
                 <div class="form-group">
                 <label>Modo :</label>
                 <select [value]="modoSelected" class="form-control-mb-12" 
@@ -26,7 +24,14 @@
                 </select><br><br>
                   <label> One-Seg: </label>
                     <button (click)="onActivado()">{{ activado ? 'Activado' : 'Desactivado' }}</button>
-                    <div class="card-block table-responsive">
+                        <label>Entrelazado de Tiempo :</label>
+                        <select  class="form-control-mb-12">
+                            <option  value="0">0</option>
+                            <option value="4">4</option>
+                            <option  value="8">8</option>
+                            <option  value="16">16</option>
+                        </select>
+                 <div class="card-block table-responsive">
                  <table class="table">
   <thead>
     <tr>
@@ -160,9 +165,9 @@
     </tr>
     <tr>
       <th scope="row">Cantidad de bits por portadora:</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{bp[0]}}</td>
+      <td>{{bp[0]}}</td>
+      <td>{{bp[0]}}</td>
     </tr>
     <tr>
       <th scope="row">Relación de codificación convolucional:</th>
@@ -172,9 +177,9 @@
     </tr>
     <tr>
       <th scope="row">Relación de codificación externa:</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{(188/204).toFixed(2)}}</td>
+      <td>{{(188/204).toFixed(2)}}</td>
+      <td>{{(188/204).toFixed(2)}}</td>
     </tr>
     <tr>
       <th scope="row">Numero de segmentos asignados: </th>
@@ -202,9 +207,9 @@
     </tr>
     <tr>
       <th scope="row">Cantidad de bits por portadora:</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{bp[1]}}</td>
+      <td>{{bp[1]}}</td>
+      <td>{{bp[1]}}</td>
     </tr>
     <tr>
       <th scope="row">Relación de codificación convolucional:</th>
@@ -214,9 +219,9 @@
     </tr>
     <tr>
       <th scope="row">Relación de codificación externa:</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{(188/204).toFixed(2)}}</td>
+      <td>{{(188/204).toFixed(2)}}</td>
+      <td>{{(188/204).toFixed(2)}}</td>
     </tr>
     <tr>
       <th scope="row">Numero de segmentos asignados: </th>
@@ -244,9 +249,9 @@
     </tr>
     <tr>
       <th scope="row">Cantidad de bits por portadora:</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{bp[2]}}</td>
+      <td>{{bp[2]}}</td>
+      <td>{{bp[2]}}</td>
     </tr>
     <tr>
       <th scope="row">Relación de codificación convolucional:</th>
@@ -256,9 +261,9 @@
     </tr>
     <tr>
       <th scope="row">Relación de codificación externa:</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{(188/204).toFixed(2)}}</td>
+      <td>{{(188/204).toFixed(2)}}</td>
+      <td>{{(188/204).toFixed(2)}}</td>
     </tr>
     <tr>
       <th scope="row">Numero de segmentos asignados: </th>
@@ -377,15 +382,15 @@
     </tr>&nbsp;
     <tr>
       <th scope="row">Total de pulsos por simbolo OFDM: N <sub> pulsos </sub> [-]</th>
-  <td></td>
-      <td></td>
-      <td></td>
+      <td>{{pps[0]}}</td>
+      <td>{{pps[1]}}</td>
+      <td>{{pps[2]}}</td>
     </tr>
   </tbody>
 </table>          
                         </ng-template>
                     </ngb-tab>
-                    <ngb-tab title="Segmentos y cuadro OFDM" [disabled]="!isValidSuma()">
+<!--                    <ngb-tab title="Segmentos y cuadro OFDM" [disabled]="!isValidSuma()">
                         <ng-template ngbTabContent>
                            <table class="table table-bordered">
   <thead>
@@ -409,7 +414,7 @@
       <td>{{(bws/ls2).toFixed(2)}}</td>
       <td>{{(bws/ls3).toFixed(2)}}</td>
     </tr>&nbsp;
-    <tr>
+    <tr> -->
 <!--      <th scope="row" class="underline">Portadoras por segmento Para QPSK, 16-QAM, 64-QAM</th>
         <td></td>
       <td></td>
@@ -507,7 +512,7 @@
       <td></td>
       <td></td>
     </tr> -->
-    <tr>
+ <!--   <tr>
       <th scope="row"> Nº total de portadoras: L  [Port]</th>
       <td></td>
       <td></td>
@@ -591,7 +596,7 @@
   </tbody>
 </table>     
                         </ng-template>
-                    </ngb-tab>
+                    </ngb-tab> -->
                      <ngb-tab title="ReMUX" [disabled]="!isValidSuma()">
                         <ng-template ngbTabContent>
                            <table class="table table-bordered">
@@ -606,15 +611,15 @@
   <tbody>
     <tr>
       <th scope="row">Duracion del TSP: T<sub>TSP</sub> [us]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{50.20}}</td>
+      <td>{{50.20}}</td>
+      <td>{{50.20}}</td>
     </tr>
     <tr>
       <th scope="row">Nº de TSP transportados por el BTS en un cuadro multiplex: N<sub>BTS</sub> [-]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{Nbts[0]}}</td>
+      <td>{{Nbts[1]}}</td>
+      <td>{{Nbts[2]}}</td>
     </tr>
     <tr>
       <th scope="row"  >Nº de TSP nulos transportados por el BTS en un cuadro multiplex: ΣTSP<sub>nul</sub> [-]</th>
@@ -624,9 +629,9 @@
     </tr>
     <tr>
       <th scope="row">Frecuencia reloj del BTS (4 flFFT): f<sub>R</sub> [Mhz]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{(4*(2048/252)).toFixed(2)}}</td>
+      <td>{{(4*(2048/252)).toFixed(2)}}</td>
+      <td>{{(4*(2048/252)).toFixed(2)}}</td>
     </tr>&nbsp;
     <tr>
 <!--      <th scope="row"> Nº total de portadoras: L  [Port]</th>
@@ -743,12 +748,6 @@
       <td></td>
     </tr>&nbsp;
     <tr>
-      <th scope="row">Relacion de codificacion externa: K<sub>o</sub> [-]</th>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>&nbsp;
-    <tr>
       <th scope="row"> Payload del segmento: R <sub>max</sub> [bps]</th>
       <td></td>
       <td></td>
@@ -762,9 +761,9 @@
     </tr>
     <tr>
       <th scope="row">Nº TSP por segmento por cuadro: N [-]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{Nmodo1[0]}}</td>
+      <td>{{Nmodo2[0]}}</td>
+      <td>{{Nmodo3[0]}}</td>
     </tr>
     <tr>
       <th scope="row" > Tasa binaria neta de la Capa A: R <sub>A</sub> [Mbps]</th>
@@ -775,9 +774,9 @@
     </tr>
     <tr>
       <th scope="row">Total de TSP para la Capa A: N <sub>S</sub> x N [TSP<sub>S</sub>]   </th>
-       <td></td>
-      <td></td>
-      <td></td>
+      <td>{{((Nmodo1[0])*13)}}</td>
+      <td>{{((Nmodo2[0])*13)}}</td>
+      <td>{{((Nmodo3[0])*13)}}</td>
     </tr>
   </tbody>
 </table>               
@@ -815,22 +814,22 @@
     </tr>&nbsp;
  
     <tr>
-      <th scope="row"> Capacidad maxima del segmento: R <sub>max</sub> [bps]</th>
+      <th scope="row"> Payload del segmento: R <sub>max</sub> [bps]</th>
       <td></td>
       <td></td>
       <td></td>
     </tr>
     <tr>
-      <th scope="row"> Capacidad maxima del segmento: R <sub>max</sub> [Mbps]</th>
+      <th scope="row"> Payload del segmento: R <sub>max</sub> [Mbps]</th>
       <td></td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <th scope="row">Nº TSP por segmento por cuadro: N [-]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{Nmodo1[1]}}</td>
+      <td>{{Nmodo2[1]}}</td>
+      <td>{{Nmodo3[1]}}</td>
     </tr>
     <tr>
       <th scope="row" > Tasa binaria neta de la Capa B: R <sub>B</sub> [Mbps]</th>
@@ -841,9 +840,9 @@
     </tr>
     <tr>
       <th scope="row">Total de TSP para la Capa B: N <sub>S</sub> x N [TSP<sub>S</sub>]   </th>
-       <td></td>
-      <td></td>
-      <td></td>
+      <td>{{((Nmodo1[1])*13)}}</td>
+      <td>{{((Nmodo2[1])*13)}}</td>
+      <td>{{((Nmodo3[1])*13)}}</td>
     </tr>
   </tbody>
 </table>               
@@ -881,12 +880,6 @@
       <td></td>
     </tr>&nbsp;
     <tr>
-      <th scope="row">Relacion de codificacion externa: K<sub>o</sub> [-]</th>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>&nbsp;
-    <tr>
       <th scope="row"> Capacidad maxima del segmento: R <sub>max</sub> [bps]</th>
       <td></td>
       <td></td>
@@ -900,9 +893,9 @@
     </tr>
     <tr>
       <th scope="row">Nº TSP por segmento por cuadro: N [-]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{Nmodo1[2]}}</td>
+      <td>{{Nmodo2[2]}}</td>
+      <td>{{Nmodo3[2]}}</td>
     </tr>
     <tr>
       <th scope="row" > Tasa binaria neta de la Capa C: R <sub>C</sub> [Mbps]</th>
@@ -913,9 +906,9 @@
     </tr>
     <tr>
       <th scope="row">Total de TSP para la Capa C: N <sub>S</sub> x N [TSP<sub>S</sub>]   </th>
-       <td></td>
-      <td></td>
-      <td></td>
+      <td>{{((Nmodo1[2])*13)}}</td>
+      <td>{{((Nmodo2[2])*13)}}</td>
+      <td>{{((Nmodo3[2])*13)}}</td>
     </tr>
   </tbody>
 </table>                                      

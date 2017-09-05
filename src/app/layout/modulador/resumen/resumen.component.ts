@@ -42,6 +42,11 @@ export class ResumenComponent implements OnInit {
   ki ;
   deltaGuarda;
   bp ;
+  pps = [];
+  Nmodo1 = [] ;
+  Nmodo2 = [] ;
+  Nmodo3 = [] ;
+  Nbts = [] ;
 
   constructor(private _moduladorService:ModuladorService) {
 
@@ -65,7 +70,9 @@ export class ResumenComponent implements OnInit {
                 this.calculoIntervaloGuarda(this.intSelected );
                 this.calculoKi(this.codConSelected[0],this.codConSelected[1],this.codConSelected[2]);
                 this.detDeltaGuarda(this.intSelected);
-                this.calculoBp(this.esqModSelected[0],this.esqModSelected[1],this.esqModSelected[2])
+                this.calculoBp(this.esqModSelected[0],this.esqModSelected[1],this.esqModSelected[2]);
+                this.pulsosPorSimbolo(this.intSelected );
+                this.numeroTSP();
 
   }
 
@@ -77,6 +84,8 @@ export class ResumenComponent implements OnInit {
 
     this.calculoIntervaloGuarda(value);
     this.detDeltaGuarda(value);
+    this.pulsosPorSimbolo(value );
+    this.numeroTSP();
         
   }
 
@@ -145,7 +154,8 @@ esqModSelection(value, id){
 
     }
 
-    this.calculoBp(this.esqModSelected[0],this.esqModSelected[1],this.esqModSelected[2])
+    this.calculoBp(this.esqModSelected[0],this.esqModSelected[1],this.esqModSelected[2]);
+   
     
 
 }
@@ -189,7 +199,7 @@ calculoBp(value0 : any,value1 : any,value2 : any){
     if(value2 === '64-QAM'){
         this.bp[2] = 6;
     }
-        
+    this.cantidadPaquetesTSP();
 }   
 codConSelection(value, id){
     
@@ -211,6 +221,7 @@ codConSelection(value, id){
     }
 
     this.calculoKi(this.codConSelected[0], this.codConSelected[1],this.codConSelected[2]);
+    this.cantidadPaquetesTSP();
     
 
 }
@@ -396,4 +407,331 @@ calculoKi(value0 : any, value1: any,value2: any){
     this._moduladorService.actualizarKi(this.ki[0],this.ki[1],this.ki[2]);
 }
 
+//PULSOS POR SIMBOLO OFDM
+
+pulsosPorSimbolo(value){
+    if(value === "1/4"){
+        this.pps[0] = '2560';
+        this.pps[1] = '5120'; 
+        this.pps[2] = '10240';
+
+    }
+
+    if(value === "1/8"){
+        this.pps[0] = '2304';
+        this.pps[1] = '4608'; 
+        this.pps[2] = '9216';
+                
+    }
+    if(value === "1/16"){
+        
+        this.pps[0] = '2176';
+        this.pps[1] = '4352'; 
+        this.pps[2] = '8704';           
+    } 
+    if(value === "1/32"){
+        this.pps[0] = '2112';
+        this.pps[1] = '4224'; 
+        this.pps[2] = '8448';           
+                                
+    }
+
+
 }
+
+//N CANTIDAD DE PAQUETES TSP POR SEGMENTO Y POR CUADRO OFDM
+
+cantidadPaquetesTSP(){
+//CAPA A
+    if(this.bp[0] === 2 ){
+        
+            if(this.ki[0] === 1/2){ 
+                this.Nmodo1[0] = 12 ;
+                this.Nmodo2[0] = 24 ;
+                this.Nmodo3[0] = 48 ;
+            };
+            if(this.ki[0] === 2/3){
+                this.Nmodo1[0] = 16 ;
+                this.Nmodo2[0] = 32 ;
+                this.Nmodo3[0] = 64 ;                
+            };
+            if(this.ki[0] === 3/4){
+                this.Nmodo1[0] = 18 ;
+                this.Nmodo2[0] = 36 ;
+                this.Nmodo3[0] = 72 ;                
+            };
+            if(this.ki[0] === 5/6){
+                this.Nmodo1[0] = 20 ;
+                this.Nmodo2[0] = 40 ;
+                this.Nmodo3[0] = 80 ;                
+            };
+            if(this.ki[0] === 7/8){
+                this.Nmodo1[0] = 21 ;
+                this.Nmodo2[0] = 42 ;
+                this.Nmodo3[0] = 84 ;                
+            };
+            }
+
+            if(this.bp[0] === 4 ){
+                if(this.ki[0] === 1/2){ 
+                    this.Nmodo1[0] = 24 ;
+                    this.Nmodo2[0] = 48 ;
+                    this.Nmodo3[0] = 96 ;
+                };
+                if(this.ki[0] === 2/3){
+                    this.Nmodo1[0] = 32 ;
+                    this.Nmodo2[0] = 64 ;
+                    this.Nmodo3[0] = 128 ;                
+                };
+                if(this.ki[0] === 3/4){
+                    this.Nmodo1[0] = 36 ;
+                    this.Nmodo2[0] = 72 ;
+                    this.Nmodo3[0] = 144 ;                
+                };
+                if(this.ki[0] === 5/6){
+                    this.Nmodo1[0] = 40 ;
+                    this.Nmodo2[0] = 80 ;
+                    this.Nmodo3[0] = 160 ;                
+                };
+                if(this.ki[0] === 7/8){
+                    this.Nmodo1[0] = 42 ;
+                    this.Nmodo2[0] = 84 ;
+                    this.Nmodo3[0] = 168 ;                
+                };
+
+            }
+
+
+                if(this.bp[0] === 6 ){
+                    if(this.ki[0] === 1/2){ 
+                        this.Nmodo1[0] = 36 ;
+                        this.Nmodo2[0] = 72 ;
+                        this.Nmodo3[0] = 144 ;
+                    };
+                    if(this.ki[0] === 2/3){
+                        this.Nmodo1[0] = 48 ;
+                        this.Nmodo2[0] = 96 ;
+                        this.Nmodo3[0] = 192 ;                
+                    };
+                    if(this.ki[0] === 3/4){
+                        this.Nmodo1[0] = 58 ;
+                        this.Nmodo2[0] = 108 ;
+                        this.Nmodo3[0] = 216 ;                
+                    };
+                    if(this.ki[0] === 5/6){
+                        this.Nmodo1[0] = 60 ;
+                        this.Nmodo2[0] = 120 ;
+                        this.Nmodo3[0] = 240 ;                
+                    };
+                    if(this.ki[0] === 7/8){
+                        this.Nmodo1[0] = 63 ;
+                        this.Nmodo2[0] = 126 ;
+                        this.Nmodo3[0] = 252 ;                
+                    };                            
+                }
+//CAPA B
+if(this.bp[1] === 2 ){
+        if(this.ki[1] === 1/2){ 
+            this.Nmodo1[1] = 12 ;
+            this.Nmodo2[1] = 24 ;
+            this.Nmodo3[1] = 48 ;
+        };
+        if(this.ki[1] === 2/3){
+            this.Nmodo1[1] = 16 ;
+            this.Nmodo2[1] = 32 ;
+            this.Nmodo3[1] = 64 ;                
+        };
+        if(this.ki[1] === 3/4){
+            this.Nmodo1[1] = 18 ;
+            this.Nmodo2[1] = 36 ;
+            this.Nmodo3[1] = 72 ;                
+        };
+        if(this.ki[1] === 5/6){
+            this.Nmodo1[1] = 20 ;
+            this.Nmodo2[1] = 40 ;
+            this.Nmodo3[1] = 80 ;                
+        };
+        if(this.ki[1] === 7/8){
+            this.Nmodo1[1] = 21 ;
+            this.Nmodo2[1] = 42 ;
+            this.Nmodo3[1] = 84 ;                
+        };
+
+        }
+
+        if(this.bp[1] === 4 ){
+            if(this.ki[1] === 1/2){ 
+                this.Nmodo1[1] = 24 ;
+                this.Nmodo2[1] = 48 ;
+                this.Nmodo3[1] = 96 ;
+            };
+            if(this.ki[1] === 2/3){
+                this.Nmodo1[1] = 32 ;
+                this.Nmodo2[1] = 64 ;
+                this.Nmodo3[1] = 128 ;                
+            };
+            if(this.ki[1] === 3/4){
+                this.Nmodo1[1] = 36 ;
+                this.Nmodo2[1] = 72 ;
+                this.Nmodo3[1] = 144 ;                
+            };
+            if(this.ki[1] === 5/6){
+                this.Nmodo1[1] = 40 ;
+                this.Nmodo2[1] = 80 ;
+                this.Nmodo3[1] = 160 ;                
+            };
+            if(this.ki[1] === 7/8){
+                this.Nmodo1[1] = 42 ;
+                this.Nmodo2[1] = 84 ;
+                this.Nmodo3[1] = 168 ;                
+            };
+
+        }
+
+
+            if(this.bp[1] === 6 ){
+                if(this.ki[1] === 1/2){ 
+                    this.Nmodo1[1] = 36 ;
+                    this.Nmodo2[1] = 72 ;
+                    this.Nmodo3[1] = 144 ;
+                };
+                if(this.ki[1] === 2/3){
+                    this.Nmodo1[1] = 48 ;
+                    this.Nmodo2[1] = 96 ;
+                    this.Nmodo3[1] = 192 ;                
+                };
+                if(this.ki[1] === 3/4){
+                    this.Nmodo1[1] = 58 ;
+                    this.Nmodo2[1] = 108 ;
+                    this.Nmodo3[1] = 216 ;                
+                };
+                if(this.ki[1] === 5/6){
+                    this.Nmodo1[1] = 60 ;
+                    this.Nmodo2[1] = 120 ;
+                    this.Nmodo3[1] = 240 ;                
+                };
+                if(this.ki[1] === 7/8){
+                    this.Nmodo1[1] = 63 ;
+                    this.Nmodo2[1] = 126 ;
+                    this.Nmodo3[1] = 252 ;                
+                };                            
+            }
+//CAPA C
+console.log("entra aca", this.bp[0])
+if(this.bp[2] === 2 ){
+        if(this.ki[2] === 1/2){ 
+            this.Nmodo1[2] = 12 ;
+            this.Nmodo2[2] = 24 ;
+            this.Nmodo3[2] = 48 ;
+        };
+        if(this.ki[2] === 2/3){
+            this.Nmodo1[2] = 16 ;
+            this.Nmodo2[2] = 32 ;
+            this.Nmodo3[2] = 64 ;                
+        };
+        if(this.ki[2] === 3/4){
+            this.Nmodo1[2] = 18 ;
+            this.Nmodo2[2] = 36 ;
+            this.Nmodo3[2] = 72 ;                
+        };
+        if(this.ki[2] === 5/6){
+            this.Nmodo1[2] = 20 ;
+            this.Nmodo2[2] = 40 ;
+            this.Nmodo3[2] = 80 ;                
+        };
+        if(this.ki[2] === 7/8){
+            this.Nmodo1[2] = 21 ;
+            this.Nmodo2[2] = 42 ;
+            this.Nmodo3[2] = 84 ;                
+        };
+
+        }
+
+        if(this.bp[2] === 4 ){
+            if(this.ki[2] === 1/2){ 
+                this.Nmodo1[2] = 24 ;
+                this.Nmodo2[2] = 48 ;
+                this.Nmodo3[2] = 96 ;
+            };
+            if(this.ki[2] === 2/3){
+                this.Nmodo1[2] = 32 ;
+                this.Nmodo2[2] = 64 ;
+                this.Nmodo3[2] = 128 ;                
+            };
+            if(this.ki[2] === 3/4){
+                this.Nmodo1[2] = 36 ;
+                this.Nmodo2[2] = 72 ;
+                this.Nmodo3[2] = 144 ;                
+            };
+            if(this.ki[2] === 5/6){
+                this.Nmodo1[2] = 40 ;
+                this.Nmodo2[2] = 80 ;
+                this.Nmodo3[2] = 160 ;                
+            };
+            if(this.ki[2] === 7/8){
+                this.Nmodo1[2] = 42 ;
+                this.Nmodo2[2] = 84 ;
+                this.Nmodo3[2] = 168 ;                
+            };
+
+        }
+
+
+            if(this.bp[2] === 6 ){
+                if(this.ki[2] === 1/2){ 
+                    this.Nmodo1[2] = 36 ;
+                    this.Nmodo2[2] = 72 ;
+                    this.Nmodo3[2] = 144 ;
+                };
+                if(this.ki[2] === 2/3){
+                    this.Nmodo1[2] = 48 ;
+                    this.Nmodo2[2] = 96 ;
+                    this.Nmodo3[2] = 192 ;                
+                };
+                if(this.ki[2] === 3/4){
+                    this.Nmodo1[2] = 58 ;
+                    this.Nmodo2[2] = 108 ;
+                    this.Nmodo3[2] = 216 ;                
+                };
+                if(this.ki[2] === 5/6){
+                    this.Nmodo1[2] = 60 ;
+                    this.Nmodo2[2] = 120 ;
+                    this.Nmodo3[2] = 240 ;                
+                };
+                if(this.ki[2] === 7/8){
+                    this.Nmodo1[2] = 63 ;
+                    this.Nmodo2[2] = 126 ;
+                    this.Nmodo3[2] = 252 ;                
+                };                            
+            }                            
+}
+
+
+numeroTSP(){
+
+    if(this.intSelected === '1/4'){
+        this.Nbts[0] = 1280 ; 
+        this.Nbts[1] = 2560 ; 
+        this.Nbts[2] = 5120 ;         
+    }
+    if(this.intSelected === '1/8'){
+        this.Nbts[0] = 1152 ; 
+        this.Nbts[1] = 2304 ; 
+        this.Nbts[2] = 4608 ;   
+    }
+    if(this.intSelected === '1/16'){
+        this.Nbts[0] = 1088 ; 
+        this.Nbts[1] = 2176 ; 
+        this.Nbts[2] = 4352 ;           
+                
+    }
+    if(this.intSelected === '1/32'){
+        this.Nbts[0] = 1056 ; 
+        this.Nbts[1] = 2112 ; 
+        this.Nbts[2] = 4224 ;                   
+                        
+    }            
+}
+
+}
+

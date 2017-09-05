@@ -258,11 +258,15 @@ public lineChartColors2: Array<any> = [
     polarity ;
 
      ventanaSincro() {
+         console.log("entro ventana")
+        this.show1();
+        this.calculoDistanciasRx1()
              this.intGua =  this._moduladorService.obtenerIntGua();
              this.Deltas = this._markerService.getDeltasRx1();
              var DeltaPrueba : any = [ this.Deltas[0], this.Deltas[1], this.Deltas[2], this.Deltas[3]];
              var DeltaCR : any = [ this.Deltas[4], this.Deltas[5], this.Deltas[6], this.Deltas[7]];
              var DistanciaRx1 = this._markerService.getDistanacias();
+             console.log("aca ", DistanciaRx1)
 
              
          
@@ -319,12 +323,15 @@ public lineChartColors2: Array<any> = [
   }
 
   ventanaSincro2() {
+      this.show2();
+      this.calculoDistanciasRx2()
+      
+
     this.intGua =  this._moduladorService.obtenerIntGua();
     this.Deltas = this._markerService.getDeltasRx2();
    var DeltaPrueba : any = [ this.Deltas[0], this.Deltas[1], this.Deltas[2], this.Deltas[3]];
    var DeltaCR : any = [ this.Deltas[4], this.Deltas[5], this.Deltas[6], this.Deltas[7]];
     var DistanciaRx2 = this._markerService.getDistanacias2();
-    console.log("distanciasRX2", DistanciaRx2)
    
 
        let temp = [{  label: 'Tx1',data : [{x: this.Deltas[0],y: DistanciaRx2[0],}, {x: this.Deltas[0],y: 0}]},
@@ -430,66 +437,63 @@ public lineChartColors2: Array<any> = [
             
     }
     
-show (){
-    if(this.distanciaTab === true){            
+show1 (){           
         if(this.tra1 === true && this.recep === true  ){              //TRANSMIOR 2
                    
             this._markerService.computeDistanceBetween();
         }else;
-        if(this.tra0 === true && this.recep2 === true){             //TRANSMISOR 1
+ /*       if(this.tra0 === true && this.recep2 === true){             //TRANSMISOR 1
             this._markerService.computeDistanceBetweenTx1Rx2();
-        }else;
+        }else;*/
 
         if(this.tra0 === true  && this.recep === true ){            //TRANSMISOR 1
                   
             this._markerService.computeDistanceBetween1();
                     
         }else;
-        if(this.tra1 === true  && this.recep2 === true){            //TRANSMIOR 2
+ /*       if(this.tra1 === true  && this.recep2 === true){            //TRANSMIOR 2
             this._markerService.computeDistanceBetweenTx2Rx2();
-        }else;
+        }else;*/
         if(this.tra2 === true && this.recep === true){
             this._markerService.computeDistanceBetweenTx3Rx1();
         }else;
-        if(this.tra2 === true && this.recep2 === true ){
+  /*      if(this.tra2 === true && this.recep2 === true ){
             this._markerService.computeDistanceBetweenTx3Rx2();
-        }else;
+        }else;*/
 
         if(this.tra3 === true && this.recep === true ){
             this._markerService.computeDistanceBetweenTx4Rx1();
         }
-        if(this.tra3 === true && this.recep2 === true){
+   /*     if(this.tra3 === true && this.recep2 === true){
             this._markerService.computeDistanceBetweenTx4Rx2();
-        }else;
+        }else;*/
         if(this.obst === true && this.recep === true && this.tra0 === true){            //TRANSMISOR 1
               this._markerService.computeDistanceBetweenTx1Ob();
         }else;
-        if(this.obst === true && this.recep2 === true && this.tra0 === true){       //TRANSMISOR 1
+ /*       if(this.obst === true && this.recep2 === true && this.tra0 === true){       //TRANSMISOR 1
               this._markerService.computeDistanceBetweenTx1Rx2CR();
-        }else;
+        }else;*/
         if(this.obst === true && this.recep === true && this.tra1 === true ){
              this._markerService.computeDistanceBetweenTx2Rx1CR();
         }
-        if(this.obst === true && this.recep2 === true && this.tra1 === true ){
+ /*       if(this.obst === true && this.recep2 === true && this.tra1 === true ){
              this._markerService.computeDistanceBetweenTx2Rx2CR();
-        }
+        }*/
         if(this.obst === true && this.recep === true && this.tra2 === true){
             this._markerService.computeDistanceBetweenTx3Rx1CR();
         }
-        if(this.obst === true && this.recep2 === true && this.tra2 === true){
+ /*       if(this.obst === true && this.recep2 === true && this.tra2 === true){
             this._markerService.computeDistanceBetweenTx3Rx2CR();
-        }
+        }*/
 
         if(this.obst === true && this.recep === true && this.tra3 === true){
             this._markerService.computeDistanceBetweenTx4Rx1CR();
         }
-         if(this.obst === true && this.recep2 === true && this.tra3 === true){
+ /*        if(this.obst === true && this.recep2 === true && this.tra3 === true){
             this._markerService.computeDistanceBetweenTx4Rx2CR();
-        }
+        }*/
             
-    
-    }
-           
+  /*         
     if(this.tiempoTab === true){
             if(this.tra0 === true  && this.recep === true ){     
             this._markerService.computeTimeBetweenTx1Rx1();
@@ -545,10 +549,47 @@ show (){
 
 
 
-    }      
+    }      */
       
     }
 
+    show2(){
+        
+       
+     if(this.tra0 === true && this.recep2 === true){             //TRANSMISOR 1
+     this._markerService.computeDistanceBetweenTx1Rx2();
+     console.log("entrando show 2")
+        }else;
+
+
+  if(this.tra1 === true  && this.recep2 === true){            //TRANSMIOR 2
+     this._markerService.computeDistanceBetweenTx2Rx2();
+ }else;
+ 
+ if(this.tra2 === true && this.recep2 === true ){
+     this._markerService.computeDistanceBetweenTx3Rx2();
+ }else;
+
+ if(this.tra3 === true && this.recep2 === true){
+     this._markerService.computeDistanceBetweenTx4Rx2();
+ }else;
+ 
+if(this.obst === true && this.recep2 === true && this.tra0 === true){       //TRANSMISOR 1
+       this._markerService.computeDistanceBetweenTx1Rx2CR();
+ }else;
+
+if(this.obst === true && this.recep2 === true && this.tra1 === true ){
+      this._markerService.computeDistanceBetweenTx2Rx2CR();
+ }
+
+      if(this.obst === true && this.recep2 === true && this.tra2 === true){
+     this._markerService.computeDistanceBetweenTx3Rx2CR();
+ }
+
+     if(this.obst === true && this.recep2 === true && this.tra3 === true){
+     this._markerService.computeDistanceBetweenTx4Rx2CR();
+ }
+    }
     uploadTx1(){
 
         var nuevoMarcador = {
@@ -746,8 +787,9 @@ show (){
        this.DeltasRx2[5] = ((this.DeltasRx2[5]/299792458)*1000000).toFixed(2);
        this.DeltasRx2[6] = ((this.DeltasRx2[6]/299792458)*1000000).toFixed(2);
        this.DeltasRx2[7] = ((this.DeltasRx2[7]/299792458)*1000000).toFixed(2);
-
+       console.log("DeltasRx2",this.DeltasRx2)
        this.interfTxRx2 = this.DeltasRx2;  
+       console.log("InterfTxRx2",this.interfTxRx2 )
        
      if(this.DeltasRx2[0] >= this.intGua){
            this.interfBooleanRx2[0] = true;

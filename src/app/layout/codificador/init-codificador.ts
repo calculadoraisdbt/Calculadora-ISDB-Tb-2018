@@ -10,7 +10,7 @@ load(){
                  var videoSource = ['SDI','SDI','SDI'];
                  var audioSource = ['Analog Jacks','Analog Jacks','Analog Jacks'];
                  var audioCodec = ['AAC-LC ADTS','AAC-LC ADTS','AAC-LC ADTS'];
-                 var audioBitRate = ['64 kbits','64 kbits','64 kbits'];
+                 var audioBitRate = ['64 Kbps','64 Kbps','64 Kbps'];
                  var videoResolution = ['Follow Input','Follow Input','Follow Input'];
                  var rateControl = ['CBR','CBR','CBR'];
                  var videoProfile = ['Baseline','Baseline','Baseline'];

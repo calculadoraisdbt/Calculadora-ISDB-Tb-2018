@@ -56,10 +56,10 @@
                             <th scope="row">Audio Bit Rate</th>
                             <td>
                               <select [value]="audioBitRate[0]" (change)="audioBitRateSelected($event.target.value,'E1')">
-                                <option value="64 kbits">64 kbits</option>
-                                <option value="96 kbits">96 kbits</option>
-                                <option value="128 kbits">128 kbits</option>
-                                <option value="192 kbits">192 kbits</option>
+                                <option value="64 Kbps">64 Kbps</option>
+                                <option value="96 Kbps">96 Kbps</option>
+                                <option value="128Kbps">128 Kbps</option>
+                                <option value="192 Kbps">192 Kbps</option>
                               </select>
                             </td>
                         </tr>
@@ -98,7 +98,7 @@
                             </td>
                         </tr>
                            <tr>
-                            <th scope="row">Video Bit Rate</th>
+                            <th scope="row">Video Bit Rate [Mbps]</th>
                            <td>
                               <input type="text" class="form-control"  [(ngModel)] = "videoBitRate[0]"  aria-describedby="basic-addon1">
                             </td>
@@ -209,7 +209,7 @@
                             </td>
                         </tr>
                            <tr>
-                            <th scope="row">TS Bitrate</th>
+                            <th scope="row">TS Bitrate [Mbps]</th>
                             <td>
                                 <input type="text" class="form-control" [(ngModel)] ="TsBitrate[0]"   aria-describedby="basic-addon1">
                             </td>
@@ -220,8 +220,20 @@
                                 <input type="text" class="form-control"  [(ngModel)] ="AsiPciInterval[0]"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
-                           <tr>
-                            <th scope="row">PID Audio, Video, PCR</th>
+                        <tr>
+                            <th scope="row">PID Audio</th>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">PID Video</th>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">PID PCR</th>
                             <td>
                                 <input type="text" class="form-control"    aria-describedby="basic-addon1">
                             </td>
@@ -316,10 +328,10 @@
                             <th scope="row">Audio Bit Rate</th>
                             <td>
                                <select [value]="audioBitRate[1]" (change)="audioBitRateSelected($event.target.value,'E2')">
-                                <option value="64 kbits">64 kbits</option>
-                                <option value="96 kbits">96 kbits</option>
-                                <option value="128 kbits">128 kbits</option>
-                                <option value="192 kbits">192 kbits</option>
+                                <option value="64 Kbps">64 Kbps</option>
+                                <option value="96 Kbps">96 Kbps</option>
+                                <option value="128 Kbps">128 Kbps</option>
+                                <option value="192 Kbps">192 Kbps</option>
                               </select>
                             </td>
                         </tr>
@@ -358,7 +370,7 @@
                             </td>
                         </tr>
                            <tr>
-                            <th scope="row">Video Bit Rate</th>
+                            <th scope="row">Video Bit Rate [Mbps]</th>
                            <td>
                               <input type="text" class="form-control"    [(ngModel)] = "videoBitRate[1]"  aria-describedby="basic-addon1">
                             </td>
@@ -469,7 +481,7 @@
                             </td>
                         </tr>
                            <tr>
-                            <th scope="row">TS Bitrate</th>
+                            <th scope="row">TS Bitrate [Mbps]</th>
                             <td>
                                 <input type="text" class="form-control"   [(ngModel)] = "TsBitrate[2]"    aria-describedby="basic-addon1">
                             </td>
@@ -480,8 +492,20 @@
                                 <input type="text" class="form-control"   [(ngModel)] = "AsiPciInterval[2]"    aria-describedby="basic-addon1">
                             </td>
                         </tr>
-                           <tr>
-                            <th scope="row">PID Audio, Video, PCR</th>
+                        <tr>
+                            <th scope="row">PID Audio</th>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">PID Video</th>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">PID PCR</th>
                             <td>
                                 <input type="text" class="form-control"    aria-describedby="basic-addon1">
                             </td>
@@ -576,10 +600,10 @@
                             <th scope="row">Audio Bit Rate</th>
                             <td>
                               <select [value]="audioBitRate[2]" (change)="audioBitRateSelected($event.target.value,'E3')">
-                                <option value="64 kbits">64 kbits</option>
-                                <option value="96 kbits">96 kbits</option>
-                                <option value="128 kbits">128 kbits</option>
-                                <option value="192 kbits">192 kbits</option>
+                                <option value="64 Kbps">64 Kbps</option>
+                                <option value="96 Kbps">96 Kbps</option>
+                                <option value="128 Kbps">128 Kbps</option>
+                                <option value="192 Kbps">192 Kbps</option>
                               </select>
                             </td>
                         </tr>
@@ -618,7 +642,7 @@
                             </td>
                         </tr>
                            <tr>
-                            <th scope="row">Video Bit Rate</th>
+                            <th scope="row">Video Bit Rate [Mbps]</th>
                            <td>
                               <input type="text" class="form-control"   [(ngModel)] = "videoBitRate[2]"   aria-describedby="basic-addon1">
                             </td>
@@ -729,7 +753,7 @@
                             </td>
                         </tr>
                            <tr>
-                            <th scope="row">TS Bitrate</th>
+                            <th scope="row">TS Bitrate [Mbps]</th>
                             <td>
                                 <input type="text" class="form-control"  [(ngModel)] = "TsBitrate[2]"     aria-describedby="basic-addon1">
                             </td>
@@ -741,7 +765,19 @@
                             </td>
                         </tr>
                            <tr>
-                            <th scope="row">PID Audio, Video, PCR</th>
+                            <th scope="row">PID Audio</th>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">PID Video</th>
+                            <td>
+                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">PID PCR</th>
                             <td>
                                 <input type="text" class="form-control"    aria-describedby="basic-addon1">
                             </td>

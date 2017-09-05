@@ -98,11 +98,11 @@
                     <tbody>
                           <form (ngSubmit)="uploadTx1()" #frmTx1="ngForm" >
                             <th scope="row"><input type="checkbox" [(ngModel)]="tra0" (change)="cambioTx1()" name="tra0" id="tra0"> Tx 1</th>
-                            <td #this> <input [(ngModel)]="newLatTx1"  placeholder="Latitud" name="newLatTx1" id="newLatTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"  /> </td>
-                            <td #this> <input [(ngModel)]="newLongTx1"  placeholder="Longitud" name="newLongTx1" id="newLongTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
-                            <td #this><button [disabled]=!frmTx1.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
-                            <td #this> {{mostLati}}</td>
-                            <td #this>{{ mostLongi}}</td>
+                            <td> <input [(ngModel)]="newLatTx1"  placeholder="Latitud" name="newLatTx1" id="newLatTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"  /> </td>
+                            <td> <input [(ngModel)]="newLongTx1"  placeholder="Longitud" name="newLongTx1" id="newLongTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
+                            <td><button [disabled]=!frmTx1.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
+                            <td> Lat: {{mostLati}}</td>
+                            <td> Long:{{ mostLongi}}</td>
                             </form >
                         
                           <form (ngSubmit)="uploadTx2()" #frmTx2="ngForm"> 
@@ -110,8 +110,8 @@
                             <td> <input [(ngModel)]="newLatTx2"  placeholder="Latitud" name="newLatTx2" id="newLatTx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <input [(ngModel)]="newLongTx2"  placeholder="Longitud" name="newLongTx2" id="newLongTx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <button  [disabled]=!frmTx2.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
-                            <td>{{mostLati1}}</td>
-                            <td>{{mostLongi1}}</td>
+                            <td>Lat: {{mostLati1}}</td>
+                            <td> Long:{{mostLongi1}}</td>
                             </form>
                       
                              <form (ngSubmit)="uploadTx3()" #frmTx3="ngForm">
@@ -119,8 +119,8 @@
                             <td> <input [(ngModel)]="newLatTx3"  placeholder="Latitud" name="newLatTx3" id="newLatTx3" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <input [(ngModel)]="newLongTx3"  placeholder="Longitud" name="newLongTx3" id="newLongTx3" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button  [disabled]=!frmTx3.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
-                            <td>{{mostLati4}}</td>
-                            <td>{{mostLongi4}}</td>
+                            <td>Lat: {{mostLati4}}</td>
+                            <td>Long:{{mostLongi4}}</td>
                              </form>
                        
                            <form (ngSubmit)="uploadTx4()" #frmTx4="ngForm">
@@ -128,8 +128,8 @@
                             <td> <input [(ngModel)]="newLatTx4"  placeholder="Latitud" name="newLatTx4" id="newLatTx4" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <input [(ngModel)]="newLongTx4"  placeholder="Longitud" name="newLongTx4" id="newLongTx4" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button  [disabled]=!frmTx4.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
-                            <td>{{mostLati5}}</td>
-                            <td>{{mostLongi5}}</td>
+                            <td>Lat: {{mostLati5}}</td>
+                            <td>Long:{{mostLongi5}}</td>
                              </form>
                         
                               <form (ngSubmit)="uploadRx()" #frmRx="ngForm">
@@ -137,8 +137,8 @@
                             <td> <input [(ngModel)]="newLatRx"  placeholder="Latitud" name="newLatRx" id="newLatRx" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td>  <input [(ngModel)]="newLongRx"  placeholder="Longitud" name="newLongRx" id="newLongRx" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button [disabled]=!frmRx.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button></td>
-                            <td>{{mostLati2}}</td>
-                            <td>{{mostLongi2}}</td>
+                            <td>Lat: {{mostLati2}}</td>
+                            <td>Long:{{mostLongi2}}</td>
                              </form>
                         
                               <form (ngSubmit)="uploadRx2()" #frmRx2="ngForm">
@@ -146,8 +146,8 @@
                             <td> <input [(ngModel)]="newLatRx2"  placeholder="Latitud" name="newLatRx2" id="newLatRx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td>  <input [(ngModel)]="newLongRx2"  placeholder="Longitud" name="newLongRx2" id="newLongRx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button [disabled]=!frmRx2.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button></td>
-                            <td>{{mostLati6}}</td>
-                            <td>{{mostLongi6}}</td>
+                            <td>Lat: {{mostLati6}}</td>
+                            <td>Long:{{mostLongi6}}</td>
                              </form>
                    
                              <form (ngSubmit)="uploadOb()" #frmOb="ngForm" >
@@ -155,8 +155,8 @@
                             <td> <input [(ngModel)]="newLatOb"  placeholder="Latitud" name="newLatOb" id="newLatOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td>  <input [(ngModel)]="newLongOb"  placeholder="Longitud" name="newLongOb" id="newLongOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <button  [disabled]=!frmOb.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
-                            <td>{{mostLati3}}</td>
-                            <td>{{mostLongi3}}</td>
+                            <td>Lat: {{mostLati3}}</td>
+                            <td>Long:{{mostLongi3}}</td>
                              </form>
                      
                     </tbody>
@@ -197,7 +197,7 @@
                                             <th>Equipment ID</th>
                                             <th>Time-Offset (µs)</th>
                                             <th>Tipo</th>
-                                   <!--         <th>Dynamic-Static</th> -->
+                                            <th>polarity</th> 
                                             <th>Enable</th>
                                         </tr>
                                     </thead>
@@ -210,13 +210,13 @@
                             <td><input type="text" class="form-control" [(ngModel)]="retardos[0]" name="retardoTx1" title="timeOffsetTx1" pattern="[-0-9.]{1,10}"  aria-describedby="basic-addon1"> </td>
                             <td> <select [(ngModel)]="polarity[0]" name="polarity[0]" title="polarity[0]" >
                                 <option>Atraso</option>
-                                <option *ngIf="retardoRed>0">Adelanto</option>
+                                <option disabled="retardoRed>0">Adelanto</option>
                               </select>
                         </td>
-                 <!--           <td><select [disabled]="negativeOn1">
+                        <td><select [disabled]="negativeOn1">
                                 <option >Dynamic</option>
                                 <option *ngIf="!negativeOn1">Static</option>
-                              </select></td> -->
+                              </select></td> 
                             <td><input type="checkbox"  [(ngModel)]="retardosState[0]"  name="booleanRetardoTx1" id="booleanRetardoTx1"  ></td>
                         </tr>
                          <tr>
@@ -227,10 +227,10 @@
                                 <option>Atraso</option>
                                 <option *ngIf="retardoRed>0">Adelanto</option>
                               </select></td>
-              <!--                <td><select [disabled]="negativeOn2">
+                             <td><select [disabled]="negativeOn2">
                                 <option>Dynamic</option>
                                 <option *ngIf="!negativeOn2">Static</option>
-                              </select></td> -->
+                              </select></td> 
                             <td><input type="checkbox"    [(ngModel)]="retardosState[1]"  name="booleanRetardoTx2" id="booleanRetardoTx2" ></td>
                             
                         </tr>
@@ -242,10 +242,10 @@
                                 <option>Atraso</option>
                                 <option *ngIf="retardoRed>0">Adelanto</option>
                               </select></td>
-        <!--                    <td><select [disabled]="negativeOn3">
+                       <td><select [disabled]="negativeOn3">
                                 <option>Dynamic</option>
                                 <option *ngIf="!negativeOn3" >Static</option>
-                              </select></td> -->
+                              </select></td> 
                             <td><input type="checkbox"    [(ngModel)]="retardosState[2]"  name="booleanRetardoTx3" id="booleanRetardoTx3" ></td>
                         </tr>
                          <tr>
@@ -256,10 +256,10 @@
                                 <option>Atraso</option>
                                 <option *ngIf="retardoRed>0">Adelanto</option>
                               </select></td>
-   <!--                         <td><select [disabled]="negativeOn4">
+                         <td><select [disabled]="negativeOn4">
                                 <option>Dynamic</option>
                                 <option *ngIf="!negativeOn4">Static</option>
-                              </select></td> -->
+                              </select></td> 
                             <td><input type="checkbox" [(ngModel)]="retardosState[3]"  name="booleanRetardoTx4" id="booleanRetardoTx4" ></td>
                         </tr> <br>
                          
@@ -272,7 +272,7 @@
                             </div>
                         </ng-template>
                         </ngb-tab>
-                    <ngb-tab title="Distancias" >
+ <!--                   <ngb-tab title="Distancias" >
                         <ng-template ngbTabContent>
                             <h4>Seleccione los parametros que desea calcular</h4>
                 <div>
@@ -448,12 +448,12 @@
                         </tr>
                     </tbody>
                 </table>
-            </div> <br> -->
+            </div> <br> 
 
             
                         </ng-template>
-                    </ngb-tab>  
-                    <ngb-tab title="Generador Deltas SFN">
+                    </ngb-tab>   -->
+ <!--         <ngb-tab title="Generador Deltas SFN">
                         <ng-template ngbTabContent >
                                 <button 
                                 type="button"
@@ -546,9 +546,10 @@
                                      <span *ngIf="!interfBoolean[7] && tra3 && recep" style="color:black"  >{{interfTx[7]}}</span>
         
                                      </td>
-                                </tr> -->
+                                </tr>  
       </tbody>
                                      </table> <br>
+            
 <!--   <table class="table ">
                         <thead>
                             <tr>
@@ -583,7 +584,7 @@
                                  </td>
                             </tr>
       </tbody>
-                                     </table> -->
+                                     </table>  
                                
                                      <table class="table ">
                         <thead>
@@ -641,8 +642,8 @@
                                      </td>
                                 </tr>
       </tbody>
-                                     </table> <br>
-  <!--  <table class="table ">
+                                     </table> <br> <!--
+    <table class="table ">
                         <thead>
                             <tr>
                                 <th>Interferencia Camino Reflejado [µs]  </th>
@@ -676,15 +677,23 @@
                                  </td>
                             </tr>
       </tbody>
-                                     </table> -->
+                                     </table>  
     
                               
                         </ng-template>
-                    </ngb-tab>     
+                    </ngb-tab>      --> 
     
-                    <ngb-tab title="Ventana de Sincronizacion">
+                    <ngb-tab  title="Ventana de Sincronizacion Rx1">
+                        
                         <ng-template ngbTabContent>
+                            
 <div *ngIf="recep">
+        <br> 
+        <button 
+        type="button"
+        class="btn btn-sm btn-secondary"
+        data-toggle="tooltip" data-placement="top" title=""
+        (click)="ventanaSincro()">Mostrar</button> <br>    
 <script src="node_modules/chart.js/src/chart.js"></script>
 <div *ngIf="chart_visible">
 <canvas 
@@ -697,37 +706,231 @@
   ></canvas>
 
 </div>
-<button 
-type="button"
-class="btn btn-sm btn-secondary"
-data-toggle="tooltip" data-placement="top" title=""
-(click)="ventanaSincro()">Actualizar Rx1</button> <br>
+
 </div>
 
-<div *ngIf="recep2">
-<div *ngIf="chart_visible2">
-    <canvas 
-     baseChart height="100"
-            [datasets]="lineChartData2"
-            [options]="lineChartOptions2"
-            [colors]="lineChartColors2"
-            [legend]="lineChartLegend2"
-            [chartType]="lineChartType2"
-      ></canvas>
-    
+<div class="card-block table-responsive">
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th> Rx 1</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                            <th scope="row"></th>
+                           <td>  Tx 1  </td>
+                            <td>Tx 2</td>
+                            <td>Tx 3</td>
+                            <td>Tx 4</td>
+                        </tr>
+                <tr>
+                    <th scope="row">Distancias Camino Directo [Km]</th>
+                   <td>     <p *ngIf="tra0" id="testB"> </p> </td>
+                    <td><p *ngIf="tra1" id="testA"> </p> </td>
+                    <td><p  *ngIf="tra2" id="testdistTx3Rx1"> </p></td>
+                    <td><p  *ngIf="tra3"id="testdistTx4Rx1"></p></td>
+                </tr>
+                    <tr>
+                            <th scope="row">Distancias Camino Reflejado [Km]</th>
+                            <td>  <p id="testTx1Ob"> </p> </td>
+                            <td><p id="testTx2Rx1CR"> </p> </td>
+                            <td><p id="testTx3Rx1CR"></p></td>
+                            <td><p id="testTx4Rx1CR"></p></td>
+                        </tr>
+            </tbody>
+        </table>
     </div>
-    <button 
-    type="button"
-    class="btn btn-sm btn-secondary"
-   data-toggle="tooltip" data-placement="top" title=""
-   (click)="ventanaSincro2()">Actualizar Rx2</button> <br>
-</div>
+    <div class="card-block table-responsive">
+    <table class="table ">
+            <thead>
+                <tr>
+                    <th> Rx 1 </th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                            <th scope="row"></th>
+                           <td>  Tx 1  </td>
+                            <td>Tx 2</td>
+                            <td>Tx 3</td>
+                            <td>Tx 4</td>
+                        </tr>
+                          
+                    <tr>
+                            <th scope="row"> Delta Camino Directo [µs]</th>
+                            <td >
+                             <span  *ngIf="interfBoolean[0] && tra0 && recep" style="color:red"  >{{interfTx[0]}}</span>
+                             <span *ngIf="!interfBoolean[0] && tra0 && recep" style="color:black"  >{{interfTx[0]}}</span>
+                            </td>
+                            <td>
+                             <span *ngIf="interfBoolean[1] && tra1 && recep" style="color:red"  >{{interfTx[1]}}</span>
+                             <span *ngIf="!interfBoolean[1] && tra1 && recep" style="color:black"  >{{interfTx[1]}}</span>
 
+                             </td>
+                            <td>
+                             <span *ngIf="interfBoolean[2] && tra2 && recep" style="color:red"  >{{interfTx[2]}}</span>
+                             <span *ngIf="!interfBoolean[2] && tra2 && recep" style="color:black"  >{{interfTx[2]}}</span>
 
-                             
+                             </td>
+                            <td>
+                             <span *ngIf="interfBoolean[3] && tra3 && recep" style="color:red"  >{{interfTx[3]}}</span>
+                             <span *ngIf="!interfBoolean[3] && tra3 && recep" style="color:black"  >{{interfTx[3]}}</span>
+
+                             </td>
+                           
+                        </tr>
+                        <tr>
+                                <th scope="row"> Delta Camino Reflejado [µs]</th>
+                                <td  >
+                                        <span *ngIf="interfBoolean[4] && tra0 && recep && obst" style="color:red"  >{{interfTx[4]}}</span>
+                                        <span *ngIf="!interfBoolean[4] && tra0 && recep && obst" style="color:black"  >{{interfTx[4]}}</span>
+                                       </td>
+                                       <td>
+                                        <span *ngIf="interfBoolean[5] && tra1 && recep && obst" style="color:red"  >{{interfTx[5]}}</span>
+                                        <span *ngIf="!interfBoolean[5] && tra1 && recep && obst" style="color:black"  >{{interfTx[5]}}</span>
+           
+                                        </td>
+                                       <td>
+                                        <span *ngIf="interfBoolean[6] && tra2 && recep && obst" style="color:red"  >{{interfTx[6]}}</span>
+                                        <span *ngIf="!interfBoolean[6] && tra2 && recep && obst" style="color:black"  >{{interfTx[6]}}</span>
+           
+                                        </td>
+                                       <td>
+                                        <span *ngIf="interfBoolean[7] && tra3 && recep && obst" style="color:red"  >{{interfTx[7]}}</span>
+                                        <span *ngIf="!interfBoolean[7] && tra3 && recep && obst" style="color:black"  >{{interfTx[7]}}</span>
+           
+                                        </td>                    
+                            </tr>
+            </tbody>
+    </table>
+    </div>                       
 
                     </ng-template>
                     </ngb-tab> 
+                    <ngb-tab title="Ventana de Sincronizacion Rx2">
+                        <ng-template ngbTabContent>
+                            
+<div *ngIf="recep2">
+    <br>
+        <button 
+        type="button"
+        class="btn btn-sm btn-secondary"
+       data-toggle="tooltip" data-placement="top" title=""
+       (click)="ventanaSincro2()">Mostrar</button> <br>
+        <div *ngIf="chart_visible2">
+            <canvas 
+             baseChart height="100"
+                    [datasets]="lineChartData2"
+                    [options]="lineChartOptions2"
+                    [colors]="lineChartColors2"
+                    [legend]="lineChartLegend2"
+                    [chartType]="lineChartType2"
+              ></canvas>
+            
+            </div>
+           
+        </div>
+
+        <div class="card-block table-responsive">
+                <table class="table ">
+                    <thead>
+                        <tr>
+                            <th> Rx 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                    <th scope="row"></th>
+                                   <td>  Tx 1  </td>
+                                    <td>Tx 2</td>
+                                    <td>Tx 3</td>
+                                    <td>Tx 4</td>
+                                </tr>
+                        <tr>
+                            <th scope="row">Distancias Camino Directo [Km]</th>
+                            <td><p  id="testdistTx1Rx2"></p></td>
+                            <td><p id="testdistTx2Rx2"></p></td>
+                            <td><p  id="testdistTx3Rx2"></p> </td>
+                            <td><p  id="testdistTx4Rx2"></p> </td>
+                        </tr>
+                                <tr>
+                                    <th scope="row">Distancias Camino Reflejado [Km]</th>
+                                    <td> <p id="testTx1Rx2CR"> </p></td>
+                                    <td><p id="testTx2Rx2CR"> </p></td>
+                                    <td><p id="testTx3Rx2CR"></p></td>
+                                    <td><p id="testTx4Rx2CR"></p></td>
+                                </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card-block table-responsive">
+            <table class="table ">
+                    <thead>
+                        <tr>
+                            <th> Rx2 </th>
+
+                        </tr>
+                    </thead>
+  <tbody>
+        <tr>
+                <th scope="row"></th>
+               <td>  Tx 1  </td>
+                <td>Tx 2</td>
+                <td>Tx 3</td>
+                <td>Tx 4</td>
+            </tr>
+        <tr>
+                <th scope="row"> Delta Camino Directo [µs]</th>
+                <td>
+                 <span *ngIf="interfBooleanRx2[0] && tra0 && recep2 " style="color:red"  >{{interfTxRx2[0]}}</span>
+                 <span *ngIf="!interfBooleanRx2[0] && tra0 && recep2" style="color:black"  >{{interfTxRx2[0]}}</span>
+                </td>
+                <td>
+                 <span *ngIf="interfBooleanRx2[1] && tra1 && recep2" style="color:red"  >{{interfTxRx2[1]}}</span>
+                 <span *ngIf="!interfBooleanRx2[1] && tra1 && recep2" style="color:black"  >{{interfTxRx2[1]}}</span>
+
+                 </td>
+                <td>
+                 <span *ngIf="interfBooleanRx2[2] && tra2 && recep2" style="color:red"  >{{interfTxRx2[2]}}</span>
+                 <span *ngIf="!interfBooleanRx2[2] && tra2 && recep2" style="color:black"  >{{interfTxRx2[2]}}</span>
+
+                 </td>
+                <td>
+                 <span *ngIf="interfBooleanRx2[3] && tra3 && recep2" style="color:red"  >{{interfTxRx2[3]}}</span>
+                 <span *ngIf="!interfBooleanRx2[3] && tra3 && recep2" style="color:black"  >{{interfTxRx2[3]}}</span>
+
+                 </td>
+               
+            </tr>
+            <tr>
+                    <th scope="row">Delta Camino Reflejado [µs]</th>
+                   <td>
+                     <span *ngIf="interfBooleanRx2[4] && tra0 && recep2 && obst" style="color:red"  >{{interfTxRx2[4]}}</span>
+                     <span *ngIf="!interfBooleanRx2[4] && tra0 && recep2 && obst" style="color:black"  >{{interfTxRx2[4]}}</span>
+                    </td>
+                    <td>
+                     <span *ngIf="interfBooleanRx2[5] && tra1 && recep2 && obst" style="color:red"  >{{interfTxRx2[5]}}</span>
+                     <span *ngIf="!interfBooleanRx2[5] && tra1 && recep2 && obst" style="color:black"  >{{interfTxRx2[5]}}</span>
+
+                     </td>
+                    <td>
+                     <span *ngIf="interfBooleanRx2[6] && tra2 && recep2 && obst" style="color:red"  >{{interfTxRx2[6]}}</span>
+                     <span *ngIf="!interfBooleanRx2[6] && tra2 && recep2 && obst" style="color:black"  >{{interfTxRx2[6]}}</span>
+
+                     </td>
+                    <td>
+                     <span *ngIf="interfBooleanRx2[7] && tra3 && recep2 && obst" style="color:red"  >{{interfTxRx2[7]}}</span>
+                     <span *ngIf="!interfBooleanRx2[7] && tra3 && recep2 && obst" style="color:black"  >{{interfTxRx2[7]}}</span>
+
+                     </td>
+                </tr>
+  </tbody>
+            </table>
+            </div>
+                        </ng-template>
+                    </ngb-tab>
                 </ngb-tabset>
             </div>
         </div>

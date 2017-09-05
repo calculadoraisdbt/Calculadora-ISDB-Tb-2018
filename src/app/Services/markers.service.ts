@@ -402,7 +402,7 @@ export class MarkersService extends Init {
                         var tx1obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_3).toFixed(2));
                         var retarditen = retardos[0]*299.792458;
                         tx1obst = tx1obst + retarditen + retardoRed ;
-                        var  tx1obstrx1= tx1obst + obstrx2;
+                        var  tx1obstrx2= tx1obst + obstrx2;
                     } 
                     if (retartdosState[0] === false){
                         var tx1obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_3).toFixed(2));   
@@ -446,7 +446,6 @@ export class MarkersService extends Init {
                         var  tx4obstrx2= tx4obst + obstrx2;  
                         tx4obstrx2 = tx4obstrx2 + retardoRed ;  
                     }                                                                                
-
          menorRx2 = Math.min(tx1rx2, tx2rx2,tx3rx2, tx4rx2 ,tx1obstrx2 ,tx2obstrx2, tx3obstrx2 , tx4obstrx2 ) ; 
          DeltaT1Rx2 = (tx1rx2-menorRx2) ;
          DeltaT2Rx2 = (tx2rx2-menorRx2 ) ;
@@ -456,12 +455,12 @@ export class MarkersService extends Init {
          DeltaT2CRRx2 = (tx2obstrx2-menorRx2 ) ;
          DeltaT3CRRx2 = (tx3obstrx2-menorRx2) ;
          DeltaT4CRRx2 = (tx4obstrx2-menorRx2) ; 
-         console.log(DeltaT4CRRx2)
          DeltasRx2 = [DeltaT1Rx2,DeltaT2Rx2,DeltaT3Rx2,DeltaT4Rx2,DeltaT1CRRx2,DeltaT2CRRx2,DeltaT3CRRx2,DeltaT4CRRx2] ;   
-
+        
     }   
 
     getDeltasRx2(){
+        
         return DeltasRx2;
     }
 
@@ -505,7 +504,7 @@ computeDistanceBetween1(){
                dist0 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_2).toFixed(2)); 
                dist0 = (dist0/1000);
                var testB : any = document.getElementById("testB");
-               testB.innerHTML = (dist0).toFixed(2)  + " Km";
+               testB.innerHTML = (dist0).toFixed(2);
 
 
     }
@@ -560,7 +559,7 @@ computeDistanceBetweenTx1Rx2(){
                distTx1Rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_6).toFixed(2)); 
                distTx1Rx2 = (distTx1Rx2/1000);
                var testdistTx1Rx2 : any = document.getElementById("testdistTx1Rx2");
-               testdistTx1Rx2.innerHTML = (distTx1Rx2).toFixed(2)  + " Km";
+               testdistTx1Rx2.innerHTML = (distTx1Rx2).toFixed(2);
 
     }
 //TIEMPO TX1 -RX2
@@ -611,7 +610,7 @@ computeTimeBetweenTx1Rx2(){
                dist = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_2).toFixed(2));
                dist = (dist/1000);
                var testA : any = document.getElementById("testA");
-               testA.innerHTML = (dist).toFixed(2) + " Km";
+               testA.innerHTML = (dist).toFixed(2);
 
     }
 
@@ -660,7 +659,7 @@ computeTimeBetweenTx1Rx2(){
                distTx2Rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_6).toFixed(2));
                distTx2Rx2 = (distTx2Rx2/1000);
                var testdistTx2Rx2 : any = document.getElementById("testdistTx2Rx2");
-               testdistTx2Rx2.innerHTML = (distTx2Rx2).toFixed(2) + " Km";
+               testdistTx2Rx2.innerHTML = (distTx2Rx2).toFixed(2);
 
     }
 
@@ -710,7 +709,7 @@ computeTimeBetweenTx1Rx2(){
                distTx3Rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_2).toFixed(2)); 
                distTx3Rx1 = (distTx3Rx1/1000);
                var testdistTx3Rx1 : any = document.getElementById("testdistTx3Rx1");
-               testdistTx3Rx1.innerHTML = (distTx3Rx1).toFixed(2)  + " Km";
+               testdistTx3Rx1.innerHTML = (distTx3Rx1).toFixed(2);
 
     }
 
@@ -760,7 +759,7 @@ computeTimeBetweenTx1Rx2(){
                distTx3Rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_6).toFixed(2)); 
                distTx3Rx2 = (distTx3Rx2/1000);
                var testdistTx3Rx2 : any = document.getElementById("testdistTx3Rx2");
-               testdistTx3Rx2.innerHTML = (distTx3Rx2).toFixed(2)  + " Km";
+               testdistTx3Rx2.innerHTML = (distTx3Rx2).toFixed(2);
 
     }
 
@@ -811,7 +810,7 @@ computeTimeBetweenTx1Rx2(){
                distTx4Rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_2).toFixed(2)); 
                distTx4Rx1 = (distTx4Rx1/1000)
                var testdistTx4Rx1 : any = document.getElementById("testdistTx4Rx1");
-               testdistTx4Rx1.innerHTML = (distTx4Rx1).toFixed(2)  + " Km";
+               testdistTx4Rx1.innerHTML = (distTx4Rx1).toFixed(2);
 
     }
 //TIEMPO TX4- RX1
@@ -861,7 +860,7 @@ computeTimeBetweenTx1Rx2(){
                distTx4Rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_6).toFixed(2)); 
                distTx4Rx2 = (distTx4Rx2/1000)
                var testdistTx4Rx2 : any = document.getElementById("testdistTx4Rx2");
-               testdistTx4Rx2.innerHTML = (distTx4Rx2).toFixed(2)  + " Km";
+               testdistTx4Rx2.innerHTML = (distTx4Rx2).toFixed(2);
 
     }
 // TIIEMPO TX4 -RX2 
@@ -912,7 +911,7 @@ computeTimeBetweenTx1Rx2(){
                var total = disttTx1Ob + disttObRx1;
                total = (total/1000);
                var testTx1Ob : any = document.getElementById("testTx1Ob");      
-               testTx1Ob.innerHTML = (total).toFixed(2) + " Km";
+               testTx1Ob.innerHTML = (total).toFixed(2) ;
                console.log(testTx1Ob);
 
     }  
@@ -969,7 +968,7 @@ computeTimeBetweenTx1Rx2(){
                var Tx1Rx2CR = disttTx1Ob + disttObRx2;
                Tx1Rx2CR = (Tx1Rx2CR/1000);
                var testTx1Rx2CR : any = document.getElementById("testTx1Rx2CR");
-               testTx1Rx2CR.innerHTML = (Tx1Rx2CR).toFixed(2) + " Km";
+               testTx1Rx2CR.innerHTML = (Tx1Rx2CR).toFixed(2) ;
 
     } 
 
@@ -1024,7 +1023,7 @@ computeDistanceBetweenTx2Rx1CR(){
                var Tx2Rx1CR = disttTx2Ob + disttObRx1;
                Tx2Rx1CR = (Tx2Rx1CR/1000);
                var testTx2Rx1CR : any = document.getElementById("testTx2Rx1CR");
-               testTx2Rx1CR.innerHTML = (Tx2Rx1CR).toFixed(2) + " Km";
+               testTx2Rx1CR.innerHTML = (Tx2Rx1CR).toFixed(2) ;
 
     } 
 
@@ -1079,7 +1078,7 @@ computeTimeBetweenTx2Rx1CR(){
                var Tx2Rx2CR = disttTx2Ob + disttObRx2;
                Tx2Rx2CR = (Tx2Rx2CR/1000);
                var testTx2Rx2CR : any = document.getElementById("testTx2Rx2CR");
-               testTx2Rx2CR.innerHTML = (Tx2Rx2CR).toFixed(2) + " Km";
+               testTx2Rx2CR.innerHTML = (Tx2Rx2CR).toFixed(2) ;
 
     } 
  //TIEMPO TX2 - RX2 CAMINO REFLEJADO
@@ -1134,7 +1133,7 @@ computeTimeBetweenTx2Rx1CR(){
                var Tx3Rx1CR = disttTx3Ob + disttObRx1;
                Tx3Rx1CR = (Tx3Rx1CR/1000);
                var testTx3Rx1CR : any = document.getElementById("testTx3Rx1CR");
-               testTx3Rx1CR.innerHTML = (Tx3Rx1CR).toFixed(2) + " Km";
+               testTx3Rx1CR.innerHTML = (Tx3Rx1CR).toFixed(2);
 
     } 
 
@@ -1192,7 +1191,7 @@ computeTimeBetweenTx2Rx1CR(){
                var Tx3Rx2CR = disttTx3Ob + disttObRx2;
                Tx3Rx2CR = (Tx3Rx2CR/1000);
                var testTx3Rx2CR : any = document.getElementById("testTx3Rx2CR");
-               testTx3Rx2CR.innerHTML = (Tx3Rx2CR).toFixed(2) + " Km";
+               testTx3Rx2CR.innerHTML = (Tx3Rx2CR).toFixed(2);
 
     } 
 
@@ -1248,7 +1247,7 @@ computeTimeBetweenTx2Rx1CR(){
                var Tx4Rx1CR = disttTx4Ob + disttObRx1;
                Tx4Rx1CR = (Tx4Rx1CR/1000);
                var testTx4Rx1CR : any = document.getElementById("testTx4Rx1CR");
-               testTx4Rx1CR.innerHTML = (Tx4Rx1CR).toFixed(2) + " Km";
+               testTx4Rx1CR.innerHTML = (Tx4Rx1CR).toFixed(2);
 
     } 
 
@@ -1304,7 +1303,7 @@ computeTimeBetweenTx2Rx1CR(){
                var Tx4Rx2CR = disttTx4Ob + disttObRx2;
                Tx4Rx2CR = (Tx4Rx2CR/1000);
                var testTx4Rx2CR : any = document.getElementById("testTx4Rx2CR");
-               testTx4Rx2CR.innerHTML = (Tx4Rx2CR).toFixed(2) + " Km";
+               testTx4Rx2CR.innerHTML = (Tx4Rx2CR).toFixed(2) ;
 
     } 
 //TIEMPO TX4 - RX2 CAMINO REFLEJADO
