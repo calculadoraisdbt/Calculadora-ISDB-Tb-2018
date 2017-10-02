@@ -12,6 +12,7 @@ export class ResumenComponent implements OnInit {
 
   intSelected : string = "" ;
   modoSelected : string = "" ;
+  modoBoolean = [] ;
   esqModSelected : string [] ;
   codConSelected ;
   oneSeg : boolean = false;
@@ -47,6 +48,7 @@ export class ResumenComponent implements OnInit {
   Nmodo2 = [] ;
   Nmodo3 = [] ;
   Nbts = [] ;
+  entrelazadoDeTiempo = [] ;
 
   constructor(private _moduladorService:ModuladorService) {
 
@@ -61,6 +63,7 @@ export class ResumenComponent implements OnInit {
            this.intGua = this._moduladorService.obtenerIntGua();
            this.ki = this._moduladorService.obtenerKi();
            this.bp = this._moduladorService.obtenerBp();
+           this.entrelazadoDeTiempo = this._moduladorService.obtenerEntrelazadoDeTiempo();
    }
 
    
@@ -73,6 +76,7 @@ export class ResumenComponent implements OnInit {
                 this.calculoBp(this.esqModSelected[0],this.esqModSelected[1],this.esqModSelected[2]);
                 this.pulsosPorSimbolo(this.intSelected );
                 this.numeroTSP();
+                this.modoParaEntrelazado();
 
   }
 
@@ -128,12 +132,31 @@ modo(value){
      this.modoSelected = value;
      this._moduladorService.actualizarModo(this.modoSelected);
      this.calculoIntervaloGuarda(this.intSelected);
-
-
-
-
+     this.modoParaEntrelazado();
 }
 
+modoParaEntrelazado(){
+    if(this.modoSelected === "MODO 1"){
+        this.modoBoolean[0] = true;
+        this.modoBoolean[2] = false;
+        this.modoBoolean[1] = false;
+    }
+    if(this.modoSelected === "MODO 2"){
+       this.modoBoolean[1] = true;
+       this.modoBoolean[0] = false;
+       this.modoBoolean[2] = false;
+    }
+    if(this.modoSelected === "MODO 3"){
+        this.modoBoolean[2] = true;
+        this.modoBoolean[1] = false;
+        this.modoBoolean[0] = false;
+       }
+       console.log("aca boolean",this.modoBoolean)
+}
+
+guardarValoresEntrelazado(){
+    this._moduladorService.actualizarEntrelazadoDeTiempo(this.entrelazadoDeTiempo);
+}
 esqModSelection(value, id){
     if(id === 'capa A') {
 
@@ -276,6 +299,7 @@ codConSelection(value, id){
     const suma = this.select1 + this.select2 + this.select3;
     return suma === 13;
   }
+  
 
   // Funciones modelo 
 

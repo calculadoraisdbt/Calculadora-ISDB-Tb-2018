@@ -1,11 +1,11 @@
 
 <div class="row">
-    <div class="col col-sm-6">
+    <div class="col ">
         <div class="card mb-3">
             <div class="card-header">
                 Parametros Variables
             </div>
-            <div class="card-block table-responsive">
+            <div class="card-block ">
                 <div class="form-group">
                 <label>Modo :</label>
                 <select [value]="modoSelected" class="form-control-mb-12" 
@@ -21,54 +21,46 @@
                     <option value="1/8">1/8</option>
                     <option  value="1/16">1/16</option>
                     <option  value="1/32">1/32</option>
-                </select><br><br>
+                </select> <br>
                   <label> One-Seg: </label>
                     <button (click)="onActivado()">{{ activado ? 'Activado' : 'Desactivado' }}</button>
-                        <label>Entrelazado de Tiempo :</label>
-                        <select  class="form-control-mb-12">
-                            <option  value="0">0</option>
-                            <option value="4">4</option>
-                            <option  value="8">8</option>
-                            <option  value="16">16</option>
-                        </select>
-                 <div class="card-block table-responsive">
                  <table class="table">
   <thead>
     <tr>
       <th></th>
-      <th>Capa A</th>
-      <th>Capa B</th>
-      <th>Capa C</th>
+      <th style="text-align:center;">Capa A</th>
+      <th style="text-align:center;">Capa B</th>
+      <th style="text-align:center;">Capa C</th>
       </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">Nº de Segmentos [Ns]:</th>
-      <td> <select [(ngModel)]="select1" [disabled]="activado" (change)="saveValueA(select1)">
+      <td style="text-align:center;"> <select [(ngModel)]="select1" [disabled]="activado" (change)="saveValueA(select1)">
               <option *ngFor="let o of options | slice:0:getLimit(select1)" [ngValue]="o">{{ o }}</option>
               </select> </td>
-      <td> <select [(ngModel)]="select2" (change)="saveValueB(select2)">
+      <td style="text-align:center;"> <select [(ngModel)]="select2" (change)="saveValueB(select2)">
               <option *ngFor="let o of options | slice:0:getLimit(select2)" [ngValue]="o">{{ o }}</option>
               </select> </td>
-      <td> <select [(ngModel)]="select3" (change)="saveValueC(select3)">
+      <td style="text-align:center;"> <select [(ngModel)]="select3" (change)="saveValueC(select3)">
                <option *ngFor="let o of options | slice:0:getLimit(select3)" [ngValue]="o">{{ o }}</option>
               </select></td>
                   </tr>
     <tr>
       <th scope="row">Esquema de Modulacion:</th>
-      <td>  <select class="form-control-mb-12" [value]="esqModSelected[0]" (change)="esqModSelection($event.target.value, 'capa A')">
+      <td style="text-align:center;">  <select class="form-control-mb-12" [value]="esqModSelected[0]" (change)="esqModSelection($event.target.value, 'capa A')">
                    <option value="QPSK">QPSK</option>
                     <option value="16-QAM">16-QAM</option>
                     <option value="64-QAM">64-QAM</option>
                     <option value="DQPSK">DQPSK</option>
                 </select> </td>
-      <td> <select  class="form-control-mb-12" [value]="esqModSelected[1]" (change)="esqModSelection($event.target.value,'capa B')">
+      <td style="text-align:center;"> <select  class="form-control-mb-12" [value]="esqModSelected[1]" (change)="esqModSelection($event.target.value,'capa B')">
                     <option value="QPSK">QPSK</option>
                     <option value="16-QAM">16-QAM</option>
                     <option value="64-QAM">64-QAM</option>
                     <option value="DQPSK">DQPSK</option>
                 </select> </td>
-      <td> <select  class="form-control-mb-12" [value]="esqModSelected[2]" (change)="esqModSelection($event.target.value, 'capa C')">
+      <td style="text-align:center;"> <select  class="form-control-mb-12" [value]="esqModSelected[2]" (change)="esqModSelection($event.target.value, 'capa C')">
                      <option value="QPSK">QPSK</option>
                     <option value="16-QAM">16-QAM</option>
                     <option value="64-QAM">64-QAM</option>
@@ -77,21 +69,21 @@
                   </tr>
     <tr>
       <th scope="row">Codificacion Convolucional [Ki]</th>
-      <td><select class="form-control-mb-12"  [(ngModel)]="codConSelected[0]" (change)="codConSelection(codConSelected[0], 'capa A')">
+      <td style="text-align:center;"><select class="form-control-mb-12"  [(ngModel)]="codConSelected[0]" (change)="codConSelection(codConSelected[0], 'capa A')">
                <option value="1/2">1/2</option>
                     <option value="2/3">2/3</option>
                     <option value="3/4">3/4</option>
                     <option value="5/6">5/6</option>
                     <option value="7/8">7/8</option>
                 </select></td>
-      <td>  <select class="form-control-mb-12" [value]="codConSelected[1]" (change)="codConSelection($event.target.value, 'capa B')">
+      <td style="text-align:center;">  <select class="form-control-mb-12" [value]="codConSelected[1]" (change)="codConSelection($event.target.value, 'capa B')">
                   <option value="1/2">1/2</option>
                     <option value="2/3">2/3</option>
                     <option value="3/4">3/4</option>
                     <option value="5/6">5/6</option>
                     <option value="7/8">7/8</option>
                 </select> </td>
-      <td> <select class="form-control-mb-12" [value]="codConSelected[2]"  (change)="codConSelection($event.target.value, 'capa C')">
+      <td style="text-align:center;"> <select class="form-control-mb-12" [value]="codConSelected[2]"  (change)="codConSelection($event.target.value, 'capa C')">
                <option value="1/2">1/2</option>
                     <option value="2/3">2/3</option>
                     <option value="3/4">3/4</option>
@@ -99,9 +91,53 @@
                     <option value="7/8">7/8</option>
                 </select> </td>
        </tr>
+       <tr>
+        <th scope="row">Entrelazado de tiempo [I]</th>
+        <td style="text-align:center;"><select [(ngModel)]="entrelazadoDeTiempo[0]" name="entrelazadoDeTiempo[0]" (change)="guardarValoresEntrelazado()" class="form-control-mb-12" >
+                      <option *ngIf="this.modoBoolean[0]" >0</option>
+                      <option *ngIf="this.modoBoolean[0]" >4</option>
+                      <option *ngIf="this.modoBoolean[0]">8</option>
+                      <option *ngIf="this.modoBoolean[0]">16</option>
+                      <option *ngIf="this.modoBoolean[1]" >0</option>
+                      <option *ngIf="this.modoBoolean[1]">2</option>
+                      <option  *ngIf="this.modoBoolean[1]">4</option>
+                      <option *ngIf="this.modoBoolean[1]" >8</option>
+                      <option  *ngIf="this.modoBoolean[2]">0</option>
+                      <option *ngIf="this.modoBoolean[2]" >1</option>
+                      <option *ngIf="this.modoBoolean[2]" >2</option>
+                      <option *ngIf="this.modoBoolean[2]" >4</option>          
+                    </select> </td>        
+        <td style="text-align:center;">  <select  [(ngModel)]="entrelazadoDeTiempo[1]"  name="entrelazadoDeTiempo[1]"  (change)="guardarValoresEntrelazado()"class="form-control-mb-12" >
+          <option *ngIf="this.modoBoolean[0]" >0</option>
+          <option *ngIf="this.modoBoolean[0]" >4</option>
+          <option *ngIf="this.modoBoolean[0]">8</option>
+          <option *ngIf="this.modoBoolean[0]">16</option>
+          <option *ngIf="this.modoBoolean[1]" >0</option>
+          <option *ngIf="this.modoBoolean[1]">2</option>
+          <option  *ngIf="this.modoBoolean[1]">4</option>
+          <option *ngIf="this.modoBoolean[1]" >8</option>
+          <option  *ngIf="this.modoBoolean[2]">0</option>
+          <option *ngIf="this.modoBoolean[2]" >1</option>
+          <option *ngIf="this.modoBoolean[2]" >2</option>
+          <option *ngIf="this.modoBoolean[2]" >4</option>        
+                  </select> </td>
+        <td style="text-align:center;"> <select [(ngModel)]="entrelazadoDeTiempo[2]" name="entrelazadoDeTiempo[2]"  (change)="guardarValoresEntrelazado()" class="form-control-mb-12" >
+          <option *ngIf="this.modoBoolean[0]" >0</option>
+          <option *ngIf="this.modoBoolean[0]" >4</option>
+          <option *ngIf="this.modoBoolean[0]">8</option>
+          <option *ngIf="this.modoBoolean[0]">16</option>
+          <option *ngIf="this.modoBoolean[1]" >0</option>
+          <option *ngIf="this.modoBoolean[1]">2</option>
+          <option  *ngIf="this.modoBoolean[1]">4</option>
+          <option *ngIf="this.modoBoolean[1]" >8</option>
+          <option  *ngIf="this.modoBoolean[2]">0</option>
+          <option *ngIf="this.modoBoolean[2]" >1</option>
+          <option *ngIf="this.modoBoolean[2]" >2</option>
+          <option *ngIf="this.modoBoolean[2]" >4</option>        
+                  </select> </td>
+         </tr>
   </tbody>
 </table>
-                    </div>
 <div *ngIf="!isValidSuma()" class="alert alert-danger">
     <strong>La suma de los segmentos asignados debe ser 13</strong> 
 </div>
@@ -111,17 +147,61 @@
         </div>
     </div>
 </div>
- 
+
 <!-- Resultados  -->
 <div class="row">
     <div class="col">
-        <div class="card">
+        <div class="card mb-3">
             <div class="card-header">Resultados</div>
             <div class="card-block">
                 <ngb-tabset>
-                    <ngb-tab title="Resumen" [disabled]="!isValidSuma()">
+                    <ngb-tab title="Simple">
+                      <ng-template ngbTabContent>
+                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
+                        master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
+                        dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum
+                        iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                      </ng-template>
+                    </ngb-tab>
+                    <ngb-tab>
+                      <ng-template ngbTabTitle><b>Fancy</b> title</ng-template>
+                      <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+                        <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
+                        craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl
+                        cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia
+                        yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean
+                        shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero
+                        sint qui sapiente accusamus tattooed echo park.</p>
+                      </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="Disabled" [disabled]="true">
+                      <ng-template ngbTabContent>
+                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
+                        master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
+                        dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum
+                        iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                      </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="Other tab" [disabled]="true">
                         <ng-template ngbTabContent>
-                          <table class="table table-bordered">
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="tab" [disabled]="true">
+                        <ng-template ngbTabContent>
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="last tab" [disabled]="true">
+                        <ng-template ngbTabContent>
+                        </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+                <ngb-tabset [justify]="currentJustify">
+                    <ngb-tab   [disabled]="!isValidSuma()">
+                        <ng-template ngbTabTitle><b>Resumen</b> </ng-template>
+                        <ng-template ngbTabContent>
+                            <div class="row">
+                                <div class="col">
+                          <table class="table">
   <thead>
     <tr>
       <th></th>
@@ -279,13 +359,15 @@
     </tr>
   </tbody>
 </table>
+                                </div>
+                            </div>
 <!-- GLOBALES -->
                         </ng-template>
                     </ngb-tab>
                     <ngb-tab [disabled]="!isValidSuma()">
                         <ng-template ngbTabTitle>Globales </ng-template>
                         <ng-template ngbTabContent>
-                          <table class="table table-bordered">
+                          <table class="table">
   <thead>
     <tr>
       <th></th>
@@ -597,9 +679,10 @@
 </table>     
                         </ng-template>
                     </ngb-tab> -->
-                     <ngb-tab title="ReMUX" [disabled]="!isValidSuma()">
+                     <ngb-tab [disabled]="!isValidSuma()">
+                        <ng-template ngbTabTitle><b>ReMUX</b> </ng-template>
                         <ng-template ngbTabContent>
-                           <table class="table table-bordered">
+                           <table class="table">
   <thead>
     <tr>
       <th></th>
@@ -717,9 +800,10 @@
 </table>               
                         </ng-template>
                     </ngb-tab>
-                    <ngb-tab title="Capa A" [disabled]="!isValidSuma()">
+                    <ngb-tab [disabled]="!isValidSuma()">
+                        <ng-template ngbTabTitle><b>Capa A</b> </ng-template>
                         <ng-template ngbTabContent>
-                           <table class="table table-bordered">
+                           <table class="table">
   <thead>
     <tr>
       <th></th>
@@ -782,9 +866,10 @@
 </table>               
                         </ng-template>
                     </ngb-tab>
-                    <ngb-tab title="capa B" [disabled]="!isValidSuma()">
+                    <ngb-tab  [disabled]="!isValidSuma()">
+                        <ng-template ngbTabTitle><b>Capa B</b> </ng-template>
                         <ng-template ngbTabContent>
-                           <table class="table table-bordered">
+                           <table class="table">
   <thead>
     <tr>
       <th></th>
@@ -851,7 +936,7 @@
                     </ngb-tab>
                     <ngb-tab title="Capa C" [disabled]="!isValidSuma()">
                         <ng-template ngbTabContent>
-                           <table class="table table-bordered">
+                           <table class="table">
   <thead>
     <tr>
       <th></th>

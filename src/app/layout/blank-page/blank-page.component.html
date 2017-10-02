@@ -1,5 +1,4 @@
 
-
 <h4>RED DE FRECUENCIA UNICA</h4>
 <div>
     <agm-map
@@ -12,7 +11,7 @@
                     [longitude]="markers[0].longi"
                     [markerDraggable]="markers[0].arrastrable"
                     (dragEnd)= "posicionFinalMarcador(markers[0], $event)">
-                    <agm-info-window>{{markers[0].nombre}}</agm-info-window>
+                    <agm-info-window> {{markers[0].nombre}} <br> Lat:{{mostLati}} <br> Long:{{ mostLongi}}</agm-info-window>
                     </agm-marker>
                     </div>
 
@@ -22,30 +21,30 @@
                     [longitude]="markers[1].longi"
                     [markerDraggable]="markers[1].arrastrable"
                     (dragEnd)= "posicionFinalMarcador(markers[1], $event)">
-                    <agm-info-window>{{markers[1].nombre}}</agm-info-window>
+                    <agm-info-window>{{markers[1].nombre}} <br> Lat:{{mostLati1}} <br> Long:{{ mostLongi1}}</agm-info-window>
                     </agm-marker>
                     </div>
 
                     <div *ngIf="recep" >
                     <agm-marker  
-                     [iconUrl]="'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'"
+                     [iconUrl]="'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'"
                     [latitude]="markers[2].lati" 
                     [longitude]="markers[2].longi"
                     [markerDraggable]="markers[2].arrastrable"
                     (dragEnd)= "posicionFinalMarcador(markers[2], $event)">
-                    <agm-info-window>{{markers[2].nombre}}</agm-info-window>
+                    <agm-info-window>{{markers[2].nombre}} <br> Lat:{{mostLati2}} <br> Long:{{ mostLongi2}}</agm-info-window>
                     </agm-marker>
                     </div>
 
                    
                  <div *ngIf="obst" >
                     <agm-marker  
-                     [iconUrl]="'http://maps.google.com/mapfiles/ms/icons/green-dot.png'"
+                     [iconUrl]="'https://maps.google.com/mapfiles/ms/icons/green-dot.png'"
                     [latitude]="markers[3].lati" 
                     [longitude]="markers[3].longi"
                     [markerDraggable]="markers[3].arrastrable"
                     (dragEnd)= "posicionFinalMarcador(markers[3], $event)">
-                    <agm-info-window>{{markers[3].nombre}}</agm-info-window>
+                    <agm-info-window>{{markers[3].nombre}} <br> Lat:{{mostLati3}} <br> Long:{{ mostLongi3}}</agm-info-window>
                     </agm-marker>
                     </div>
                     <div *ngIf="tra2" >
@@ -54,7 +53,7 @@
                     [longitude]="markers[4].longi"
                     [markerDraggable]="markers[4].arrastrable"
                     (dragEnd)= "posicionFinalMarcador(markers[4], $event)">
-                    <agm-info-window>{{markers[4].nombre}}</agm-info-window>
+                    <agm-info-window>{{markers[4].nombre}} <br> Lat:{{mostLati4}} <br> Long:{{ mostLongi4}}</agm-info-window>
                     </agm-marker>
                     </div>
 
@@ -64,17 +63,17 @@
                     [longitude]="markers[5].longi"
                     [markerDraggable]="markers[5].arrastrable"
                     (dragEnd)= "posicionFinalMarcador(markers[5], $event)">
-                    <agm-info-window>{{markers[5].nombre}}</agm-info-window>
+                    <agm-info-window>{{markers[5].nombre}} <br> Lat:{{mostLati5}} <br> Long:{{ mostLongi5}}</agm-info-window>
                     </agm-marker>
                     </div>
                   <div *ngIf="recep2" >
                     <agm-marker  
-                     [iconUrl]="'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'"
+                     [iconUrl]="'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'"
                     [latitude]="markers[6].lati" 
                     [longitude]="markers[6].longi"
                     [markerDraggable]="markers[6].arrastrable"
                     (dragEnd)= "posicionFinalMarcador(markers[6], $event)">
-                    <agm-info-window>{{markers[6].nombre}}</agm-info-window>
+                    <agm-info-window>{{markers[6].nombre}} <br> Lat:{{mostLati6}} <br> Long:{{ mostLongi6}}</agm-info-window>
                     </agm-marker>
                     </div>
     </agm-map>
@@ -82,10 +81,13 @@
 
 <!-- Resultados  -->
 <div class="row">
-    <div class="col">
-        <div class="card">
+    <div class="col">   
+        <div class="card mb-3">
             <div class="card-header"> </div>
             <div class="card-block">
+
+
+                
                 <ngb-tabset>
                     <ngb-tab title="Selector">
                         <ng-template ngbTabContent>
@@ -101,8 +103,8 @@
                             <td> <input [(ngModel)]="newLatTx1"  placeholder="Latitud" name="newLatTx1" id="newLatTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"  /> </td>
                             <td> <input [(ngModel)]="newLongTx1"  placeholder="Longitud" name="newLongTx1" id="newLongTx1" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button [disabled]=!frmTx1.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
-                            <td> Lat: {{mostLati}}</td>
-                            <td> Long:{{ mostLongi}}</td>
+                       <!--     <td> Lat: {{mostLati}}</td>
+                            <td> Long:{{ mostLongi}}</td> -->
                             </form >
                         
                           <form (ngSubmit)="uploadTx2()" #frmTx2="ngForm"> 
@@ -110,17 +112,17 @@
                             <td> <input [(ngModel)]="newLatTx2"  placeholder="Latitud" name="newLatTx2" id="newLatTx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <input [(ngModel)]="newLongTx2"  placeholder="Longitud" name="newLongTx2" id="newLongTx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <button  [disabled]=!frmTx2.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
-                            <td>Lat: {{mostLati1}}</td>
-                            <td> Long:{{mostLongi1}}</td>
-                            </form>
+                       <!--     <td>Lat: {{mostLati1}}</td>
+                            <td> Long:{{mostLongi1}}</td>-->
+                            </form> 
                       
                              <form (ngSubmit)="uploadTx3()" #frmTx3="ngForm">
                             <th scope="row"> <input type="checkbox" [(ngModel)]="tra2" (change)="cambioTx3()"   name="tra2" id="tra2"> Tx 3</th>
                             <td> <input [(ngModel)]="newLatTx3"  placeholder="Latitud" name="newLatTx3" id="newLatTx3" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <input [(ngModel)]="newLongTx3"  placeholder="Longitud" name="newLongTx3" id="newLongTx3" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button  [disabled]=!frmTx3.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
-                            <td>Lat: {{mostLati4}}</td>
-                            <td>Long:{{mostLongi4}}</td>
+                     <!--       <td>Lat: {{mostLati4}}</td>
+                            <td>Long:{{mostLongi4}}</td> -->
                              </form>
                        
                            <form (ngSubmit)="uploadTx4()" #frmTx4="ngForm">
@@ -128,8 +130,8 @@
                             <td> <input [(ngModel)]="newLatTx4"  placeholder="Latitud" name="newLatTx4" id="newLatTx4" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <input [(ngModel)]="newLongTx4"  placeholder="Longitud" name="newLongTx4" id="newLongTx4" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button  [disabled]=!frmTx4.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
-                            <td>Lat: {{mostLati5}}</td>
-                            <td>Long:{{mostLongi5}}</td>
+                       <!--     <td>Lat: {{mostLati5}}</td>
+                            <td>Long:{{mostLongi5}}</td> -->
                              </form>
                         
                               <form (ngSubmit)="uploadRx()" #frmRx="ngForm">
@@ -137,8 +139,8 @@
                             <td> <input [(ngModel)]="newLatRx"  placeholder="Latitud" name="newLatRx" id="newLatRx" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td>  <input [(ngModel)]="newLongRx"  placeholder="Longitud" name="newLongRx" id="newLongRx" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button [disabled]=!frmRx.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button></td>
-                            <td>Lat: {{mostLati2}}</td>
-                            <td>Long:{{mostLongi2}}</td>
+                     <!--       <td>Lat: {{mostLati2}}</td>
+                            <td>Long:{{mostLongi2}}</td> -->
                              </form>
                         
                               <form (ngSubmit)="uploadRx2()" #frmRx2="ngForm">
@@ -146,8 +148,8 @@
                             <td> <input [(ngModel)]="newLatRx2"  placeholder="Latitud" name="newLatRx2" id="newLatRx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td>  <input [(ngModel)]="newLongRx2"  placeholder="Longitud" name="newLongRx2" id="newLongRx2" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td><button [disabled]=!frmRx2.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button></td>
-                            <td>Lat: {{mostLati6}}</td>
-                            <td>Long:{{mostLongi6}}</td>
+                     <!--       <td>Lat: {{mostLati6}}</td>
+                            <td>Long:{{mostLongi6}}</td> -->
                              </form>
                    
                              <form (ngSubmit)="uploadOb()" #frmOb="ngForm" >
@@ -155,8 +157,8 @@
                             <td> <input [(ngModel)]="newLatOb"  placeholder="Latitud" name="newLatOb" id="newLatOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td>  <input [(ngModel)]="newLongOb"  placeholder="Longitud" name="newLongOb" id="newLongOb" ngModel  pattern="[-0-9.]{10,18}" required  title="cuidado!"/></td>
                             <td> <button  [disabled]=!frmOb.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button></td>
-                            <td>Lat: {{mostLati3}}</td>
-                            <td>Long:{{mostLongi3}}</td>
+                    <!--        <td>Lat: {{mostLati3}}</td>
+                            <td>Long:{{mostLongi3}}</td> -->
                              </form>
                      
                     </tbody>
@@ -166,25 +168,29 @@
                     </ngb-tab>
                     <ngb-tab title="Retardos">
                         <ng-template ngbTabContent>
-                            <div class="card-block table-responsive">
+                            <div class="card-block">
                                 <div class="alert alert-warning" role="alert"> 
   <strong>Atencion!</strong> Luego de realizar las modificaciones recuerda APLICAR LOS CAMBIOS!
 </div>
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th #td>Retardos</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                         <tbody>
-                         <tr>
-                            <th #th scope="row">Retardo de Red: (µs)</th>
-                            <td> <input type="text" class="form-control" [(ngModel)]="retardoRed"   aria-describedby="basic-addon1"> </td>
-                        </tr>
-                                    </tbody>
-                                </table> <br>
+                              
                                   <form  (ngSubmit)="aplicarCambios()" #frmRetardos="ngForm"> 
+                                        <button  type="submit" class="btn btn-sm btn-secondary" > Aplicar Cambios </button> <br><br>
+                                        <input type="checkbox"  [(ngModel)]="retardosState[0]"  name="booleanRetardoTx1" id="booleanRetardoTx1"  > Habilitar SFN <br><br>
+                                        <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th #td>Retardos</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                     <tbody>
+                                     <tr>
+                                        <th #th scope="row">Retardo de Red: (µs)</th>
+                                        <td> <input type="text" class="form-control" [(ngModel)]="retardoRed" name="retardoRed"   aria-describedby="basic-addon1"> </td>
+                                    </tr>
+                                                </tbody>
+                                            </table> <br>
+                                       
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -267,7 +273,7 @@
                     </tbody>
                         
                                 </table>
-                <button  type="submit" class="btn btn-sm btn-secondary" > Aplicar Cambios </button>
+               
                                   </form>
                             </div>
                         </ng-template>

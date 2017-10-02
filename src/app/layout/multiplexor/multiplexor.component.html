@@ -3,7 +3,16 @@
  <ngb-tabset>
                     <ngb-tab title="ASI 1">
                         <ng-template ngbTabContent>
-                           <table class="table table-bordered" >
+                                <br>
+                                <button 
+                                type="button"
+                                 class="btn btn-sm btn-secondary"
+                                 data-toggle="tooltip" data-placement="top" title=""
+                                 (click)="updateASI1()">Aplicar Cambios ASI 1</button> <br><br>
+                                <div *ngIf="duplicate1" class="alert alert-danger">
+                                        <strong>No puede haber PID Out iguales</strong> 
+                                    </div>
+                           <table class="table" >
                     <thead>
                         <tr>
                             <th>#</th>
@@ -23,7 +32,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"   [(ngModel)]="ASI1Output[0]"  name="ASI1Output[0]" title="ASI1Output[0]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI1Enable[0]"  name="ASI1Enable[0]" id="ASI1Enable[0]"> Enable</td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
@@ -34,7 +43,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"   [(ngModel)]="ASI1Output[1]"  name="ASI1Output[1]" title="ASI1Output[1]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI1Enable[1]"    name="ASI1Enable[1]" id="ASI1Enable[1]"> Enable</td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
@@ -45,7 +54,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"  [(ngModel)]="ASI1Output[2]"  name="ASI1Output[2]" title="ASI1Output[2]"   aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI1Enable[2]"   name="ASI1Enable[2]" id="ASI1Enable[2]"> Enable</td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
@@ -56,7 +65,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"  [(ngModel)]="ASI1Output[3]"  name="ASI1Output[3]" title="ASI1Output[3]"   aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI1Enable[3]"   name="ASI1Enable[3]" id="ASI1Enable[3]"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">5</th>
@@ -67,7 +76,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"   [(ngModel)]="ASI1Output[4]"  name="ASI1Output[4]" title="ASI1Output[4]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI1Enable[4]"   name="ASI1Enable[4]" id="ASI1Enable[4]"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">6</th>
@@ -78,7 +87,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"   [(ngModel)]="ASI1Output[5]"  name="ASI1Output[5]" title="ASI1Output[5]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox"  [(ngModel)]="ASI1Enable[5]"  name="ASI1Enable[5]" id="ASI1Enable[5]"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">7</th>
@@ -89,7 +98,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"  [(ngModel)]="ASI1Output[6]"  name="ASI1Output[6]" title="ASI1Output[6]"   aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI1Enable[6]"   name="ASI1Enable[6]" id="ASI1Enable[6]"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">8</th>
@@ -100,7 +109,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"  [(ngModel)]="ASI1Output[7]"  name="ASI1Output[7]" title="ASI1Output[7]"   aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI1Enable[7]"   name="ASI1Enable[7]" id="ASI1Enable[7]"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">9</th>
@@ -111,7 +120,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control" [(ngModel)]="ASI1Output[8]"  name="ASI1Output[8]" title="ASI1Output[8]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI1Enable[8]"   name="Enable" id="Enable"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">10</th>
@@ -122,21 +131,26 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control" [(ngModel)]="ASI1Output[9]"  name="ASI1Output[9]" title="ASI1Output[9]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI1Enable[9]" name="ASI1Enable[9]" id="ASI1Enable[9]"> Enable</td>
                         </tr>
                     </tbody>
                 </table>
 
-                <button 
-                type="button"
-                 class="btn btn-sm btn-secondary"
-                 data-toggle="tooltip" data-placement="top" title=""
-                 (click)="updateASI1()">Aplicar Cambios ASI 1</button> <br>
+                
 
                         </ng-template>
                     </ngb-tab>
                        <ngb-tab title="ASI 2">
                         <ng-template ngbTabContent>
+                                <br>
+                                <button 
+                                type="button"
+                                 class="btn btn-sm btn-secondary"
+                                 data-toggle="tooltip" data-placement="top" title=""
+                                 (click)="updateASI2()">Aplicar Cambios ASI 2</button> <br><br>
+                                <div *ngIf="duplicate2" class="alert alert-danger">
+                                        <strong>No puede haber PID Out iguales</strong> 
+                                    </div>
                                                   <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -157,7 +171,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"   [(ngModel)]="ASI2Output[0]"  name="ASI2Output[0]" title="ASI2Output[0]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI2Enable[0]"  name="ASI2Enable[0]" id="ASI2Enable[0]"> Enable</td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
@@ -168,7 +182,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"   [(ngModel)]="ASI2Output[1]"  name="ASI2Output[1]" title="ASI2Output[1]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI2Enable[1]"  name="ASI2Enable[1]" id="ASI2Enable[1]"> Enable</td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
@@ -179,7 +193,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"  [(ngModel)]="ASI2Output[2]"  name="ASI2Output[2]" title="ASI2Output[2]"   aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI2Enable[2]"  name="ASI2Enable[2]" id="ASI2Enable[2]"> Enable</td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
@@ -190,7 +204,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"  [(ngModel)]="ASI2Output[3]"  name="ASI2Output[3]" title="ASI2Output[3]"   aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox"  [(ngModel)]="ASI2Enable[3]" name="ASI2Enable[3]" id="ASI2Enable[3]"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">5</th>
@@ -201,7 +215,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"   [(ngModel)]="ASI2Output[4]"  name="ASI2Output[4]" title="ASI2Output[4]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI2Enable[4]"  name="ASI2Enable[4]" id="ASI2Enable[4]"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">6</th>
@@ -212,7 +226,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"   [(ngModel)]="ASI2Output[5]"  name="ASI2Output[5]" title="ASI2Output[5]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI2Enable[5]"  name="ASI2Enable[5]" id="ASI2Enable[5]"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">7</th>
@@ -223,7 +237,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"  [(ngModel)]="ASI2Output[6]"  name="ASI2Output[6]" title="ASI2Output[6]"   aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox"  [(ngModel)]="ASI2Enable[6]" name="ASI2Enable[6]" id="ASI2Enable[6]"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">8</th>
@@ -234,7 +248,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"  [(ngModel)]="ASI2Output[7]"  name="ASI2Output[7]" title="ASI2Output[7]"   aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI2Enable[7]"  name="ASI2Enable[7]" id="ASI2Enable[7]"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">9</th>
@@ -245,7 +259,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control" [(ngModel)]="ASI2Output[8]"  name="ASI2Output[8]" title="ASI2Output[8]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI2Enable[8]"  name="ASI2Enable[8]" id="ASI2Enable[8]"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">10</th>
@@ -256,19 +270,24 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control" [(ngModel)]="ASI2Output[9]"  name="ASI2Output[9]" title="ASI2Output[9]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI2Enable[9]"  name="ASI2Enable[9]" id="ASI2Enable[9]"> Enable</td>
                         </tr>
                     </tbody>
                 </table>   
-                <button 
-                type="button"
-                 class="btn btn-sm btn-secondary"
-                 data-toggle="tooltip" data-placement="top" title=""
-                 (click)="updateASI2()">Aplicar Cambios ASI 2</button> <br>
+               
                         </ng-template>
                     </ngb-tab>
                        <ngb-tab title="ASI 3">
                         <ng-template ngbTabContent>
+                                <br>
+                                <button 
+                                type="button"
+                                 class="btn btn-sm btn-secondary"
+                                 data-toggle="tooltip" data-placement="top" title=""
+                                 (click)="updateASI3()">Aplicar Cambios ASI 3</button> <br><br>
+                                 <div *ngIf="duplicate3" class="alert alert-danger">
+                                        <strong>No puede haber PID Out iguales</strong> 
+                                    </div>
                                                    <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -289,7 +308,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"   [(ngModel)]="ASI3Output[0]"  name="ASI3Output[0]" title="ASI3Output[0]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox"  [(ngModel)]="ASI3Enable[0]" name="ASI3Enable[0]" id="ASI3Enable[0]"> Enable</td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
@@ -300,7 +319,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"   [(ngModel)]="ASI3Output[1]"  name="ASI3Output[1]" title="ASI3Output[1]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI3Enable[1]"  name="ASI3Enable[1]" id="ASI3Enable[1]"> Enable</td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
@@ -311,7 +330,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"  [(ngModel)]="ASI3Output[2]"  name="ASI3Output[2]" title="ASI3Output[2]"   aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox"  [(ngModel)]="ASI3Enable[2]" name="ASI3Enable[2]" id="ASI3Enable[2]"> Enable</td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
@@ -322,7 +341,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"  [(ngModel)]="ASI3Output[3]"  name="ASI3Output[3]" title="ASI3Output[3]"   aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox"  [(ngModel)]="ASI3Enable[3]" name="ASI3Enable[3]" id="ASI3Enable[3]"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">5</th>
@@ -333,7 +352,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"   [(ngModel)]="ASI3Output[4]"  name="ASI3Output[4]" title="ASI3Output[4]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox"  [(ngModel)]="ASI3Enable[4]" name="ASI3Enable[4]" id="ASI3Enable[4]"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">6</th>
@@ -344,7 +363,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"   [(ngModel)]="ASI3Output[5]"  name="ASI3Output[5]" title="ASI3Output[5]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI3Enable[5]"  name="ASI3Enable[5]" id="ASI3Enable[5]"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">7</th>
@@ -355,7 +374,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"  [(ngModel)]="ASI3Output[6]"  name="ASI3Output[6]" title="ASI3Output[6]"   aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox"  [(ngModel)]="ASI3Enable[6]" name="ASI3Enable[6]" id="ASI3Enable[6]"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">8</th>
@@ -366,7 +385,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control"  [(ngModel)]="ASI3Output[7]"  name="ASI3Output[7]" title="ASI3Output[7]"   aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI3Enable[7]"  name="ASI3Enable[7]" id="ASI3Enable[7]"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">9</th>
@@ -377,7 +396,7 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control" [(ngModel)]="ASI3Output[8]"  name="ASI3Output[8]" title="ASI3Output[8]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox"  [(ngModel)]="ASI3Enable[8]" name="ASI3Enable[8]" id="ASI3Enable[8]"> Enable</td>
                         </tr>
                            <tr>
                             <th scope="row">10</th>
@@ -388,19 +407,18 @@
                                 <option value="Layer C">Layer C</option>
                               </select></td>
                             <td> <input type="text" class="form-control" [(ngModel)]="ASI3Output[9]"  name="ASI3Output[9]" title="ASI3Output[9]"  aria-describedby="basic-addon1"></td>
-                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                            <td><input type="checkbox" [(ngModel)]="ASI3Enable[9]"  name="ASI3Enable[9]" id="ASI3Enable[9]"> Enable</td>
                         </tr>
                     </tbody>                
                 </table>
-                <button 
-                type="button"
-                 class="btn btn-sm btn-secondary"
-                 data-toggle="tooltip" data-placement="top" title=""
-                 (click)="updateASI3()">Aplicar Cambios ASI 3</button> <br>
+              
                         </ng-template>
                     </ngb-tab>
                     <ngb-tab title="Tables">
                             <ng-template ngbTabContent>
+                                    <div *ngIf="duplicate3" class="alert alert-danger">
+                                            <strong>No puede haber PID Out iguales</strong> 
+                                        </div>
                                     <table class="table table-bordered">
                                             <thead>
                                                 <tr>
@@ -416,170 +434,92 @@
                                                     <th scope="row">1</th>
                                                     <td> <p>PAT</p></td>
                                                     <td><p>0</p></td>
-                                                    <td><select  [(ngModel)]="ASI3Layer[0]" name="ASI3Layer[0]" title="ASI3Layer[0]" >
+                                                    <td><select   >
                                                         <option value="Layer A">Layer A</option>
                                                         <option value="Layer B">Layer B</option>
                                                         <option value="Layer C">Layer C</option>
                                                       </select></td>    
-                                                    <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                                                    <td><input type="checkbox" > Enable</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">2</th>
                                                     <td> <p>CAT</p></td>
                                                     <td><p>1</p></td>
-                                                    <td><select  [(ngModel)]="ASI3Layer[0]" name="ASI3Layer[0]" title="ASI3Layer[0]" >
+                                                    <td><select   >
                                                         <option value="Layer A">Layer A</option>
                                                         <option value="Layer B">Layer B</option>
                                                         <option value="Layer C">Layer C</option>
                                                       </select></td>    
-                                                    <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                                                    <td><input type="checkbox"  > Enable</td>
                                               </tr>
                                                 <tr>
                                                     <th scope="row">3</th>
                                                     <td> <p>NIT</p></td>
                                                     <td><p>16</p></td>
-                                                    <td><select  [(ngModel)]="ASI3Layer[0]" name="ASI3Layer[0]" title="ASI3Layer[0]" >
+                                                    <td><select   >
                                                         <option value="Layer A">Layer A</option>
                                                         <option value="Layer B">Layer B</option>
                                                         <option value="Layer C">Layer C</option>
                                                       </select></td>    
-                                                    <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                                                    <td><input type="checkbox"  > Enable</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">4</th>
                                                     <td> <p>SDT</p></td>
                                                     <td><p>17</p></td>
-                                                    <td><select  [(ngModel)]="ASI3Layer[0]" name="ASI3Layer[0]" title="ASI3Layer[0]" >
+                                                    <td><select  >
                                                         <option value="Layer A">Layer A</option>
                                                         <option value="Layer B">Layer B</option>
                                                         <option value="Layer C">Layer C</option>
                                                       </select></td>    
-                                                    <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                                                    <td><input type="checkbox"   > Enable</td>
                                                 
                                                 </tr>
                                                    <tr>
                                                     <th scope="row">5</th>
                                                     <td> <p>BIT</p></td>
                                                     <td><p>36</p></td>
-                                                    <td><select  [(ngModel)]="ASI3Layer[0]" name="ASI3Layer[0]" title="ASI3Layer[0]" >
+                                                    <td><select   >
                                                         <option value="Layer A">Layer A</option>
                                                         <option value="Layer B">Layer B</option>
                                                         <option value="Layer C">Layer C</option>
                                                       </select></td>    
-                                                    <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
-                                                </tr>
+                                                    <td><input type="checkbox"   > Enable</td>
+                                                </tr>                                    
                                                    <tr>
                                                     <th scope="row">6</th>
-                                                    <td> <p>PMT1seg</p></td>
-                                                    <td><p>8136</p></td>
-                                                    <td><select  [(ngModel)]="ASI3Layer[0]" name="ASI3Layer[0]" title="ASI3Layer[0]" >
+                                                    <td> <p>PMT1</p></td>
+                                                    <td> <input type="text" class="form-control" aria-describedby="basic-addon1"></td>
+                                                    <td><select  >
                                                         <option value="Layer A">Layer A</option>
                                                         <option value="Layer B">Layer B</option>
                                                         <option value="Layer C">Layer C</option>
                                                       </select></td>    
-                                                    <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                                                    <td><input type="checkbox"   > Enable</td>
                                                 </tr>
                                                    <tr>
                                                     <th scope="row">7</th>
                                                     <td> <p>PMT2</p></td>
-                                                    <td> <input type="text" class="form-control"  [(ngModel)]="ASI3Input[7]"  name="ASI3Input[7]" title="ASI3Input[7]" aria-describedby="basic-addon1"></td>
-                                                    <td><select  [(ngModel)]="ASI3Layer[0]" name="ASI3Layer[0]" title="ASI3Layer[0]" >
+                                                    <td> <input type="text" class="form-control"  aria-describedby="basic-addon1"></td>
+                                                    <td><select   >
                                                         <option value="Layer A">Layer A</option>
                                                         <option value="Layer B">Layer B</option>
                                                         <option value="Layer C">Layer C</option>
                                                       </select></td>    
-                                                    <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                                                    <td><input type="checkbox"  > Enable</td>
                                                 </tr>
                                                    <tr>
                                                     <th scope="row">8</th>
                                                     <td> <p>PMT3</p></td>
-                                                    <td> <input type="text" class="form-control"  [(ngModel)]="ASI3Input[7]"  name="ASI3Input[7]" title="ASI3Input[7]" aria-describedby="basic-addon1"></td>
-                                                    <td><select  [(ngModel)]="ASI3Layer[0]" name="ASI3Layer[0]" title="ASI3Layer[0]" >
+                                                    <td> <input type="text" class="form-control" aria-describedby="basic-addon1"></td>
+                                                    <td><select  >
                                                         <option value="Layer A">Layer A</option>
                                                         <option value="Layer B">Layer B</option>
                                                         <option value="Layer C">Layer C</option>
                                                       </select></td>    
-                                                    <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
+                                                    <td><input type="checkbox" > Enable</td>
                                                 </tr>
-                                                   <tr>
-                                                    <th scope="row">9</th>
-                                                    <td> <p>PMT4</p></td>
-                                                    <td> <input type="text" class="form-control"  [(ngModel)]="ASI3Input[7]"  name="ASI3Input[7]" title="ASI3Input[7]" aria-describedby="basic-addon1"></td>
-                                                    <td><select  [(ngModel)]="ASI3Layer[0]" name="ASI3Layer[0]" title="ASI3Layer[0]" >
-                                                        <option value="Layer A">Layer A</option>
-                                                        <option value="Layer B">Layer B</option>
-                                                        <option value="Layer C">Layer C</option>
-                                                      </select></td>    
-                                                    <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
-                                                </tr>
-                                                   <tr>
-                                                    <th scope="row">10</th>
-                                                    <td> <p>PMT5</p></td>
-                                                    <td> <input type="text" class="form-control"  [(ngModel)]="ASI3Input[7]"  name="ASI3Input[7]" title="ASI3Input[7]" aria-describedby="basic-addon1"></td>
-                                                    <td><select  [(ngModel)]="ASI3Layer[0]" name="ASI3Layer[0]" title="ASI3Layer[0]" >
-                                                        <option value="Layer A">Layer A</option>
-                                                        <option value="Layer B">Layer B</option>
-                                                        <option value="Layer C">Layer C</option>
-                                                      </select></td>    
-                                                    <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
-                                                </tr>
-                                                <tr>
-                                                        <th scope="row">11</th>
-                                                        <td> <p>PMT6</p></td>
-                                                        <td> <input type="text" class="form-control"  [(ngModel)]="ASI3Input[7]"  name="ASI3Input[7]" title="ASI3Input[7]" aria-describedby="basic-addon1"></td>
-                                                        <td><select  [(ngModel)]="ASI3Layer[0]" name="ASI3Layer[0]" title="ASI3Layer[0]" >
-                                                            <option value="Layer A">Layer A</option>
-                                                            <option value="Layer B">Layer B</option>
-                                                            <option value="Layer C">Layer C</option>
-                                                          </select></td>    
-                                                        <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
-                                                    </tr>
-                                                    <tr>
-                                                            <th scope="row">12</th>
-                                                            <td> <p>PMT7</p></td>
-                                                            <td> <input type="text" class="form-control"  [(ngModel)]="ASI3Input[7]"  name="ASI3Input[7]" title="ASI3Input[7]" aria-describedby="basic-addon1"></td>
-                                                            <td><select  [(ngModel)]="ASI3Layer[0]" name="ASI3Layer[0]" title="ASI3Layer[0]" >
-                                                                <option value="Layer A">Layer A</option>
-                                                                <option value="Layer B">Layer B</option>
-                                                                <option value="Layer C">Layer C</option>
-                                                              </select></td>    
-                                                            <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
-                                                        </tr>
-                                                        <tr>
-                                                                <th scope="row">13</th>
-                                                                <td> <p>PMT8</p></td>
-                                                                <td> <input type="text" class="form-control"  [(ngModel)]="ASI3Input[7]"  name="ASI3Input[7]" title="ASI3Input[7]" aria-describedby="basic-addon1"></td>
-                                                                <td><select  [(ngModel)]="ASI3Layer[0]" name="ASI3Layer[0]" title="ASI3Layer[0]" >
-                                                                    <option value="Layer A">Layer A</option>
-                                                                    <option value="Layer B">Layer B</option>
-                                                                    <option value="Layer C">Layer C</option>
-                                                                  </select></td>    
-                                                                <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                    <th scope="row">14</th>
-                                                                    <td> <p>PMT9</p></td>
-                                                                    <td> <input type="text" class="form-control"  [(ngModel)]="ASI3Input[7]"  name="ASI3Input[7]" title="ASI3Input[7]" aria-describedby="basic-addon1"></td>
-                                                                    <td><select  [(ngModel)]="ASI3Layer[0]" name="ASI3Layer[0]" title="ASI3Layer[0]" >
-                                                                        <option value="Layer A">Layer A</option>
-                                                                        <option value="Layer B">Layer B</option>
-                                                                        <option value="Layer C">Layer C</option>
-                                                                      </select></td>    
-                                                                    <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
-                                                                </tr>
-                                                                
-                                                                <tr>
-                                                                        <th scope="row">15</th>
-                                                                        <td> <p>PMT10</p></td>
-                                                                        <td> <input type="text" class="form-control"  [(ngModel)]="ASI3Input[7]"  name="ASI3Input[7]" title="ASI3Input[7]" aria-describedby="basic-addon1"></td>
-                                                                        <td><select  [(ngModel)]="ASI3Layer[0]" name="ASI3Layer[0]" title="ASI3Layer[0]" >
-                                                                            <option value="Layer A">Layer A</option>
-                                                                            <option value="Layer B">Layer B</option>
-                                                                            <option value="Layer C">Layer C</option>
-                                                                          </select></td>    
-                                                                        <td><input type="checkbox"   name="Enable" id="Enable"> Enable</td>
-                                                                    </tr>         
+                                                     
                                             </tbody>                
                                         </table>
                             </ng-template>

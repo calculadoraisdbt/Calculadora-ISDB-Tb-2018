@@ -5,8 +5,11 @@ load(){
     if(localStorage.getItem('videoSource')=== null || localStorage.getItem('audioSource')=== null || localStorage.getItem('audioCodec')=== null 
     || localStorage.getItem('audioBitRate')=== null || localStorage.getItem('videoResolution')=== null || localStorage.getItem('videoResolution')=== null
 || localStorage.getItem('videoProfile')=== null || localStorage.getItem('gopSize')=== null || localStorage.getItem('videoBurstSize')=== null
-|| localStorage.getItem('outputInterface')=== null || localStorage.getItem('outputFormat')=== null 
-){
+|| localStorage.getItem('outputInterface')=== null || localStorage.getItem('outputFormat')=== null || localStorage.getItem('videoBitRate')=== null 
+|| localStorage.getItem('destIpAddress')=== null || localStorage.getItem('destPort')=== null || localStorage.getItem('tsBitRate')=== null 
+|| localStorage.getItem('asiPcrInterval')=== null || localStorage.getItem('pidAudio')=== null || localStorage.getItem('pidVideo')=== null 
+|| localStorage.getItem('pidPcr')=== null || localStorage.getItem('localIpAddress')=== null || localStorage.getItem('localNetMask')=== null 
+|| localStorage.getItem('defaultGateway')=== null ){
                  var videoSource = ['SDI','SDI','SDI'];
                  var audioSource = ['Analog Jacks','Analog Jacks','Analog Jacks'];
                  var audioCodec = ['AAC-LC ADTS','AAC-LC ADTS','AAC-LC ADTS'];
@@ -20,6 +23,17 @@ load(){
                  var frameDecimation = ['None','None','None'];
                  var outputInterface = ['Ethernet(VBR)','Ethernet(VBR)','Ethernet(VBR)'];
                  var outputFormat = ['RTP','RTP','RTP'];
+                 var videoBitRate = ['0','0','0'];
+                 var destIpAddress = ['0.0.0.0','0.0.0.0','0.0.0.0'];
+                 var destPort = ['0','0','0'];
+                 var tsBitRate = ['0','0','0'];
+                 var asiPcrInterval = ['0','0','0'];
+                 var pidAudio = ['0','0','0'];
+                 var pidVideo = ['0','0','0'];
+                 var pidPcr = ['0','0','0'];
+                 var localIpAddress = ['0.0.0.0','0.0.0.0','0.0.0.0'];
+                 var localNetMask = ['0.0.0.0','0.0.0.0','0.0.0.0'];
+                 var defaultGateway = ['0.0.0.0','0.0.0.0','0.0.0.0'];
 
                  localStorage.setItem('videoSource', JSON.stringify(videoSource));
                  localStorage.setItem('audioSource', JSON.stringify(audioSource));
@@ -34,11 +48,20 @@ load(){
                  localStorage.setItem('frameDecimation', JSON.stringify(frameDecimation));
                  localStorage.setItem('outputInterface', JSON.stringify(outputInterface));
                  localStorage.setItem('outputFormat', JSON.stringify(outputFormat));
+                 localStorage.setItem('videoBitRate', JSON.stringify(videoBitRate));
+                 localStorage.setItem('destIpAddress', JSON.stringify(destIpAddress));
+                 localStorage.setItem('destPort', JSON.stringify(destPort));
+                 localStorage.setItem('tsBitRate', JSON.stringify(tsBitRate));
+                 localStorage.setItem('asiPcrInterval', JSON.stringify(asiPcrInterval));
+                 localStorage.setItem('pidAudio', JSON.stringify(pidAudio));
+                 localStorage.setItem('pidVideo', JSON.stringify(pidVideo));
+                 localStorage.setItem('pidPcr', JSON.stringify(pidPcr));
+                 localStorage.setItem('localIpAddress', JSON.stringify(localIpAddress));
+                 localStorage.setItem('localNetMask', JSON.stringify(localNetMask));
+                 localStorage.setItem('defaultGateway', JSON.stringify(defaultGateway));
     }
-    else{
+    else{}
 
-         console.log('Cargando parametros...');
-    }
 }
     
 }

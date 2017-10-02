@@ -537,5 +537,137 @@ getOutputFormat(){
     }
 }
 
+//VIDEO BIT RATE
+obtenerVideoBitRate(){
+    var videoBitRate = JSON.parse(localStorage.getItem('videoBitRate'));
+    return videoBitRate;
     
+
+}
+actualizarVideoBitRate(nuevo : any){
+   var videoBitRate = JSON.parse(localStorage.getItem('videoBitRate'));
+   videoBitRate = nuevo ;
+   localStorage.setItem('videoBitRate', JSON.stringify(videoBitRate)); 
+}
+ 
+// DEST IP ADDRESS
+obtenerDestIpAddress(){
+    var destIpAddress = JSON.parse(localStorage.getItem('destIpAddress'));
+    return destIpAddress;
+    
+
+}
+actualizarDestIpAddress(nuevo : any){
+   var destIpAddress = JSON.parse(localStorage.getItem('destIpAddress'));
+   destIpAddress = nuevo ;
+   localStorage.setItem('destIpAddress', JSON.stringify(destIpAddress)); 
+}
+// DEST IP ADDRESS
+obtenerDestPort(){
+    var destPort = JSON.parse(localStorage.getItem('destPort'));
+    return destPort;
+    
+
+}
+actualizarDestPort(nuevo : any){
+   var destPort = JSON.parse(localStorage.getItem('destPort'));
+   destPort = nuevo ;
+   localStorage.setItem('destPort', JSON.stringify(destPort)); 
+}
+//TS BIT RATE
+obtenerTsBitRate(){
+    var tsBitRate = JSON.parse(localStorage.getItem('tsBitRate'));
+    return tsBitRate;
+    
+
+}
+actualizarTsBitRate(nuevo : any){
+   var tsBitRate = JSON.parse(localStorage.getItem('tsBitRate'));
+   tsBitRate = nuevo ;
+   localStorage.setItem('tsBitRate', JSON.stringify(tsBitRate)); 
+}
+//ASI PCR INTERVAL
+obtenerAsiPcrInterval(){
+    var asiPcrInterval = JSON.parse(localStorage.getItem('asiPcrInterval'));
+    return asiPcrInterval;
+    
+
+}
+actualizarAsiPcrInterval(nuevo : any){
+   var asiPcrInterval = JSON.parse(localStorage.getItem('asiPcrInterval'));
+   asiPcrInterval = nuevo ;
+   localStorage.setItem('asiPcrInterval', JSON.stringify(asiPcrInterval)); 
+}
+//PID AUDIO
+obtenerPidAudio(){
+    var pidAudio = JSON.parse(localStorage.getItem('pidAudio'));
+    return pidAudio;
+    
+
+}
+actualizarPidAudio(nuevo : any){
+   var pidAudio = JSON.parse(localStorage.getItem('pidAudio'));
+   pidAudio = nuevo ;
+   localStorage.setItem('pidAudio', JSON.stringify(pidAudio)); 
+}
+//PID VIDEO
+obtenerPidVideo(){
+    var pidVideo = JSON.parse(localStorage.getItem('pidVideo'));
+    return pidVideo;
+    
+
+}
+actualizarPidVideo(nuevo : any){
+   var pidVideo = JSON.parse(localStorage.getItem('pidVideo'));
+   pidVideo = nuevo ;
+   localStorage.setItem('pidVideo', JSON.stringify(pidVideo)); 
+}
+//PID PCR
+obtenerPidPcr(){
+    var pidPcr = JSON.parse(localStorage.getItem('pidPcr'));
+    return pidPcr;
+    
+
+}
+actualizarPidPcr(nuevo : any){
+   var pidPcr = JSON.parse(localStorage.getItem('pidPcr'));
+   pidPcr = nuevo ;
+   localStorage.setItem('pidPcr', JSON.stringify(pidPcr)); 
+}
+//PID LOCAL IP ADDRESS
+obtenerLocalIpAddress(){
+    var localIpAddress = JSON.parse(localStorage.getItem('localIpAddress'));
+    return localIpAddress;
+    
+
+}
+actualizarLocalIpAddress(nuevo : any){
+   var localIpAddress = JSON.parse(localStorage.getItem('localIpAddress'));
+   localIpAddress = nuevo ;
+   localStorage.setItem('localIpAddress', JSON.stringify(localIpAddress)); 
+}
+//PID LOCAL NETMASK
+obtenerLocalNetMask(){
+    var localNetMask = JSON.parse(localStorage.getItem('localNetMask'));
+    return localNetMask;
+    
+
+}
+actualizarLocalNetMask(nuevo : any){
+   var localNetMask = JSON.parse(localStorage.getItem('localNetMask'));
+   localNetMask = nuevo ;
+   localStorage.setItem('localNetMask', JSON.stringify(localNetMask)); 
+}
+//DEFAULT GATEWAY
+obtenerDefaultGateway(){
+    var defaultGateway = JSON.parse(localStorage.getItem('defaultGateway'));
+    return defaultGateway;
+    
+
+}
+actualizarDefaultGateway(nuevo : any){
+   var defaultGateway = JSON.parse(localStorage.getItem('defaultGateway'));
+   defaultGateway = nuevo ;
+   localStorage.setItem('defaultGateway', JSON.stringify(defaultGateway)); 
+}
 }

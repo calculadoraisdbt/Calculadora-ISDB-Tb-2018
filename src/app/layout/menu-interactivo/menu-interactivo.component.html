@@ -1,24 +1,207 @@
-<p>inicio</p>
+<body>
+<div *ngIf="flujoASI1">
+        <br>
+    <P>FLUJO ASI 1</P>
+    <table class="table table-bordered">
+    
+            <thead>
+                    <tr>
+                            <th>PID Audio</th>
+                            <th>PID Video</th>
+                            <th>PID PCR</th>
+                            <th>Intervalo de PCR [ms]</th>
+                            <th>TS Bitrate [ms]</th>
+                            <th>% Paquetes Nulos</th>
+                        </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                            <td > {{pidAudio[0]}} </td>
+                            <td>{{pidVideo[0]}}</td>
+                            <td>{{pidPcr[0]}} </td>
+                            <td> {{asiPciInterval[0]}}</td>
+                            <td>{{tsBitrate[0]}}</td>
+                            <td></td>
+                        </tr>
+                       
+            </tbody>
+    </table>
+    </div>
+    
+    <div *ngIf="flujoASI2">
+            <br>
+        <P>FLUJO ASI 2</P>
+        <table class="table table-bordered">
+        
+                <thead>
+                        <tr>
+                                <th>PID Audio</th>
+                                <th>PID Video</th>
+                                <th>PID PCR</th>
+                                <th>Intervalo de PCR [ms]</th>
+                                <th>TS Bitrate [ms]</th>
+                                <th>% Paquetes Nulos</th>
+                            </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                                <td > {{pidAudio[1]}} </td>
+                                <td>{{pidVideo[1]}}</td>
+                                <td>{{pidPcr[1]}} </td>
+                                <td> {{asiPciInterval[1]}}</td>
+                                <td>{{tsBitrate[1]}}</td>
+                                <td></td>
+                            </tr>
+                           
+                </tbody>
+        </table>
+        </div>
+    
+        <div *ngIf="flujoASI3">
+                <br>
+            <P>FLUJO ASI 3</P>
+            <table class="table table-bordered">
+            
+                    <thead>
+                            <tr>
+                                    <th>PID Audio</th>
+                                    <th>PID Video</th>
+                                    <th>PID PCR</th>
+                                    <th>Intervalo de PCR [ms]</th>
+                                    <th>TS Bitrate [ms]</th>
+                                    <th>% Paquetes Nulos</th>
+                                </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <td > {{pidAudio[2]}} </td>
+                                <td>{{pidVideo[2]}}</td>
+                                <td>{{pidPcr[2]}} </td>
+                                <td> {{asiPciInterval[2]}}</td>
+                                <td>{{tsBitrate[2]}}</td>
+                                <td></td>
+                                </tr>
+                               
+                    </tbody>
+            </table>
+            </div>
+            <div *ngIf="flujoTS">
+                        <P>FLUJO TS MPEG-2</P>
+                        <table class="table table-bordered">
 
-<!--<table class="table table-bordered" >
-    <thead>
-        <tr>
-            <th><a href="codificador">
-                <img src="https://image.ibb.co/b6JFp5/primero.jpg" alt="primero" border="0" align="middle">
-              </a></th>
-            <th><a href="multiplexor">
-                <img src="https://image.ibb.co/gVhQp5/Multiplexor.jpg" alt="primero" border="0" align="middle">
-              </a></th>
-            <th><a href="remux">
-                <img  src="https://image.ibb.co/mbOLNQ/Remux.jpg" alt="primero" border="0" align="middle">
-              </a></th>
-            <th><a href="modulador">
-                <img src="https://image.ibb.co/ch2mwk/Modulador.jpg" alt="primero" border="0" align="middle">
-              </a></th>
-            <th><a href="blank-page">
-                <img src="https://image.ibb.co/hXTgU5/sfn.jpg" alt="primero" border="0" align="middle">
-              </a></th>
-        </tr>
-    </thead>
-</table>
--->
+                                        <thead>
+                                                <tr>
+                                                        <th>TS Bitrate [ms]</th>
+                                                        <th>{{tsBitrateTotal}}</th>
+                                                    </tr>
+                                        </thead>
+                                </table>                    
+                    <P>Servicio 1</P>
+                    <table class="table table-bordered">
+                            
+                                    <thead>
+                                            <tr>
+                                                    <th>PID Audio</th>
+                                                    <th>PID Video</th>
+                                                    <th>PID PCR</th>
+                                                    <th>Intervalo de PCR [ms]</th>
+                                                </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                        <td > {{pidAudio[0]}} </td>
+                                                        <td>{{pidVideo[0]}}</td>
+                                                        <td>{{pidPcr[0]}} </td>
+                                                        <td> {{asiPciInterval[0]}}</td>
+                                                </tr>
+                                               
+                                    </tbody>
+                            </table>
+                            <P>Servicio 2</P>
+                            <table class="table table-bordered">
+                                    
+                                            <thead>
+                                                    <tr>
+                                                            <th>PID Audio</th>
+                                                            <th>PID Video</th>
+                                                            <th>PID PCR</th>
+                                                            <th>Intervalo de PCR [ms]</th>
+                                                        </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                                <td > {{pidAudio[1]}} </td>
+                                                                <td>{{pidVideo[1]}}</td>
+                                                                <td>{{pidPcr[1]}} </td>
+                                                                <td> {{asiPciInterval[1]}}</td>
+                                                        </tr>
+                                                       
+                                            </tbody>
+                                    </table>   
+                                    <P>Servicio 3</P>
+                                    <table class="table table-bordered">
+                                            
+                                                    <thead>
+                                                            <tr>
+                                                                    <th>PID Audio</th>
+                                                                    <th>PID Video</th>
+                                                                    <th>PID PCR</th>
+                                                                    <th>Intervalo de PCR [ms]</th>
+                                                                </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                        <td > {{pidAudio[2]}} </td>
+                                                                        <td>{{pidVideo[2]}}</td>
+                                                                        <td>{{pidPcr[2]}} </td>
+                                                                        <td> {{asiPciInterval[2]}}</td>
+                                                                </tr>
+                                                               
+                                                    </tbody>
+                                            </table>                                                                                   
+                    </div>
+
+
+
+
+    <div *ngIf="flujoBTS">
+            <P>FLUJO BTS</P>
+            
+            </div>
+    
+    
+   
+   
+          <!-- Beginning of CoffeeCup Image Map -->
+          
+                        <div style="overflow-y:auto;">
+                                        <img  src="https://image.ibb.co/koxX8k/MENU2.png" usemap="#menu" border=0>
+                                        <map  name="menu">
+                                          <area shape="rect" coords="202,26,315,119" href="codificador"  alt="" title="">
+                                          <area shape="rect" coords="203,153,316,247" href="codificador"  alt="" title="">
+                                          <area shape="rect" coords="202,282,315,375" href="codificador"  alt="" title="">
+                                          <area shape="rect" coords="411,140,462,260" href="multiplexor"  alt="" title="">
+                                          <area shape="rect" coords="591,140,641,259" href="remux"  alt="" title="">
+                                          <area shape="rect" coords="769,140,819,260"   href="modulador" alt="" title="">
+                                          <area shape="poly" coords="319,68,348,68,348,168,394,168,394,161,410,171,394,180,394,173,341,173,341,74,320,74,320,68"  (click)="ASI1()" alt="" title="">
+                                          <area shape="poly" coords="318,196,394,196,394,190,411,200,394,209,394,202,320,202,320,195"(click)="ASI2()"   alt="" title="">
+                                          <area shape="poly" coords="319,326,342,326,342,227,395,227,394,222,410,231,394,240,394,234,348,234,348,331,319,331,319,325" (click)="ASI3()"  alt="" title="">
+                                          <area shape="poly" coords="466,197,573,197,573,190,592,199,574,209,574,202,466,202,466,197" (click)="TSmethod()"alt="" title="">
+                                          <area shape="poly" coords="645,196,752,196,752,191,769,199,752,208,752,203,646,202,646,197" (click)="BTSmethod()" alt="" title="">
+                                        </map>
+                
+                          </div>
+          
+         
+
+<!-- End of CoffeeCup Image Map -->
+
+     
+
+
+    </body>
+<!-- Beginning of CoffeeCup Image Map Responsive Scripts --> 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="jquery.rwdImageMaps.min.js"></script>
+<script>$(document).ready(function(e) {$('img[usemap]').rwdImageMaps();});</script>
+<!-- End of CoffeeCup Image Map Responsive Scripts --> 

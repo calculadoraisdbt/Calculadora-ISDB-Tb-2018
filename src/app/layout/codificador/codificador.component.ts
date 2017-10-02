@@ -11,11 +11,14 @@ export class CodificadorComponent implements OnInit {
   videoBitRate = [];
   destIpAddress = [];
   destPort = [];
-  TsBitrate = [];
-  AsiPciInterval = [];
-  LocalIpAddress = [];
-  LocalNetmask = [];
-  DefaultGateway = [];
+  tsBitrate = [];
+  asiPciInterval = []; // en realidad en pcr Interval 
+  pidAudio = [];
+  pidVideo = [];
+  pidPcr = [];
+  localIpAddress = [];
+  localNetmask = [];
+  defaultGateway = [];
 
   //Dropdowns
 
@@ -48,6 +51,17 @@ export class CodificadorComponent implements OnInit {
     this.frameDecimation = this._codificadorService.getFrameDecimation();
     this.outputInterface = this._codificadorService.getOutputInterface();
     this.outputFormat = this._codificadorService.getOutputFormat();
+    this.videoBitRate = this._codificadorService.obtenerVideoBitRate();
+    this.destIpAddress = this._codificadorService.obtenerDestIpAddress();
+    this.destPort = this._codificadorService.obtenerDestPort();
+    this.tsBitrate = this._codificadorService.obtenerTsBitRate();
+    this.asiPciInterval = this._codificadorService.obtenerAsiPcrInterval();
+    this.pidAudio = this._codificadorService.obtenerPidAudio();
+    this.pidVideo = this._codificadorService.obtenerPidVideo();
+    this.pidPcr = this._codificadorService.obtenerPidPcr();
+    this.localIpAddress = this._codificadorService.obtenerLocalIpAddress();
+    this.localNetmask = this._codificadorService.obtenerLocalNetMask();
+    this.defaultGateway = this._codificadorService.obtenerDefaultGateway()
 
    }  
 
@@ -277,5 +291,39 @@ outputFormatSelected(value,id){
             this.outputFormat[2] = value;
             this._codificadorService.actualizarOutputFormat(this.outputFormat[2], id); }
 
+  }
+
+  changeVideoBitRate(){
+    this._codificadorService.actualizarVideoBitRate(this.videoBitRate);
+  }
+  changeDestIpAddress(){
+    this._codificadorService.actualizarDestIpAddress(this.destIpAddress);
+  }
+  changeDestPort(){
+    this._codificadorService.actualizarDestPort(this.destPort);
+  }
+  changeTsBitrate (){
+    this._codificadorService.actualizarTsBitRate(this.tsBitrate);
+  }
+  changeAsiPciInterval  (){
+    this._codificadorService.actualizarAsiPcrInterval(this.asiPciInterval);
+  }
+  changePidAudio(){
+    this._codificadorService.actualizarPidAudio(this.pidAudio);
+  }
+  changePidVideo (){
+    this._codificadorService.actualizarPidVideo(this.pidVideo);
+  }
+  changePidPcr(){
+    this._codificadorService.actualizarPidPcr(this.pidPcr);
+  }
+  changeLocalIpAddress(){
+    this._codificadorService.actualizarLocalIpAddress(this.localIpAddress);
+  }
+  changeLocalNetmask(){
+    this._codificadorService.actualizarLocalNetMask(this.localNetmask);
+  }
+  changeDefaultGateway (){
+    this._codificadorService.actualizarDefaultGateway(this.defaultGateway);
   }
 }

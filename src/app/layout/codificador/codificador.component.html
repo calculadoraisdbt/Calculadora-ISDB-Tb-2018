@@ -1,4 +1,6 @@
-
+<head>        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+</head>
 <!-- Resultados  -->
 <div class="row">
     <div class="col">
@@ -9,12 +11,12 @@
                     <ngb-tab title="Encoder 1">
                         <ng-template ngbTabContent>
                                 <div class="row">
-    <div class="col col-xl-6 col-lg-12">
+    <div class="col">
         <div class="card mb-3">
             <div class="card-header">
-                Encoder Set Up 1
+                Encoder Setup 1
             </div>
-            <div class="card-block table-responsive">
+            <div class="card-block">
                 <table class="table" >
                     <tbody>
                         <tr >
@@ -100,7 +102,7 @@
                            <tr>
                             <th scope="row">Video Bit Rate [Mbps]</th>
                            <td>
-                              <input type="text" class="form-control"  [(ngModel)] = "videoBitRate[0]"  aria-describedby="basic-addon1">
+                              <input type="text" class="form-control"  [(ngModel)] = "videoBitRate[0]"  (change)=" changeVideoBitRate()" aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
@@ -171,10 +173,11 @@
             </div>
         </div>
     </div>
-    <div class="col col-xl-6 col-lg-12">
+    <div class="row">
+    <div class="col">
         <div class="card mb-3">
             <div class="card-header">Output Setup 1</div>
-            <div class="card-block table-responsive">
+            <div class="card-block">
                 <table class="table">
                     <tbody>
                         <tr>
@@ -199,43 +202,43 @@
                            <tr>
                             <th scope="row">Dest IP Address</th>
                             <td>
-                                <input type="text" class="form-control"  [(ngModel)] ="destIpAddress[0]"   aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] ="destIpAddress[0]" (change)="changeDestIpAddress()"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Dest Port</th>
                             <td>
-                                <input type="text" class="form-control"  [(ngModel)] ="destPort[0]"  aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] ="destPort[0]" (change)="changeDestPort()"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">TS Bitrate [Mbps]</th>
                             <td>
-                                <input type="text" class="form-control" [(ngModel)] ="TsBitrate[0]"   aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" [(ngModel)] ="tsBitrate[0]" (change)="changeTsBitrate()"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
-                            <th scope="row">ASI PCI Interval</th>
+                            <th scope="row">ASI PCR Interval [ms]</th>
                             <td>
-                                <input type="text" class="form-control"  [(ngModel)] ="AsiPciInterval[0]"  aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] ="asiPciInterval[0]" (change)="changeAsiPciInterval()" aria-describedby="basic-addon1">
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">PID Audio</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] ="pidAudio[0]" (change)="changePidAudio()" aria-describedby="basic-addon1">
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">PID Video</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] ="pidVideo[0]" (change)="changePidVideo()" aria-describedby="basic-addon1">
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">PID PCR</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] ="pidPcr[0]" (change)="changePidPcr()" aria-describedby="basic-addon1">
                             </td>
                         </tr>
                         
@@ -243,29 +246,30 @@
                 </table>
             </div>
         </div>
+    </div>
         <div class="card mb-3">
-            <div class="card-header">Local IP Set Up 1</div>
-            <div class="card-block table-responsive">
+            <div class="card-header">Local IP Setup 1</div>
+            <div class="card-block">
                 <table class="table table-hover table-striped" >
                     <tbody>
                         <tr >
                             <td >Local IP Address</td>
                             <td>
-                                <input type="text" class="form-control"   [(ngModel)] ="LocalIpAddress[1]" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] ="localIpAddress[0]" (change)="changeLocalIpAddress()" aria-describedby="basic-addon1">
                             </td>
                            
                         </tr>
                         <tr >
                             <td >Local Netmask</td>
                             <td >
-                                <input type="text" class="form-control"   [(ngModel)] ="LocalNetmask[1]"  aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] ="localNetmask[0]" (change)="changeLocalNetmask()" aria-describedby="basic-addon1">
                             </td>
                            
                         </tr>
                         <tr >
                             <td >Default Gateway</td>
                             <td >
-                                <input type="text" class="form-control"   [(ngModel)] ="DefaultGateway[1]"  aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] ="defaultGateway[0]" (change)="changeDefaultGateway()" aria-describedby="basic-addon1">
                             </td>
                             
                         </tr>
@@ -281,12 +285,12 @@
                     <ngb-tab title="Encoder 2">
                         <ng-template ngbTabContent>
                                 <div class="row">
-    <div class="col col-xl-6 col-lg-12">
+    <div class="col">
         <div class="card mb-3">
             <div class="card-header">
-                Encoder Set Up 2
+                Encoder Setup 2
             </div>
-            <div class="card-block table-responsive">
+            <div class="card-block">
                 <table class="table">
                     <tbody>
                         <tr>
@@ -372,7 +376,7 @@
                            <tr>
                             <th scope="row">Video Bit Rate [Mbps]</th>
                            <td>
-                              <input type="text" class="form-control"    [(ngModel)] = "videoBitRate[1]"  aria-describedby="basic-addon1">
+                              <input type="text" class="form-control"    [(ngModel)] = "videoBitRate[1]"(change)=" changeVideoBitRate()" aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
@@ -443,10 +447,11 @@
             </div>
         </div>
     </div>
-    <div class="col col-xl-6 col-lg-12">
+    <div class="row">
+    <div class="col">
         <div class="card mb-3">
             <div class="card-header">Output Setup 2</div>
-            <div class="card-block table-responsive">
+            <div class="card-block">
                 <table class="table">
                     <tbody>
                         <tr>
@@ -471,43 +476,43 @@
                            <tr>
                             <th scope="row">Dest IP Address</th>
                             <td>
-                                <input type="text" class="form-control"   [(ngModel)] = "destIpAddress[2]"   aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] = "destIpAddress[1]" (change)="changeDestIpAddress()"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Dest Port</th>
                             <td>
-                                <input type="text" class="form-control"  [(ngModel)] = "destPort[2]"   aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] = "destPort[1]" (change)="changeDestPort()"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">TS Bitrate [Mbps]</th>
                             <td>
-                                <input type="text" class="form-control"   [(ngModel)] = "TsBitrate[2]"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] = "tsBitrate[1]"  (change)="changeTsBitrate()"   aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
-                            <th scope="row">ASI PCI Interval</th>
+                            <th scope="row">ASI PCR Interval [ms]</th>
                             <td>
-                                <input type="text" class="form-control"   [(ngModel)] = "AsiPciInterval[2]"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] = "asiPciInterval[1]"  (change)="changeAsiPciInterval()"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">PID Audio</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] = "pidAudio[1]"  (change)="changePidAudio()" aria-describedby="basic-addon1">
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">PID Video</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] = "pidVideo[1]" (change)="changePidVideo()"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">PID PCR</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" [(ngModel)] = "pidPcr[1]"  (change)="changePidPcr()"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
                         
@@ -515,29 +520,32 @@
                 </table>
             </div>
         </div>
+        </div>
+        <div class="row">
+        <div class="col">
         <div class="card mb-3">
-            <div class="card-header">Local IP Set Up 2</div>
-            <div class="card-block table-responsive">
+            <div class="card-header">Local IP Setup 2</div>
+            <div class="card-block">
                 <table class="table table-hover table-striped">
                     <tbody>
                         <tr>
                             <td>Local IP Address</td>
                             <td>
-                                <input type="text" class="form-control"   [(ngModel)] = "LocalIpAddress[2]"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] = "localIpAddress[1]" (change)="changeLocalIpAddress()"   aria-describedby="basic-addon1">
                             </td>
                            
                         </tr>
                         <tr>
                             <td>Local Netmask</td>
                             <td>
-                                <input type="text" class="form-control"   [(ngModel)] = "LocalNetmask[2]"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] = "localNetmask[1]"  (change)="changeLocalNetmask()"  aria-describedby="basic-addon1">
                             </td>
                            
                         </tr>
                         <tr>
                             <td>Default Gateway</td>
                             <td>
-                                <input type="text" class="form-control" [(ngModel)] = "DefaultGateway[2]"   aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" [(ngModel)] = "defaultGateway[1]" (change)="changeDefaultGateway()"  aria-describedby="basic-addon1">
                             </td>
                             
                         </tr>
@@ -547,18 +555,20 @@
             </div>
         </div>
     </div>
+        </div>
+    </div>
 </div> 
                         </ng-template>
                     </ngb-tab>  
                     <ngb-tab title="Encoder 3">
                         <ng-template ngbTabContent>
                                 <div class="row">
-    <div class="col col-xl-6 col-lg-12">
+    <div class="col">
         <div class="card mb-3">
             <div class="card-header">
-                Encoder Set Up 3
+                Encoder Setup 3
             </div>
-            <div class="card-block table-responsive">
+            <div class="card-block">
                 <table class="table">
                     <tbody>
                         <tr>
@@ -644,7 +654,7 @@
                            <tr>
                             <th scope="row">Video Bit Rate [Mbps]</th>
                            <td>
-                              <input type="text" class="form-control"   [(ngModel)] = "videoBitRate[2]"   aria-describedby="basic-addon1">
+                              <input type="text" class="form-control"   [(ngModel)] = "videoBitRate[2]" (change)=" changeVideoBitRate()"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
@@ -715,10 +725,11 @@
             </div>
         </div>
     </div>
-    <div class="col col-xl-6 col-lg-12">
+        <div class="row">
+    <div class="col">
         <div class="card mb-3">
             <div class="card-header">Output Setup 3</div>
-            <div class="card-block table-responsive">
+            <div class="card-block">
                 <table class="table ">
                     <tbody>
                         <tr>
@@ -743,43 +754,43 @@
                            <tr>
                             <th scope="row">Dest IP Address</th>
                             <td>
-                                <input type="text" class="form-control"  [(ngModel)] = "destIpAddress[2]"  aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] = "destIpAddress[2]" (change)="changeDestIpAddress()" aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">Dest Port</th>
                             <td>
-                                <input type="text" class="form-control"  [(ngModel)] = "destPort[2]"   aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] = "destPort[2]" (change)="changeDestPort()"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">TS Bitrate [Mbps]</th>
                             <td>
-                                <input type="text" class="form-control"  [(ngModel)] = "TsBitrate[2]"     aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] = "tsBitrate[2]"    (change)="changeTsBitrate()"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
-                            <th scope="row">ASI PCI Interval</th>
+                            <th scope="row">ASI PCR Interval [ms]</th>
                             <td>
-                                <input type="text" class="form-control"   [(ngModel)] = "AsiPciInterval[2]"   aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] = "asiPciInterval[2]" (change)="changeAsiPciInterval()"  aria-describedby="basic-addon1">
                             </td>
                         </tr>
                            <tr>
                             <th scope="row">PID Audio</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] = "pidAudio[2]" (change)="changePidAudio()" aria-describedby="basic-addon1">
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">PID Video</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] = "pidVideo[2]" (change)="changePidVideo()" aria-describedby="basic-addon1">
                             </td>
                         </tr>
                         <tr>
                             <th scope="row">PID PCR</th>
                             <td>
-                                <input type="text" class="form-control"    aria-describedby="basic-addon1">
+                                <input type="text" class="form-control" [(ngModel)] = "pidPcr[2]"  (change)="changePidPcr()" aria-describedby="basic-addon1">
                             </td>
                         </tr>
                         
@@ -787,29 +798,30 @@
                 </table>
             </div>
         </div>
+    </div>
         <div class="card mb-3">
-            <div class="card-header">Local IP Set Up 3</div>
-            <div class="card-block table-responsive">
+            <div class="card-header">Local IP Setup 3</div>
+            <div class="card-block">
                 <table class="table table-hover table-striped">
                     <tbody>
                         <tr>
                             <td>Local IP Address</td>
                             <td>
-                                <input type="text" class="form-control"   [(ngModel)] = "LocalIpAddress[2]"   aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"   [(ngModel)] = "localIpAddress[2]"  (change)="changeLocalIpAddress()" aria-describedby="basic-addon1">
                             </td>
                            
                         </tr>
                         <tr>
                             <td>Local Netmask</td>
                             <td>
-                                <input type="text" class="form-control"  [(ngModel)] = "LocalNetmask[2]"   aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] = "localNetmask[2]" (change)="changeLocalNetmask()"  aria-describedby="basic-addon1">
                             </td>
                            
                         </tr>
                         <tr>
                             <td>Default Gateway</td>
                             <td>
-                                <input type="text" class="form-control"  [(ngModel)] = "DefaultGateway[2]"  aria-describedby="basic-addon1">
+                                <input type="text" class="form-control"  [(ngModel)] = "defaultGateway[2]" (change)="changeDefaultGateway()" aria-describedby="basic-addon1">
                             </td>
                             
                         </tr>

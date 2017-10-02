@@ -6,7 +6,7 @@ load(){
         
         if(localStorage.getItem('intSelected')=== null || localStorage.getItem('esqModSelected')=== null 
             ||localStorage.getItem('codConSelected')=== null ||localStorage.getItem('select1')=== null ||
-        localStorage.getItem('select2')=== null ||localStorage.getItem('select3')=== null  ){
+        localStorage.getItem('select2')=== null ||localStorage.getItem('select3')=== null ||localStorage.getItem('entrelazadoDeTiempo')=== null   ){
             console.log('No se encontraron parametros...');
 
             var intSelected = '1/4';
@@ -17,6 +17,7 @@ load(){
             var select2 = 0;
             var select3 = 0;
             var activado = false;
+            var entrelazadoDeTiempo = [0,0,0]; 
             localStorage.setItem('intSelected', JSON.stringify(intSelected));
             localStorage.setItem('modoSelected', JSON.stringify(modoSelected));
             localStorage.setItem('esqModSelected', JSON.stringify(esqModSelected));
@@ -25,6 +26,7 @@ load(){
             localStorage.setItem('select2', JSON.stringify(select2));
             localStorage.setItem('select3', JSON.stringify(select3));
             localStorage.setItem('activado', JSON.stringify(activado));
+            localStorage.setItem('entrelazadoDeTiempo', JSON.stringify(entrelazadoDeTiempo));
             //resultados
             var intGua =63;
             localStorage.setItem('intGua', JSON.stringify(intGua));

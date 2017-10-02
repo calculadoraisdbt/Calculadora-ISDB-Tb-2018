@@ -250,11 +250,18 @@ export class ModuladorService extends InitParam {
 
    }
 
-   
-getIntervaloDeGuarda(){
+   obtenerEntrelazadoDeTiempo(){
+      
+            var entrelazadoDeTiempo = JSON.parse(localStorage.getItem('entrelazadoDeTiempo'));
+            return entrelazadoDeTiempo;
+           
+      
+         }
 
-    
-    
-}
-
+         actualizarEntrelazadoDeTiempo(value){
+            var entrelazadoDeTiempo = JSON.parse(localStorage.getItem('entrelazadoDeTiempo'));
+            entrelazadoDeTiempo = value;
+             localStorage.setItem('entrelazadoDeTiempo', JSON.stringify(entrelazadoDeTiempo));
+      
+   }
 }

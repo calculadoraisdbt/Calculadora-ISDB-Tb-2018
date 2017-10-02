@@ -1,5 +1,5 @@
 agm-map {
-  height: 300px;
+  height: 600px;
 }
 
 #esteDiv {
@@ -9,17 +9,31 @@ agm-map {
 
 
 .table tr {
-  border: 2px solid #000;
+  border: 1px solid #000;
 }   
 
 .table td {
-  border: 2px solid #000;
+  border: 1px solid #000;
 }   
 
 .table th {
-  border: 2px solid #000;
+  border: 1px solid #000;
 }   
 
+@media all and (max-width: 600px){
+  input {
+     width: 100%; max-width: 100%;
+  }
+}
 
+@media all and (max-width: 600px){
+  card {
+     width: 100%; max-width: 100%;
+  }
+}
 
-
+@media all and (max-width: 600px){
+  table {
+     width: 100%; max-width: 100%;
+  }
+}

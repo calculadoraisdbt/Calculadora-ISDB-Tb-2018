@@ -49,6 +49,22 @@ actualizarASI1Output(nuevo : any){
    ASI1Output = nuevo ;
    localStorage.setItem('ASI1Output', JSON.stringify(ASI1Output)); 
 }
+
+obtenerASI1Enable(){
+    var ASI1Enable = JSON.parse(localStorage.getItem('ASI1Enable'));
+    console.log("aca service", ASI1Enable)
+    return ASI1Enable;
+    
+
+}
+actualizarASI1Enable(nuevo : any){
+   var ASI1Enable = JSON.parse(localStorage.getItem('ASI1Enable'));
+   ASI1Enable = nuevo ;
+   localStorage.setItem('ASI1Enable', JSON.stringify(ASI1Enable)); 
+}
+
+
+
 //ASI 2
 obtenerASI2Input(){
     var ASI2Input = JSON.parse(localStorage.getItem('ASI2Input'));
@@ -87,6 +103,19 @@ actualizarASI2Output(nuevo : any){
    ASI2Output = nuevo ;
    localStorage.setItem('ASI2Output', JSON.stringify(ASI2Output)); 
 }
+
+obtenerASI2Enable(){
+    var ASI2Enable = JSON.parse(localStorage.getItem('ASI2Enable'));
+    console.log("aca service", ASI2Enable)
+    return ASI2Enable;
+    
+
+}
+actualizarASI2Enable(nuevo : any){
+   var ASI2Enable = JSON.parse(localStorage.getItem('ASI2Enable'));
+   ASI2Enable = nuevo ;
+   localStorage.setItem('ASI2Enable', JSON.stringify(ASI2Enable)); 
+}
 //ASI 3
 obtenerASI3Input(){
     var ASI3Input = JSON.parse(localStorage.getItem('ASI3Input'));
@@ -122,6 +151,19 @@ actualizarASI3Output(nuevo : any){
    var ASI3Output = JSON.parse(localStorage.getItem('ASI3Output'));
    ASI3Output = nuevo ;
    localStorage.setItem('ASI1Output', JSON.stringify(ASI3Output)); 
+}
+
+obtenerASI3Enable(){
+    var ASI3Enable = JSON.parse(localStorage.getItem('ASI3Enable'));
+    console.log("aca service", ASI3Enable)
+    return ASI3Enable;
+    
+
+}
+actualizarASI3Enable(nuevo : any){
+   var ASI3Enable = JSON.parse(localStorage.getItem('ASI3Enable'));
+   ASI3Enable = nuevo ;
+   localStorage.setItem('ASI3Enable', JSON.stringify(ASI3Enable)); 
 }
 
 }
