@@ -49,6 +49,7 @@ export class ResumenComponent implements OnInit {
   Nmodo3 = [] ;
   Nbts = [] ;
   entrelazadoDeTiempo = [] ;
+  portadoraDeDatos = [96,192,384];
 
   constructor(private _moduladorService:ModuladorService) {
 
@@ -641,7 +642,6 @@ if(this.bp[1] === 2 ){
                 };                            
             }
 //CAPA C
-console.log("entra aca", this.bp[0])
 if(this.bp[2] === 2 ){
         if(this.ki[2] === 1/2){ 
             this.Nmodo1[2] = 12 ;
@@ -756,6 +756,8 @@ numeroTSP(){
                         
     }            
 }
+
+
 
 }
 

@@ -12,19 +12,19 @@
                                     <tr>
                                         <th scope="row">ID</th>
                                         <td>
-                                            <input type="text" [(ngModel)]="idModuladores[0]" (change)="mod1()"class="form-control"  aria-describedby="basic-addon1">
+                                            <input type="text" [(ngModel)]="idModuladores[0]" name="idModuladores[0]" (change)="mod()"class="form-control"  aria-describedby="basic-addon1">
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Retardo BTS [μs]</th>
+                                        <th scope="row">Retardo BTS: Dt<sub>E1</sub> [μs]</th>
                                         <td>
-                                            <input type="text" class="form-control"  aria-describedby="basic-addon1">
+                                            <input type="text" [(ngModel)]="retardoBTS[0]"  (change)="RetardoBTS()" class="form-control"  aria-describedby="basic-addon1">
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Retardo de Transmisor [μs]</th>
+                                        <th scope="row">Retardo de Transmisor: Dt<sub>TX1</sub> [μs]</th>
                                         <td>
-                                            <input type="text" class="form-control"  aria-describedby="basic-addon1">
+                                            <input [(ngModel)]="retardoDeTransmisor[0]" name="retardoDeTransmisor[0]" (change)="RetardoDeTransmisor()" type="text" class="form-control"  aria-describedby="basic-addon1">
                                         </td>
                                     </tr>
                                     <tr>
@@ -48,20 +48,20 @@
                                   <tr>
                                       <th scope="row">ID</th>
                                       <td>
-                                          <input type="text" [(ngModel)]="idModuladores[1]"   (change)="mod2()"class="form-control"  aria-describedby="basic-addon1">
+                                          <input type="text" [(ngModel)]="idModuladores[1]" name="idModuladores[1]"   (change)="mod()"class="form-control"  aria-describedby="basic-addon1">
                                       </td>
                                   </tr>
                                   
                                         <tr>
-                                                <th scope="row">Retardo BTS [μs]</th>
+                                                <th scope="row">Retardo BTS: Dt<sub>E2</sub> [μs]</th>
                                                 <td>
-                                                    <input type="text" class="form-control"  aria-describedby="basic-addon1">
+                                                    <input type="text" [(ngModel)]="retardoBTS[1]" name="retardoBTS[1]" (change)="RetardoBTS()" class="form-control"  aria-describedby="basic-addon1">
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">Retardo de Transmisor [μs]</th>
+                                                <th scope="row">Retardo de Transmisor: Dt<sub>TX2</sub> [μs]</th>
                                                 <td>
-                                                    <input type="text" class="form-control"  aria-describedby="basic-addon1">
+                                                    <input  [(ngModel)]="retardoDeTransmisor[1]" name="retardoDeTransmisor[1]" (change)="RetardoDeTransmisor()" type="text" class="form-control"  aria-describedby="basic-addon1">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -85,20 +85,20 @@
                                   <tr>
                                       <th scope="row">ID</th>
                                       <td>
-                                          <input type="text" [(ngModel)]="idModuladores[2]" (change)="mod3()" class="form-control"  aria-describedby="basic-addon1">
+                                          <input type="text" [(ngModel)]="idModuladores[2]" name="idModuladores[2]" (change)="mod()" class="form-control"  aria-describedby="basic-addon1">
                                       </td>
                                   </tr>
                                   
                                         <tr>
-                                                <th scope="row">Retardo BTS [μs]</th>
+                                                <th scope="row">Retardo BTS: Dt<sub>E3</sub> [μs]</th>
                                                 <td>
-                                                    <input type="text" class="form-control"  aria-describedby="basic-addon1">
+                                                    <input [(ngModel)]="retardoBTS[2]" name="retardoBTS[2]" (change)="RetardoBTS()" type="text" class="form-control"  aria-describedby="basic-addon1">
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th scope="row">Retardo de Transmisor [μs]</th>
+                                                <th scope="row">Retardo de Transmisor: Dt<sub>TX3</sub> [μs]</th>
                                                 <td>
-                                                    <input type="text" class="form-control"  aria-describedby="basic-addon1">
+                                                    <input  [(ngModel)]="retardoDeTransmisor[2]" name="retardoDeTransmisor[2]" (change)="RetardoDeTransmisor()" type="text" class="form-control"  aria-describedby="basic-addon1">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -122,19 +122,19 @@
                                   <tr>
                                       <th scope="row">ID</th>
                                       <td>
-                                          <input type="text" [(ngModel)]="idModuladores[3]"  (change)="mod4()" class="form-control"  aria-describedby="basic-addon1">
+                                          <input type="text" [(ngModel)]="idModuladores[3]" name="idModuladores[3]"  (change)="mod()" class="form-control"  aria-describedby="basic-addon1">
                                       </td>
                                   </tr>
                                   <tr>
-                                        <th scope="row">Retardo BTS [μs]</th>
+                                        <th scope="row">Retardo BTS: Dt<sub>E4</sub> [μs]</th>
                                         <td>
-                                            <input type="text" class="form-control"  aria-describedby="basic-addon1">
+                                            <input [(ngModel)]="retardoBTS[3]" name="retardoBTS[3]"  (change)="RetardoBTS()" type="text" class="form-control"  aria-describedby="basic-addon1">
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Retardo de Transmisor [μs]</th>
+                                        <th scope="row">Retardo de Transmisor: Dt<sub>TX4</sub> [μs]</th>
                                         <td>
-                                            <input type="text" class="form-control"  aria-describedby="basic-addon1">
+                                            <input  [(ngModel)]="retardoDeTransmisor[3]" name="retardoDeTransmisor[3]" (change)="RetardoDeTransmisor()" type="text" class="form-control"  aria-describedby="basic-addon1">
                                         </td>
                                     </tr>
                                   <tr>

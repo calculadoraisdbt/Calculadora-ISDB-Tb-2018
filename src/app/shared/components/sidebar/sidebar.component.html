@@ -14,27 +14,18 @@
          <a [routerLink]="['/multiplexor']" [routerLinkActive]="['router-link-active']" class="list-group-item">
            &nbsp;{{ 'Multiplexor' | translate }}
         </a>
-        <div class="nested-menu">
-                <a class="list-group-item"[routerLink]="['/remux']" [routerLinkActive]="['router-link-active']"  (click)="addExpandClass('pages')" >
-                    <span>&nbsp;{{ 'Remultiplexor' | translate }}</span>
+                <a [routerLink]="['/remux']" [routerLinkActive]="['router-link-active']"  class="list-group-item">
+                    &nbsp;{{ 'Remultiplexor' | translate }}
                 </a>
-                <li class="nested" [class.expand]="showMenu === 'pages'">
-                    <ul class="submenu">
-                        <li>
-                                <a [routerLink]="['/SFN']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-                                    &nbsp;{{ 'Red Frecuencia Unica' | translate }}
-                                 </a>
-                        </li>                    
-                    </ul>
-                </li>
-            </div>
   <!--      <a [routerLink]="['/modulador']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             &nbsp;{{ 'Remultiplexor' | translate }}
 </a> -->
         <a [routerLink]="['/modulador']" [routerLinkActive]="['router-link-active']" class="list-group-item">
            &nbsp;{{ 'Modulador' | translate }}
         </a>
-
+        <a [routerLink]="['/SFN']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            &nbsp;{{ 'Red Frecuencia Unica' | translate }}
+         </a>
         
   <!--      <a [routerLink]="['/blank-page']" [routerLinkActive]="['router-link-active']" class="list-group-item">
            &nbsp;{{ 'Red Frecuencia Unica' | translate }}

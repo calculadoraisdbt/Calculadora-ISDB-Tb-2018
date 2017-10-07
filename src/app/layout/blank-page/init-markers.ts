@@ -63,7 +63,7 @@ load(){
             var recep = false;
             var recep2 = false;
             var obst  = false;   
-            var polarity = ["Atraso","Atraso","Atraso","Atraso"]         
+            var polarity = ["Atraso (+)","Atraso (+)","Atraso (+)","Atraso (+)"]         
             localStorage.setItem('markers', JSON.stringify(markers));
             localStorage.setItem('retardos', JSON.stringify(retardos));
             localStorage.setItem('retardosState', JSON.stringify(retardosState));

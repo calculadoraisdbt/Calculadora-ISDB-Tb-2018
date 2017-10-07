@@ -24,7 +24,9 @@
                 </select> <br>
                   <label> One-Seg: </label>
                     <button (click)="onActivado()">{{ activado ? 'Activado' : 'Desactivado' }}</button>
-                 <table class="table">
+                    <div class="row">
+                      <div class="col">
+                     <table class="table">
   <thead>
     <tr>
       <th></th>
@@ -35,7 +37,7 @@
   </thead>
   <tbody>
     <tr>
-      <th scope="row">Nº de Segmentos [Ns]:</th>
+      <th scope="row" >Nº de Segmentos [N<sub>S</sub>]:</th>
       <td style="text-align:center;"> <select [(ngModel)]="select1" [disabled]="activado" (change)="saveValueA(select1)">
               <option *ngFor="let o of options | slice:0:getLimit(select1)" [ngValue]="o">{{ o }}</option>
               </select> </td>
@@ -68,7 +70,7 @@
                 </select></td>
                   </tr>
     <tr>
-      <th scope="row">Codificacion Convolucional [Ki]</th>
+      <th scope="row">Codificacion Convolucional [K<sub>I</sub>]</th>
       <td style="text-align:center;"><select class="form-control-mb-12"  [(ngModel)]="codConSelected[0]" (change)="codConSelection(codConSelected[0], 'capa A')">
                <option value="1/2">1/2</option>
                     <option value="2/3">2/3</option>
@@ -94,50 +96,52 @@
        <tr>
         <th scope="row">Entrelazado de tiempo [I]</th>
         <td style="text-align:center;"><select [(ngModel)]="entrelazadoDeTiempo[0]" name="entrelazadoDeTiempo[0]" (change)="guardarValoresEntrelazado()" class="form-control-mb-12" >
-                      <option *ngIf="this.modoBoolean[0]" >0</option>
-                      <option *ngIf="this.modoBoolean[0]" >4</option>
-                      <option *ngIf="this.modoBoolean[0]">8</option>
-                      <option *ngIf="this.modoBoolean[0]">16</option>
-                      <option *ngIf="this.modoBoolean[1]" >0</option>
-                      <option *ngIf="this.modoBoolean[1]">2</option>
-                      <option  *ngIf="this.modoBoolean[1]">4</option>
-                      <option *ngIf="this.modoBoolean[1]" >8</option>
-                      <option  *ngIf="this.modoBoolean[2]">0</option>
-                      <option *ngIf="this.modoBoolean[2]" >1</option>
-                      <option *ngIf="this.modoBoolean[2]" >2</option>
-                      <option *ngIf="this.modoBoolean[2]" >4</option>          
+                      <option *ngIf="modoBoolean[0]" >0</option>
+                      <option *ngIf="modoBoolean[0]" >4</option>
+                      <option *ngIf="modoBoolean[0]">8</option>
+                      <option *ngIf="modoBoolean[0]">16</option>
+                      <option *ngIf="modoBoolean[1]" >0</option>
+                      <option *ngIf="modoBoolean[1]">2</option>
+                      <option  *ngIf="modoBoolean[1]">4</option>
+                      <option *ngIf="modoBoolean[1]" >8</option>
+                      <option  *ngIf="modoBoolean[2]">0</option>
+                      <option *ngIf="modoBoolean[2]" >1</option>
+                      <option *ngIf="modoBoolean[2]" >2</option>
+                      <option *ngIf="modoBoolean[2]" >4</option>          
                     </select> </td>        
         <td style="text-align:center;">  <select  [(ngModel)]="entrelazadoDeTiempo[1]"  name="entrelazadoDeTiempo[1]"  (change)="guardarValoresEntrelazado()"class="form-control-mb-12" >
-          <option *ngIf="this.modoBoolean[0]" >0</option>
-          <option *ngIf="this.modoBoolean[0]" >4</option>
-          <option *ngIf="this.modoBoolean[0]">8</option>
-          <option *ngIf="this.modoBoolean[0]">16</option>
-          <option *ngIf="this.modoBoolean[1]" >0</option>
-          <option *ngIf="this.modoBoolean[1]">2</option>
-          <option  *ngIf="this.modoBoolean[1]">4</option>
-          <option *ngIf="this.modoBoolean[1]" >8</option>
-          <option  *ngIf="this.modoBoolean[2]">0</option>
-          <option *ngIf="this.modoBoolean[2]" >1</option>
-          <option *ngIf="this.modoBoolean[2]" >2</option>
-          <option *ngIf="this.modoBoolean[2]" >4</option>        
+          <option *ngIf="modoBoolean[0]" >0</option>
+          <option *ngIf="modoBoolean[0]" >4</option>
+          <option *ngIf="modoBoolean[0]">8</option>
+          <option *ngIf="modoBoolean[0]">16</option>
+          <option *ngIf="modoBoolean[1]" >0</option>
+          <option *ngIf="modoBoolean[1]">2</option>
+          <option  *ngIf="modoBoolean[1]">4</option>
+          <option *ngIf="modoBoolean[1]" >8</option>
+          <option  *ngIf="modoBoolean[2]">0</option>
+          <option *ngIf="modoBoolean[2]" >1</option>
+          <option *ngIf="modoBoolean[2]" >2</option>
+          <option *ngIf="modoBoolean[2]" >4</option>        
                   </select> </td>
         <td style="text-align:center;"> <select [(ngModel)]="entrelazadoDeTiempo[2]" name="entrelazadoDeTiempo[2]"  (change)="guardarValoresEntrelazado()" class="form-control-mb-12" >
-          <option *ngIf="this.modoBoolean[0]" >0</option>
-          <option *ngIf="this.modoBoolean[0]" >4</option>
-          <option *ngIf="this.modoBoolean[0]">8</option>
-          <option *ngIf="this.modoBoolean[0]">16</option>
-          <option *ngIf="this.modoBoolean[1]" >0</option>
-          <option *ngIf="this.modoBoolean[1]">2</option>
-          <option  *ngIf="this.modoBoolean[1]">4</option>
-          <option *ngIf="this.modoBoolean[1]" >8</option>
-          <option  *ngIf="this.modoBoolean[2]">0</option>
-          <option *ngIf="this.modoBoolean[2]" >1</option>
-          <option *ngIf="this.modoBoolean[2]" >2</option>
-          <option *ngIf="this.modoBoolean[2]" >4</option>        
+          <option *ngIf="modoBoolean[0]" >0</option>
+          <option *ngIf="modoBoolean[0]" >4</option>
+          <option *ngIf="modoBoolean[0]">8</option>
+          <option *ngIf="modoBoolean[0]">16</option>
+          <option *ngIf="modoBoolean[1]" >0</option>
+          <option *ngIf="modoBoolean[1]">2</option>
+          <option  *ngIf="modoBoolean[1]">4</option>
+          <option *ngIf="modoBoolean[1]" >8</option>
+          <option  *ngIf="modoBoolean[2]">0</option>
+          <option *ngIf="modoBoolean[2]" >1</option>
+          <option *ngIf="modoBoolean[2]" >2</option>
+          <option *ngIf="modoBoolean[2]" >4</option>        
                   </select> </td>
          </tr>
   </tbody>
 </table>
+                      </div>
+                    </div>
 <div *ngIf="!isValidSuma()" class="alert alert-danger">
     <strong>La suma de los segmentos asignados debe ser 13</strong> 
 </div>
@@ -154,50 +158,9 @@
         <div class="card mb-3">
             <div class="card-header">Resultados</div>
             <div class="card-block">
-                <ngb-tabset>
-                    <ngb-tab title="Simple">
-                      <ng-template ngbTabContent>
-                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
-                        master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
-                        dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum
-                        iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-                      </ng-template>
-                    </ngb-tab>
-                    <ngb-tab>
-                      <ng-template ngbTabTitle><b>Fancy</b> title</ng-template>
-                      <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-                        <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
-                        craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl
-                        cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia
-                        yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean
-                        shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero
-                        sint qui sapiente accusamus tattooed echo park.</p>
-                      </ng-template>
-                    </ngb-tab>
-                    <ngb-tab title="Disabled" [disabled]="true">
-                      <ng-template ngbTabContent>
-                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
-                        master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
-                        dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum
-                        iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-                      </ng-template>
-                    </ngb-tab>
-                    <ngb-tab title="Other tab" [disabled]="true">
-                        <ng-template ngbTabContent>
-                        </ng-template>
-                    </ngb-tab>
-                    <ngb-tab title="tab" [disabled]="true">
-                        <ng-template ngbTabContent>
-                        </ng-template>
-                    </ngb-tab>
-                    <ngb-tab title="last tab" [disabled]="true">
-                        <ng-template ngbTabContent>
-                        </ng-template>
-                    </ngb-tab>
-                  </ngb-tabset>
-                <ngb-tabset [justify]="currentJustify">
-                    <ngb-tab   [disabled]="!isValidSuma()">
-                        <ng-template ngbTabTitle><b>Resumen</b> </ng-template>
+                <ngb-tabset >
+ <!--                    <ngb-tab   [disabled]="!isValidSuma()">
+                       <ng-template ngbTabTitle><b>Resumen</b> </ng-template>
                         <ng-template ngbTabContent>
                             <div class="row">
                                 <div class="col">
@@ -211,12 +174,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">Ancho de banda efectivo : BW<sub>CH</sub>[Mhz]</th>
-      <td>{{((bws*13)/1000).toFixed(2)}}</td>
-      <td>{{((bws*13)/1000).toFixed(2)}}</td>
-      <td>{{((bws*13)/1000).toFixed(2)}}</td>
-    </tr>
+  
 
     <tr>
       <th scope="row">Intervalo de guarda: T <sub>G</sub> [µseg]</th>
@@ -224,13 +182,7 @@
       <td>{{tg2}}</td>
       <td>{{tg3}}</td>
     </tr>
-    <tr>
-      <th scope="row">Payload total A+B+C: [Mbps] </th>
-      <td>{{((0.351*select1*((ki[0]*bp[0])/(1+deltaGuarda)))+(0.351*select2*((ki[1]*bp[1])/(1+deltaGuarda)))+(0.351*select3*((ki[2]*bp[2])/(1+deltaGuarda)))).toFixed(2)}}</td>
-      <td>{{((0.351*select1*((ki[0]*bp[0])/(1+deltaGuarda)))+(0.351*select2*((ki[1]*bp[1])/(1+deltaGuarda)))+(0.351*select3*((ki[2]*bp[2])/(1+deltaGuarda)))).toFixed(2)}}</td>
-      <td>{{((0.351*select1*((ki[0]*bp[0])/(1+deltaGuarda)))+(0.351*select2*((ki[1]*bp[1])/(1+deltaGuarda)))+(0.351*select3*((ki[2]*bp[2])/(1+deltaGuarda)))).toFixed(2)}}</td>
-    </tr>&nbsp;
-    <tr>
+
       <th scope="row" class="underline" >Capa A:</th>
       <td></td>
       <td></td>
@@ -244,25 +196,25 @@
       <td>{{esqModSelected[0]}}</td>
     </tr>
     <tr>
-      <th scope="row">Cantidad de bits por portadora:</th>
+      <th scope="row">Cantidad de bits por portadora: b<sub>P</sub></th>
       <td>{{bp[0]}}</td>
       <td>{{bp[0]}}</td>
       <td>{{bp[0]}}</td>
     </tr>
     <tr>
-      <th scope="row">Relación de codificación convolucional:</th>
+      <th scope="row">Relación de codificación convolucional: K<sub>I</sub></th>
       <td>{{codConSelected[0]}}</td>
       <td>{{codConSelected[0]}}</td>
       <td>{{codConSelected[0]}}</td>
     </tr>
     <tr>
-      <th scope="row">Relación de codificación externa:</th>
+      <th scope="row">Relación de codificación externa: K<sub>O</sub></th>
       <td>{{(188/204).toFixed(2)}}</td>
       <td>{{(188/204).toFixed(2)}}</td>
       <td>{{(188/204).toFixed(2)}}</td>
     </tr>
     <tr>
-      <th scope="row">Numero de segmentos asignados: </th>
+      <th scope="row">Numero de segmentos asignados: N<sub>S</sub> </th>
       <td>{{select1}}</td>
       <td>{{select1}}</td>
       <td>{{select1}}</td>
@@ -286,25 +238,25 @@
       <td>{{esqModSelected[1]}}</td>
     </tr>
     <tr>
-      <th scope="row">Cantidad de bits por portadora:</th>
+      <th scope="row">Cantidad de bits por portadora: b<sub>P</sub></th>
       <td>{{bp[1]}}</td>
       <td>{{bp[1]}}</td>
       <td>{{bp[1]}}</td>
     </tr>
     <tr>
-      <th scope="row">Relación de codificación convolucional:</th>
+      <th scope="row">Relación de codificación convolucional: K<sub>I</sub></th>
      <td>{{codConSelected[1]}}</td>
       <td>{{codConSelected[1]}}</td>
       <td>{{codConSelected[1]}}</td>
     </tr>
     <tr>
-      <th scope="row">Relación de codificación externa:</th>
+      <th scope="row">Relación de codificación externa: K<sub>O</sub></th>
       <td>{{(188/204).toFixed(2)}}</td>
       <td>{{(188/204).toFixed(2)}}</td>
       <td>{{(188/204).toFixed(2)}}</td>
     </tr>
     <tr>
-      <th scope="row">Numero de segmentos asignados: </th>
+      <th scope="row">Numero de segmentos asignados:  N<sub>S</sub> </th>
     <td>{{select2}}</td>
       <td>{{select2}}</td>
       <td>{{select2}}</td>
@@ -328,25 +280,25 @@
       <td>{{esqModSelected[2]}}</td>
     </tr>
     <tr>
-      <th scope="row">Cantidad de bits por portadora:</th>
+      <th scope="row">Cantidad de bits por portadora: b<sub>P</sub></th>
       <td>{{bp[2]}}</td>
       <td>{{bp[2]}}</td>
       <td>{{bp[2]}}</td>
     </tr>
     <tr>
-      <th scope="row">Relación de codificación convolucional:</th>
+      <th scope="row">Relación de codificación convolucional: K<sub>I</sub></th>
      <td>{{codConSelected[2]}}</td>
       <td>{{codConSelected[2]}}</td>
       <td>{{codConSelected[2]}}</td>
     </tr>
     <tr>
-      <th scope="row">Relación de codificación externa:</th>
+      <th scope="row">Relación de codificación externa: K<sub>O</sub></th>
       <td>{{(188/204).toFixed(2)}}</td>
       <td>{{(188/204).toFixed(2)}}</td>
       <td>{{(188/204).toFixed(2)}}</td>
     </tr>
     <tr>
-      <th scope="row">Numero de segmentos asignados: </th>
+      <th scope="row">Numero de segmentos asignados:  N<sub>S</sub> </th>
      <td>{{select3}}</td>
       <td>{{select3}}</td>
       <td>{{select3}}</td>
@@ -361,11 +313,11 @@
 </table>
                                 </div>
                             </div>
-<!-- GLOBALES -->
+ GLOBALES 
                         </ng-template>
-                    </ngb-tab>
+                    </ngb-tab> -->
                     <ngb-tab [disabled]="!isValidSuma()">
-                        <ng-template ngbTabTitle>Globales </ng-template>
+                        <ng-template ngbTabTitle>Parametros Generales </ng-template>
                         <ng-template ngbTabContent>
                           <table class="table">
   <thead>
@@ -377,6 +329,19 @@
     </tr>
   </thead>
   <tbody>
+      <tr>
+          <th scope="row">Ancho de banda efectivo : BW<sub>CH</sub>[Mhz]</th>
+          <td>{{((bws*13)/1000).toFixed(4)}}</td>
+          <td>{{((bws*13)/1000).toFixed(4)}}</td>
+          <td>{{((bws*13)/1000).toFixed(4)}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Payload total A+B+C: [Mbps] </th>
+            <td>{{((0.351*select1*((ki[0]*bp[0])/(1+deltaGuarda)))+(0.351*select2*((ki[1]*bp[1])/(1+deltaGuarda)))+(0.351*select3*((ki[2]*bp[2])/(1+deltaGuarda)))).toFixed(3)}}</td>
+            <td>{{((0.351*select1*((ki[0]*bp[0])/(1+deltaGuarda)))+(0.351*select2*((ki[1]*bp[1])/(1+deltaGuarda)))+(0.351*select3*((ki[2]*bp[2])/(1+deltaGuarda)))).toFixed(3)}}</td>
+            <td>{{((0.351*select1*((ki[0]*bp[0])/(1+deltaGuarda)))+(0.351*select2*((ki[1]*bp[1])/(1+deltaGuarda)))+(0.351*select3*((ki[2]*bp[2])/(1+deltaGuarda)))).toFixed(3)}}</td>
+          </tr>
+          <tr>
     <tr>
       <th scope="row">Numero total de portadoras: L [Port]</th>
         <td>{{(ls1*ns)+1}}</td>
@@ -389,6 +354,7 @@
       <td>{{ls2}}</td>
       <td>{{ls3}}</td>
     </tr>
+
     <tr>
       <th scope="row" >Anchura de banda del segmento: BW<sub>s</sub> [Khz]</th>
       <td>{{(bws)}}</td>
@@ -398,16 +364,16 @@
     </tr>
     <tr>
       <th scope="row">Separacion entre portadoras: Δf [Khz] </th>
-      <td>{{(bws/ls1).toFixed(2) }}</td>
-      <td>{{(bws/ls2).toFixed(2)}}</td>
-      <td>{{(bws/ls3).toFixed(2)}}</td>
+      <td>{{(bws/ls1).toFixed(3) }}</td>
+      <td>{{(bws/ls2).toFixed(3)}}</td>
+      <td>{{(bws/ls3).toFixed(3)}}</td>
     </tr>
     <tr>
       <th scope="row">Tiempo util de simbolo: T <sub>u</sub> [useg]</th>
       <td>{{((1/(bws/ls1))*1000).toFixed(2)}}</td>
       <td>{{((1/(bws/ls2))*1000).toFixed(2)}}</td>
       <td>{{((1/(bws/ls3))*1000).toFixed(2)}}</td>
-    </tr>&nbsp;
+    </tr>
     <tr>
       <th scope="row">Intervalo de guarda: T<sub>G</sub> [useg]</th>
       <td>{{tg1}}</td>
@@ -443,7 +409,7 @@
       <td>{{((1/((f*(tg1+(1/(bws/ls1))*1000))/1000))*1000).toFixed(2)}}</td>
       <td>{{((1/((f*(tg2+(1/(bws/ls2))*1000))/1000))*1000).toFixed(2)}}</td>
       <td>{{((1/((f*(tg3+(1/(bws/ls3))*1000))/1000))*1000).toFixed(2)}}</td>
-    </tr>&nbsp;
+    </tr>
     <tr>
       <th scope="row">Muestas por simbolo OFDM: S[bins]</th>
       <td>2048</td>
@@ -452,16 +418,16 @@
     </tr>
     <tr>
       <th scope="row" >Frecuencia de muestreo IFFT: f <sub>IFTT</sub> [Mhz]</th>
-      <td>{{(2048/252).toFixed(2)}}</td>
-      <td>{{(2048/252).toFixed(2)}}</td>
-      <td>{{(2048/252).toFixed(2)}}</td>
+      <td>{{(2048/252).toFixed(7)}}</td>
+      <td>{{(2048/252).toFixed(7)}}</td>
+      <td>{{(2048/252).toFixed(7)}}</td>
     </tr>
     <tr>
       <th scope="row">Periodo de muestreo IFFT: T <sub>m</sub> [useg]</th>
-      <td>{{(1/(2048/252)).toFixed(2)}}</td>
-      <td>{{(1/(2048/252)).toFixed(2)}}</td>
-      <td>{{(1/(2048/252)).toFixed(2)}}</td>
-    </tr>&nbsp;
+      <td>{{(1/(2048/252)).toFixed(3)}}</td>
+      <td>{{(1/(2048/252)).toFixed(3)}}</td>
+      <td>{{(1/(2048/252)).toFixed(3)}}</td>
+    </tr>
     <tr>
       <th scope="row">Total de pulsos por simbolo OFDM: N <sub> pulsos </sub> [-]</th>
       <td>{{pps[0]}}</td>
@@ -680,7 +646,7 @@
                         </ng-template>
                     </ngb-tab> -->
                      <ngb-tab [disabled]="!isValidSuma()">
-                        <ng-template ngbTabTitle><b>ReMUX</b> </ng-template>
+                        <ng-template ngbTabTitle><b>Cuadro Multiplex</b> </ng-template>
                         <ng-template ngbTabContent>
                            <table class="table">
   <thead>
@@ -699,13 +665,18 @@
       <td>{{50.20}}</td>
     </tr>
     <tr>
-      <th scope="row">Nº de TSP transportados por el BTS en un cuadro multiplex: N<sub>BTS</sub> [-]</th>
-      <td>{{Nbts[0]}}</td>
-      <td>{{Nbts[1]}}</td>
-      <td>{{Nbts[2]}}</td>
-    </tr>
-    <tr>
-      <th scope="row"  >Nº de TSP nulos transportados por el BTS en un cuadro multiplex: ΣTSP<sub>nul</sub> [-]</th>
+        <td rowspan = "2"> <b>Nº de TSP transportados por el BTS en un cuadro multiplex con paquete IIP: N<sub>BTS</sub> </b> </td>
+        <td>{{Nbts[0]}} </td>
+        <td>{{Nbts[1]}}</td>
+        <td>{{Nbts[2]}}</td>
+     </tr>
+     <tr>
+        <td>{{(Nbts[0]-1)}} + 1 </td>
+        <td>{{(Nbts[1]-1)}} + 1</td>
+        <td>{{(Nbts[2]-1)}} + 1</td>
+     </tr>
+     <tr>
+      <th scope="row"  >Nº de TSP nulos transportados por el BTS en un cuadro multiplex: ΣTSP<sub>nul</sub> </th>
         <td></td>
       <td></td>
       <td></td>
@@ -814,10 +785,10 @@
   </thead>
   <tbody>
     <tr>
-      <th scope="row">Numero de bits por portadora: bp [-]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <th scope="row">Numero de bits por portadora: b<sub>P</sub> [-]</th>
+      <td>{{bp[0]}}</td>
+      <td>{{bp[0]}}</td>
+      <td>{{bp[0]}}</td>
     </tr>&nbsp;
     <tr>
       <th scope="row">Tasa binaria neta por segmento: R <sub>S</sub> [bps]</th>
@@ -851,9 +822,9 @@
     </tr>
     <tr>
       <th scope="row" > Tasa binaria neta de la Capa A: R <sub>A</sub> [Mbps]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))).toFixed(2)}}</td>
+      <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))).toFixed(2)}}</td>
+      <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))).toFixed(2)}}</td>
   
     </tr>
     <tr>
@@ -880,10 +851,10 @@
   </thead>
   <tbody>
     <tr>
-      <th scope="row">Numero de bits por portadora: bp [-]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <th scope="row">Numero de bits por portadora: b<sub>P</sub> [-]</th>
+      <td>{{bp[1]}}</td>
+      <td>{{bp[1]}}</td>
+      <td>{{bp[1]}}</td>
     </tr>&nbsp;
     <tr>
       <th scope="row">Tasa binaria neta por segmento: R <sub>S</sub> [bps]</th>
@@ -918,9 +889,9 @@
     </tr>
     <tr>
       <th scope="row" > Tasa binaria neta de la Capa B: R <sub>B</sub> [Mbps]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{((ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))).toFixed(2)}}</td>
+      <td>{{((ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))).toFixed(2)}}</td>
+      <td>{{((ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))).toFixed(2)}}</td>
   
     </tr>
     <tr>
@@ -947,10 +918,10 @@
   </thead>
   <tbody>
     <tr>
-      <th scope="row">Numero de bits por portadora: bp [-]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <th scope="row">Numero de bits por portadora: b<sub>P</sub> [-]</th>
+      <td>{{bp[2]}}</td>
+      <td>{{bp[2]}}</td>
+      <td>{{bp[2]}}</td>
     </tr>&nbsp;
     <tr>
       <th scope="row">Tasa binaria neta por segmento: R <sub>S</sub> [bps]</th>
@@ -984,9 +955,9 @@
     </tr>
     <tr>
       <th scope="row" > Tasa binaria neta de la Capa C: R <sub>C</sub> [Mbps]</th>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{((ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(2)}}</td>
+      <td>{{((ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(2)}}</td>
+      <td>{{((ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(2)}}</td>
   
     </tr>
     <tr>

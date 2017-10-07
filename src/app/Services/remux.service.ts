@@ -21,4 +21,28 @@ actualizaridModuladores(nuevo : any){
    localStorage.setItem('idModuladores', JSON.stringify(idModuladores)); 
 }
 
+obtenerRetardoBTS(){
+  var retardoBTS = JSON.parse(localStorage.getItem('retardoBTS'));
+  return retardoBTS;
+  
+
+}
+actualizarRetardoBTS(nuevo : any){
+ var retardoBTS = JSON.parse(localStorage.getItem('retardoBTS'));
+ retardoBTS = nuevo ;
+ localStorage.setItem('retardoBTS', JSON.stringify(retardoBTS)); 
+}
+
+obtenerRetardoDeTransmisor(){
+  var retardoDeTransmisor = JSON.parse(localStorage.getItem('retardoDeTransmisor'));
+  return retardoDeTransmisor;
+  
+
+}
+actualizarRetardoDeTransmisor(nuevo : any){
+ var retardoDeTransmisor = JSON.parse(localStorage.getItem('retardoDeTransmisor'));
+ retardoDeTransmisor = nuevo ;
+ localStorage.setItem('retardoDeTransmisor', JSON.stringify(retardoDeTransmisor)); 
+}
+
 }

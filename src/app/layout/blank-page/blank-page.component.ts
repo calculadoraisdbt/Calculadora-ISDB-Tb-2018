@@ -256,9 +256,68 @@ public lineChartColors2: Array<any> = [
     altura2 ;
     altura3 ;
     polarity ;
+    selector = [] ;
 
+
+    test( id){
+        if(id === "tx1"){
+            this.selector[0] = true;
+            this.selector[1] = false;
+            this.selector[2] = false;
+            this.selector[3] = false;
+            this.selector[4] = false;
+            this.selector[5] = false;
+            this.selector[6] = false; }
+         if(id === "tx2"){
+            this.selector[0] = false;
+            this.selector[1] = true;
+            this.selector[2] = false;
+            this.selector[3] = false;
+            this.selector[4] = false;
+            this.selector[5] = false;
+            this.selector[6] = false; }
+         if(id === "tx3"){
+            this.selector[0] = false;
+            this.selector[1] = false;
+            this.selector[2] = true;
+            this.selector[3] = false;
+            this.selector[4] = false;
+            this.selector[5] = false;
+            this.selector[6] = false; }
+        if(id === "tx4"){
+            this.selector[0] = false;
+            this.selector[1] = false;
+            this.selector[2] = false;
+            this.selector[3] = true;
+            this.selector[4] = false;
+            this.selector[5] = false;
+            this.selector[6] = false; }
+        if(id === "rx1"){
+            this.selector[0] = false;
+            this.selector[1] = false;
+            this.selector[2] = false;
+            this.selector[3] = false;
+            this.selector[4] = true;
+            this.selector[5] = false;
+            this.selector[6] = false; }
+        if(id === "rx2"){
+            this.selector[0] = false;
+            this.selector[1] = false;
+            this.selector[2] = false;
+            this.selector[3] = false;
+            this.selector[4] = false;
+            this.selector[5] = true;
+            this.selector[6] = false; }  
+        if(id === "obst"){
+            this.selector[0] = false;
+            this.selector[1] = false;
+            this.selector[2] = false;
+            this.selector[3] = false;
+            this.selector[4] = false;
+            this.selector[5] = false;
+            this.selector[6] = true; }                      
+    }
      ventanaSincro() {
-         console.log("entro ventana")
         this.show1();
         this.calculoDistanciasRx1()
              this.intGua =  this._moduladorService.obtenerIntGua();
@@ -266,7 +325,6 @@ public lineChartColors2: Array<any> = [
              var DeltaPrueba : any = [ this.Deltas[0], this.Deltas[1], this.Deltas[2], this.Deltas[3]];
              var DeltaCR : any = [ this.Deltas[4], this.Deltas[5], this.Deltas[6], this.Deltas[7]];
              var DistanciaRx1 = this._markerService.getDistanacias();
-             console.log("aca ", DistanciaRx1)
 
              
          
@@ -289,7 +347,6 @@ public lineChartColors2: Array<any> = [
                  
         
                 ]);
-            console.log('testing ---')
            
             for (let i=0; i<=3; i++){
                 let val = this['tra'+i];
@@ -351,7 +408,6 @@ public lineChartColors2: Array<any> = [
         
 
        ]);
-   console.log('testing ---')
   
    for (let i=0; i<=3; i++){
        let val = this['tra'+i];
@@ -387,37 +443,114 @@ public lineChartColors2: Array<any> = [
 
     posicionFinalMarcador(marcador:any,$event:any){
 
-            console.log($event);
-
             var nuevaLati = $event.coords.lat;
             var nuevaLongi = $event.coords.lng;
             if(marcador === this.markers[0]){
-                    this.mostLati = $event.coords.lat;
-                    this.mostLongi = $event.coords.lng;
+                    this.mostLati = $event.coords.lat.toFixed(7) ;
+                    this.mostLongi = $event.coords.lng.toFixed(7) ;
+
+                    var nuevoMarcador = {
+                        
+                                       nombre: "Transmisor 1",
+                                       lati: parseFloat(this.mostLati),
+                                       longi: parseFloat(this.mostLongi),
+                                       arrastrable: true
+                                    }   
+                                    this.markers.splice(0, 1);
+                                     this.markers.splice( 0, 0, nuevoMarcador  );
+                                     this._markerService.updtTx1(this.markers , this.mostLati, this.mostLongi);
             }
             if(marcador === this.markers[1]){
-                    this.mostLati1 = $event.coords.lat;
-                    this.mostLongi1 = $event.coords.lng;
+                    this.mostLati1 = $event.coords.lat.toFixed(7);
+                    this.mostLongi1 = $event.coords.lng.toFixed(7);
+
+                    var nuevoMarcador = {
+                        
+                                       nombre: "Transmisor 2",
+                                       lati: parseFloat(this.mostLati1),
+                                       longi: parseFloat(this.mostLongi1),
+                                       arrastrable: true
+                                    }
+                                    this.markers.splice(1, 1);
+                                     this.markers.splice( 1, 0, nuevoMarcador  );
+                                    this._markerService.updtTx2(this.markers , this.mostLati1, this.mostLongi1);
+
+
             }
              if(marcador === this.markers[2]){
-                    this.mostLati2 = $event.coords.lat;
-                    this.mostLongi2 = $event.coords.lng;
+                    this.mostLati2 = $event.coords.lat.toFixed(7);
+                    this.mostLongi2 = $event.coords.lng.toFixed(7);
+                    var nuevoMarcador = {
+                        
+                                       nombre: "Receptor 1",
+                                       lati: parseFloat(this.mostLati2),
+                                       longi: parseFloat(this.mostLongi2),
+                                       arrastrable: true
+                                    }
+                                    this.markers.splice(2, 1);
+                                     this.markers.splice( 2, 0, nuevoMarcador  );
+                        
+                                    this._markerService.updtRx(this.markers , this.mostLati2, this.mostLongi2);
             }
              if(marcador === this.markers[3]){
-                    this.mostLati3 = $event.coords.lat;
-                    this.mostLongi3 = $event.coords.lng;
+                    this.mostLati3 = $event.coords.lat.toFixed(7);
+                    this.mostLongi3 = $event.coords.lng.toFixed(7);
+                    var nuevoMarcador = {
+                        
+                                       nombre: "Obstaculo",
+                                       lati: parseFloat(this.mostLati3),
+                                       longi: parseFloat(this.mostLongi3),
+                                       arrastrable: true
+                                    }
+                                    this.markers.splice(3, 1);
+                                     this.markers.splice( 3, 0, nuevoMarcador  );
+                        
+                                    this._markerService.updtOb(this.markers , this.mostLati3,this.mostLongi3);
             }
              if(marcador === this.markers[4]){
-                    this.mostLati4 = $event.coords.lat;
-                    this.mostLongi4 = $event.coords.lng;
+                    this.mostLati4 = $event.coords.lat.toFixed(7);
+                    this.mostLongi4 = $event.coords.lng.toFixed(7);
+                    var nuevoMarcador = {
+                        
+                                       nombre: "Transmisor 3",
+                                       lati: parseFloat(this.mostLati4),
+                                       longi: parseFloat( this.mostLongi4),
+                                       arrastrable: true
+                                    }
+                                    this.markers.splice(4, 1);
+                                     this.markers.splice( 4, 0, nuevoMarcador  );
+                        
+                                    this._markerService.updtTx3(this.markers , this.mostLati4,  this.mostLongi4);
             }
              if(marcador === this.markers[5]){
-                    this.mostLati5 = $event.coords.lat;
-                    this.mostLongi5 = $event.coords.lng;
+                    this.mostLati5 = $event.coords.lat.toFixed(7);
+                    this.mostLongi5 = $event.coords.lng.toFixed(7);
+                    var nuevoMarcador = {
+                        
+                                       nombre: "Transmisor 4",
+                                       lati: parseFloat(this.mostLati5),
+                                       longi: parseFloat(this.mostLongi5),
+                                       arrastrable: true
+                                    }
+                                    this.markers.splice(5, 1);
+                                     this.markers.splice( 5, 0, nuevoMarcador  );
+                        
+                                    this._markerService.updtTx4(this.markers , this.mostLongi5, this.mostLongi5);
             }
                  if(marcador === this.markers[6]){
-                    this.mostLati6 = $event.coords.lat;
-                    this.mostLongi6 = $event.coords.lng;
+                    this.mostLati6 = $event.coords.lat.toFixed(7);
+                    this.mostLongi6 = $event.coords.lng.toFixed(7);
+                    var nuevoMarcador = {
+                        
+                                       nombre: "Receptor 2",
+                                       lati: parseFloat( this.mostLati6),
+                                       longi: parseFloat(this.mostLongi6),
+                                       arrastrable: true
+                                    }
+                                    this.markers.splice(6, 1);
+                                     this.markers.splice( 6, 0, nuevoMarcador  );
+                        
+                                    this._markerService.updtRx2(this.markers ,  this.mostLati6, this.mostLongi6);
             }
             
             var actuaMarcador = {
@@ -434,7 +567,6 @@ public lineChartColors2: Array<any> = [
             
               
             this._markerService.actualizarMarcador(actuaMarcador, nuevaLati, nuevaLongi);
-            
     }
     
 show1 (){           
@@ -558,7 +690,6 @@ show1 (){
        
      if(this.tra0 === true && this.recep2 === true){             //TRANSMISOR 1
      this._markerService.computeDistanceBetweenTx1Rx2();
-     console.log("entrando show 2")
         }else;
 
 
@@ -787,9 +918,7 @@ if(this.obst === true && this.recep2 === true && this.tra1 === true ){
        this.DeltasRx2[5] = ((this.DeltasRx2[5]/299792458)*1000000).toFixed(2);
        this.DeltasRx2[6] = ((this.DeltasRx2[6]/299792458)*1000000).toFixed(2);
        this.DeltasRx2[7] = ((this.DeltasRx2[7]/299792458)*1000000).toFixed(2);
-       console.log("DeltasRx2",this.DeltasRx2)
        this.interfTxRx2 = this.DeltasRx2;  
-       console.log("InterfTxRx2",this.interfTxRx2 )
        
      if(this.DeltasRx2[0] >= this.intGua){
            this.interfBooleanRx2[0] = true;
@@ -893,11 +1022,11 @@ aplicarCambios(){
     this._markerService.actualizarPolarity(this.polarity);
     if(this.retardosState[0]){
             
-            if(this.polarity[0] === "Adelanto" ){
+            if(this.polarity[0] === "Adelanto (-)" ){
                 this.retardos[0] = -Math.abs(this.retardos[0]);
                 console.log("negativo", this.retardos[0]);
              }     
-             if(this.polarity[0] === "Atraso" ){
+             if(this.polarity[0] === "Atraso (+)" ){
                     this.retardos[0] = Math.abs(this.retardos[0]);
                     console.log("positivo", this.retardos[0]);
                 }
@@ -907,11 +1036,11 @@ aplicarCambios(){
         this._markerService.sumaRetardoTx1(this.retardos[0], this.retardosState[0]);}
 
     if(this.retardosState[1]){
-        if(this.polarity[1] === "Adelanto" ){
+        if(this.polarity[1] === "Adelanto (-)" ){
             this.retardos[1] = -Math.abs(this.retardos[1]);
             console.log("negativo", this.retardos[0]);
          }     
-         if(this.polarity[1] === "Atraso" ){
+         if(this.polarity[1] === "Atraso (+)" ){
                 this.retardos[1] = Math.abs(this.retardos[1]);
                 console.log("positivo", this.retardos[1]);
             }
@@ -921,11 +1050,11 @@ aplicarCambios(){
         this._markerService.sumaRetardoTx2(this.retardos[1], this.retardosState[1]);}
 
     if(this.retardosState[2]){
-        if(this.polarity[2] === "Adelanto" ){
+        if(this.polarity[2] === "Adelanto (-)" ){
             this.retardos[2] = -Math.abs(this.retardos[2]);
             console.log("negativo", this.retardos[2]);
          }     
-         if(this.polarity[2] === "Atraso" ){
+         if(this.polarity[2] === "Atraso (+)" ){
                 this.retardos[2] = Math.abs(this.retardos[2]);
                 console.log("positivo", this.retardos[2]);
             }
@@ -935,11 +1064,11 @@ aplicarCambios(){
         this._markerService.sumaRetardoTx3(this.retardos[2], this.retardosState[2]);}
 
     if(this.retardosState[3]){
-        if(this.polarity[3] === "Adelanto" ){
+        if(this.polarity[3] === "Adelanto (-)" ){
             this.retardos[3] = -Math.abs(this.retardos[3]);
             console.log("negativo", this.retardos[3]);
          }     
-         if(this.polarity[3] === "Atraso" ){
+         if(this.polarity[3] === "Atraso (+)" ){
                 this.retardos[3] = Math.abs(this.retardos[3]);
                 console.log("positivo", this.retardos[3]);
             }

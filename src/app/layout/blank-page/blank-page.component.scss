@@ -2,23 +2,45 @@ agm-map {
   height: 600px;
 }
 
-#esteDiv {
 
-  width: 200px;
+#tra0  {
+  width: auto;
 }
 
+#tra1  {
+  width: auto;
+}
+#tra2  {
+  width: auto;
+}
+#tra3  {
+  width: auto;
+}
 
+#recep  {
+  width: auto;
+}
+
+#recep2  {
+  width: auto;
+}
+#obst {
+  width: auto;
+}
 .table tr {
   border: 1px solid #000;
 }   
 
 .table td {
   border: 1px solid #000;
+
 }   
 
 .table th {
   border: 1px solid #000;
+
 }   
+
 
 @media all and (max-width: 600px){
   input {
@@ -27,13 +49,19 @@ agm-map {
 }
 
 @media all and (max-width: 600px){
-  card {
+  select {
      width: 100%; max-width: 100%;
   }
 }
 
-@media all and (max-width: 600px){
-  table {
-     width: 100%; max-width: 100%;
-  }
-}
+  #booleanRetardoTx1 {
+     width:auto;}
+
+     #booleanRetardoTx2{
+      width:auto;}
+
+     #booleanRetardoTx3{
+      width:auto;}
+
+     #booleanRetardoTx4{
+      width:auto;}

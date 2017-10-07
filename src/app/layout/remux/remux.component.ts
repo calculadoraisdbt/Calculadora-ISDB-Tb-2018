@@ -9,27 +9,29 @@ import { RemuxService } from 'app/Services/remux.service';
 })
 export class RemuxComponent implements OnInit {
   idModuladores : any [] ;
+  retardoBTS : any [] ;
+  retardoDeTransmisor : any [] ;
 
   constructor(private _remuxService:RemuxService) {
     this.idModuladores = this._remuxService.obteneridModuladores();
+    this.retardoBTS = this._remuxService.obtenerRetardoBTS();
+    this.retardoDeTransmisor = this._remuxService.obtenerRetardoDeTransmisor();
    }
 
   ngOnInit() {
   }
-mod1(){
 
+mod(){
   this._remuxService.actualizaridModuladores(this.idModuladores);
 }
-mod2(){
-  
-    this._remuxService.actualizaridModuladores(this.idModuladores);
-}
-mod3(){
+
+RetardoBTS(){
+    this._remuxService.actualizarRetardoBTS(this.retardoBTS);
+  }
+
+
+  RetardoDeTransmisor(){
     
-      this._remuxService.actualizaridModuladores(this.idModuladores);
-}
-mod4(){
-      
-        this._remuxService.actualizaridModuladores(this.idModuladores);
-}  
-}
+      this._remuxService.actualizarRetardoDeTransmisor(this.retardoDeTransmisor);
+    }
+  }
