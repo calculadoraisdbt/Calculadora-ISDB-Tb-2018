@@ -670,4 +670,41 @@ actualizarDefaultGateway(nuevo : any){
    defaultGateway = nuevo ;
    localStorage.setItem('defaultGateway', JSON.stringify(defaultGateway)); 
 }
+
+obtenerEncoder1(){
+    var encoder1 = JSON.parse(localStorage.getItem('encoder1'));
+    return encoder1;
+    
+
+}
+actualizarEncoder1(nuevo : any){
+   var encoder1 = JSON.parse(localStorage.getItem('encoder1'));
+   encoder1 = nuevo ;
+   localStorage.setItem('encoder1', JSON.stringify(encoder1)); 
+}
+
+obtenerEncoder2(){
+    var encoder2 = JSON.parse(localStorage.getItem('encoder2'));
+    return encoder2;
+    
+
+}
+actualizarEncoder2(nuevo : any){
+   var encoder2 = JSON.parse(localStorage.getItem('encoder2'));
+   encoder2 = nuevo ;
+   localStorage.setItem('encoder2', JSON.stringify(encoder2)); 
+}
+
+obtenerEncoder3(){
+    var encoder3 = JSON.parse(localStorage.getItem('encoder3'));
+    return encoder3;
+    
+
+}
+actualizarEncoder3(nuevo : any){
+   var encoder3 = JSON.parse(localStorage.getItem('encoder3'));
+   encoder3 = nuevo ;
+   localStorage.setItem('encoder3', JSON.stringify(encoder3)); 
+}
+
 }

@@ -4,14 +4,15 @@ import { MarkersService } from 'app/Services/markers.service';
 import { FormControl, FormGroup,  } from '@angular/forms';
 import { ModuladorService } from 'app/Services/modulador.service';
 import { BaseChartDirective } from 'ng2-charts/ng2-charts';
+import {RemuxService} from 'app/Services/remux.service'
 
-
+declare var google: any;
 
 @Component({
     selector: 'app-blank-page',
     templateUrl: './blank-page.component.html',
     styleUrls: ['./blank-page.component.scss'],
-    providers: [MarkersService,ModuladorService ]
+    providers: [MarkersService,ModuladorService,RemuxService ]
 })
 
 
@@ -172,11 +173,10 @@ public lineChartColors2: Array<any> = [
 
   public lineChartLegend2: boolean = true;
   public lineChartType2: string = 'scatter';
-
-  
+        
         resultDist : number = 0;
          markers : Marker[];
-        constructor( private _markerService:MarkersService ,private _moduladorService:ModuladorService ) { 
+        constructor( private _markerService:MarkersService ,private _moduladorService:ModuladorService,private _remuxService:RemuxService ) { 
             this.markers = this._markerService.obtenerMarcadores();
             this.intGua =  this._moduladorService.obtenerIntGua();
             this.retardos = this._markerService.obtenerRetardos();
@@ -191,15 +191,59 @@ public lineChartColors2: Array<any> = [
             this.recep2 = this._markerService.obtenerRecep2();
             this.obst = this._markerService.obtenerObst();
             this.polarity = this._markerService.obtenerPolarity();
-            
+            this.idModulador = this._markerService.obteneridModuladores();
+            this.modo = this._markerService.obtenerModo();
+            this.negativeOn1 = this._markerService.obtenerNegativeOn1();
+            this.negativeOn2 = this._markerService.obtenerNegativeOn2();
+            this.negativeOn3 = this._markerService.obtenerNegativeOn3();
+            this.negativeOn4 = this._markerService.obtenerNegativeOn4();
+            this.retardosState = this._markerService.obtenerRetardosState();
+            this.enableSFN = this._markerService.obtenerEnableSFN();
+            this.retardoBTS = this._remuxService.obtenerRetardoBTS();
+            this.retardoDeTransmisor = this._remuxService.obtenerRetardoDeTransmisor();
+            this.estan = this._markerService.obtenerEstancados();
         }
         ngOnInit() {
-            
-        }
+                if(this.modo[0] === "Static"){
+                    this.retardosStatic[0] = +this.retardoBTS[0] + +this.retardoDeTransmisor[0];
+                    
+                }
+                if(this.modo[0] === "Dynamic"){ this.retardosStatic[0] = 0;}
+                if(this.modo[1] === "Static"){
+                    this.retardosStatic[1] = +this.retardoBTS[1] + +this.retardoDeTransmisor[1];
+                    
+                }
+                if(this.modo[1] === "Dynamic"){ this.retardosStatic[1] = 0;}
+                if(this.modo[2] === "Static"){
+                    this.retardosStatic[2] = +this.retardoBTS[2] + +this.retardoDeTransmisor[2];
+                    
+                }
+                if(this.modo[2] === "Dynamic"){ this.retardosStatic[2] = 0;}
+                if(this.modo[3] === "Static"){
+                    this.retardosStatic[3] = +this.retardoBTS[3] + +this.retardoDeTransmisor[3];
+                    
+                }
+                if(this.modo[3] === "Dynamic"){ this.retardosStatic[3] = 0;}
+                this._markerService.actualizarRetardosEstaticos(this.retardosStatic);
+                this.estancarTx1();
+                this.estancarTx2();
+                this.estancarTx3();
+                this.estancarTx4();
+                this.estancarRx1();
+                this.estancarRx2();
+                this.estancarObst();
+                if( this.modo[0] === "Static" || this.modo[1] === "Static" || this.modo[2] === "Static" ||
+                this.modo[3] === "Static"){this.staticAlert = true;}
+                else{this.staticAlert = false;}
+
+
+}
     //Posicion inicial Mapa
     lat: number = -31.416667 ;
     lng: number = -64.183333; 
     zoom: number = 8;
+    mapType = ['roadmap', 'satellite'];
+    gesture = 'auto';
     tra0;
     tra1;
     recep;
@@ -257,7 +301,14 @@ public lineChartColors2: Array<any> = [
     altura3 ;
     polarity ;
     selector = [] ;
-
+    idModulador : any [] ;
+    modo   = [] ;
+    enableSFN ;
+    retardoBTS : any [];
+    retardoDeTransmisor : any [];
+    retardosStatic = [] ;
+    estan = [];
+    staticAlert = false;
 
     test( id){
         if(id === "tx1"){
@@ -965,63 +1016,64 @@ if(this.obst === true && this.recep2 === true && this.tra1 === true ){
 
 }
 
-/*cambio(value, id){
-        if(id === 'Tx1'){
-            this.polarity[0] = value;
-             if(value === "Adelanto" ){
-                this.retardos[0] = -Math.abs(this.retardos[0]);
-                console.log("negativo", this.retardos[0]);
-             }     
-        
-        else{
-            this.retardos[0] = Math.abs(this.retardos[0]);
-            console.log("positivo", this.retardos[0]);
-        }
-        }
-        if(id === 'Tx2'){
-            this.polarity[1] = value;
-            if(value === "Adelanto" ){
-                this.retardos[1] = - Math.abs(this.retardos[1]);
-                console.log("negativo", this.retardos[1]);
-             }     
-        
-        else{
-            this.retardos[1] = Math.abs(this.retardos[1]);
-            console.log("positivo", this.retardos[1]);
-        }  
-        }  
-        if(id === 'Tx3'){
-            this.polarity[2] = value;
-            if(value === "Adelanto" ){
-                this.retardos[2] = - Math.abs(this.retardos[2]);
-                console.log("negativo", this.retardos[2]);
-             }     
-
-        else{
-            this.retardos[2] = Math.abs(this.retardos[2]);
-            console.log("positivo", this.retardos[2]);
-        }
-        }
-        if(id === 'Tx4'){
-            this.polarity[3] = value;
-            if(value === "Adelanto" ){
-                this.retardos[3] = - Math.abs(this.retardos[3]);
-                console.log("negativo", this.retardos[3]);
-             }     
-        
-        else{
-            this.retardos[3] = Math.abs(this.retardos[3]);
-            console.log("positivo", this.retardos[3]);
-        } 
-        }
-        this._markerService.actualizarPolarity(this.polarity);
-}   */
-
+cambio(value, id){
+    
+       
+           
+            if(id === 'Tx1'){
+                 if(value === "Adelanto (-)" ){
+                    this.negativeOn1 = true;
+                    this.modo[0] = "Dynamic";
+                 }     
+            
+            else{
+                 this.negativeOn1 = false;
+            }
+            }
+            if(id === 'Tx2'){
+                 if(value === "Adelanto (-)" ){
+                    this.negativeOn2 = true;
+                    this.modo[1] = "Dynamic";
+                 }     
+            
+            else{
+                 this.negativeOn2 = false;
+            }  
+            }  
+            if(id === 'Tx3'){
+                 if(value === "Adelanto (-)" ){
+                    this.negativeOn3 = true;
+                    this.modo[2] = "Dynamic";
+                 }     
+    
+            else{
+                 this.negativeOn3 = false;
+            }
+            }
+            if(id === 'Tx4'){
+                 if(value === "Adelanto (-)" ){
+                    this.negativeOn4 = true;
+                    this.modo[3] = "Dynamic";
+                 }     
+            
+            else{
+                 this.negativeOn4 = false;
+            } 
+            }
+    }
 aplicarCambios(){
     this._markerService.actualizarRetardoRed(this.retardoRed);
     this._markerService.actualizarPolarity(this.polarity);
+    this._markerService.actualizarModo(this.modo);
+    this._markerService.actualizarNegativeOn1(this.negativeOn1);
+    this._markerService.actualizarNegativeOn2(this.negativeOn2);
+    this._markerService.actualizarNegativeOn3(this.negativeOn3);
+    this._markerService.actualizarNegativeOn4(this.negativeOn4);
+    this._markerService.actualizarRetardoState(this.retardosState);
+    this._markerService.actualizarEnableSFN(this.enableSFN);
+
     if(this.retardosState[0]){
-            
+
             if(this.polarity[0] === "Adelanto (-)" ){
                 this.retardos[0] = -Math.abs(this.retardos[0]);
                 console.log("negativo", this.retardos[0]);
@@ -1030,10 +1082,12 @@ aplicarCambios(){
                     this.retardos[0] = Math.abs(this.retardos[0]);
                     console.log("positivo", this.retardos[0]);
                 }
+             
     this._markerService.sumaRetardoTx1(this.retardos[0], this.retardosState[0]);            
     }else{
          this.retardos[0] = 0;
         this._markerService.sumaRetardoTx1(this.retardos[0], this.retardosState[0]);}
+
 
     if(this.retardosState[1]){
         if(this.polarity[1] === "Adelanto (-)" ){
@@ -1110,7 +1164,80 @@ cambioObst(){
     this._markerService.actualizarObst(this.obst);
 }
 
+//ID MODULADORES EN RETARDO
+mod(){
+    this._markerService.actualizaridModuladores(this.idModulador);
+  }
 
+  // MODO EN RETARDO
+  cambioModo(value, id){
+      console.log(value,id)
+    if(id === 'Tx1'){
+        this.modo[0]= value;
+    }else{}
+    if(id === 'Tx2'){
+        this.modo[1]= value;
+    }else{}
+    if(id === 'Tx3'){
+        this.modo[2]= value;
+    }else{}
+    if(id === 'Tx4'){
+        this.modo[3]= value;
+    }else{}
+    this._markerService.actualizarModo(this.modo);
+    if( this.modo[0] === "Static" || this.modo[1] === "Static" || this.modo[2] === "Static" ||
+    this.modo[3] === "Static"){this.staticAlert = true;}
+    else{this.staticAlert = false;}
+  }
+
+    estancarTx1(){   
+    if(this.estan[0] === true ){
+        this.markers[0].arrastrable = false;
+    }else{this.markers[0].arrastrable = true;}
+    this._markerService.actualizarEstancados(this.estan);
+
+  }
+    estancarTx2(){
+        
+    if(this.estan[1] === true ){
+        this.markers[1].arrastrable = false;
+    }else{this.markers[1].arrastrable = true;}
+    this._markerService.actualizarEstancados(this.estan)
+    }
+    estancarTx3(){
+    if(this.estan[2] === true ){
+        this.markers[4].arrastrable = false;
+    }else{this.markers[4].arrastrable = true;}
+    this._markerService.actualizarEstancados(this.estan)   
+    }
+    estancarTx4(){
+    if(this.estan[3] === true ){
+        this.markers[5].arrastrable = false;
+    }else{this.markers[5].arrastrable = true;}
+    this._markerService.actualizarEstancados(this.estan)       
+    }   
+    
+    estancarRx1(){
+    
+    if(this.estan[4] === true ){
+    this.markers[2].arrastrable = false;
+    }else{this.markers[2].arrastrable = true;}
+    this._markerService.actualizarEstancados(this.estan)
+    }    
+
+    estancarRx2(){
+    if(this.estan[5] === true ){
+    this.markers[6].arrastrable = false;
+    }else{this.markers[6].arrastrable = true;}
+    this._markerService.actualizarEstancados(this.estan)
+    }    
+
+    estancarObst(){
+    if(this.estan[6] === true ){
+        this.markers[3].arrastrable = false;
+    }else{this.markers[3].arrastrable = true;}
+    this._markerService.actualizarEstancados(this.estan)
+    }    
 }
 
 

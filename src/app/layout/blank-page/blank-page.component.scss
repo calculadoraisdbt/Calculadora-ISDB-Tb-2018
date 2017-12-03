@@ -1,5 +1,6 @@
 agm-map {
   height: 600px;
+  
 }
 
 
@@ -54,6 +55,11 @@ agm-map {
   }
 }
 
+
+
+
+
+
   #booleanRetardoTx1 {
      width:auto;}
 
@@ -65,3 +71,20 @@ agm-map {
 
      #booleanRetardoTx4{
       width:auto;}
+
+      @media (max-width: 768px) {
+        .btn-responsive {
+          padding:4px 6px;
+          font-size:90%;
+          line-height: 1.2;
+        }
+      }
+      
+      @media (min-width: 769px) and (max-width: 992px) {
+        .btn-responsive {
+          padding:6px 10px;
+          font-size:95%;
+          line-height: 1.2;
+        }
+      }
+

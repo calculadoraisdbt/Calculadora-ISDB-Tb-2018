@@ -152,7 +152,6 @@ actualizarASI3Output(nuevo : any){
    ASI3Output = nuevo ;
    localStorage.setItem('ASI1Output', JSON.stringify(ASI3Output)); 
 }
-
 obtenerASI3Enable(){
     var ASI3Enable = JSON.parse(localStorage.getItem('ASI3Enable'));
     console.log("aca service", ASI3Enable)
@@ -164,6 +163,44 @@ actualizarASI3Enable(nuevo : any){
    var ASI3Enable = JSON.parse(localStorage.getItem('ASI3Enable'));
    ASI3Enable = nuevo ;
    localStorage.setItem('ASI3Enable', JSON.stringify(ASI3Enable)); 
+}
+
+// TABLAS
+
+obtenerTableLayer(){
+    var TableLayer = JSON.parse(localStorage.getItem('TableLayer'));
+    return TableLayer;
+    
+
+}
+actualizarTableLayer(nuevo : any){
+   var TableLayer = JSON.parse(localStorage.getItem('TableLayer'));
+   TableLayer = nuevo ;
+   localStorage.setItem('TableLayer', JSON.stringify(TableLayer)); 
+}
+
+obtenerTablePmtPid(){
+    var TablePmtPid = JSON.parse(localStorage.getItem('TablePmtPid'));
+    return TablePmtPid;
+    
+
+}
+actualizarTablePmtPid(nuevo : any){
+   var TablePmtPid = JSON.parse(localStorage.getItem('TablePmtPid'));
+   TablePmtPid = nuevo ;
+   localStorage.setItem('TablePmtPid', JSON.stringify(TablePmtPid)); 
+}
+
+obtenerTableEnable(){
+    var TableEnable = JSON.parse(localStorage.getItem('TableEnable'));
+    return TableEnable;
+    
+
+}
+actualizarTableEnable(nuevo : any){
+   var TableEnable = JSON.parse(localStorage.getItem('TableEnable'));
+   TableEnable = nuevo ;
+   localStorage.setItem('TableEnable', JSON.stringify(TableEnable)); 
 }
 
 }

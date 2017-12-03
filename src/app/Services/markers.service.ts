@@ -70,6 +70,7 @@ declare var google: any;
   var DeltaT3CRRx2 : number; 
   var DeltaT4CRRx2 : number; 
   var DeltasRx2 = [] ;
+  var retardosEstaticos = []  ;
 
 @Injectable()
 export class MarkersService extends Init {
@@ -171,7 +172,9 @@ export class MarkersService extends Init {
          var retardos = JSON.parse(localStorage.getItem('retardos'));
          var retartdosState = JSON.parse(localStorage.getItem('retardosState'));
          var retardoRed = JSON.parse(localStorage.getItem('retardoRed'));
-         retardoRed = retardoRed*299.792458;
+         var retardosEstaticos = JSON.parse(localStorage.getItem('retardosEstaticos'));
+         var modo = JSON.parse(localStorage.getItem('modo'));
+         retardoRed = retardoRed*0.000000100*299792458;
          console.log(retardoRed)
 
                 var i =0;
@@ -201,8 +204,10 @@ export class MarkersService extends Init {
                     //TX1 -RX1
                     if(retartdosState[0] === true){
                         var tx1rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_2).toFixed(2)); 
-                        var retarditen = retardos[0]*299.792458;
-                        tx1rx1 = tx1rx1 + retarditen + retardoRed ;
+                        var retarditen = retardos[0]*0.000000100*299792458;
+                        var retStatic = +retardosEstaticos[0]*0.000000100*299792458;
+                        if(modo[0] === "Static"){tx1rx1 = tx1rx1 + retarditen + retardoRed - retStatic;}
+                        if(modo[0] === "Dynamic"){tx1rx1 = tx1rx1 + retarditen + retardoRed ;}
 
                     } 
                     if (retartdosState[0] === false){
@@ -214,9 +219,10 @@ export class MarkersService extends Init {
                     //TX2 - RX1
                     if(retartdosState[1] === true){
                         var tx2rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_2).toFixed(2));
-                        var retarditen = retardos[1]*299.792458;
-                        tx2rx1 = tx2rx1 + retarditen + retardoRed ;
-
+                        var retarditen = retardos[1]*0.000000100*299792458;
+                        var retStatic = +retardosEstaticos[1]*0.000000100*299792458;
+                        if(modo[1] === "Static"){tx2rx1 = tx2rx1 + retarditen + retardoRed - retStatic ;}
+                        if(modo[1] === "Dynamic"){tx2rx1 = tx2rx1 + retarditen + retardoRed  ;}
                     }
                     if(retartdosState[1] === false){
                         var tx2rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_2).toFixed(2));
@@ -226,9 +232,10 @@ export class MarkersService extends Init {
                     //TX3 - RX1
                     if(retartdosState[2] === true){
                         var tx3rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_2).toFixed(2));
-                        var retarditen = retardos[2]*299.792458;
-                        tx3rx1 = tx3rx1 + retarditen + retardoRed ;
-
+                        var retarditen = retardos[2]*0.000000100*299792458;
+                        var retStatic = +retardosEstaticos[2]*0.000000100*299792458;
+                        if(modo[2] === "Static"){tx3rx1 = tx3rx1 + retarditen + retardoRed - retStatic;} 
+                        if(modo[1] === "Dynamic"){tx3rx1 = tx3rx1 + retarditen + retardoRed ;}
                     }
                     if(retartdosState[2] === false){
                         var tx3rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_2).toFixed(2)); 
@@ -239,9 +246,10 @@ export class MarkersService extends Init {
                     //TX4 - RX1
                     if(retartdosState[3] === true){
                         var tx4rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_2).toFixed(2));
-                        var retarditen = retardos[3]*299.792458;
-                        console.log('retardo aca', retarditen)
-                        tx4rx1 = tx4rx1 + retarditen + retardoRed ;
+                        var retarditen = retardos[3]*0.000000100*299792458;
+                        var retStatic = +retardosEstaticos[3]*0.000000100*299792458;                        
+                        if(modo[3] === "Static"){tx4rx1 = tx4rx1 + retarditen + retardoRed - retStatic ;}
+                        if(modo[3] === "Dynamic"){tx4rx1 = tx4rx1 + retarditen + retardoRed ;}
    
                     }
                     if(retartdosState[3] === false){
@@ -254,8 +262,10 @@ export class MarkersService extends Init {
                     //TX1 -OBST
                     if(retartdosState[0] === true){
                         var tx1obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_3).toFixed(2));
-                        var retarditen = retardos[0]*299.792458;
-                        tx1obst = tx1obst + retarditen + retardoRed ;
+                        var retarditen = retardos[0]*0.000000100*299792458;
+                        var retStatic = +retardosEstaticos[0]*0.000000100*299792458;     
+                        if(modo[0] === "Static"){tx1obst = tx1obst + retarditen + retardoRed - retStatic ;}
+                        if(modo[0] === "Dynamic"){tx1obst = tx1obst + retarditen + retardoRed  ;}
                         var  tx1obstrx1= tx1obst + obstrx1;
                     } 
                     if (retartdosState[0] === false){
@@ -267,8 +277,10 @@ export class MarkersService extends Init {
                     //TX2 - OBST
                     if(retartdosState[1] === true){
                         var tx2obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_3).toFixed(2));
-                        var retarditen = retardos[1]*299.792458;
-                        tx2obst = tx2obst + retarditen + retardoRed ;
+                        var retarditen = retardos[1]*0.000000100*299792458;
+                        var retStatic = +retardosEstaticos[1]*0.000000100*299792458;     
+                        if(modo[1] === "Static"){tx2obst = tx2obst + retarditen + retardoRed - retStatic ;} 
+                        if(modo[1] === "Dynamic"){tx2obst = tx2obst + retarditen + retardoRed ;}
                         var  tx2obstrx1= tx2obst + obstrx1;
                     } 
                     if (retartdosState[1] === false){
@@ -279,8 +291,10 @@ export class MarkersService extends Init {
                     //TX3 - OBST
                     if(retartdosState[2] === true){
                         var tx3obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_3).toFixed(2)); 
-                        var retarditen = retardos[2]*299.792458;
-                        tx3obst = tx3obst + retarditen + retardoRed ;
+                        var retarditen = retardos[2]*0.000000100*299792458;
+                        var retStatic = +retardosEstaticos[2]*0.000000100*299792458;
+                        if(modo[2] === "Static"){tx3obst = tx3obst + retarditen + retardoRed - retStatic ;}
+                        if(modo[2] === "Dynamic"){tx3obst = tx3obst + retarditen + retardoRed ;}
                         var  tx3obstrx1= tx3obst + obstrx1;
                     } 
                     if (retartdosState[2] === false){
@@ -291,8 +305,10 @@ export class MarkersService extends Init {
                     //TX4 - OBST
                     if(retartdosState[3] === true){
                         var tx4obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_3).toFixed(2)); 
-                        var retarditen = retardos[3]*299.792458;
-                        tx4obst = tx4obst + retarditen + retardoRed ;
+                        var retarditen = retardos[3]*0.000000100*299792458;
+                        var retStatic = +retardosEstaticos[3]*0.000000100*299792458;
+                        if(modo[3] === "Static"){tx4obst = tx4obst + retarditen + retardoRed - retStatic  ;}
+                        if(modo[3] === "Dynamic"){tx4obst = tx4obst + retarditen + retardoRed  ;}
                         var  tx4obstrx1= tx4obst + obstrx1;
                     } 
                     if (retartdosState[3] === false){
@@ -325,7 +341,9 @@ export class MarkersService extends Init {
          var retardos = JSON.parse(localStorage.getItem('retardos'));
          var retartdosState = JSON.parse(localStorage.getItem('retardosState'));
          var retardoRed = JSON.parse(localStorage.getItem('retardoRed'));
-         retardoRed = retardoRed*299.792458;
+         var retardosEstaticos = JSON.parse(localStorage.getItem('retardosEstaticos'));
+         var modo = JSON.parse(localStorage.getItem('modo'));
+         retardoRed = retardoRed*0.000000100*299792458;
                 var i =0;
                 if(i === 0){
                             var pos_0 = new google.maps.LatLng(markers[0].lati, markers[0].longi); //TX1
@@ -348,8 +366,10 @@ export class MarkersService extends Init {
                     //TX1 -RX2
                     if(retartdosState[0] === true){
                         var tx1rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_6).toFixed(2)); 
-                        var retarditen = retardos[0]*299.792458;
-                        tx1rx2 = tx1rx2 + retarditen + retardoRed ;
+                        var retarditen = retardos[0]*0.000000100*299792458;
+                        var retStatic = +retardosEstaticos[0]*0.000000100*299792458;
+                       if(modo[0] === "Static"){tx1rx2 = tx1rx2 + retarditen + retardoRed - retStatic ;} 
+                       if(modo[0] === "Dynamic"){tx1rx2 = tx1rx2 + retarditen + retardoRed ;}
 
                     } 
                     if (retartdosState[0] === false){
@@ -361,8 +381,10 @@ export class MarkersService extends Init {
                     //TX2 - RX2
                     if(retartdosState[1] === true){
                         var tx2rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_6).toFixed(2));
-                        var retarditen = retardos[1]*299.792458;
-                        tx2rx2 = tx2rx2 + retarditen + retardoRed ;
+                        var retarditen = retardos[1]*0.000000100*299792458;
+                        var retStatic = +retardosEstaticos[1]*0.000000100*299792458;
+                        if(modo[1] === "Static"){tx2rx2 = tx2rx2 + retarditen + retardoRed - retStatic ;} 
+                        if(modo[1] === "Dynamic"){tx2rx2 = tx2rx2 + retarditen + retardoRed ;}
 
                     }
                     if(retartdosState[1] === false){
@@ -373,9 +395,10 @@ export class MarkersService extends Init {
                     //TX3 - RX2
                     if(retartdosState[2] === true){
                         var tx3rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_6).toFixed(2));
-                        var retarditen = retardos[2]*299.792458;
-                        tx3rx2 = tx3rx2 + retarditen + retardoRed ;
-
+                        var retarditen = retardos[2]*0.000000100*299792458;
+                        var retStatic = +retardosEstaticos[2]*0.000000100*299792458;
+                        if(modo[2] === "Static"){tx3rx2 = tx3rx2 + retarditen + retardoRed - retStatic;} 
+                        if(modo[2] === "Dynamic"){tx3rx2 = tx3rx2 + retarditen + retardoRed ;}
                     }
                     if(retartdosState[2] === false){
                         var tx3rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_6).toFixed(2)); 
@@ -386,9 +409,10 @@ export class MarkersService extends Init {
                     //TX4 - RX2
                     if(retartdosState[3] === true){
                         var tx4rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_6).toFixed(2));
-                        var retarditen = retardos[3]*299.792458;
-                        tx4rx2 = tx4rx2 + retarditen + retardoRed ;
-
+                        var retarditen = retardos[3]*0.000000100*299792458;
+                        var retStatic = +retardosEstaticos[3]*0.000000100*299792458;
+                        if(modo[3] === "Static") {tx4rx2 = tx4rx2 + retarditen + retardoRed -  retStatic ;}
+                        if(modo[3] === "Dynamic"){tx4rx2 = tx4rx2 + retarditen + retardoRed ;}
                     }
                     if(retartdosState[3] === false){
                         var tx4rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_6).toFixed(2)); 
@@ -400,8 +424,10 @@ export class MarkersService extends Init {
                     //TX1 -OBST
                     if(retartdosState[0] === true){
                         var tx1obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_3).toFixed(2));
-                        var retarditen = retardos[0]*299.792458;
-                        tx1obst = tx1obst + retarditen + retardoRed ;
+                        var retarditen = retardos[0]*0.000000100*299792458;
+                        var retStatic = +retardosEstaticos[0]*0.000000100*299792458;
+                        if(modo[0] === "Static") { tx1obst = tx1obst + retarditen + retardoRed -  retStatic ;} 
+                        if(modo[0] === "Dynamic") {tx1obst = tx1obst + retarditen + retardoRed ;}
                         var  tx1obstrx2= tx1obst + obstrx2;
                     } 
                     if (retartdosState[0] === false){
@@ -413,8 +439,10 @@ export class MarkersService extends Init {
                     //TX2 - OBST
                     if(retartdosState[1] === true){
                         var tx2obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_3).toFixed(2));
-                        var retarditen = retardos[1]*299.792458;
-                        tx2obst = tx2obst + retarditen + retardoRed ;
+                        var retarditen = retardos[1]*0.000000100*299792458;
+                        var retStatic = +retardosEstaticos[1]*0.000000100*299792458;
+                        if(modo[1] === "Static"){tx2obst = tx2obst + retarditen + retardoRed - retStatic ;}
+                        if(modo[1] === "Dynamic"){tx2obst = tx2obst + retarditen + retardoRed ;}
                         var  tx2obstrx2= tx2obst + obstrx2;
                     } 
                     if (retartdosState[1] === false){
@@ -425,8 +453,10 @@ export class MarkersService extends Init {
                     //TX3 - OBST
                     if(retartdosState[2] === true){
                         var tx3obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_3).toFixed(2)); 
-                        var retarditen = retardos[2]*299.792458;
-                        tx3obst = tx3obst + retarditen + retardoRed ;
+                        var retarditen = retardos[2]*0.000000100*299792458;
+                        var retStatic = +retardosEstaticos[2]*0.000000100*299792458;
+                        if(modo[2] === "Static"){tx3obst = tx3obst + retarditen + retardoRed - retStatic ;} 
+                        if(modo[2] === "Dynamic"){tx3obst = tx3obst + retarditen + retardoRed ;}
                         var  tx3obstrx2= tx3obst + obstrx2;
                     } 
                     if (retartdosState[2] === false){
@@ -437,8 +467,10 @@ export class MarkersService extends Init {
                     //TX4 - OBST
                     if(retartdosState[3] === true){
                         var tx4obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_3).toFixed(2)); 
-                        var retarditen = retardos[3]*299.792458;
-                        tx4obst = tx4obst + retarditen + retardoRed ;
+                        var retarditen = retardos[3]*0.000000100*299792458;
+                        var retStatic = +retardosEstaticos[3]*0.000000100*299792458;
+                        if(modo[3] === "Static"){tx4obst = tx4obst + retarditen + retardoRed - retStatic ;}
+                        if(modo[3] === "Dynamic"){tx4obst = tx4obst + retarditen + retardoRed;}
                         var  tx4obstrx2= tx4obst + obstrx2;
                     } 
                     if (retartdosState[3] === false){
@@ -1448,7 +1480,7 @@ sumaRetardoTx1(retar : number , retState : any){
     
     var retardos =  this.obtenerRetardos();
     var retardosState = this.obtenerRetardosState();
-    console.log(retardos[0]); 
+    
     if(retar != retardos[0]) {
         retardos[0] = retar;
         retardosState[0] = retState;
@@ -1459,7 +1491,6 @@ sumaRetardoTx1(retar : number , retState : any){
       //  console.log(dist0);
     }
     else{ }
-   
 }
 
 sumaRetardoTx2(retar : number , retState : any){
@@ -1617,4 +1648,123 @@ actualizarPolarity(nuevo : any){
    localStorage.setItem('polarity', JSON.stringify(polarity)); 
 }   
 
+obteneridModuladores(){
+    var idModulador = JSON.parse(localStorage.getItem('idModulador'));
+    return idModulador;
+
+}
+
+actualizaridModuladores(nuevo : any){
+    var idModulador = JSON.parse(localStorage.getItem('idModulador'));
+    idModulador = nuevo ;
+    localStorage.setItem('idModulador', JSON.stringify(idModulador)); 
+ }
+
+ obtenerModo(){
+    var modo = JSON.parse(localStorage.getItem('modo'));
+    return modo;
+
+}
+
+actualizarModo(nuevo : any){
+    var modo = JSON.parse(localStorage.getItem('modo'));
+    modo = nuevo ;
+    localStorage.setItem('modo', JSON.stringify(modo)); 
+ }
+
+ obtenerNegativeOn1(){
+    var negativeOn1 = JSON.parse(localStorage.getItem('negativeOn1'));
+    return negativeOn1;
+
+}
+
+actualizarNegativeOn1(nuevo : any){
+    var negativeOn1 = JSON.parse(localStorage.getItem('negativeOn1'));
+    negativeOn1 = nuevo ;
+    localStorage.setItem('negativeOn1', JSON.stringify(negativeOn1)); 
+ }
+
+ obtenerNegativeOn2(){
+    var negativeOn2 = JSON.parse(localStorage.getItem('negativeOn2'));
+    return negativeOn2;
+
+}
+
+actualizarNegativeOn2(nuevo : any){
+    var negativeOn2 = JSON.parse(localStorage.getItem('negativeOn2'));
+    negativeOn2 = nuevo ;
+    localStorage.setItem('negativeOn2', JSON.stringify(negativeOn2)); 
+ }
+
+ obtenerNegativeOn3(){
+    var negativeOn3 = JSON.parse(localStorage.getItem('negativeOn3'));
+    return negativeOn3;
+
+}
+
+actualizarNegativeOn3(nuevo : any){
+    var negativeOn3 = JSON.parse(localStorage.getItem('negativeOn3'));
+    negativeOn3 = nuevo ;
+    localStorage.setItem('negativeOn3', JSON.stringify(negativeOn3)); 
+ }
+
+ obtenerNegativeOn4(){
+    var negativeOn4 = JSON.parse(localStorage.getItem('negativeOn4'));
+    return negativeOn4;
+
+}
+
+actualizarNegativeOn4(nuevo : any){
+    var negativeOn4 = JSON.parse(localStorage.getItem('negativeOn4'));
+    negativeOn4 = nuevo ;
+    localStorage.setItem('negativeOn4', JSON.stringify(negativeOn4)); 
+ }
+
+ obtenerRetardoState(){
+    var retardosState = JSON.parse(localStorage.getItem('retardosState'));
+    return retardosState;
+
+}
+
+actualizarRetardoState(nuevo : any){
+    var retardosState = JSON.parse(localStorage.getItem('retardosState'));
+    retardosState = nuevo ;
+    localStorage.setItem('retardosState', JSON.stringify(retardosState)); 
+ }
+
+ obtenerEnableSFN(){
+    var enableSFN = JSON.parse(localStorage.getItem('enableSFN'));
+    return enableSFN;
+
+}
+
+actualizarEnableSFN(nuevo : any){
+    var enableSFN = JSON.parse(localStorage.getItem('enableSFN'));
+    enableSFN = nuevo ;
+    localStorage.setItem('enableSFN', JSON.stringify(enableSFN)); 
+ }
+
+ retardosEstaticos(){
+    var retardosEstaticos = JSON.parse(localStorage.getItem('retardosEstaticos'));
+    return retardosEstaticos;
+
+}
+
+ actualizarRetardosEstaticos(nuevo : any){
+    var retardosEstaticos = JSON.parse(localStorage.getItem('retardosEstaticos'));
+    retardosEstaticos = nuevo ;
+    localStorage.setItem('retardosEstaticos', JSON.stringify(retardosEstaticos)); 
+ }
+
+ obtenerEstancados(){
+    var estan = JSON.parse(localStorage.getItem('estan'));
+    return estan;
+
+}
+
+actualizarEstancados(nuevo : any){
+    var estan = JSON.parse(localStorage.getItem('estan'));
+    estan = nuevo ;
+    localStorage.setItem('estan', JSON.stringify(estan)); 
+ }
 }

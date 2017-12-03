@@ -34,6 +34,9 @@ load(){
                  var localIpAddress = ['0.0.0.0','0.0.0.0','0.0.0.0'];
                  var localNetMask = ['0.0.0.0','0.0.0.0','0.0.0.0'];
                  var defaultGateway = ['0.0.0.0','0.0.0.0','0.0.0.0'];
+                 var encoder1 = false;
+                 var encoder2 = false;
+                 var encoder3 = false;
 
                  localStorage.setItem('videoSource', JSON.stringify(videoSource));
                  localStorage.setItem('audioSource', JSON.stringify(audioSource));
@@ -59,6 +62,9 @@ load(){
                  localStorage.setItem('localIpAddress', JSON.stringify(localIpAddress));
                  localStorage.setItem('localNetMask', JSON.stringify(localNetMask));
                  localStorage.setItem('defaultGateway', JSON.stringify(defaultGateway));
+                 localStorage.setItem('encoder1', JSON.stringify(encoder1));
+                 localStorage.setItem('encoder2', JSON.stringify(encoder2));
+                 localStorage.setItem('encoder3', JSON.stringify(encoder3));
     }
     else{}
 

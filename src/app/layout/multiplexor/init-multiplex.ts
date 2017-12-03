@@ -5,6 +5,7 @@ export class InitMultiplexor {
             localStorage.getItem('ASI2Input')=== null || localStorage.getItem('ASI2Layer')=== null || localStorage.getItem('ASI2Output')=== null ||
         localStorage.getItem('ASI3Input')=== null || localStorage.getItem('ASI3Layer')=== null || localStorage.getItem('ASI3Output')=== null 
         || localStorage.getItem('ASI1Enable')=== null || localStorage.getItem('ASI2Enable')=== null || localStorage.getItem('ASI3Enable')=== null 
+        || localStorage.getItem('TableLayer')=== null|| localStorage.getItem('TablePmtPid')=== null|| localStorage.getItem('TableEnable')=== null
         ){
             console.log('No se encontraron ...');
             
@@ -34,6 +35,16 @@ export class InitMultiplexor {
             localStorage.setItem('ASI3Layer', JSON.stringify(ASI3Layer));
             localStorage.setItem('ASI3Output', JSON.stringify(ASI3Output));
             localStorage.setItem('ASI3Enable', JSON.stringify(ASI3Enable));
-       
-    }}
+
+            var TableLayer =  ["Layer A","Layer A","Layer A","Layer A","Layer A","Layer A","Layer A","Layer A"];
+            var TablePmtPid = [0,0,0];
+            var TableEnable = [false,false,false,false,false,false,false,false];
+            localStorage.setItem('TableLayer', JSON.stringify(TableLayer));
+            localStorage.setItem('TablePmtPid', JSON.stringify(TablePmtPid));
+            localStorage.setItem('TableEnable', JSON.stringify(TableEnable));
+    }
+
+    else{}
+
+}
 }

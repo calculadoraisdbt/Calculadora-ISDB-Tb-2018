@@ -27,6 +27,12 @@ export class MultiplexorComponent implements OnInit {
   ASI3Enable : any [] ;
   duplicate3 ;
 
+  //TABLES
+
+  TableLayer : any [] ;
+  TablePmtPid : any [] ;
+  TableEnable : any [] ;
+
   
   constructor(private _multiplexorService:MultiplexorService ) {
     //ASI 1
@@ -34,7 +40,6 @@ export class MultiplexorComponent implements OnInit {
     this.ASI1Layer = this._multiplexorService.obtenerASI1Layer();
     this.ASI1Output = this._multiplexorService.obtenerASI1Output();
     this.ASI1Enable = this._multiplexorService.obtenerASI1Enable();
-    console.log( this.ASI1Enable);
     //ASI 2
     this.ASI2Input = this._multiplexorService.obtenerASI2Input();
     this.ASI2Layer = this._multiplexorService.obtenerASI2Layer();
@@ -45,6 +50,10 @@ export class MultiplexorComponent implements OnInit {
     this.ASI3Layer = this._multiplexorService.obtenerASI3Layer();
     this.ASI3Output = this._multiplexorService.obtenerASI3Output();
     this.ASI3Enable = this._multiplexorService.obtenerASI3Enable();
+    //TABLAS
+    this.TableLayer = this._multiplexorService.obtenerTableLayer();
+    this.TablePmtPid = this._multiplexorService.obtenerTablePmtPid();
+    this.TableEnable = this._multiplexorService.obtenerTableEnable();
    }
 
   ngOnInit() {
@@ -75,6 +84,15 @@ updateASI3(){
   this._multiplexorService.actualizarASI3Output(this.ASI3Output);
   this._multiplexorService.actualizarASI3Enable(this.ASI3Enable);
   this.pidOut3();
+
+}
+
+//ASI 3
+updateTables(){
+  this._multiplexorService.actualizarTableLayer(this.TableLayer);
+  this._multiplexorService.actualizarTablePmtPid(this.TablePmtPid);
+  this._multiplexorService.actualizarTableEnable(this.TableEnable);
+
 
 }
 

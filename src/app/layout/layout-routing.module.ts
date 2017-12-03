@@ -12,6 +12,7 @@ const routes: Routes = [
             { path: 'codificador', loadChildren: './codificador/codificador.module#CodificadorModule' },
             { path: 'modulador', loadChildren: './remux/remux.module#RemuxModule' },
             { path: 'multiplexor', loadChildren: './multiplexor/multiplexor.module#MultiplexorModule' },
+            { path: 'creditos', loadChildren: './creditos/creditos.module#CreditosModule' },
         ]
     }
 ];

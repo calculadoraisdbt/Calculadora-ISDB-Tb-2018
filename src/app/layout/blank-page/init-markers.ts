@@ -4,7 +4,7 @@ export class Init {
 
 load(){
         
-        if(localStorage.getItem('markers')=== null || localStorage.getItem('retardoRed')=== null ){
+        if(localStorage.getItem('markers')=== null || localStorage.getItem('retardoRed')=== null  || localStorage.getItem('idModulador')=== null || localStorage.getItem('modo')=== null || localStorage.getItem('estan')=== null){
             console.log('No se encontraron marcadores...');
 
             var markers = [
@@ -63,7 +63,16 @@ load(){
             var recep = false;
             var recep2 = false;
             var obst  = false;   
-            var polarity = ["Atraso (+)","Atraso (+)","Atraso (+)","Atraso (+)"]         
+            var polarity = ["Atraso (+)","Atraso (+)","Atraso (+)","Atraso (+)"];
+            var idModulador = ["Ingrese ID Modulador 1","Ingrese ID Modulador 2","Ingrese ID Modulador 3","Ingrese ID Modulador 4"];  
+            var modo = ["Dynamic","Dynamic","Dynamic","Dynamic"];
+            var negativeOn1 = false; 
+            var negativeOn2 = false; 
+            var negativeOn3 = false; 
+            var negativeOn4 = false;  
+            var enableSFN = false;
+            var estan = [false,false,false,false,false,false,false];
+            var retardosEstaticos = [0,0,0,0];
             localStorage.setItem('markers', JSON.stringify(markers));
             localStorage.setItem('retardos', JSON.stringify(retardos));
             localStorage.setItem('retardosState', JSON.stringify(retardosState));
@@ -76,6 +85,15 @@ load(){
             localStorage.setItem('recep2', JSON.stringify(recep2));
             localStorage.setItem('obst', JSON.stringify(obst));
             localStorage.setItem('polarity', JSON.stringify(polarity));
+            localStorage.setItem('idModulador', JSON.stringify(idModulador));
+            localStorage.setItem('modo', JSON.stringify(modo));
+            localStorage.setItem('negativeOn1', JSON.stringify(negativeOn1));
+            localStorage.setItem('negativeOn2', JSON.stringify(negativeOn2));
+            localStorage.setItem('negativeOn3', JSON.stringify(negativeOn3));
+            localStorage.setItem('negativeOn4', JSON.stringify(negativeOn4));
+            localStorage.setItem('enableSFN', JSON.stringify(enableSFN));
+            localStorage.setItem('estan', JSON.stringify(estan));
+            localStorage.setItem('retardosEstaticos', JSON.stringify(retardosEstaticos));
             }else{
                     console.log('Cargando marcadores...');
             }

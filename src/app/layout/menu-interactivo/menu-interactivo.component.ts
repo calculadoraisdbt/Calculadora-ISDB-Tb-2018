@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CodificadorService } from 'app/Services/codificador.service'
 
+
 @Component({
   selector: 'app-menu-interactivo',
   templateUrl: './menu-interactivo.component.html',
@@ -21,6 +22,9 @@ export class MenuInteractivoComponent implements OnInit {
   tsBitrate = [];
   asiPciInterval = [];
   tsBitrateTotal   ;
+  encoder1: boolean  ;
+  encoder2 : boolean ;
+  encoder3 : boolean ;
   constructor(private _codificadorService:CodificadorService) { 
     this.pidAudio = this._codificadorService.obtenerPidAudio();
     this.pidVideo = this._codificadorService.obtenerPidVideo();
@@ -28,6 +32,9 @@ export class MenuInteractivoComponent implements OnInit {
     this.tsBitrate = this._codificadorService.obtenerTsBitRate();
     this.asiPciInterval = this._codificadorService.obtenerAsiPcrInterval();
     this.sumTsTotal();
+    this._codificadorService.obtenerEncoder1();
+    this._codificadorService.obtenerEncoder2();
+    this._codificadorService.obtenerEncoder3();
   }
   
 
@@ -36,7 +43,6 @@ export class MenuInteractivoComponent implements OnInit {
 
   sumTsTotal(){
    this.tsBitrateTotal = (+this.tsBitrate[0] + +this.tsBitrate[1] + +this.tsBitrate[2]);
-   console.log("total aca", this.tsBitrateTotal)
   }
   ASI1(){
     this.flujoASI1 = true ;
@@ -79,5 +85,41 @@ this.flujoTS = false ;
 this.flujoBTS = true; 
 
 }
+
+SeleccionEncoder1(){
+
+  console.log("testing ---- encoder1")
+  this.encoder1 = true;
+  this.encoder2 = false;
+  this.encoder3 = false;
+  this._codificadorService.actualizarEncoder1(this.encoder1);
+  this._codificadorService.actualizarEncoder2(this.encoder2);
+  this._codificadorService.actualizarEncoder3(this.encoder3);
+  console.log("termina")
+}
+
+SeleccionEncoder2(){
+  
+    console.log("testing ---- encoder2")
+    this.encoder1 = false;
+    this.encoder2 = true;
+    this.encoder3 = false;
+    this._codificadorService.actualizarEncoder1(this.encoder1);
+    this._codificadorService.actualizarEncoder2(this.encoder2);
+    this._codificadorService.actualizarEncoder3(this.encoder3);
+    console.log("termina")
+  }
+
+  SeleccionEncoder3(){
+    
+      console.log("testing ---- encoder3")
+      this.encoder1 = false;
+      this.encoder2 = false;
+      this.encoder3 = true;
+      this._codificadorService.actualizarEncoder1(this.encoder1);
+      this._codificadorService.actualizarEncoder2(this.encoder2);
+      this._codificadorService.actualizarEncoder3(this.encoder3);
+      console.log("termina")
+    }
 
 }

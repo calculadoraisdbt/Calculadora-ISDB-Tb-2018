@@ -4,7 +4,11 @@
     <agm-map
     [latitude]="lat" 
     [longitude]="lng"
-    [zoom]="zoom">
+    [zoom]="zoom"
+    [gestureHandling]="gesture"
+    [mapTypeControl]="true"
+    [mapTypeControlOptions]="mapType"
+    >
                     <div *ngIf="tra0" >
                     <agm-marker
                     [latitude]="markers[0].lati" 
@@ -106,7 +110,8 @@
 <div class="row">
     <div class="col">   
                 <ngb-tabset >
-                    <ngb-tab  title="Selector">
+                    <ngb-tab>
+                            <ng-template ngbTabTitle> <b>Selector</b> </ng-template>
                         <ng-template ngbTabContent>
                             <br>
                             <div class="alert alert-warning" role="alert"> 
@@ -117,21 +122,22 @@
 <div class="col">   
         <div class="card mb-3">
         <div class="card-block">
-                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                        <button (click)="test('tx1')"  type="button" class="btn btn-secondary">Tx1</button>
-                        <button (click)="test('tx2')" type="button" class="btn btn-secondary">Tx2</button>
-                        <button (click)="test('tx3')" type="button" class="btn btn-secondary">Tx3</button>
-                        <button (click)="test('tx4')" type="button" class="btn btn-secondary">Tx4</button>
-                        <button (click)="test('rx1')" type="button" class="btn btn-secondary">Rx1</button>
-                        <button (click)="test('rx2')" type="button" class="btn btn-secondary">Rx2</button>
-                        <button (click)="test('obst')" type="button" class="btn btn-secondary">Obstaculo</button>
+                <div class="btn-group btn-group-sm btn-responsive " role="group" aria-label="Basic example">
+                        <button (click)="test('tx1')"  type="button" class="btn btn-secondary btn-responsive ">Tx1</button>
+                        <button (click)="test('tx2')" type="button" class="btn btn-secondary btn-responsive ">Tx2</button>
+                        <button (click)="test('tx3')" type="button" class="btn btn-secondary btn-responsive ">Tx3</button>
+                        <button (click)="test('tx4')" type="button" class="btn btn-secondary btn-responsive ">Tx4</button>
+                        <button (click)="test('rx1')" type="button" class="btn btn-secondary btn-responsive ">Rx1</button>
+                        <button (click)="test('rx2')" type="button" class="btn btn-secondary btn-responsive ">Rx2</button>
+                        <button (click)="test('obst')" type="button" class="btn btn-secondary btn-responsive ">Obstaculo</button>
                       </div> <br><br>
 
                         <div *ngIf="selector[0]">
                                 <form (ngSubmit)="uploadTx1()" #frmTx1="ngForm" > Tx1
                                    <input  type="checkbox" [(ngModel)]="tra0" (change)="cambioTx1()" name="tra0" id="tra0" > <br> 
                                        <input [(ngModel)]="newLatTx1"  placeholder="Latitud" name="newLatTx1" id="newLatTx1" ngModel  pattern="[-0-9.,]{2,16}" required> <!--  -->
-                                       <input [(ngModel)]="newLongTx1"  placeholder="Longitud" name="newLongTx1" id="newLongTx1" ngModel  pattern="[-0-9.,]{2,16}" required  ><br><br>
+                                       <input [(ngModel)]="newLongTx1"  placeholder="Longitud" name="newLongTx1" id="newLongTx1" ngModel  pattern="[-0-9.,]{2,16}" required  ><br>
+                                       Estancar marcador <input  type="checkbox"  [(ngModel)]="estan[0]" (change)="estancarTx1()" name="estan[0]" id="estan[0]" > <br> 
                                       <button [disabled]=!frmTx1.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button> <br>
                                  <!--     <td> Lat: {{mostLati}}</td>
                                       <td> Long:{{ mostLongi}}</td> -->
@@ -140,8 +146,9 @@
                         <div *ngIf="selector[1]">
                                 <form (ngSubmit)="uploadTx2()" #frmTx2="ngForm"> Tx2
                                     <input type="checkbox" [(ngModel)]="tra1"  (change)="cambioTx2()"  name="tra1" id="tra1"><br> 
-                                    <input [(ngModel)]="newLatTx2"  placeholder="Latitud" name="newLatTx2" id="newLatTx2" ngModel  pattern="[-0-9.]{9,10}" required  title="cuidado!">
-                                     <input [(ngModel)]="newLongTx2"  placeholder="Longitud" name="newLongTx2" id="newLongTx2" ngModel  pattern="[-0-9.]{9,10}" required  title="cuidado!"> <br><br>
+                                    <input [(ngModel)]="newLatTx2"  placeholder="Latitud" name="newLatTx2" id="newLatTx2" ngModel  pattern="[-0-9.,]{2,16}" required  >
+                                     <input [(ngModel)]="newLongTx2"  placeholder="Longitud" name="newLongTx2" id="newLongTx2" ngModel  pattern="[-0-9.,]{2,16}" required > <br>
+                                     Estancar marcador <input  type="checkbox"  [(ngModel)]="estan[1]" (change)="estancarTx2()" name="estan[1]" id="estan[1]" > <br> 
                                     <button  [disabled]=!frmTx2.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button> <br>
                                <!--     <td>Lat: {{mostLati1}}</td>
                                     <td> Long:{{mostLongi1}}</td>-->
@@ -151,8 +158,9 @@
                         <div *ngIf="selector[2]">
                                 <form (ngSubmit)="uploadTx3()" #frmTx3="ngForm"> Tx3
                                    <input type="checkbox" [(ngModel)]="tra2" (change)="cambioTx3()"   name="tra2" id="tra2"><br> 
-                                   <input [(ngModel)]="newLatTx3"  placeholder="Latitud" name="newLatTx3" id="newLatTx3" ngModel  pattern="[-0-9.]{9,10}" required  title="cuidado!">
-                                    <input [(ngModel)]="newLongTx3"  placeholder="Longitud" name="newLongTx3" id="newLongTx3" ngModel  pattern="[-0-9.]{9,10}" required  title="cuidado!"><br><br>
+                                   <input [(ngModel)]="newLatTx3"  placeholder="Latitud" name="newLatTx3" id="newLatTx3" ngModel  pattern="[-0-9.,]{2,16}" required  >
+                                    <input [(ngModel)]="newLongTx3"  placeholder="Longitud" name="newLongTx3" id="newLongTx3" ngModel  pattern="[-0-9.,]{2,16}" required ><br>
+                                    Estancar marcador <input  type="checkbox"  [(ngModel)]="estan[2]" (change)="estancarTx3()" name="estan[2]" > <br> 
                                    <button  [disabled]=!frmTx3.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button><br>
                             <!--       <td>Lat: {{mostLati4}}</td>
                                    <td>Long:{{mostLongi4}}</td> -->
@@ -164,8 +172,9 @@
                         <div *ngIf="selector[3]">
                                 <form (ngSubmit)="uploadTx4()" #frmTx4="ngForm"> Tx4
                                      <input type="checkbox" [(ngModel)]="tra3"  (change)="cambioTx4()"  name="tra3" id="tra3"><br> 
-                                     <input [(ngModel)]="newLatTx4"  placeholder="Latitud" name="newLatTx4" id="newLatTx4" ngModel  pattern="[-0-9.]{9,10}" required  title="cuidado!"> 
-                                     <input [(ngModel)]="newLongTx4"  placeholder="Longitud" name="newLongTx4" id="newLongTx4" ngModel  pattern="[-0-9.]{9,10}" required  title="cuidado!"> <br><br>
+                                     <input [(ngModel)]="newLatTx4"  placeholder="Latitud" name="newLatTx4" id="newLatTx4" ngModel  pattern="[-0-9.,]{2,16}" required  > 
+                                     <input [(ngModel)]="newLongTx4"  placeholder="Longitud" name="newLongTx4" id="newLongTx4" ngModel  pattern="[-0-9.,]{2,16}" required  > <br>
+                                     Estancar marcador <input  type="checkbox"  [(ngModel)]="estan[3]" (change)="estancarTx4()" name="estan[3]" > <br> 
                                      <button  [disabled]=!frmTx4.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button> <br>
                                 <!--     <td>Lat: {{mostLati5}}</td>
                                      <td>Long:{{mostLongi5}}</td> -->
@@ -175,8 +184,9 @@
                         <div *ngIf="selector[4]">
                                 <form (ngSubmit)="uploadRx()" #frmRx="ngForm"> Rx1
                                   <input type="checkbox" [(ngModel)]="recep" (change)="cambioRx1()"  name="recep" id="recep"><br> 
-                                  <input [(ngModel)]="newLatRx"  placeholder="Latitud" name="newLatRx" id="newLatRx" ngModel  pattern="[-0-9.]{9,10}" required  title="cuidado!"> 
-                                   <input [(ngModel)]="newLongRx"  placeholder="Longitud" name="newLongRx" id="newLongRx" ngModel  pattern="[-0-9.]{9,10}" required  title="cuidado!"><br><br>
+                                  <input [(ngModel)]="newLatRx"  placeholder="Latitud" name="newLatRx" id="newLatRx" ngModel  pattern="[-0-9.,]{2,16}" required  > 
+                                   <input [(ngModel)]="newLongRx"  placeholder="Longitud" name="newLongRx" id="newLongRx" ngModel  pattern="[-0-9.,]{2,16}" required ><br>
+                                   Estancar marcador <input  type="checkbox"  [(ngModel)]="estan[4]" (change)="estancarRx1()" name="estan[4]" > <br> 
                                   <button [disabled]=!frmRx.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button> <br>
                            <!--       <td>Lat: {{mostLati2}}</
                                   <td>Long:{{mostLongi2}}</td> -->
@@ -186,8 +196,9 @@
                         <div *ngIf="selector[5]">
                                 <form (ngSubmit)="uploadRx2()" #frmRx2="ngForm"> Rx2
                                   <input type="checkbox" [(ngModel)]="recep2" (change)="cambioRx2()"  name="recep2" id="recep2"><br> 
-                                  <input [(ngModel)]="newLatRx2"  placeholder="Latitud" name="newLatRx2" id="newLatRx2" ngModel  pattern="[-0-9.]{9,10}" required  title="cuidado!">
-                                      <input [(ngModel)]="newLongRx2"  placeholder="Longitud" name="newLongRx2" id="newLongRx2" ngModel  pattern="[-0-9.]{9,10}" required  title="cuidado!"><br><br>
+                                  <input [(ngModel)]="newLatRx2"  placeholder="Latitud" name="newLatRx2" id="newLatRx2" ngModel  pattern="[-0-9.,]{2,16}" required  >
+                                      <input [(ngModel)]="newLongRx2"  placeholder="Longitud" name="newLongRx2" id="newLongRx2" ngModel pattern="[-0-9.,]{2,16}" required  ><br>
+                                      Estancar marcador <input  type="checkbox"  [(ngModel)]="estan[5]" (change)="estancarRx2()" name="estan[5]" > <br> 
                                   <button [disabled]=!frmRx2.valid type="submit" class="btn btn-sm btn-secondary"> Actualizar </button><br>
                            <!--       <td>Lat: {{mostLati6}}</td>
                                   <td>Long:{{mostLongi6}}</td> -->
@@ -197,8 +208,9 @@
                         <div *ngIf="selector[6]">
                                 <form  (ngSubmit)="uploadOb()" #frmOb="ngForm" > Obstaculo
                                    <input type="checkbox" [(ngModel)]="obst" (change)="cambioObst()" name="obst" id="obst" ><br> 
-                                    <input [(ngModel)]="newLatOb"  placeholder="Latitud" name="newLatOb" id="newLatOb" ngModel  pattern="[-0-9.]{9,10}" required  title="cuidado!">
-                                       <input [(ngModel)]="newLongOb"  placeholder="Longitud" name="newLongOb" id="newLongOb" ngModel  pattern="[-0-9.]{9,10}" required  title="cuidado!"><br><br>
+                                    <input [(ngModel)]="newLatOb"  placeholder="Latitud" name="newLatOb" id="newLatOb" ngModel pattern="[-0-9.,]{2,16}" required >
+                                       <input [(ngModel)]="newLongOb"  placeholder="Longitud" name="newLongOb" id="newLongOb" ngModel pattern="[-0-9.,]{2,16}" required  ><br>
+                                       Estancar marcador <input  type="checkbox"  [(ngModel)]="estan[6]" (change)="estancarObst()" name="estan[6]" > <br> 
                                     <button  [disabled]=!frmOb.valid type="submit" class="btn btn-sm btn-secondary" > Actualizar </button><br>
                            <!--        <td>Lat: {{mostLati3}}</td>
                                    <td>Long:{{mostLongi3}}</td> -->
@@ -212,17 +224,19 @@
 </div>
                         </ng-template>
                     </ngb-tab>
-                    <ngb-tab title="Retardos">
+                    <ngb-tab >
+                            <ng-template ngbTabTitle> <b>Retardos</b> </ng-template>
                         <ng-template ngbTabContent>
                             <div class="card-block">
                                 <div class="alert alert-warning" role="alert"> 
   <strong>Atencion!</strong> Luego de realizar las modificaciones recuerda APLICAR LOS CAMBIOS!
 </div>
                               
-                                  <form  (ngSubmit)="aplicarCambios()" #frmRetardos="ngForm"> 
+ <form  (ngSubmit)="aplicarCambios()" #frmRetardos="ngForm"> 
                                         <button  type="submit" class="btn btn-sm btn-secondary" > Aplicar Cambios </button> <br><br>
-                                        <input type="checkbox"  [(ngModel)]="retardosState[0]"  name="booleanRetardoTx1" id="booleanRetardoTx1"  > Habilitar SFN <br><br>
-                                        <table class="table table-responsive" #tablaretardo>
+                                        <input type="checkbox" [(ngModel)]="enableSFN"   name="enableSFN"   > Habilitar SFN <br><br>
+                            
+                                        <table class="table table-responsive" >
                                                 <thead>
                                                     <tr>
                                                         <th >Retardos</th>
@@ -231,98 +245,101 @@
                                                 <tbody>
                                                      
                                      <tr>
-                                        <th scope="row">Retardo de Red: Dt<sub>max</sub> (µs)</th>
+                                        <th scope="row">Retardo de Red: Dt<sub>max</sub> (x100ns)</th>
                                         <td >  <input type="text" class="form-control" [(ngModel)]="retardoRed" name="retardoRed"   aria-describedby="basic-addon1"> </td>
                                     </tr>
                                                 </tbody>
                                             </table> <br>
-                                <div class="col">
-                                <div class="row">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Retardo adicional</th>
+                              
+                                            <table class="table  ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="row">Retardo adicional</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="row" >#</th>
+                                                            <th  >Equipment ID</th>
+                                                            <th >Time-Offset: Dt<sub>off</sub> (x100ns)</th>
+                                                            <th >Offset</th>
+                                                            <th >Modo</th> 
+                                                            <th  >Enable</th>
+                                                        </tr>
+                                                    </thead>
+                                                 
+                                    <tbody>
+                                        
+                                         <tr>
+                                            <th scope="row">Tx 1</th>
+                                            <td> <input type="text" class="form-control" [(ngModel)]="idModulador[0]" name="idModulador[0]" (change)="mod()" title="equipmentIdTx1"   aria-describedby="basic-addon1"> </td>
+                                            <td><input type="text" class="form-control" [(ngModel)]="retardos[0]" name="retardoTx1" title="timeOffsetTx1" pattern="[-0-9.]{1,10}"  aria-describedby="basic-addon1"> </td>
+                                            <td> <select (change)="cambio($event.target.value, 'Tx1')"  [(ngModel)]="polarity[0]" name="polarity[0]" title="polarity[0]" >
+                                                <option>Atraso (+)</option>
+                                                <option  >Adelanto (-)</option>
+                                              </select>
+                                        </td>
+                                        <td><select [disabled]="negativeOn1" (change)="cambioModo($event.target.value, 'Tx1')"  [(ngModel)]="modo[0]" name="modo[0]" >
+                                                <option >Dynamic</option>
+                                                <option *ngIf="!negativeOn1">Static</option>
+                                              </select></td> 
+                                            <td><input type="checkbox"  [(ngModel)]="retardosState[0]"  name="booleanRetardoTx1" id="booleanRetardoTx1"  ></td>
                                         </tr>
-                                    </thead>
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Equipment ID</th>
-                                            <th>Time-Offset: Dt<sub>off</sub> (µs)</th>
-                                            <th>Offset</th>
-                                            <th>Modo</th> 
-                                            <th scope="col">Enable</th>
+                                         <tr>
+                                            <th scope="row">Tx 2</th>
+                                            <td> <input type="text" class="form-control" [(ngModel)]="idModulador[1]" name="idModulador[1]" (change)="mod()"  title="equipmentIdTx2"    aria-describedby="basic-addon1"> </td>
+                                            <td> <input type="text" class="form-control"  [(ngModel)]="retardos[1]"  name="retardoTx2" title="timeOffsetTx2"   aria-describedby="basic-addon1"></td>
+                                            <td><select (change)="cambio($event.target.value, 'Tx2')" [(ngModel)]="polarity[1]" name="polarity[1]" title="polarity[1]">
+                                                    <option>Atraso (+)</option>
+                                                    <option  >Adelanto (-)</option>
+                                              </select></td>
+                                             <td><select [disabled]="negativeOn2"  (change)="cambioModo($event.target.value, 'Tx2')"  [(ngModel)]="modo[1]" name="modo[1]">
+                                                <option>Dynamic</option>
+                                                <option *ngIf="!negativeOn2">Static</option>
+                                              </select></td> 
+                                            <td><input type="checkbox"    [(ngModel)]="retardosState[1]"  name="booleanRetardoTx2" id="booleanRetardoTx2" ></td>
+                                            
                                         </tr>
-                                    </thead>
-                                 
-                    <tbody>
-                        
-                         <tr>
-                            <th scope="row">Tx 1</th>
-                            <td> <input type="text" class="form-control"  title="equipmentIdTx1"   aria-describedby="basic-addon1"> </td>
-                            <td><input type="text" class="form-control" [(ngModel)]="retardos[0]" name="retardoTx1" title="timeOffsetTx1" pattern="[-0-9.]{1,10}"  aria-describedby="basic-addon1"> </td>
-                            <td> <select  [(ngModel)]="polarity[0]" name="polarity[0]" title="polarity[0]" >
-                                <option>Atraso (+)</option>
-                                <option  >Adelanto (-)</option>
-                              </select>
-                        </td>
-                        <td><select [disabled]="negativeOn1">
-                                <option >Dynamic</option>
-                                <option *ngIf="!negativeOn1">Static</option>
-                              </select></td> 
-                            <td><input type="checkbox"  [(ngModel)]="retardosState[0]"  name="booleanRetardoTx1" id="booleanRetardoTx1"  ></td>
-                        </tr>
-                         <tr>
-                            <th scope="row">Tx 2</th>
-                            <td> <input type="text" class="form-control"  title="equipmentIdTx2"    aria-describedby="basic-addon1"> </td>
-                            <td> <input type="text" class="form-control"  [(ngModel)]="retardos[1]"  name="retardoTx2" title="timeOffsetTx2"   aria-describedby="basic-addon1"></td>
-                            <td><select [(ngModel)]="polarity[1]" name="polarity[1]" title="polarity[1]">
-                                    <option>Atraso (+)</option>
-                                    <option  >Adelanto (-)</option>
-                              </select></td>
-                             <td><select [disabled]="negativeOn2">
-                                <option>Dynamic</option>
-                                <option *ngIf="!negativeOn2">Static</option>
-                              </select></td> 
-                            <td><input type="checkbox"    [(ngModel)]="retardosState[1]"  name="booleanRetardoTx2" id="booleanRetardoTx2" ></td>
-                            
-                        </tr>
-                         <tr>
-                            <th scope="row">Tx 3</th>
-                            <td><input type="text" class="form-control"  title="equipmentIdTx3"    aria-describedby="basic-addon1"> </td>
-                            <td><input type="text" class="form-control" [(ngModel)]="retardos[2]"  name="retardoTx3" title="timeOffsetTx3"   aria-describedby="basic-addon1"> </td>
-                            <td><select [(ngModel)]="polarity[2]" name="polarity[2]" title="polarity[2]">
-                                    <option>Atraso (+)</option>
-                                    <option  >Adelanto (-)</option>
-                              </select></td>
-                       <td><select [disabled]="negativeOn3">
-                                <option>Dynamic</option>
-                                <option *ngIf="!negativeOn3" >Static</option>
-                              </select></td> 
-                            <td><input type="checkbox"    [(ngModel)]="retardosState[2]"  name="booleanRetardoTx3" id="booleanRetardoTx3" ></td>
-                        </tr>
-                         <tr>
-                            <th scope="row">Tx 4</th>
-                            <td> <input type="text" class="form-control"   title="equipmentIdTx4"   aria-describedby="basic-addon1"> </td>
-                            <td> <input type="text" class="form-control"  [(ngModel)]="retardos[3]"  name="retardoTx4" title="timeOffsetTx4"  aria-describedby="basic-addon1"></td>
-                            <td><select [(ngModel)]="polarity[3]" name="polarity[3]" title="polarity[3]">
-                                    <option>Atraso (+)</option>
-                                    <option  >Adelanto (-)</option>
-                              </select></td>
-                         <td><select [disabled]="negativeOn4">
-                                <option>Dynamic</option>
-                                <option *ngIf="!negativeOn4">Static</option>
-                              </select></td> 
-                            <td><input type="checkbox" [(ngModel)]="retardosState[3]"  name="booleanRetardoTx4" id="booleanRetardoTx4" ></td>
-                        </tr> <br>
-                         
-                      
-                    </tbody>
-                        
-                                </table>
-                            </div>
-                        </div>    
+                                         <tr>
+                                            <th scope="row">Tx 3</th>
+                                            <td><input type="text" class="form-control" [(ngModel)]="idModulador[2]" name="idModulador[2]" (change)="mod()"  title="equipmentIdTx3"    aria-describedby="basic-addon1"> </td>
+                                            <td><input type="text" class="form-control" [(ngModel)]="retardos[2]"  name="retardoTx3" title="timeOffsetTx3"   aria-describedby="basic-addon1"> </td>
+                                            <td><select (change)="cambio($event.target.value, 'Tx3')" [(ngModel)]="polarity[2]" name="polarity[2]" title="polarity[2]">
+                                                    <option>Atraso (+)</option>
+                                                    <option  >Adelanto (-)</option>
+                                              </select></td>
+                                       <td><select [disabled]="negativeOn3"  (change)="cambioModo($event.target.value, 'Tx3')"  [(ngModel)]="modo[2]" name="modo[2]">
+                                                <option>Dynamic</option>
+                                                <option *ngIf="!negativeOn3" >Static</option>
+                                              </select></td> 
+                                            <td><input type="checkbox"    [(ngModel)]="retardosState[2]"  name="booleanRetardoTx3" id="booleanRetardoTx3" ></td>
+                                        </tr>
+                                         <tr>
+                                            <th scope="row">Tx 4</th>
+                                            <td> <input type="text" class="form-control" [(ngModel)]="idModulador[3]" name="idModulador[3]" (change)="mod()"  title="equipmentIdTx4"   aria-describedby="basic-addon1"> </td>
+                                            <td> <input type="text" class="form-control"  [(ngModel)]="retardos[3]"  name="retardoTx4" title="timeOffsetTx4"  aria-describedby="basic-addon1"></td>
+                                            <td><select (change)="cambio($event.target.value, 'Tx4')" [(ngModel)]="polarity[3]" name="polarity[3]" title="polarity[3]">
+                                                    <option>Atraso (+)</option>
+                                                    <option  >Adelanto (-)</option>
+                                              </select></td>
+                                         <td><select [disabled]="negativeOn4" (change)="cambioModo($event.target.value, 'Tx4')"  [(ngModel)]="modo[3]" name="modo[3]">
+                                                <option>Dynamic</option>
+                                                <option *ngIf="!negativeOn4">Static</option>
+                                              </select></td> 
+                                            <td><input type="checkbox" [(ngModel)]="retardosState[3]"  name="booleanRetardoTx4" id="booleanRetardoTx4" ></td>
+                                        </tr> <br>
+                                         
+                                      
+                                    </tbody>
+                                        
+                                                </table>
+                                    
+                              
+                           
                                   </form>
+                            </div>
+                            <div *ngIf="staticAlert" class="alert alert-danger">
+                                <strong>Recuerde ingrear los retardos en el modulador correspondiente y tenerlos en cuenta en el Offset</strong> 
                             </div>
                         </ng-template>
                         </ngb-tab>
@@ -687,11 +704,11 @@
                         </ng-template>
                     </ngb-tab>      --> 
     
-                    <ngb-tab  title="Ventana de Sincronización Rx2">
-                        
+                    <ngb-tab>
+                            <ng-template ngbTabTitle> <b>Ventana de Sincronización Rx1</b> </ng-template>
                         <ng-template ngbTabContent>
                             <br>
-                            <p>Ventana de Sincronización Rx1</p>
+                        
                             
 <div *ngIf="recep">
         <br> 
@@ -814,7 +831,8 @@
 
                     </ng-template>
                     </ngb-tab> 
-                    <ngb-tab   title="Ventana de Sincronización Rx2">
+                    <ngb-tab >
+                            <ng-template ngbTabTitle> <b>Ventana de Sincronización Rx2</b> </ng-template>
                         <ng-template ngbTabContent>
                             <p></p>
                             

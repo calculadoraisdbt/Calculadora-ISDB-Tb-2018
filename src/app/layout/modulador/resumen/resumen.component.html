@@ -317,23 +317,26 @@
                         </ng-template>
                     </ngb-tab> -->
                     <ngb-tab [disabled]="!isValidSuma()">
-                        <ng-template ngbTabTitle>Parametros Generales </ng-template>
+                        <ng-template ngbTabTitle> <b>Parametros Generales</b> </ng-template>
                         <ng-template ngbTabContent>
                           <table class="table">
   <thead>
     <tr>
       <th></th>
-      <th>Modo 1</th>
-      <th>Modo 2</th>
-      <th>Modo 3</th>
+      <th ><span *ngIf="modoBoolean[0]" style="color:orange"> <b>Modo 1 </b></span> 
+          <span *ngIf="!modoBoolean[0]">Modo 1</span></th>
+          <th ><span *ngIf="modoBoolean[1]" style="color:orange"> <b>Modo 2 </b></span> 
+            <span *ngIf="!modoBoolean[1]">Modo 2</span></th>
+            <th ><span *ngIf="modoBoolean[2]" style="color:orange"> <b>Modo 3 </b></span> 
+              <span *ngIf="!modoBoolean[2]">Modo 3</span></th>
     </tr>
   </thead>
   <tbody>
       <tr>
           <th scope="row">Ancho de banda efectivo : BW<sub>CH</sub>[Mhz]</th>
-          <td>{{((bws*13)/1000).toFixed(4)}}</td>
-          <td>{{((bws*13)/1000).toFixed(4)}}</td>
-          <td>{{((bws*13)/1000).toFixed(4)}}</td>
+          <td>{{(((bws*13)+(bws/ls1))/1000).toFixed(4)}}</td>
+          <td>{{(((bws*13)+(bws/ls2))/1000).toFixed(4)}}</td>
+          <td>{{(((bws*13)+(bws/ls3))/1000).toFixed(4)}}</td>
         </tr>
         <tr>
             <th scope="row">Payload total A+B+C: [Mbps] </th>
@@ -364,7 +367,7 @@
     </tr>
     <tr>
       <th scope="row">Separacion entre portadoras: Δf [Khz] </th>
-      <td>{{(bws/ls1).toFixed(3) }}</td>
+      <td>{{(bws/ls1).toFixed(3)}}</td>
       <td>{{(bws/ls2).toFixed(3)}}</td>
       <td>{{(bws/ls3).toFixed(3)}}</td>
     </tr>
@@ -429,7 +432,7 @@
       <td>{{(1/(2048/252)).toFixed(3)}}</td>
     </tr>
     <tr>
-      <th scope="row">Total de pulsos por simbolo OFDM: N <sub> pulsos </sub> [-]</th>
+      <th scope="row">Total de pulsos por simbolo OFDM: N <sub> pulsos </sub></th>
       <td>{{pps[0]}}</td>
       <td>{{pps[1]}}</td>
       <td>{{pps[2]}}</td>
@@ -652,17 +655,20 @@
   <thead>
     <tr>
       <th></th>
-      <th>Modo 1</th>
-      <th>Modo 2</th>
-      <th>Modo 3</th>
+      <th ><span *ngIf="modoBoolean[0]" style="color:orange"> <b>Modo 1 </b></span> 
+        <span *ngIf="!modoBoolean[0]">Modo 1</span></th>
+        <th ><span *ngIf="modoBoolean[1]" style="color:orange"> <b>Modo 2 </b></span> 
+          <span *ngIf="!modoBoolean[1]">Modo 2</span></th>
+          <th ><span *ngIf="modoBoolean[2]" style="color:orange"> <b>Modo 3 </b></span> 
+            <span *ngIf="!modoBoolean[2]">Modo 3</span></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">Duracion del TSP: T<sub>TSP</sub> [us]</th>
-      <td>{{50.20}}</td>
-      <td>{{50.20}}</td>
-      <td>{{50.20}}</td>
+      <td>{{50.203135}}</td>
+      <td>{{50.203135}}</td>
+      <td>{{50.203135}}</td>
     </tr>
     <tr>
         <td rowspan = "2"> <b>Nº de TSP transportados por el BTS en un cuadro multiplex con paquete IIP: N<sub>BTS</sub> </b> </td>
@@ -677,15 +683,15 @@
      </tr>
      <tr>
       <th scope="row"  >Nº de TSP nulos transportados por el BTS en un cuadro multiplex: ΣTSP<sub>nul</sub> </th>
-        <td></td>
-      <td></td>
-      <td></td>
+      <td>{{Nbts[0]-(((Nmodo1[0])*select1)+((Nmodo1[1])*select2)+((Nmodo1[2])*select3))}}</td>
+      <td>{{Nbts[1]-(((Nmodo2[0])*select1)+((Nmodo2[1])*select2)+((Nmodo2[2])*select3))}}</td>
+      <td>{{Nbts[2]-(((Nmodo3[0])*select1)+((Nmodo3[1])*select2)+((Nmodo3[2])*select3))}}</td>
     </tr>
     <tr>
       <th scope="row">Frecuencia reloj del BTS (4 flFFT): f<sub>R</sub> [Mhz]</th>
-      <td>{{(4*(2048/252)).toFixed(2)}}</td>
-      <td>{{(4*(2048/252)).toFixed(2)}}</td>
-      <td>{{(4*(2048/252)).toFixed(2)}}</td>
+      <td>{{(4*(2048/252)).toFixed(4)}}</td>
+      <td>{{(4*(2048/252)).toFixed(4)}}</td>
+      <td>{{(4*(2048/252)).toFixed(4)}}</td>
     </tr>&nbsp;
     <tr>
 <!--      <th scope="row"> Nº total de portadoras: L  [Port]</th>
@@ -778,53 +784,38 @@
   <thead>
     <tr>
       <th></th>
-      <th>Modo 1</th>
-      <th>Modo 2</th>
-      <th>Modo 3</th>
+      <th ><span *ngIf="modoBoolean[0]" style="color:orange"> <b>Modo 1 </b></span> 
+        <span *ngIf="!modoBoolean[0]">Modo 1</span></th>
+        <th ><span *ngIf="modoBoolean[1]" style="color:orange"> <b>Modo 2 </b></span> 
+          <span *ngIf="!modoBoolean[1]">Modo 2</span></th>
+          <th ><span *ngIf="modoBoolean[2]" style="color:orange"> <b>Modo 3 </b></span> 
+            <span *ngIf="!modoBoolean[2]">Modo 3</span></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">Numero de bits por portadora: b<sub>P</sub> [-]</th>
+      <th scope="row">Numero de bits por portadora: b<sub>P</sub> </th>
       <td>{{bp[0]}}</td>
       <td>{{bp[0]}}</td>
       <td>{{bp[0]}}</td>
     </tr>&nbsp;
     <tr>
-      <th scope="row">Tasa binaria neta por segmento: R <sub>S</sub> [bps]</th>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+   <!--   <th scope="row"  >Tasa binaria neta por segmento: R <sub>S</sub> [Mbps] </th>
+        <td>{{(((0.351*select1*((ki[0]*bp[0])/(1+deltaGuarda))))/select1).toFixed(3)}}</td>
+      <td>{{(((0.351*select1*((ki[0]*bp[0])/(1+deltaGuarda))))/select1).toFixed(3)}}</td>
+      <td>{{(((0.351*select1*((ki[0]*bp[0])/(1+deltaGuarda))))/select1).toFixed(3)}}</td>
+    </tr>&nbsp; -->
     <tr>
-      <th scope="row"  >Tasa binaria neta por segmento: R <sub>S</sub> [Mbps] </th>
-        <td></td>
-      <td></td>
-      <td></td>
-    </tr>&nbsp;
-    <tr>
-      <th scope="row"> Payload del segmento: R <sub>max</sub> [bps]</th>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row"> Payload del segmento: R <sub>max</sub> [Mbps]</th>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">Nº TSP por segmento por cuadro: N [-]</th>
+      <th scope="row">Nº TSP por segmento por cuadro: N </th>
       <td>{{Nmodo1[0]}}</td>
       <td>{{Nmodo2[0]}}</td>
       <td>{{Nmodo3[0]}}</td>
     </tr>
     <tr>
       <th scope="row" > Tasa binaria neta de la Capa A: R <sub>A</sub> [Mbps]</th>
-      <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))).toFixed(2)}}</td>
-      <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))).toFixed(2)}}</td>
-      <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))).toFixed(2)}}</td>
+      <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))).toFixed(3)}}</td>
+      <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))).toFixed(3)}}</td>
+      <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))).toFixed(3)}}</td>
   
     </tr>
     <tr>
@@ -844,54 +835,38 @@
   <thead>
     <tr>
       <th></th>
-      <th>Modo 1</th>
-      <th>Modo 2</th>
-      <th>Modo 3</th>
+      <th ><span *ngIf="modoBoolean[0]" style="color:orange"> <b>Modo 1 </b></span> 
+        <span *ngIf="!modoBoolean[0]">Modo 1</span></th>
+        <th ><span *ngIf="modoBoolean[1]" style="color:orange"> <b>Modo 2 </b></span> 
+          <span *ngIf="!modoBoolean[1]">Modo 2</span></th>
+          <th ><span *ngIf="modoBoolean[2]" style="color:orange"> <b>Modo 3 </b></span> 
+            <span *ngIf="!modoBoolean[2]">Modo 3</span></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">Numero de bits por portadora: b<sub>P</sub> [-]</th>
+      <th scope="row">Numero de bits por portadora: b<sub>P</sub> </th>
       <td>{{bp[1]}}</td>
       <td>{{bp[1]}}</td>
       <td>{{bp[1]}}</td>
     </tr>&nbsp;
     <tr>
-      <th scope="row">Tasa binaria neta por segmento: R <sub>S</sub> [bps]</th>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+   <!--       <th scope="row"  >Tasa binaria neta por segmento: R <sub>S</sub> [Mbps] </th>
+        <td>{{(((0.351*select2*((ki[1]*bp[1])/(1+deltaGuarda))))/select2).toFixed(3)}}</td>
+      <td>{{(((0.351*select2*((ki[1]*bp[1])/(1+deltaGuarda))))/select2).toFixed(3)}}</td>
+      <td>{{(((0.351*select2*((ki[1]*bp[1])/(1+deltaGuarda))))/select2).toFixed(3)}}</td>
+    </tr>&nbsp; -->
     <tr>
-      <th scope="row"  >Tasa binaria neta por segmento: R <sub>S</sub> [Mbps] </th>
-        <td></td>
-      <td></td>
-      <td></td>
-    </tr>&nbsp;
- 
-    <tr>
-      <th scope="row"> Payload del segmento: R <sub>max</sub> [bps]</th>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row"> Payload del segmento: R <sub>max</sub> [Mbps]</th>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">Nº TSP por segmento por cuadro: N [-]</th>
+      <th scope="row">Nº TSP por segmento por cuadro: N </th>
       <td>{{Nmodo1[1]}}</td>
       <td>{{Nmodo2[1]}}</td>
       <td>{{Nmodo3[1]}}</td>
     </tr>
     <tr>
       <th scope="row" > Tasa binaria neta de la Capa B: R <sub>B</sub> [Mbps]</th>
-      <td>{{((ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))).toFixed(2)}}</td>
-      <td>{{((ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))).toFixed(2)}}</td>
-      <td>{{((ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))).toFixed(2)}}</td>
+      <td>{{((ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))).toFixed(3)}}</td>
+      <td>{{((ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))).toFixed(3)}}</td>
+      <td>{{((ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))).toFixed(3)}}</td>
   
     </tr>
     <tr>
@@ -905,59 +880,45 @@
      
                         </ng-template>
                     </ngb-tab>
-                    <ngb-tab title="Capa C" [disabled]="!isValidSuma()">
+                    <ngb-tab  [disabled]="!isValidSuma()">
+                        <ng-template ngbTabTitle><b>Capa C</b> </ng-template>
                         <ng-template ngbTabContent>
                            <table class="table">
   <thead>
     <tr>
       <th></th>
-      <th>Modo 1</th>
-      <th>Modo 2</th>
-      <th>Modo 3</th>
+      <th ><span *ngIf="modoBoolean[0]" style="color:orange"> <b>Modo 1 </b></span> 
+        <span *ngIf="!modoBoolean[0]">Modo 1</span></th>
+        <th ><span *ngIf="modoBoolean[1]" style="color:orange"> <b>Modo 2 </b></span> 
+          <span *ngIf="!modoBoolean[1]">Modo 2</span></th>
+          <th ><span *ngIf="modoBoolean[2]" style="color:orange"> <b>Modo 3 </b></span> 
+            <span *ngIf="!modoBoolean[2]">Modo 3</span></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">Numero de bits por portadora: b<sub>P</sub> [-]</th>
+      <th scope="row">Numero de bits por portadora: b<sub>P</sub> </th>
       <td>{{bp[2]}}</td>
       <td>{{bp[2]}}</td>
       <td>{{bp[2]}}</td>
     </tr>&nbsp;
     <tr>
-      <th scope="row">Tasa binaria neta por segmento: R <sub>S</sub> [bps]</th>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+   <!--       <th scope="row"  >Tasa binaria neta por segmento: R <sub>S</sub> [Mbps] </th>
+        <td>{{(((0.351*select3*((ki[2]*bp[2])/(1+deltaGuarda))))/select3).toFixed(3)}}</td>
+      <td>{{(((0.351*select3*((ki[2]*bp[2])/(1+deltaGuarda))))/select3).toFixed(3)}}</td>
+      <td>{{(((0.351*select3*((ki[2]*bp[2])/(1+deltaGuarda))))/select3).toFixed(3)}}</td>
+    </tr>&nbsp; -->
     <tr>
-      <th scope="row"  >Tasa binaria neta por segmento: R <sub>S</sub> [Mbps] </th>
-        <td></td>
-      <td></td>
-      <td></td>
-    </tr>&nbsp;
-    <tr>
-      <th scope="row"> Capacidad maxima del segmento: R <sub>max</sub> [bps]</th>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row"> Capacidad maxima del segmento: R <sub>max</sub> [Mbps]</th>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">Nº TSP por segmento por cuadro: N [-]</th>
+      <th scope="row">Nº TSP por segmento por cuadro: N </th>
       <td>{{Nmodo1[2]}}</td>
       <td>{{Nmodo2[2]}}</td>
       <td>{{Nmodo3[2]}}</td>
     </tr>
     <tr>
       <th scope="row" > Tasa binaria neta de la Capa C: R <sub>C</sub> [Mbps]</th>
-      <td>{{((ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(2)}}</td>
-      <td>{{((ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(2)}}</td>
-      <td>{{((ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(2)}}</td>
+      <td>{{((ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(3)}}</td>
+      <td>{{((ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(3)}}</td>
+      <td>{{((ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(3)}}</td>
   
     </tr>
     <tr>

@@ -35,6 +35,9 @@ export class CodificadorComponent implements OnInit {
   frameDecimation : string [] ; 
   outputInterface : string [] ; 
   outputFormat : string [] ; 
+  encoder1 ;
+  encoder2 ;
+  encoder3 ;
   
   constructor(private _codificadorService:CodificadorService) {
 
@@ -61,11 +64,18 @@ export class CodificadorComponent implements OnInit {
     this.pidPcr = this._codificadorService.obtenerPidPcr();
     this.localIpAddress = this._codificadorService.obtenerLocalIpAddress();
     this.localNetmask = this._codificadorService.obtenerLocalNetMask();
-    this.defaultGateway = this._codificadorService.obtenerDefaultGateway()
+    this.defaultGateway = this._codificadorService.obtenerDefaultGateway();
+
+    this.encoder1 = this._codificadorService.obtenerEncoder1();
+    this.encoder2 = this._codificadorService.obtenerEncoder2();
+    this.encoder3 = this._codificadorService.obtenerEncoder3();
 
    }  
 
-  ngOnInit() {}
+  ngOnInit() {
+
+   console.log(this.encoder1,this.encoder2,this.encoder3,)
+  }
 
   //VIDEO SOURCE
 
@@ -325,5 +335,36 @@ outputFormatSelected(value,id){
   }
   changeDefaultGateway (){
     this._codificadorService.actualizarDefaultGateway(this.defaultGateway);
+  }
+
+  encoderSelected(value){
+
+    if(value === "encoder1"){
+      this.encoder1 = true;
+      this.encoder2 = false;
+      this.encoder3 = false;
+      this._codificadorService.actualizarEncoder1(this.encoder1);
+      this._codificadorService.actualizarEncoder2(this.encoder2);
+      this._codificadorService.actualizarEncoder3(this.encoder3);
+    }
+    if(value === "encoder2"){
+      this.encoder1 = false;
+      this.encoder2 = true;
+      this.encoder3 = false;
+      this._codificadorService.actualizarEncoder1(this.encoder1);
+      this._codificadorService.actualizarEncoder2(this.encoder2);
+      this._codificadorService.actualizarEncoder3(this.encoder3);
+    }
+
+    if(value === "encoder3"){
+      this.encoder1 = false;
+      this.encoder2 = false;
+      this.encoder3 = true;
+      this._codificadorService.actualizarEncoder1(this.encoder1);
+      this._codificadorService.actualizarEncoder2(this.encoder2);
+      this._codificadorService.actualizarEncoder3(this.encoder3);
+    }
+
+
   }
 }
