@@ -35,7 +35,11 @@ public  lineChartOptions: any = {
     scales: {
             xAxes: [{
                 type: 'linear',
-                position: 'bottom'
+                position: 'bottom',
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Tiempo [µs]'
+                  }
             }]
         }
   };
@@ -116,7 +120,11 @@ public  lineChartOptions2: any = {
     scales: {
             xAxes: [{
                 type: 'linear',
-                position: 'bottom'
+                position: 'bottom',
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Tiempo [µs]'
+                  }
             }]
         }
   };
@@ -202,28 +210,29 @@ public lineChartColors2: Array<any> = [
             this.retardoBTS = this._remuxService.obtenerRetardoBTS();
             this.retardoDeTransmisor = this._remuxService.obtenerRetardoDeTransmisor();
             this.estan = this._markerService.obtenerEstancados();
+            this.nombreEstacion = this._remuxService.obtenerNombreEstacion();
         }
         ngOnInit() {
-                if(this.modo[0] === "Static"){
+                if(this.modo[0] === "Estatico"){
                     this.retardosStatic[0] = +this.retardoBTS[0] + +this.retardoDeTransmisor[0];
                     
                 }
-                if(this.modo[0] === "Dynamic"){ this.retardosStatic[0] = 0;}
-                if(this.modo[1] === "Static"){
+                if(this.modo[0] === "Dinamico"){ this.retardosStatic[0] = 0;}
+                if(this.modo[1] === "Estatico"){
                     this.retardosStatic[1] = +this.retardoBTS[1] + +this.retardoDeTransmisor[1];
                     
                 }
-                if(this.modo[1] === "Dynamic"){ this.retardosStatic[1] = 0;}
-                if(this.modo[2] === "Static"){
+                if(this.modo[1] === "Dinamico"){ this.retardosStatic[1] = 0;}
+                if(this.modo[2] === "Estatico"){
                     this.retardosStatic[2] = +this.retardoBTS[2] + +this.retardoDeTransmisor[2];
                     
                 }
-                if(this.modo[2] === "Dynamic"){ this.retardosStatic[2] = 0;}
-                if(this.modo[3] === "Static"){
+                if(this.modo[2] === "Dinamico"){ this.retardosStatic[2] = 0;}
+                if(this.modo[3] === "Estatico"){
                     this.retardosStatic[3] = +this.retardoBTS[3] + +this.retardoDeTransmisor[3];
                     
                 }
-                if(this.modo[3] === "Dynamic"){ this.retardosStatic[3] = 0;}
+                if(this.modo[3] === "Dinamico"){ this.retardosStatic[3] = 0;}
                 this._markerService.actualizarRetardosEstaticos(this.retardosStatic);
                 this.estancarTx1();
                 this.estancarTx2();
@@ -232,8 +241,8 @@ public lineChartColors2: Array<any> = [
                 this.estancarRx1();
                 this.estancarRx2();
                 this.estancarObst();
-                if( this.modo[0] === "Static" || this.modo[1] === "Static" || this.modo[2] === "Static" ||
-                this.modo[3] === "Static"){this.staticAlert = true;}
+                if( this.modo[0] === "Estatico" || this.modo[1] === "Static" || this.modo[2] === "Estatico" ||
+                this.modo[3] === "Estatico"){this.staticAlert = true;}
                 else{this.staticAlert = false;}
 
 
@@ -309,9 +318,12 @@ public lineChartColors2: Array<any> = [
     retardosStatic = [] ;
     estan = [];
     staticAlert = false;
+    nombreEstacion = [];
+    public activeButtonName: string = '';
 
     test( id){
         if(id === "tx1"){
+            this.activeButtonName = id;
             this.selector[0] = true;
             this.selector[1] = false;
             this.selector[2] = false;
@@ -320,6 +332,7 @@ public lineChartColors2: Array<any> = [
             this.selector[5] = false;
             this.selector[6] = false; }
          if(id === "tx2"){
+            this.activeButtonName = id;
             this.selector[0] = false;
             this.selector[1] = true;
             this.selector[2] = false;
@@ -328,6 +341,7 @@ public lineChartColors2: Array<any> = [
             this.selector[5] = false;
             this.selector[6] = false; }
          if(id === "tx3"){
+            this.activeButtonName = id;
             this.selector[0] = false;
             this.selector[1] = false;
             this.selector[2] = true;
@@ -336,6 +350,7 @@ public lineChartColors2: Array<any> = [
             this.selector[5] = false;
             this.selector[6] = false; }
         if(id === "tx4"){
+            this.activeButtonName = id;
             this.selector[0] = false;
             this.selector[1] = false;
             this.selector[2] = false;
@@ -344,6 +359,7 @@ public lineChartColors2: Array<any> = [
             this.selector[5] = false;
             this.selector[6] = false; }
         if(id === "rx1"){
+            this.activeButtonName = id;
             this.selector[0] = false;
             this.selector[1] = false;
             this.selector[2] = false;
@@ -352,6 +368,7 @@ public lineChartColors2: Array<any> = [
             this.selector[5] = false;
             this.selector[6] = false; }
         if(id === "rx2"){
+            this.activeButtonName = id;
             this.selector[0] = false;
             this.selector[1] = false;
             this.selector[2] = false;
@@ -360,6 +377,7 @@ public lineChartColors2: Array<any> = [
             this.selector[5] = true;
             this.selector[6] = false; }  
         if(id === "obst"){
+            this.activeButtonName = id;
             this.selector[0] = false;
             this.selector[1] = false;
             this.selector[2] = false;
@@ -369,6 +387,8 @@ public lineChartColors2: Array<any> = [
             this.selector[6] = true; }                      
     }
      ventanaSincro() {
+       
+          
         this.show1();
         this.calculoDistanciasRx1()
              this.intGua =  this._moduladorService.obtenerIntGua();
@@ -376,23 +396,20 @@ public lineChartColors2: Array<any> = [
              var DeltaPrueba : any = [ this.Deltas[0], this.Deltas[1], this.Deltas[2], this.Deltas[3]];
              var DeltaCR : any = [ this.Deltas[4], this.Deltas[5], this.Deltas[6], this.Deltas[7]];
              var DistanciaRx1 = this._markerService.getDistanacias();
-
              
-         
-            
-
-                let temp = [{  label: 'Tx1',data : [{x: this.Deltas[0],y: DistanciaRx1[0],}, {x: this.Deltas[0],y: 0}]},
-                { label: 'Tx2',data : [{x: this.Deltas[1],y: DistanciaRx1[1]}, {x: this.Deltas[1],y: 0}]},
-                { label: 'Tx3',data : [{x: this.Deltas[2],y: DistanciaRx1[2]}, {x: this.Deltas[2],y: 0}],},
-                { label: 'Tx4',data : [{x: this.Deltas[3],y: DistanciaRx1[3]}, {x: this.Deltas[3],y: 0}]},
-                { label: 'Tx1CR',data : [{x: this.Deltas[4],y: DistanciaRx1[4]}, {x: this.Deltas[4],y: 0}]},
-                { label: 'Tx2CR',data : [{x: this.Deltas[5],y: DistanciaRx1[5]}, {x: this.Deltas[5],y: 0}]},
-                { label: 'Tx3CR',data : [{x: this.Deltas[6],y: DistanciaRx1[6]}, {x: this.Deltas[6],y: 0}]},
-                { label: 'Tx4CR',data : [{x: this.Deltas[7],y: DistanciaRx1[7]}, {x: this.Deltas[7],y: 0}]},
+                let temp = [{  label: this.nombreEstacion[0]    ,data : [{x: this.Deltas[0],y: DistanciaRx1[0],}, {x: this.Deltas[0],y: 0}]},
+                { label: this.nombreEstacion[1],data : [{x: this.Deltas[1],y: DistanciaRx1[1]}, {x: this.Deltas[1],y: 0}]},
+                { label: this.nombreEstacion[2],data : [{x: this.Deltas[2],y: DistanciaRx1[2]}, {x: this.Deltas[2],y: 0}],},
+                { label: this.nombreEstacion[3],data : [{x: this.Deltas[3],y: DistanciaRx1[3]}, {x: this.Deltas[3],y: 0}]},
+                { label: this.nombreEstacion[0]+'-CR',data : [{x: this.Deltas[4],y: DistanciaRx1[4]}, {x: this.Deltas[4],y: 0}]},
+                { label: this.nombreEstacion[1]+'-CR',data : [{x: this.Deltas[5],y: DistanciaRx1[5]}, {x: this.Deltas[5],y: 0}]},
+                { label: this.nombreEstacion[2]+'-CR',data : [{x: this.Deltas[6],y: DistanciaRx1[6]}, {x: this.Deltas[6],y: 0}]},
+                { label: this.nombreEstacion[3]+'-CR',data : [{x: this.Deltas[7],y: DistanciaRx1[7]}, {x: this.Deltas[7],y: 0}]},
                 ]
    
            
-            this.chart_visible = false
+            this.chart_visible = false;
+           
             let lineChartData:any[] =  Object.assign([],[
                  { label: 'IG',data : [{x: this.intGua ,y: 60,}, {x: this.intGua,y: 0}], borderDash : [ 60 , 5]},
                  
@@ -425,7 +442,7 @@ public lineChartColors2: Array<any> = [
                 this.chart_visible = true
             })
 
-
+          
 
 
   }
@@ -442,14 +459,14 @@ public lineChartColors2: Array<any> = [
     var DistanciaRx2 = this._markerService.getDistanacias2();
    
 
-       let temp = [{  label: 'Tx1',data : [{x: this.Deltas[0],y: DistanciaRx2[0],}, {x: this.Deltas[0],y: 0}]},
-       { label: 'Tx2',data : [{x: this.Deltas[1],y: DistanciaRx2[1]}, {x: this.Deltas[1],y: 0}]},
-       { label: 'Tx3',data : [{x: this.Deltas[2],y: DistanciaRx2[2]}, {x: this.Deltas[2],y: 0}]},
-       { label: 'Tx4',data : [{x: this.Deltas[3],y: DistanciaRx2[3]}, {x: this.Deltas[3],y: 0}]},
-       { label: 'Tx1CR',data : [{x: this.Deltas[4],y: DistanciaRx2[4]}, {x: this.Deltas[4],y: 0}]},
-       { label: 'Tx2CR',data : [{x: this.Deltas[5],y: DistanciaRx2[5]}, {x: this.Deltas[5],y: 0}]},
-       { label: 'Tx3CR',data : [{x: this.Deltas[6],y: DistanciaRx2[6]}, {x: this.Deltas[6],y: 0}]},
-       { label: 'Tx4CR',data : [{x: this.Deltas[7],y: DistanciaRx2[7]}, {x: this.Deltas[7],y: 0}]},
+       let temp = [{  label: this.nombreEstacion[0],data : [{x: this.Deltas[0],y: DistanciaRx2[0],}, {x: this.Deltas[0],y: 0}]},
+       { label: this.nombreEstacion[1],data : [{x: this.Deltas[1],y: DistanciaRx2[1]}, {x: this.Deltas[1],y: 0}]},
+       { label: this.nombreEstacion[2],data : [{x: this.Deltas[2],y: DistanciaRx2[2]}, {x: this.Deltas[2],y: 0}]},
+       { label: this.nombreEstacion[3],data : [{x: this.Deltas[3],y: DistanciaRx2[3]}, {x: this.Deltas[3],y: 0}]},
+       { label: this.nombreEstacion[0]+'-CR',data : [{x: this.Deltas[4],y: DistanciaRx2[4]}, {x: this.Deltas[4],y: 0}]},
+       { label: this.nombreEstacion[1]+'-CR',data : [{x: this.Deltas[5],y: DistanciaRx2[5]}, {x: this.Deltas[5],y: 0}]},
+       { label: this.nombreEstacion[2]+'-CR',data : [{x: this.Deltas[6],y: DistanciaRx2[6]}, {x: this.Deltas[6],y: 0}]},
+       { label: this.nombreEstacion[3]+'-CR',data : [{x: this.Deltas[7],y: DistanciaRx2[7]}, {x: this.Deltas[7],y: 0}]},
        ]
 
   
@@ -1023,7 +1040,7 @@ cambio(value, id){
             if(id === 'Tx1'){
                  if(value === "Adelanto (-)" ){
                     this.negativeOn1 = true;
-                    this.modo[0] = "Dynamic";
+                    this.modo[0] = "Dinamico";
                  }     
             
             else{
@@ -1033,7 +1050,7 @@ cambio(value, id){
             if(id === 'Tx2'){
                  if(value === "Adelanto (-)" ){
                     this.negativeOn2 = true;
-                    this.modo[1] = "Dynamic";
+                    this.modo[1] = "Dinamico";
                  }     
             
             else{
@@ -1043,7 +1060,7 @@ cambio(value, id){
             if(id === 'Tx3'){
                  if(value === "Adelanto (-)" ){
                     this.negativeOn3 = true;
-                    this.modo[2] = "Dynamic";
+                    this.modo[2] = "Dinamico";
                  }     
     
             else{
@@ -1053,7 +1070,7 @@ cambio(value, id){
             if(id === 'Tx4'){
                  if(value === "Adelanto (-)" ){
                     this.negativeOn4 = true;
-                    this.modo[3] = "Dynamic";
+                    this.modo[3] = "Dinamico";
                  }     
             
             else{
@@ -1185,8 +1202,8 @@ mod(){
         this.modo[3]= value;
     }else{}
     this._markerService.actualizarModo(this.modo);
-    if( this.modo[0] === "Static" || this.modo[1] === "Static" || this.modo[2] === "Static" ||
-    this.modo[3] === "Static"){this.staticAlert = true;}
+    if( this.modo[0] === "Estatico" || this.modo[1] === "Estatico" || this.modo[2] === "Estatico" ||
+    this.modo[3] === "Estatico"){this.staticAlert = true;}
     else{this.staticAlert = false;}
   }
 

@@ -340,9 +340,9 @@
         </tr>
         <tr>
             <th scope="row">Payload total A+B+C: [Mbps] </th>
-            <td>{{((0.351*select1*((ki[0]*bp[0])/(1+deltaGuarda)))+(0.351*select2*((ki[1]*bp[1])/(1+deltaGuarda)))+(0.351*select3*((ki[2]*bp[2])/(1+deltaGuarda)))).toFixed(3)}}</td>
-            <td>{{((0.351*select1*((ki[0]*bp[0])/(1+deltaGuarda)))+(0.351*select2*((ki[1]*bp[1])/(1+deltaGuarda)))+(0.351*select3*((ki[2]*bp[2])/(1+deltaGuarda)))).toFixed(3)}}</td>
-            <td>{{((0.351*select1*((ki[0]*bp[0])/(1+deltaGuarda)))+(0.351*select2*((ki[1]*bp[1])/(1+deltaGuarda)))+(0.351*select3*((ki[2]*bp[2])/(1+deltaGuarda)))).toFixed(3)}}</td>
+            <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))+(ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))+(ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(3)}}</td>
+            <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))+(ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))+(ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(3)}}</td>
+            <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))+(ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))+(ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(3)}}</td>
           </tr>
           <tr>
     <tr>
@@ -671,22 +671,22 @@
       <td>{{50.203135}}</td>
     </tr>
     <tr>
-        <td rowspan = "2"> <b>Nº de TSP transportados por el BTS en un cuadro multiplex con paquete IIP: N<sub>BTS</sub> </b> </td>
+        <th scope="row"> Nº de TSP transportados por el BTS en un cuadro multiplex: N<sub>BTS</sub> </th>
         <td>{{Nbts[0]}} </td>
         <td>{{Nbts[1]}}</td>
         <td>{{Nbts[2]}}</td>
      </tr>
      <tr>
-        <td>{{(Nbts[0]-1)}} + 1 </td>
-        <td>{{(Nbts[1]-1)}} + 1</td>
-        <td>{{(Nbts[2]-1)}} + 1</td>
-     </tr>
-     <tr>
-      <th scope="row"  >Nº de TSP nulos transportados por el BTS en un cuadro multiplex: ΣTSP<sub>nul</sub> </th>
-      <td>{{Nbts[0]-(((Nmodo1[0])*select1)+((Nmodo1[1])*select2)+((Nmodo1[2])*select3))}}</td>
-      <td>{{Nbts[1]-(((Nmodo2[0])*select1)+((Nmodo2[1])*select2)+((Nmodo2[2])*select3))}}</td>
-      <td>{{Nbts[2]-(((Nmodo3[0])*select1)+((Nmodo3[1])*select2)+((Nmodo3[2])*select3))}}</td>
+      <td rowspan="2"  > <b>Nº de TSP nulos transportados por el BTS en un cuadro multiplex: ΣTSP<sub>nul</sub></b> </td>
+      <td>{{(Nbts[0]-(((Nmodo1[0])*select1)+((Nmodo1[1])*select2)+((Nmodo1[2])*select3)))-1}}</td>
+      <td>{{(Nbts[1]-(((Nmodo2[0])*select1)+((Nmodo2[1])*select2)+((Nmodo2[2])*select3)))-1}}</td>
+      <td>{{(Nbts[2]-(((Nmodo3[0])*select1)+((Nmodo3[1])*select2)+((Nmodo3[2])*select3)))-1}}</td>
     </tr>
+    <tr>
+      <td> Paquete IIP: 1 </td>
+      <td>Paquete IIP: 1</td>
+      <td>Paquete IIP: 1</td>
+   </tr>
     <tr>
       <th scope="row">Frecuencia reloj del BTS (4 flFFT): f<sub>R</sub> [Mhz]</th>
       <td>{{(4*(2048/252)).toFixed(4)}}</td>

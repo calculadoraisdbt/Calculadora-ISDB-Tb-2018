@@ -3,10 +3,10 @@ export class Init {
      
 
 load(){
-        
-        if(localStorage.getItem('markers')=== null || localStorage.getItem('retardoRed')=== null  || localStorage.getItem('idModulador')=== null || localStorage.getItem('modo')=== null || localStorage.getItem('estan')=== null){
-            console.log('No se encontraron marcadores...');
+    if(localStorage.getItem('markers')=== null || localStorage.getItem('retardoRed')=== null  || localStorage.getItem('idModulador')=== null || localStorage.getItem('modo')=== null || localStorage.getItem('estan')=== null){
+        console.log('No se encontraron marcadores...');
 
+    
             var markers = [
                 {   
                 nombre: 'Transmisor 1',
@@ -65,12 +65,12 @@ load(){
             var obst  = false;   
             var polarity = ["Atraso (+)","Atraso (+)","Atraso (+)","Atraso (+)"];
             var idModulador = ["Ingrese ID Modulador 1","Ingrese ID Modulador 2","Ingrese ID Modulador 3","Ingrese ID Modulador 4"];  
-            var modo = ["Dynamic","Dynamic","Dynamic","Dynamic"];
+            var modo = ["Dinamico","Dinamico","Dinamico","Dinamico"];
             var negativeOn1 = false; 
             var negativeOn2 = false; 
             var negativeOn3 = false; 
             var negativeOn4 = false;  
-            var enableSFN = false;
+            var enableSFN = true;
             var estan = [false,false,false,false,false,false,false];
             var retardosEstaticos = [0,0,0,0];
             localStorage.setItem('markers', JSON.stringify(markers));
@@ -94,9 +94,9 @@ load(){
             localStorage.setItem('enableSFN', JSON.stringify(enableSFN));
             localStorage.setItem('estan', JSON.stringify(estan));
             localStorage.setItem('retardosEstaticos', JSON.stringify(retardosEstaticos));
-            }else{
-                    console.log('Cargando marcadores...');
-            }
+        }else{
+            console.log('Cargando marcadores...');
+    }
 
                 
 

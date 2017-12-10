@@ -12,11 +12,13 @@ export class RemuxComponent implements OnInit {
   retardoBTS : any [] ;
   retardoDeTransmisor : any [] ;
   sumaRetardo = [] ;
+  nombreEstacion : any [] ;
 
   constructor(private _remuxService:RemuxService) {
     this.idModuladores = this._remuxService.obteneridModuladores();
     this.retardoBTS = this._remuxService.obtenerRetardoBTS();
     this.retardoDeTransmisor = this._remuxService.obtenerRetardoDeTransmisor();
+    this.nombreEstacion = this._remuxService.obtenerNombreEstacion();
    }
 
   ngOnInit() {
@@ -45,5 +47,10 @@ RetardoBTS(){
     this.sumaRetardo[1] = +this.retardoBTS[1] + +this.retardoDeTransmisor[1];
     this.sumaRetardo[2] = +this.retardoBTS[2] + +this.retardoDeTransmisor[2];
     this.sumaRetardo[3] = +this.retardoBTS[3] + +this.retardoDeTransmisor[3];
+  }
+
+  cambioNombre(){
+
+    this._remuxService.actualizarNombreEstacion(this.nombreEstacion);
   }
   }

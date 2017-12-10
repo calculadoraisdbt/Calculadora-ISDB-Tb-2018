@@ -11,7 +11,7 @@
                             <th>PID Video</th>
                             <th>PID PCR</th>
                             <th>Intervalo de PCR [ms]</th>
-                            <th>TS Bitrate [ms]</th>
+                            <th>TS Bitrate [Mbps]</th>
                             <th>% Paquetes Nulos</th>
                         </tr>
             </thead>
@@ -40,7 +40,7 @@
                                 <th>PID Video</th>
                                 <th>PID PCR</th>
                                 <th>Intervalo de PCR [ms]</th>
-                                <th>TS Bitrate [ms]</th>
+                                <th>TS Bitrate [Mbps]</th>
                                 <th>% Paquetes Nulos</th>
                             </tr>
                 </thead>
@@ -69,7 +69,7 @@
                                     <th>PID Video</th>
                                     <th>PID PCR</th>
                                     <th>Intervalo de PCR [ms]</th>
-                                    <th>TS Bitrate [ms]</th>
+                                    <th>TS Bitrate [Mbps]</th>
                                     <th>% Paquetes Nulos</th>
                                 </tr>
                     </thead>
@@ -92,7 +92,7 @@
 
                                         <thead>
                                                 <tr>
-                                                        <th>TS Bitrate [ms]</th>
+                                                        <th>TS Bitrate [Mbps]</th>
                                                         <th>{{tsBitrateTotal}}</th>
                                                     </tr>
                                         </thead>
@@ -177,17 +177,17 @@
                         <div style="overflow-y:auto;">
                                         <img  src="https://image.ibb.co/koxX8k/MENU2.png"    usemap="#menu" border=0>
                                         <map  name="menu">
-                                          <area shape="rect"   coords="202,26,315,119" href="codificador" (click)="SeleccionEncoder1()"  alt="" title="">
-                                          <area shape="rect" coords="203,153,316,247" href="codificador" (click)="SeleccionEncoder2()" alt="" title="">
-                                          <area shape="rect"  coords="202,282,315,375" href="codificador" (click)="SeleccionEncoder3()" alt="" title="">
-                                          <area shape="rect"   coords="411,140,462,260" href="multiplexor"  alt="" title="">
-                                          <area shape="rect" coords="591,140,641,259" href="remux"  alt="" title="">
+                                          <area shape="rect"   coords="202,26,315,119" href="codificador" (click)="SeleccionEncoder1()"  alt="" >
+                                          <area shape="rect" coords="203,153,316,247" href="codificador" (click)="SeleccionEncoder2()" alt="" >
+                                          <area shape="rect"  coords="202,282,315,375" href="codificador" (click)="SeleccionEncoder3()" alt="" >
+                                          <area shape="rect"   coords="411,140,462,260" href="multiplexor"  alt="" >
+                                          <area shape="rect" coords="591,140,641,259" href="remux"  alt="" >
                                           <area shape="rect"  coords="769,140,819,260"   href="modulador">
-                                          <area shape="poly" coords="319,68,348,68,348,168,394,168,394,161,410,171,394,180,394,173,341,173,341,74,320,74,320,68"  (click)="ASI1()" alt="" title="">
-                                          <area shape="poly" coords="318,196,394,196,394,190,411,200,394,209,394,202,320,202,320,195"(click)="ASI2()"   alt="" title="">
-                                          <area shape="poly" coords="319,326,342,326,342,227,395,227,394,222,410,231,394,240,394,234,348,234,348,331,319,331,319,325" (click)="ASI3()"  alt="" title="">
-                                          <area shape="poly" coords="466,197,573,197,573,190,592,199,574,209,574,202,466,202,466,197" (click)="TSmethod()"alt="" title="">
-                                          <area shape="poly" coords="645,196,752,196,752,191,769,199,752,208,752,203,646,202,646,197" (click)="BTSmethod()" alt="" title="">
+                                          <area shape="poly" coords="319,68,348,68,348,168,394,168,394,161,410,171,394,180,394,173,341,173,341,74,320,74,320,68"  (click)="ASI1()" alt="" >
+                                          <area shape="poly" coords="318,196,394,196,394,190,411,200,394,209,394,202,320,202,320,195"(click)="ASI2()"   alt="" >
+                                          <area shape="poly" coords="319,326,342,326,342,227,395,227,394,222,410,231,394,240,394,234,348,234,348,331,319,331,319,325" (click)="ASI3()"  alt="">
+                                          <area shape="poly" coords="466,197,573,197,573,190,592,199,574,209,574,202,466,202,466,197" (click)="TSmethod()"alt="">
+                                          <area shape="poly" coords="645,196,752,196,752,191,769,199,752,208,752,203,646,202,646,197" (click)="BTSmethod()" alt="">
                                         </map>
                 
                           </div>

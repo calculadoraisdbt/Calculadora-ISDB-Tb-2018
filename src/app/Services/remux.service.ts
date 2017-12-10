@@ -45,4 +45,16 @@ actualizarRetardoDeTransmisor(nuevo : any){
  localStorage.setItem('retardoDeTransmisor', JSON.stringify(retardoDeTransmisor)); 
 }
 
+obtenerNombreEstacion(){
+  var nombreEstacion = JSON.parse(localStorage.getItem('nombreEstacion'));
+  return nombreEstacion;
+  
+
+}
+actualizarNombreEstacion(nuevo : any){
+ var nombreEstacion = JSON.parse(localStorage.getItem('nombreEstacion'));
+ nombreEstacion = nuevo ;
+ localStorage.setItem('nombreEstacion', JSON.stringify(nombreEstacion)); 
+}
+
 }
