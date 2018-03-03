@@ -2,7 +2,12 @@
 <body>
 <div *ngIf="flujoASI1">
         <br>
-    <P>FLUJO ASI 1</P>
+  <u><P>FLUJO ASI 1</P></u>  
+
+  Este flujo binario corresponde a la salida del Encoder 1. Esta organizado en paquetes de 188 bytes. 
+  Contienen video y audio comprimidos en MPEG-4 AVC/H-264 y HE-ACC respectivamente.
+  <br><br>
+
     <table class="table table-bordered">
     
             <thead>
@@ -12,7 +17,7 @@
                             <th>PID PCR</th>
                             <th>Intervalo de PCR [ms]</th>
                             <th>TS Bitrate [Mbps]</th>
-                            <th>% Paquetes Nulos</th>
+                         
                         </tr>
             </thead>
             <tbody>
@@ -22,7 +27,7 @@
                             <td>{{pidPcr[0]}} </td>
                             <td> {{asiPciInterval[0]}}</td>
                             <td>{{tsBitrate[0]}}</td>
-                            <td></td>
+                           
                         </tr>
                        
             </tbody>
@@ -31,7 +36,12 @@
     
     <div *ngIf="flujoASI2">
             <br>
-        <P>FLUJO ASI 2</P>
+       <u><P>FLUJO ASI 2</P></u> 
+
+  Este flujo binario corresponde a la salida del Encoder 2. Esta organizado en paquetes de 188 bytes. 
+  Contienen video y audio comprimidos en MPEG-4 AVC/H-264 y HE-ACC respectivamente.
+  <br><br>
+  
         <table class="table table-bordered">
         
                 <thead>
@@ -41,7 +51,7 @@
                                 <th>PID PCR</th>
                                 <th>Intervalo de PCR [ms]</th>
                                 <th>TS Bitrate [Mbps]</th>
-                                <th>% Paquetes Nulos</th>
+                               
                             </tr>
                 </thead>
                 <tbody>
@@ -51,7 +61,7 @@
                                 <td>{{pidPcr[1]}} </td>
                                 <td> {{asiPciInterval[1]}}</td>
                                 <td>{{tsBitrate[1]}}</td>
-                                <td></td>
+                               
                             </tr>
                            
                 </tbody>
@@ -60,7 +70,12 @@
     
         <div *ngIf="flujoASI3">
                 <br>
-            <P>FLUJO ASI 3</P>
+          <u><P>FLUJO ASI 3</P></u>  
+
+  Este flujo binario corresponde a la salida del Encoder 3. Esta organizado en paquetes de 188 bytes. 
+  Contienen video y audio comprimidos en MPEG-4 AVC/H-264 y HE-ACC respectivamente.
+  <br><br>
+  
             <table class="table table-bordered">
             
                     <thead>
@@ -70,7 +85,7 @@
                                     <th>PID PCR</th>
                                     <th>Intervalo de PCR [ms]</th>
                                     <th>TS Bitrate [Mbps]</th>
-                                    <th>% Paquetes Nulos</th>
+                                  
                                 </tr>
                     </thead>
                     <tbody>
@@ -80,14 +95,20 @@
                                 <td>{{pidPcr[2]}} </td>
                                 <td> {{asiPciInterval[2]}}</td>
                                 <td>{{tsBitrate[2]}}</td>
-                                <td></td>
+                             
                                 </tr>
                                
                     </tbody>
             </table>
             </div>
             <div *ngIf="flujoTS">
-                        <P>FLUJO TS MPEG-2</P>
+                      <u><P>FLUJO TS MPEG-2</P></u>  
+
+                      En el multiplexor se combinan las salidas de los 3 encoders con datos adicionales en forma de tablas
+                        con información  necesaria para la transmisión. La tasa binaria del flujo TS MPEG-2 
+                        es igual a la sumatoria de la tasa binaria de las tres entradas DVB-ASI.  
+                            
+            <br>  <br>  
                         <table class="table table-bordered">
 
                                         <thead>
@@ -159,15 +180,91 @@
                                                                 </tr>
                                                                
                                                     </tbody>
-                                            </table>                                                                                   
+                                            </table>  
+                                            <P>Tablas</P>
+                                            <table class="table table-bordered">
+                                                
+                                                <thead>
+                                                        <tr>
+                                                                <th></th>
+                                                                <th *ngIf="TableEnable[0]">PAT</th>
+                                                                <th *ngIf="TableEnable[1]">CAT</th>
+                                                                <th *ngIf="TableEnable[2]">NIT</th>
+                                                                <th *ngIf="TableEnable[3]">SDT</th>
+                                                                <th *ngIf="TableEnable[4]">BIT</th>
+                                                                <th *ngIf="TableEnable[5]">PMT1</th>
+                                                                <th *ngIf="TableEnable[6]">PMT2</th>
+                                                                <th *ngIf="TableEnable[7]">PMT3</th>
+                                                            </tr>
+                                                </thead>
+                                                <tbody>
+                                                        <tr>
+                                                                    <td><b>PID</b></td>
+                                                                    <td *ngIf="TableEnable[0]">0</td>
+                                                                    <td *ngIf="TableEnable[1]">1</td>
+                                                                    <td *ngIf="TableEnable[2]">16</td>
+                                                                    <td *ngIf="TableEnable[3]">17</td>
+                                                                    <td *ngIf="TableEnable[4]">36</td>
+                                                                    <td *ngIf="TableEnable[5]">{{TablePmtPid[0]}}</td>
+                                                                    <td *ngIf="TableEnable[6]">{{TablePmtPid[1]}}</td>
+                                                                    <td *ngIf="TableEnable[7]">{{TablePmtPid[2]}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                                    <td><b>Layer</b></td>
+                                                                    <td *ngIf="TableEnable[0]">{{tableLayer[0]}}</td>
+                                                                    <td *ngIf="TableEnable[1]">{{tableLayer[1]}}</td>
+                                                                    <td *ngIf="TableEnable[2]">{{tableLayer[2]}}</td>
+                                                                    <td *ngIf="TableEnable[3]">{{tableLayer[3]}}</td>
+                                                                    <td *ngIf="TableEnable[4]">{{tableLayer[4]}}</td>
+                                                                    <td *ngIf="TableEnable[5]">{{tableLayer[5]}}</td>
+                                                                    <td *ngIf="TableEnable[6]">{{tableLayer[6]}}</td>
+                                                                    <td *ngIf="TableEnable[7]">{{tableLayer[7]}}</td>
+                                                            </tr>
+                                                           
+                                                </tbody>
+                                                                                </table>                                                                                       
                     </div>
 
 
 
 
     <div *ngIf="flujoBTS">
-            <P>FLUJO BTS</P>
-            
+            <u><P>FLUJO BTS</P></u>
+
+            Este flujo posee una tasa binaria constante de 32,5 Mbps, lo cual se logra agregando una determinada cantidad
+            de paquetes nulos. A los paquetes TS se le agregan 16 bytes los cuales corresponden: 8 bytes al campo "ISDB-Info" y 
+            8 bytes para incorporar un bloque de paridad Reed Solomon (opcional) para la corrección de bytes erróneos en cada TSP del 
+            flujo BTS.
+
+            <br>  <br>  
+
+            <table class="table table-bordered">
+                        
+                        <thead>
+                                <tr>
+                                        <th></th>
+                                        <th >Capa A</th>
+                                        <th >Capa B</th>
+                                        <th >Capa C</th>
+                                    </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                            <td ><b>Total de TSP</b></td>
+                                            <td >{{tspCapa[0]}}</td>
+                                            <td >{{tspCapa[1]}}</td>
+                                            <td >{{tspCapa[2]}}</td>
+                                            
+                                </tr>
+                                <tr>
+                                            <td><b>Nº de TSP nulos transportados por el BTS en un cuadro múltiplex</b></td>
+                                            <td  colspan="3"  style="text-align:center;" >{{tspNulos}} + 1 Paquete IIP</td>
+
+
+                                    </tr>
+                                   
+                        </tbody>
+                                                        </table> 
             </div>
     
      

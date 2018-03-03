@@ -38,6 +38,9 @@ export class CodificadorComponent implements OnInit {
   encoder1 ;
   encoder2 ;
   encoder3 ;
+  public activeButtonName: string = '';
+  lastSelected ;
+  encoderInit ;
   
   constructor(private _codificadorService:CodificadorService) {
 
@@ -70,11 +73,13 @@ export class CodificadorComponent implements OnInit {
     this.encoder2 = this._codificadorService.obtenerEncoder2();
     this.encoder3 = this._codificadorService.obtenerEncoder3();
 
+    this.encoderInit = this._codificadorService.obtenerEncoderInit();
+
+    this.activeButtonName =  this.encoderInit;
+
    }  
 
   ngOnInit() {
-
-   console.log(this.encoder1,this.encoder2,this.encoder3,)
   }
 
   //VIDEO SOURCE
@@ -153,10 +158,10 @@ export class CodificadorComponent implements OnInit {
   //VIDEO RESOLUTION
 
    videoResolutionSelected(value,id){
-            console.log("aca video Rs",value)
+          
              if(id === "E1"){ 
             this.videoResolution[0] = value;  
-            console.log("aca video Rs",this.videoResolution[0])
+      
             this._codificadorService.actualizarVideoResolution(this.videoResolution[0], id); }
 
              if(id === "E2"){ 
@@ -340,31 +345,44 @@ outputFormatSelected(value,id){
   encoderSelected(value){
 
     if(value === "encoder1"){
+      this.activeButtonName = value;
       this.encoder1 = true;
       this.encoder2 = false;
       this.encoder3 = false;
       this._codificadorService.actualizarEncoder1(this.encoder1);
       this._codificadorService.actualizarEncoder2(this.encoder2);
       this._codificadorService.actualizarEncoder3(this.encoder3);
+      this._codificadorService.actualizarEncoderInit('encoder1');
     }
     if(value === "encoder2"){
+      this.activeButtonName = value;
       this.encoder1 = false;
       this.encoder2 = true;
       this.encoder3 = false;
       this._codificadorService.actualizarEncoder1(this.encoder1);
       this._codificadorService.actualizarEncoder2(this.encoder2);
       this._codificadorService.actualizarEncoder3(this.encoder3);
+      this._codificadorService.actualizarEncoderInit('encoder2');
     }
 
     if(value === "encoder3"){
+      this.activeButtonName = value;
       this.encoder1 = false;
       this.encoder2 = false;
       this.encoder3 = true;
       this._codificadorService.actualizarEncoder1(this.encoder1);
       this._codificadorService.actualizarEncoder2(this.encoder2);
       this._codificadorService.actualizarEncoder3(this.encoder3);
+      this._codificadorService.actualizarEncoderInit('encoder3');
     }
+
+    this.lastSelected = value;
 
 
   }
+
+        
+        
+        
+
 }

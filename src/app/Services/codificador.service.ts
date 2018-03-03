@@ -707,4 +707,16 @@ actualizarEncoder3(nuevo : any){
    localStorage.setItem('encoder3', JSON.stringify(encoder3)); 
 }
 
+obtenerEncoderInit(){
+    var encoderInit = JSON.parse(localStorage.getItem('encoderInit'));
+    return encoderInit;
+    
+
+}
+actualizarEncoderInit(nuevo : any){
+   var encoderInit = JSON.parse(localStorage.getItem('encoderInit'));
+   encoderInit = nuevo ;
+   localStorage.setItem('encoderInit', JSON.stringify(encoderInit)); 
+}
+
 }

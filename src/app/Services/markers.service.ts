@@ -1,5 +1,5 @@
 import { Injectable,  } from '@angular/core';
-import { Init } from 'app/layout/blank-page/init-markers';
+import { Init } from 'app/layout/sfn/init-markers';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 
 declare var google: any;
@@ -71,6 +71,22 @@ declare var google: any;
   var DeltaT4CRRx2 : number; 
   var DeltasRx2 = [] ;
   var retardosEstaticos = []  ;
+  var time0Rx1 : number = 0;
+  var time1Rx1 : number = 0;
+  var time2Rx1 : number = 0;
+  var time3Rx1 : number = 0;
+  var time0Rx1Cr : number = 0;
+  var time1Rx1Cr : number = 0;
+  var time2Rx1Cr : number = 0;
+  var time3Rx1Cr : number = 0;
+  var time0Rx2 : number = 0;
+  var time1Rx2 : number = 0;
+  var time2Rx2 : number = 0;
+  var time3Rx2 : number = 0;
+  var time0Rx2Cr : number = 0;
+  var time1Rx2Cr : number = 0;
+  var time2Rx2Cr : number = 0;
+  var time3Rx2Cr : number = 0;
 
 @Injectable()
 export class MarkersService extends Init {
@@ -79,7 +95,6 @@ export class MarkersService extends Init {
 
   constructor() {
     super();
-    console.log('Servicio de marcador iniciado...');
     this.load();
    }
 
@@ -175,7 +190,7 @@ export class MarkersService extends Init {
          var retardosEstaticos = JSON.parse(localStorage.getItem('retardosEstaticos'));
          var modo = JSON.parse(localStorage.getItem('modo'));
          retardoRed = retardoRed*0.000000100*299792458;
-         console.log(retardoRed)
+         
 
                 var i =0;
                 if(i === 0){
@@ -207,7 +222,7 @@ export class MarkersService extends Init {
                         var retarditen = retardos[0]*0.000000100*299792458;
                         var retStatic = +retardosEstaticos[0]*0.000000100*299792458;
                         if(modo[0] === "Estatico"){tx1rx1 = tx1rx1 + retarditen + retardoRed - retStatic;}
-                        if(modo[0] === "Dinamico"){tx1rx1 = tx1rx1 + retarditen + retardoRed ;}
+                        if(modo[0] === "Dinámico"){tx1rx1 = tx1rx1 + retarditen + retardoRed ;}
 
                     } 
                     if (retartdosState[0] === false){
@@ -222,7 +237,7 @@ export class MarkersService extends Init {
                         var retarditen = retardos[1]*0.000000100*299792458;
                         var retStatic = +retardosEstaticos[1]*0.000000100*299792458;
                         if(modo[1] === "Estatico"){tx2rx1 = tx2rx1 + retarditen + retardoRed - retStatic ;}
-                        if(modo[1] === "Dinamico"){tx2rx1 = tx2rx1 + retarditen + retardoRed  ;}
+                        if(modo[1] === "Dinámico"){tx2rx1 = tx2rx1 + retarditen + retardoRed  ;}
                     }
                     if(retartdosState[1] === false){
                         var tx2rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_2).toFixed(2));
@@ -235,7 +250,7 @@ export class MarkersService extends Init {
                         var retarditen = retardos[2]*0.000000100*299792458;
                         var retStatic = +retardosEstaticos[2]*0.000000100*299792458;
                         if(modo[2] === "Estatico"){tx3rx1 = tx3rx1 + retarditen + retardoRed - retStatic;} 
-                        if(modo[1] === "Dinamico"){tx3rx1 = tx3rx1 + retarditen + retardoRed ;}
+                        if(modo[1] === "Dinámico"){tx3rx1 = tx3rx1 + retarditen + retardoRed ;}
                     }
                     if(retartdosState[2] === false){
                         var tx3rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_2).toFixed(2)); 
@@ -249,7 +264,8 @@ export class MarkersService extends Init {
                         var retarditen = retardos[3]*0.000000100*299792458;
                         var retStatic = +retardosEstaticos[3]*0.000000100*299792458;                        
                         if(modo[3] === "Estatico"){tx4rx1 = tx4rx1 + retarditen + retardoRed - retStatic ;}
-                        if(modo[3] === "Dinamico"){tx4rx1 = tx4rx1 + retarditen + retardoRed ;}
+                        if(modo[3] === "Dinámico"){tx4rx1 = tx4rx1 + retarditen + retardoRed ;}
+                      
    
                     }
                     if(retartdosState[3] === false){
@@ -265,7 +281,7 @@ export class MarkersService extends Init {
                         var retarditen = retardos[0]*0.000000100*299792458;
                         var retStatic = +retardosEstaticos[0]*0.000000100*299792458;     
                         if(modo[0] === "Estatico"){tx1obst = tx1obst + retarditen + retardoRed - retStatic ;}
-                        if(modo[0] === "Dinamico"){tx1obst = tx1obst + retarditen + retardoRed  ;}
+                        if(modo[0] === "Dinámico"){tx1obst = tx1obst + retarditen + retardoRed  ;}
                         var  tx1obstrx1= tx1obst + obstrx1;
                     } 
                     if (retartdosState[0] === false){
@@ -280,7 +296,7 @@ export class MarkersService extends Init {
                         var retarditen = retardos[1]*0.000000100*299792458;
                         var retStatic = +retardosEstaticos[1]*0.000000100*299792458;     
                         if(modo[1] === "Estatico"){tx2obst = tx2obst + retarditen + retardoRed - retStatic ;} 
-                        if(modo[1] === "Dinamico"){tx2obst = tx2obst + retarditen + retardoRed ;}
+                        if(modo[1] === "Dinámico"){tx2obst = tx2obst + retarditen + retardoRed ;}
                         var  tx2obstrx1= tx2obst + obstrx1;
                     } 
                     if (retartdosState[1] === false){
@@ -294,7 +310,7 @@ export class MarkersService extends Init {
                         var retarditen = retardos[2]*0.000000100*299792458;
                         var retStatic = +retardosEstaticos[2]*0.000000100*299792458;
                         if(modo[2] === "Estatico"){tx3obst = tx3obst + retarditen + retardoRed - retStatic ;}
-                        if(modo[2] === "Dinamico"){tx3obst = tx3obst + retarditen + retardoRed ;}
+                        if(modo[2] === "Dinámico"){tx3obst = tx3obst + retarditen + retardoRed ;}
                         var  tx3obstrx1= tx3obst + obstrx1;
                     } 
                     if (retartdosState[2] === false){
@@ -308,16 +324,63 @@ export class MarkersService extends Init {
                         var retarditen = retardos[3]*0.000000100*299792458;
                         var retStatic = +retardosEstaticos[3]*0.000000100*299792458;
                         if(modo[3] === "Estatico"){tx4obst = tx4obst + retarditen + retardoRed - retStatic  ;}
-                        if(modo[3] === "Dinamico"){tx4obst = tx4obst + retarditen + retardoRed  ;}
+                        if(modo[3] === "Dinámico"){tx4obst = tx4obst + retarditen + retardoRed  ;}
                         var  tx4obstrx1= tx4obst + obstrx1;
                     } 
                     if (retartdosState[3] === false){
                         var tx4obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_3).toFixed(2)); 
                         var  tx4obstrx1= tx4obst + obstrx1;  
                         tx4obstrx1 = tx4obstrx1 + retardoRed ;  
-                    }                                                                                
+                    }       
+                    var nums = [];        
+                    var MarkEnable = [JSON.parse(localStorage.getItem('tra0')),JSON.parse(localStorage.getItem('tra1')),
+                    JSON.parse(localStorage.getItem('tra2')),JSON.parse(localStorage.getItem('tra3')),JSON.parse(localStorage.getItem('obst')),];                                                               
+                        if(MarkEnable[0]===true && MarkEnable[4]===true ){
+                            nums.push(tx1rx1);
+                            nums.push(tx1obstrx1);
+                        }
 
-         menorRx1 = Math.min(tx1rx1, tx2rx1,tx3rx1, tx4rx1 ,tx1obstrx1 ,tx2obstrx1, tx3obstrx1 , tx4obstrx1 ) ; 
+                        if(MarkEnable[0]===true && MarkEnable[4]===false){
+                            nums.push(tx1rx1);}
+
+                        if(MarkEnable[1]===true && MarkEnable[4]===true){
+                            nums.push(tx2rx1);
+                            nums.push(tx2obstrx1);
+                        }
+
+                        if(MarkEnable[1]===true && MarkEnable[4]===false){
+                            nums.push(tx2rx1);}
+
+                        if(MarkEnable[2]===true && MarkEnable[4]===true){
+                            nums.push(tx3rx1);
+                            nums.push(tx3obstrx1);
+                        }
+                        if(MarkEnable[2]===true && MarkEnable[4]===false)
+                        {nums.push(tx3rx1);}
+                        if(MarkEnable[3]===true && MarkEnable[4]===true){
+                            nums.push(tx4rx1);
+                            nums.push(tx4obstrx1);
+                        }
+                        if(MarkEnable[3]===true && MarkEnable[4]===false)
+                        {nums.push(tx4rx1);}
+
+                        var transmisorCercano = this.obtenerTransmisorCercano();
+                        var seleccionManual = this.obtenerSeleccionManual();
+                        if(transmisorCercano === true && seleccionManual === false){menorRx1 = Math.min.apply(Math, nums)
+                        }
+                        if(seleccionManual === true && transmisorCercano === false){
+                            var seleccionado = this.obtenerSeleccionadoManual();
+                            
+                            if(seleccionado == "Tx1"){menorRx1 = tx1rx1; }
+                             if(seleccionado =="Tx2"){menorRx1 = tx2rx1; }
+                            if(seleccionado == "Tx3"){menorRx1 = tx3rx1; }
+                             if(seleccionado == "Tx4"){menorRx1 = tx4rx1; }
+                             if(seleccionado == "Camino Reflejado-Tx1"){menorRx1 = tx1obstrx1;  }
+                             if(seleccionado == "Camino Reflejado-Tx2"){menorRx1 = tx2obstrx1; }
+                             if(seleccionado == "Camino Reflejado-Tx3"){menorRx1 = tx3obstrx1;  }
+                             if(seleccionado =="Camino Reflejado-Tx4"){menorRx1 = tx4obstrx1;  }
+                            
+                            }
          DeltaT1 = (tx1rx1-menorRx1) ;
          DeltaT2 = (tx2rx1-menorRx1 ) ;
          DeltaT3 = (tx3rx1-menorRx1) ;
@@ -326,7 +389,8 @@ export class MarkersService extends Init {
          DeltaT2CR = (tx2obstrx1-menorRx1 ) ;
          DeltaT3CR = (tx3obstrx1-menorRx1) ;
          DeltaT4CR = (tx4obstrx1-menorRx1) ; 
-         Deltas  = [DeltaT1,DeltaT2,DeltaT3,DeltaT4,DeltaT1CR,DeltaT2CR,DeltaT3CR,DeltaT4CR] ;   
+         Deltas  = [DeltaT1,DeltaT2,DeltaT3,DeltaT4,DeltaT1CR,DeltaT2CR,DeltaT3CR,DeltaT4CR] ; 
+
 
     }  
     getDeltasRx1(){
@@ -369,7 +433,7 @@ export class MarkersService extends Init {
                         var retarditen = retardos[0]*0.000000100*299792458;
                         var retStatic = +retardosEstaticos[0]*0.000000100*299792458;
                        if(modo[0] === "Estatico"){tx1rx2 = tx1rx2 + retarditen + retardoRed - retStatic ;} 
-                       if(modo[0] === "Dinamico"){tx1rx2 = tx1rx2 + retarditen + retardoRed ;}
+                       if(modo[0] === "Dinámico"){tx1rx2 = tx1rx2 + retarditen + retardoRed ;}
 
                     } 
                     if (retartdosState[0] === false){
@@ -384,7 +448,7 @@ export class MarkersService extends Init {
                         var retarditen = retardos[1]*0.000000100*299792458;
                         var retStatic = +retardosEstaticos[1]*0.000000100*299792458;
                         if(modo[1] === "Estatico"){tx2rx2 = tx2rx2 + retarditen + retardoRed - retStatic ;} 
-                        if(modo[1] === "Dinamico"){tx2rx2 = tx2rx2 + retarditen + retardoRed ;}
+                        if(modo[1] === "Dinámico"){tx2rx2 = tx2rx2 + retarditen + retardoRed ;}
 
                     }
                     if(retartdosState[1] === false){
@@ -398,7 +462,7 @@ export class MarkersService extends Init {
                         var retarditen = retardos[2]*0.000000100*299792458;
                         var retStatic = +retardosEstaticos[2]*0.000000100*299792458;
                         if(modo[2] === "Estatico"){tx3rx2 = tx3rx2 + retarditen + retardoRed - retStatic;} 
-                        if(modo[2] === "Dinamico"){tx3rx2 = tx3rx2 + retarditen + retardoRed ;}
+                        if(modo[2] === "Dinámico"){tx3rx2 = tx3rx2 + retarditen + retardoRed ;}
                     }
                     if(retartdosState[2] === false){
                         var tx3rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_6).toFixed(2)); 
@@ -412,7 +476,7 @@ export class MarkersService extends Init {
                         var retarditen = retardos[3]*0.000000100*299792458;
                         var retStatic = +retardosEstaticos[3]*0.000000100*299792458;
                         if(modo[3] === "Estatico") {tx4rx2 = tx4rx2 + retarditen + retardoRed -  retStatic ;}
-                        if(modo[3] === "Dinamico"){tx4rx2 = tx4rx2 + retarditen + retardoRed ;}
+                        if(modo[3] === "Dinámico"){tx4rx2 = tx4rx2 + retarditen + retardoRed ;}
                     }
                     if(retartdosState[3] === false){
                         var tx4rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_6).toFixed(2)); 
@@ -427,7 +491,7 @@ export class MarkersService extends Init {
                         var retarditen = retardos[0]*0.000000100*299792458;
                         var retStatic = +retardosEstaticos[0]*0.000000100*299792458;
                         if(modo[0] === "Estatico") { tx1obst = tx1obst + retarditen + retardoRed -  retStatic ;} 
-                        if(modo[0] === "Dinamico") {tx1obst = tx1obst + retarditen + retardoRed ;}
+                        if(modo[0] === "Dinámico") {tx1obst = tx1obst + retarditen + retardoRed ;}
                         var  tx1obstrx2= tx1obst + obstrx2;
                     } 
                     if (retartdosState[0] === false){
@@ -442,7 +506,7 @@ export class MarkersService extends Init {
                         var retarditen = retardos[1]*0.000000100*299792458;
                         var retStatic = +retardosEstaticos[1]*0.000000100*299792458;
                         if(modo[1] === "Estatico"){tx2obst = tx2obst + retarditen + retardoRed - retStatic ;}
-                        if(modo[1] === "Dinamico"){tx2obst = tx2obst + retarditen + retardoRed ;}
+                        if(modo[1] === "Dinámico"){tx2obst = tx2obst + retarditen + retardoRed ;}
                         var  tx2obstrx2= tx2obst + obstrx2;
                     } 
                     if (retartdosState[1] === false){
@@ -456,7 +520,7 @@ export class MarkersService extends Init {
                         var retarditen = retardos[2]*0.000000100*299792458;
                         var retStatic = +retardosEstaticos[2]*0.000000100*299792458;
                         if(modo[2] === "Estatico"){tx3obst = tx3obst + retarditen + retardoRed - retStatic ;} 
-                        if(modo[2] === "Dinamico"){tx3obst = tx3obst + retarditen + retardoRed ;}
+                        if(modo[2] === "Dinámico"){tx3obst = tx3obst + retarditen + retardoRed ;}
                         var  tx3obstrx2= tx3obst + obstrx2;
                     } 
                     if (retartdosState[2] === false){
@@ -470,15 +534,65 @@ export class MarkersService extends Init {
                         var retarditen = retardos[3]*0.000000100*299792458;
                         var retStatic = +retardosEstaticos[3]*0.000000100*299792458;
                         if(modo[3] === "Estatico"){tx4obst = tx4obst + retarditen + retardoRed - retStatic ;}
-                        if(modo[3] === "Dinamico"){tx4obst = tx4obst + retarditen + retardoRed;}
+                        if(modo[3] === "Dinámico"){tx4obst = tx4obst + retarditen + retardoRed;}
                         var  tx4obstrx2= tx4obst + obstrx2;
                     } 
                     if (retartdosState[3] === false){
                         var tx4obst = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_3).toFixed(2)); 
                         var  tx4obstrx2= tx4obst + obstrx2;  
                         tx4obstrx2 = tx4obstrx2 + retardoRed ;  
-                    }                                                                                
-         menorRx2 = Math.min(tx1rx2, tx2rx2,tx3rx2, tx4rx2 ,tx1obstrx2 ,tx2obstrx2, tx3obstrx2 , tx4obstrx2 ) ; 
+                    }         
+                    var nums = [];        
+                    var MarkEnable = [JSON.parse(localStorage.getItem('tra0')),JSON.parse(localStorage.getItem('tra1')),
+                    JSON.parse(localStorage.getItem('tra2')),JSON.parse(localStorage.getItem('tra3')),JSON.parse(localStorage.getItem('obst')),];                                                               
+                        if(MarkEnable[0]===true && MarkEnable[4]===true ){
+                            nums.push(tx1rx2);
+                            nums.push(tx1obstrx2);
+                        }
+
+                        if(MarkEnable[0]===true && MarkEnable[4]===false){
+                            nums.push(tx1rx2);}
+
+                        if(MarkEnable[1]===true && MarkEnable[4]===true){
+                            nums.push(tx2rx2);
+                            nums.push(tx2obstrx2);
+                        }
+
+                        if(MarkEnable[1]===true && MarkEnable[4]===false){
+                            nums.push(tx2rx2);}
+
+                        if(MarkEnable[2]===true && MarkEnable[4]===true){
+                            nums.push(tx3rx2);
+                            nums.push(tx3obstrx2);
+                        }
+                        if(MarkEnable[2]===true && MarkEnable[4]===false)
+                        {nums.push(tx3rx2);}
+                        if(MarkEnable[3]===true && MarkEnable[4]===true){
+                            nums.push(tx4rx2);
+                            nums.push(tx4obstrx2);
+                        }
+                        if(MarkEnable[3]===true && MarkEnable[4]===false)
+                        {nums.push(tx4rx2);}
+
+                   var transmisorCercano2 = this.obtenerTransmisorCercano2();
+                   var seleccionManual2 = this.obtenerSeleccionManual2();
+                   if(transmisorCercano2 === true && seleccionManual2 === false){menorRx2 = Math.min.apply(Math, nums)
+                   }
+                   if(seleccionManual2 === true && transmisorCercano2 === false){
+                       var seleccionado2 = this.obtenerSeleccionadoManual2();
+                       
+                       if(seleccionado2 == "Tx1"){menorRx2 = tx1rx2; }
+                        if(seleccionado2 =="Tx2"){menorRx2 = tx2rx2; }
+                       if(seleccionado2 == "Tx3"){menorRx2 = tx3rx2; }
+                        if(seleccionado2 == "Tx4"){menorRx2 = tx4rx2; }
+                        if(seleccionado2 == "Camino Reflejado-Tx1"){menorRx2 = tx1obstrx2;  }
+                        if(seleccionado2 == "Camino Reflejado-Tx2"){menorRx2 = tx2obstrx2; }
+                        if(seleccionado2 == "Camino Reflejado-Tx3"){menorRx2 = tx3obstrx2;  }
+                        if(seleccionado2 =="Camino Reflejado-Tx4"){menorRx2 = tx4obstrx2;  }
+                       
+                       }                                                                                 
+         
+    
          DeltaT1Rx2 = (tx1rx2-menorRx2) ;
          DeltaT2Rx2 = (tx2rx2-menorRx2 ) ;
          DeltaT3Rx2 = (tx3rx2-menorRx2) ;
@@ -497,11 +611,12 @@ export class MarkersService extends Init {
     }
 
     getDistanacias(){
+        var DistanciasRx1 = [];
         var distCRtx1 = (1/((disttTx1Ob + disttObRx1)/1000))*1000;
         var distCRtx2 = (1/((disttTx2Ob + disttObRx1)/1000))*1000; 
         var distCRtx3 = (1/((disttTx3Ob + disttObRx1)/1000))*1000;
         var distCRtx4 = (1/((disttTx4Ob + disttObRx1)/1000))*1000;
-        var DistanciasRx1 = [((1000/dist0)),((1000/dist)),((1000/distTx3Rx1)),((1000/distTx4Rx1)),distCRtx1,distCRtx2,distCRtx3,distCRtx4] ;
+        DistanciasRx1 = [((1000/dist0)),((1000/dist)),((1000/distTx3Rx1)),((1000/distTx4Rx1)),distCRtx1,distCRtx2,distCRtx3,distCRtx4] ;
         return DistanciasRx1;
     }
     
@@ -534,9 +649,10 @@ computeDistanceBetween1(){
                 
 
                dist0 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_2).toFixed(2)); 
+               time0Rx1 = (dist0/299792458)*1000000;
                dist0 = (dist0/1000);
                var testB : any = document.getElementById("testB");
-               testB.innerHTML = (dist0).toFixed(2);
+               testB.innerHTML = (dist0).toFixed(2) + "km " + "/ " + time0Rx1.toFixed(2) + "µs"   ;
 
 
     }
@@ -589,9 +705,10 @@ computeDistanceBetweenTx1Rx2(){
                 
 
                distTx1Rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_6).toFixed(2)); 
+               time0Rx2 = (distTx1Rx2/299792458)*1000000;
                distTx1Rx2 = (distTx1Rx2/1000);
                var testdistTx1Rx2 : any = document.getElementById("testdistTx1Rx2");
-               testdistTx1Rx2.innerHTML = (distTx1Rx2).toFixed(2);
+               testdistTx1Rx2.innerHTML = (distTx1Rx2).toFixed(2) + "km " + "/ " + time0Rx2.toFixed(2) + "µs";
 
     }
 //TIEMPO TX1 -RX2
@@ -640,9 +757,10 @@ computeTimeBetweenTx1Rx2(){
                 
                 
                dist = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_2).toFixed(2));
+               time1Rx1 = (dist/299792458)*1000000;
                dist = (dist/1000);
                var testA : any = document.getElementById("testA");
-               testA.innerHTML = (dist).toFixed(2);
+               testA.innerHTML = (dist).toFixed(2) + "km " + "/ " + time1Rx1.toFixed(2) + "µs";
 
     }
 
@@ -689,9 +807,10 @@ computeTimeBetweenTx1Rx2(){
                 
                 
                distTx2Rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_6).toFixed(2));
+               time1Rx2 = (distTx2Rx2/299792458)*1000000;
                distTx2Rx2 = (distTx2Rx2/1000);
                var testdistTx2Rx2 : any = document.getElementById("testdistTx2Rx2");
-               testdistTx2Rx2.innerHTML = (distTx2Rx2).toFixed(2);
+               testdistTx2Rx2.innerHTML = (distTx2Rx2).toFixed(2)  + "km " + "/ " + time1Rx2.toFixed(2) + "µs";
 
     }
 
@@ -739,9 +858,10 @@ computeTimeBetweenTx1Rx2(){
                 
 
                distTx3Rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_2).toFixed(2)); 
+               time2Rx1 = (distTx3Rx1/299792458)*1000000;
                distTx3Rx1 = (distTx3Rx1/1000);
                var testdistTx3Rx1 : any = document.getElementById("testdistTx3Rx1");
-               testdistTx3Rx1.innerHTML = (distTx3Rx1).toFixed(2);
+               testdistTx3Rx1.innerHTML = (distTx3Rx1).toFixed(2) + "km " + "/ " + time2Rx1.toFixed(2) + "µs";
 
     }
 
@@ -789,9 +909,10 @@ computeTimeBetweenTx1Rx2(){
                 
 
                distTx3Rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_6).toFixed(2)); 
+               time2Rx2 = (distTx3Rx2/299792458)*1000000;
                distTx3Rx2 = (distTx3Rx2/1000);
                var testdistTx3Rx2 : any = document.getElementById("testdistTx3Rx2");
-               testdistTx3Rx2.innerHTML = (distTx3Rx2).toFixed(2);
+               testdistTx3Rx2.innerHTML = (distTx3Rx2).toFixed(2) + "km " + "/ " + time2Rx2.toFixed(2) + "µs";
 
     }
 
@@ -839,10 +960,11 @@ computeTimeBetweenTx1Rx2(){
              
                 
 
-               distTx4Rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_2).toFixed(2)); 
-               distTx4Rx1 = (distTx4Rx1/1000)
+               distTx4Rx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_2).toFixed(2));
+               time3Rx1 = (distTx4Rx1/299792458)*1000000; 
+               distTx4Rx1 = (distTx4Rx1/1000);
                var testdistTx4Rx1 : any = document.getElementById("testdistTx4Rx1");
-               testdistTx4Rx1.innerHTML = (distTx4Rx1).toFixed(2);
+               testdistTx4Rx1.innerHTML = (distTx4Rx1).toFixed(2)  + "km " + "/ " + time3Rx1.toFixed(2) + "µs";
 
     }
 //TIEMPO TX4- RX1
@@ -890,9 +1012,10 @@ computeTimeBetweenTx1Rx2(){
                 
 
                distTx4Rx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_6).toFixed(2)); 
+               time3Rx2 = (distTx4Rx2/299792458)*1000000;
                distTx4Rx2 = (distTx4Rx2/1000)
                var testdistTx4Rx2 : any = document.getElementById("testdistTx4Rx2");
-               testdistTx4Rx2.innerHTML = (distTx4Rx2).toFixed(2);
+               testdistTx4Rx2.innerHTML = (distTx4Rx2).toFixed(2)  + "km " + "/ " + time3Rx2.toFixed(2) + "µs";
 
     }
 // TIIEMPO TX4 -RX2 
@@ -941,10 +1064,11 @@ computeTimeBetweenTx1Rx2(){
                disttTx1Ob = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_3).toFixed(2)); 
                disttObRx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_2, pos_3).toFixed(2)); 
                var total = disttTx1Ob + disttObRx1;
+               time0Rx1Cr = (total/299792458)*1000000; 
                total = (total/1000);
                var testTx1Ob : any = document.getElementById("testTx1Ob");      
-               testTx1Ob.innerHTML = (total).toFixed(2) ;
-               console.log(testTx1Ob);
+               testTx1Ob.innerHTML = (total).toFixed(2)  + "km " + "/ " + time0Rx1Cr.toFixed(2) + "µs" ;
+        
 
     }  
 
@@ -998,9 +1122,10 @@ computeTimeBetweenTx1Rx2(){
                disttTx1Ob = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_0, pos_3).toFixed(2)); 
                disttObRx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_6, pos_3).toFixed(2)); 
                var Tx1Rx2CR = disttTx1Ob + disttObRx2;
+               time0Rx2Cr = (Tx1Rx2CR/299792458)*1000000;
                Tx1Rx2CR = (Tx1Rx2CR/1000);
                var testTx1Rx2CR : any = document.getElementById("testTx1Rx2CR");
-               testTx1Rx2CR.innerHTML = (Tx1Rx2CR).toFixed(2) ;
+               testTx1Rx2CR.innerHTML = (Tx1Rx2CR).toFixed(2)  + "km " + "/ " + time0Rx2Cr.toFixed(2) + "µs"  ;
 
     } 
 
@@ -1053,9 +1178,10 @@ computeDistanceBetweenTx2Rx1CR(){
                disttTx2Ob = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_3).toFixed(2)); 
                disttObRx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_2, pos_3).toFixed(2)); 
                var Tx2Rx1CR = disttTx2Ob + disttObRx1;
+               time1Rx1Cr = (Tx2Rx1CR/299792458)*1000000; 
                Tx2Rx1CR = (Tx2Rx1CR/1000);
                var testTx2Rx1CR : any = document.getElementById("testTx2Rx1CR");
-               testTx2Rx1CR.innerHTML = (Tx2Rx1CR).toFixed(2) ;
+               testTx2Rx1CR.innerHTML = (Tx2Rx1CR).toFixed(2)  + "km " + "/ " + time1Rx1Cr.toFixed(2) + "µs" ;
 
     } 
 
@@ -1108,9 +1234,10 @@ computeTimeBetweenTx2Rx1CR(){
                disttTx2Ob = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_1, pos_3).toFixed(2)); 
                disttObRx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_6, pos_3).toFixed(2)); 
                var Tx2Rx2CR = disttTx2Ob + disttObRx2;
+               time2Rx2Cr = (Tx2Rx2CR/299792458)*1000000; 
                Tx2Rx2CR = (Tx2Rx2CR/1000);
                var testTx2Rx2CR : any = document.getElementById("testTx2Rx2CR");
-               testTx2Rx2CR.innerHTML = (Tx2Rx2CR).toFixed(2) ;
+               testTx2Rx2CR.innerHTML = (Tx2Rx2CR).toFixed(2) + "km " + "/ " + time2Rx2Cr.toFixed(2) + "µs" ;
 
     } 
  //TIEMPO TX2 - RX2 CAMINO REFLEJADO
@@ -1163,9 +1290,10 @@ computeTimeBetweenTx2Rx1CR(){
                disttTx3Ob = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_3).toFixed(2)); 
                disttObRx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_2, pos_3).toFixed(2)); 
                var Tx3Rx1CR = disttTx3Ob + disttObRx1;
+               time2Rx1Cr = (Tx3Rx1CR/299792458)*1000000; 
                Tx3Rx1CR = (Tx3Rx1CR/1000);
                var testTx3Rx1CR : any = document.getElementById("testTx3Rx1CR");
-               testTx3Rx1CR.innerHTML = (Tx3Rx1CR).toFixed(2);
+               testTx3Rx1CR.innerHTML = (Tx3Rx1CR).toFixed(2)  + "km " + "/ " + time2Rx1Cr.toFixed(2) + "µs";
 
     } 
 
@@ -1221,9 +1349,10 @@ computeTimeBetweenTx2Rx1CR(){
                disttTx3Ob = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_4, pos_3).toFixed(2)); 
                disttObRx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_6, pos_3).toFixed(2)); 
                var Tx3Rx2CR = disttTx3Ob + disttObRx2;
+               time3Rx2Cr = (Tx3Rx2CR/299792458)*1000000; 
                Tx3Rx2CR = (Tx3Rx2CR/1000);
                var testTx3Rx2CR : any = document.getElementById("testTx3Rx2CR");
-               testTx3Rx2CR.innerHTML = (Tx3Rx2CR).toFixed(2);
+               testTx3Rx2CR.innerHTML = (Tx3Rx2CR).toFixed(2)  + "km " + "/ " + time3Rx2Cr.toFixed(2) + "µs";
 
     } 
 
@@ -1277,9 +1406,10 @@ computeTimeBetweenTx2Rx1CR(){
                disttTx4Ob = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_3).toFixed(2)); 
                disttObRx1 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_2, pos_3).toFixed(2)); 
                var Tx4Rx1CR = disttTx4Ob + disttObRx1;
+               time3Rx1Cr = (Tx4Rx1CR/299792458)*1000000; 
                Tx4Rx1CR = (Tx4Rx1CR/1000);
                var testTx4Rx1CR : any = document.getElementById("testTx4Rx1CR");
-               testTx4Rx1CR.innerHTML = (Tx4Rx1CR).toFixed(2);
+               testTx4Rx1CR.innerHTML = (Tx4Rx1CR).toFixed(2) + "km " + "/ " + time3Rx1Cr.toFixed(2) + "µs";
 
     } 
 
@@ -1333,9 +1463,10 @@ computeTimeBetweenTx2Rx1CR(){
                disttTx4Ob = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_5, pos_3).toFixed(2)); 
                disttObRx2 = parseFloat(google.maps.geometry.spherical.computeDistanceBetween (pos_6, pos_3).toFixed(2)); 
                var Tx4Rx2CR = disttTx4Ob + disttObRx2;
+               time3Rx2Cr = (Tx4Rx2CR/299792458)*1000000; 
                Tx4Rx2CR = (Tx4Rx2CR/1000);
                var testTx4Rx2CR : any = document.getElementById("testTx4Rx2CR");
-               testTx4Rx2CR.innerHTML = (Tx4Rx2CR).toFixed(2) ;
+               testTx4Rx2CR.innerHTML = (Tx4Rx2CR).toFixed(2) + "km " + "/ " + time3Rx2Cr.toFixed(2) + "µs" ;
 
     } 
 //TIEMPO TX4 - RX2 CAMINO REFLEJADO
@@ -1377,7 +1508,7 @@ computeTimeBetweenTx2Rx1CR(){
          //Configurar en el local Storage
         localStorage.setItem('markers', JSON.stringify(marker));           
 
-      console.log(marker[0]);
+     
 
     }
 
@@ -1486,9 +1617,7 @@ sumaRetardoTx1(retar : number , retState : any){
         retardosState[0] = retState;
         localStorage.setItem('retardos', JSON.stringify(retardos));     
         localStorage.setItem('retardosState', JSON.stringify(retardosState)); 
-      //  console.log(dist0);
-      //  dist0 = (dist0 + Number.parseInt(retardos[0], 10));
-      //  console.log(dist0);
+ 
     }
     else{ }
 }
@@ -1497,16 +1626,13 @@ sumaRetardoTx2(retar : number , retState : any){
      
     var retardos =  this.obtenerRetardos();
     var retardosState = this.obtenerRetardosState();
-    console.log(retardos[1]);
+    
     if(retar != retardos[1]) {
         retardos[1] = retar;
         retardosState[1] = retState;
         localStorage.setItem('retardos', JSON.stringify(retardos));     
         localStorage.setItem('retardosState', JSON.stringify(retardosState));
-        console.log(retardos[1]); 
-      //  console.log(dist0);
-      //  dist0 = (dist0 + Number.parseInt(retardos[0], 10));
-      //  console.log(dist0);
+       
     }
     else{ }
    
@@ -1516,16 +1642,13 @@ sumaRetardoTx3(retar : number , retState : any){
      
     var retardos =  this.obtenerRetardos();
     var retardosState = this.obtenerRetardosState();
-    console.log(retardos[2]);
+    
     if(retar != retardos[2]) {
         retardos[2] = retar;
         retardosState[2] = retState;
         localStorage.setItem('retardos', JSON.stringify(retardos));     
         localStorage.setItem('retardosState', JSON.stringify(retardosState)); 
-        console.log(retardos[2]); 
-     //   console.log(dist0);
-     //   dist0 = (dist0 + Number.parseInt(retardos[0], 10));
-     //   console.log(dist0);
+       
     }
     else{}
    
@@ -1534,17 +1657,13 @@ sumaRetardoTx3(retar : number , retState : any){
 sumaRetardoTx4(retar : number , retState : any){
     
     var retardos =  this.obtenerRetardos();
-    var retardosState = this.obtenerRetardosState();
-    console.log(retardos[3]); 
+    var retardosState = this.obtenerRetardosState(); 
     if(retar != retardos[3]) {
         retardos[3] = retar;
         retardosState[3] = retState;
         localStorage.setItem('retardos', JSON.stringify(retardos));     
         localStorage.setItem('retardosState', JSON.stringify(retardosState)); 
-        console.log(retardos[3]); 
-    //    console.log(dist0);
-    //    dist0 = (dist0 + Number.parseInt(retardos[0], 10));
-    //    console.log(dist0);
+       
     }
     else{ }
    
@@ -1766,5 +1885,77 @@ actualizarEstancados(nuevo : any){
     var estan = JSON.parse(localStorage.getItem('estan'));
     estan = nuevo ;
     localStorage.setItem('estan', JSON.stringify(estan)); 
+ }
+
+ obtenerSeleccionadoManual(){
+    var seleccionadoManual = JSON.parse(localStorage.getItem('seleccionadoManual'));
+    return seleccionadoManual;
+
+}
+
+actualizarSeleccionadoManual(nuevo : any){
+    var seleccionadoManual = JSON.parse(localStorage.getItem('seleccionadoManual'));
+    seleccionadoManual = nuevo ;
+    localStorage.setItem('seleccionadoManual', JSON.stringify(seleccionadoManual)); 
+ }
+
+ obtenerTransmisorCercano(){
+    var transmisorCercano = JSON.parse(localStorage.getItem('transmisorCercano'));
+    return transmisorCercano;
+
+}
+
+actualizarTransmisorCercano(nuevo : any){
+    var transmisorCercano = JSON.parse(localStorage.getItem('transmisorCercano'));
+    transmisorCercano = nuevo ;
+    localStorage.setItem('transmisorCercano', JSON.stringify(transmisorCercano)); 
+ }
+
+ obtenerSeleccionManual(){
+    var seleccionManual = JSON.parse(localStorage.getItem('seleccionManual'));
+    return seleccionManual;
+
+}
+
+actualizarSeleccionManual(nuevo : any){
+    var seleccionManual = JSON.parse(localStorage.getItem('seleccionManual'));
+    seleccionManual = nuevo ;
+    localStorage.setItem('seleccionManual', JSON.stringify(seleccionManual)); 
+ }
+
+ obtenerSeleccionadoManual2(){
+    var seleccionadoManual2 = JSON.parse(localStorage.getItem('seleccionadoManual2'));
+    return seleccionadoManual2;
+
+}
+
+actualizarSeleccionadoManual2(nuevo : any){
+    var seleccionadoManual2 = JSON.parse(localStorage.getItem('seleccionadoManual2'));
+    seleccionadoManual2 = nuevo ;
+    localStorage.setItem('seleccionadoManual2', JSON.stringify(seleccionadoManual2)); 
+ }
+
+ obtenerTransmisorCercano2(){
+    var transmisorCercano2 = JSON.parse(localStorage.getItem('transmisorCercano2'));
+    return transmisorCercano2;
+
+}
+
+actualizarTransmisorCercano2(nuevo : any){
+    var transmisorCercano2 = JSON.parse(localStorage.getItem('transmisorCercano2'));
+    transmisorCercano2 = nuevo ;
+    localStorage.setItem('transmisorCercano2', JSON.stringify(transmisorCercano2)); 
+ }
+
+ obtenerSeleccionManual2(){
+    var seleccionManual2 = JSON.parse(localStorage.getItem('seleccionManual2'));
+    return seleccionManual2;
+
+}
+
+actualizarSeleccionManual2(nuevo : any){
+    var seleccionManual2 = JSON.parse(localStorage.getItem('seleccionManual2'));
+    seleccionManual2 = nuevo ;
+    localStorage.setItem('seleccionManual2', JSON.stringify(seleccionManual2)); 
  }
 }

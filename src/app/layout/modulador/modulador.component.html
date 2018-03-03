@@ -1,0 +1,210 @@
+<!-- Resultados  -->
+<h4>Modulador</h4>
+<div class="row">
+  <div class="col">
+      <div class="card">
+          <div class="card-block">
+              <ngb-tabset>
+                  <ngb-tab >
+                        <ng-template ngbTabTitle> <b>Modulador 1</b> </ng-template>
+                      <ng-template ngbTabContent>
+                            <table class="table">
+                                <tbody>
+                                        <tr>
+                                                <th scope="row">Nombre de la estacion</th>
+                                                <td>
+                                                    <input type="text" [(ngModel)]="nombreEstacion[0]" name="nombreEstacion[0]" (change)="cambioNombre()" class="form-control"  aria-describedby="basic-addon1">
+                                                </td>
+                                            </tr>
+                                    <tr>
+                                        <th scope="row">ID</th>
+                                        <td>
+                                            <input type="text" [(ngModel)]="idModuladores[0]" name="idModuladores[0]" (change)="mod()"class="form-control"  aria-describedby="basic-addon1">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Retardo BTS: Dt<sub>E1</sub> (x100ns)</th>
+                                        <td>
+                                            <input type="text" [(ngModel)]="retardoBTS[0]"  (change)="RetardoBTS()" class="form-control"  aria-describedby="basic-addon1">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Retardo de Transmisor: Dt<sub>TX1</sub>  (x100ns)</th>
+                                        <td>
+                                            <input [(ngModel)]="retardoDeTransmisor[0]" name="retardoDeTransmisor[0]" (change)="RetardoDeTransmisor()" type="text" class="form-control"  aria-describedby="basic-addon1">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Sumatoria de retardos: Dt<sub>TX1</sub> +  Dt<sub>E1</sub> (x100ns)</th>
+                                        <td>
+                                        {{sumaRetardo[0]}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Configuracion</th>
+                                       <td>
+                                          <select >
+                                              <option value="BTS">BTS</option>
+                                            <option disabled value="Local">Local</option>
+
+                                          </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                      </ng-template>
+                  </ngb-tab>
+                  <ngb-tab >
+                        <ng-template ngbTabTitle> <b>Modulador 2</b> </ng-template>
+                      <ng-template ngbTabContent>
+                          <table class="table">
+                              <tbody>
+                                    <tr>
+                                            <th scope="row">Nombre de la estacion</th>
+                                            <td>
+                                                <input type="text" [(ngModel)]="nombreEstacion[1]" name="nombreEstacion[1]" (change)="cambioNombre()" class="form-control"  aria-describedby="basic-addon1">
+                                            </td>
+                                        </tr>
+                                  <tr>
+                                      <th scope="row">ID</th>
+                                      <td>
+                                          <input type="text" [(ngModel)]="idModuladores[1]" name="idModuladores[1]"   (change)="mod()"class="form-control"  aria-describedby="basic-addon1">
+                                      </td>
+                                  </tr>
+                                  
+                                        <tr>
+                                                <th scope="row">Retardo BTS: Dt<sub>E2</sub>  (x100ns)</th>
+                                                <td>
+                                                    <input type="text" [(ngModel)]="retardoBTS[1]" name="retardoBTS[1]" (change)="RetardoBTS()" class="form-control"  aria-describedby="basic-addon1">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Retardo de Transmisor: Dt<sub>TX2</sub>  (x100ns)</th>
+                                                <td>
+                                                    <input  [(ngModel)]="retardoDeTransmisor[1]" name="retardoDeTransmisor[1]" (change)="RetardoDeTransmisor()" type="text" class="form-control"  aria-describedby="basic-addon1">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Sumatoria de retardos: Dt<sub>TX2</sub> +  Dt<sub>E2</sub> (x100ns)</th>
+                                                <td>
+                                                    {{sumaRetardo[1]}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                      <th scope="row">Configuracion</th>
+                                     <td>
+                                        <select >
+                                            <option value="BTS">BTS</option>
+                                          <option disabled value="Local">Local</option>
+
+                                        </select>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>                        
+                      </ng-template>
+                  </ngb-tab>
+                  <ngb-tab >
+                        <ng-template ngbTabTitle> <b>Modulador 3</b> </ng-template>
+                      <ng-template ngbTabContent>
+                          <table class="table">
+                              <tbody>
+                                    <tr>
+                                            <th scope="row">Nombre de la estacion</th>
+                                            <td>
+                                                <input type="text" [(ngModel)]="nombreEstacion[2]" name="nombreEstacion[2]" (change)="cambioNombre()" class="form-control"  aria-describedby="basic-addon1">
+                                            </td>
+                                        </tr>
+                                  <tr>
+                                      <th scope="row">ID</th>
+                                      <td>
+                                          <input type="text" [(ngModel)]="idModuladores[2]" name="idModuladores[2]" (change)="mod()" class="form-control"  aria-describedby="basic-addon1">
+                                      </td>
+                                  </tr>
+                                  
+                                        <tr>
+                                                <th scope="row">Retardo BTS: Dt<sub>E3</sub>  (x100ns)</th>
+                                                <td>
+                                                    <input [(ngModel)]="retardoBTS[2]" name="retardoBTS[2]" (change)="RetardoBTS()" type="text" class="form-control"  aria-describedby="basic-addon1">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Retardo de Transmisor: Dt<sub>TX3</sub>  (x100ns)</th>
+                                                <td>
+                                                    <input  [(ngModel)]="retardoDeTransmisor[2]" name="retardoDeTransmisor[2]" (change)="RetardoDeTransmisor()" type="text" class="form-control"  aria-describedby="basic-addon1">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Sumatoria de retardos: Dt<sub>TX3</sub> +  Dt<sub>E3</sub> (x100ns)</th>
+                                                <td>
+                                                    {{sumaRetardo[2]}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                      <th scope="row">Configuracion</th>
+                                     <td>
+                                        <select >
+                                            <option value="BTS">BTS</option>
+                                          <option disabled value="Local">Local</option>
+
+                                        </select>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>                        
+                      </ng-template>
+                  </ngb-tab>
+                  <ngb-tab >
+                        <ng-template ngbTabTitle> <b>Modulador 4</b> </ng-template>
+                      <ng-template ngbTabContent>
+                          <table class="table">
+                              <tbody>
+                                    <tr>
+                                            <th scope="row">Nombre de la estacion</th>
+                                            <td>
+                                                <input type="text" [(ngModel)]="nombreEstacion[3]" name="nombreEstacion[3]" (change)="cambioNombre()" class="form-control"  aria-describedby="basic-addon1">
+                                            </td>
+                                        </tr>
+                                  <tr>
+                                      <th scope="row">ID</th>
+                                      <td>
+                                          <input type="text" [(ngModel)]="idModuladores[3]" name="idModuladores[3]"  (change)="mod()" class="form-control"  aria-describedby="basic-addon1">
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                        <th scope="row">Retardo BTS: Dt<sub>E4</sub> (x100ns)</th>
+                                        <td>
+                                            <input [(ngModel)]="retardoBTS[3]" name="retardoBTS[3]"  (change)="RetardoBTS()" type="text" class="form-control"  aria-describedby="basic-addon1">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Retardo de Transmisor: Dt<sub>TX4</sub>  (x100ns)</th>
+                                        <td>
+                                            <input  [(ngModel)]="retardoDeTransmisor[3]" name="retardoDeTransmisor[3]" (change)="RetardoDeTransmisor()" type="text" class="form-control"  aria-describedby="basic-addon1">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                            <th scope="row">Sumatoria de retardos: Dt<sub>TX4</sub> +  Dt<sub>E4</sub> (x100ns)</th>
+                                        <td>
+                                            {{sumaRetardo[3]}}
+                                        </td>
+                                    </tr>
+                                  <tr>
+                                      <th scope="row">Configuracion</th>
+                                     <td>
+                                        <select >
+                                            <option value="BTS">BTS</option>
+                                          <option disabled value="Local">Local</option>
+
+                                        </select>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>                        
+                      </ng-template>
+                  </ngb-tab>
+              </ngb-tabset>
+          </div>
+      </div>
+  </div>
+</div>

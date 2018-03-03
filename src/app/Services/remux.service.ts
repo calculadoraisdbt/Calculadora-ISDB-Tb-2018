@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { InitParamMod } from 'app/layout/remux/init-paramMod';
+import { InitParamMod } from 'app/layout/modulador/init-paramMod';
 
 @Injectable()
 export class RemuxService extends InitParamMod {

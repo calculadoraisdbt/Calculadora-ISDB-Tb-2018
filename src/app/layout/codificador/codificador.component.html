@@ -1,3 +1,5 @@
+<h4>Codificador A/V</h4>
+
 <head>        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
 </head>
@@ -5,12 +7,11 @@
 <div class="row">
     <div class="col">
         <div class="card">
-            <div class="card-header"> Codificadores </div>
             <div class="card-block" >
                     <div class="btn-group btn-group-lg btn-responsive" role="group" aria-label="...">
-                    <button type="button" class="btn btn-secondary btn-responsive"(click)="encoderSelected('encoder1')">Encoder 1</button>
-                    <button type="button" class="btn btn-secondary btn-responsive" (click)="encoderSelected('encoder2')">Encoder 2</button>
-                    <button type="button" class="btn btn-secondary btn-responsive" (click)="encoderSelected('encoder3')">Encoder 3</button>
+                    <button  [class.active]="activeButtonName === 'encoder1'" type="button" class="btn btn-secondary btn-responsive"(click)="encoderSelected('encoder1')">Encoder 1</button>
+                    <button  [class.active]="activeButtonName === 'encoder2'" type="button" class="btn btn-secondary btn-responsive" (click)="encoderSelected('encoder2')">Encoder 2</button>
+                    <button  [class.active]="activeButtonName === 'encoder3'" type="button" class="btn btn-secondary btn-responsive" (click)="encoderSelected('encoder3')">Encoder 3</button>
                 </div> <br><br>
 
                 <div *ngIf="encoder1">

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { InitParam } from 'app/layout/modulador/resumen/init-param'
+import { InitParam } from 'app/layout/remultiplexor/init-param';
+
+//var tspNulos = [];
 
 @Injectable()
 export class ModuladorService extends InitParam {
@@ -33,6 +35,41 @@ export class ModuladorService extends InitParam {
 
 
    }
+
+   obteneralturaIntGua(){
+      
+            var alturaIntGua = JSON.parse(localStorage.getItem('alturaIntGua'));
+            return alturaIntGua;
+      
+         }
+      
+          actualizarAlturaIntGua(newParam : any){
+      
+                var alturaIntGua = JSON.parse(localStorage.getItem('alturaIntGua'));
+      
+                alturaIntGua = newParam;
+      
+                localStorage.setItem('alturaIntGua', JSON.stringify(alturaIntGua));
+      
+      
+         }
+         obteneralturaIntGua2(){
+            
+                  var alturaIntGua2 = JSON.parse(localStorage.getItem('alturaIntGua2'));
+                  return alturaIntGua2;
+            
+               }
+            
+                actualizarAlturaIntGua2(newParam : any){
+            
+                      var alturaIntGua2 = JSON.parse(localStorage.getItem('alturaIntGua2'));
+            
+                      alturaIntGua2 = newParam;
+            
+                      localStorage.setItem('alturaIntGua2', JSON.stringify(alturaIntGua2));
+            
+            
+               }
 
 
    actualizarIntervalo(newParam : any){
@@ -245,7 +282,7 @@ export class ModuladorService extends InitParam {
 
    obtenerActivado(){
              var activado = JSON.parse(localStorage.getItem('activado'));
-             console.log(typeof activado);
+
       return activado;
 
    }
@@ -264,4 +301,47 @@ export class ModuladorService extends InitParam {
              localStorage.setItem('entrelazadoDeTiempo', JSON.stringify(entrelazadoDeTiempo));
       
    }
+
+   obtenerTspNulos(){
+      
+            var tspNulos = JSON.parse(localStorage.getItem('tspNulos'));
+            return tspNulos;
+           
+      
+         }
+
+         actualizarTspNulos(value){
+            var tspNulos = JSON.parse(localStorage.getItem('tspNulos'));
+            tspNulos = value;
+             localStorage.setItem('tspNulos', JSON.stringify(tspNulos));
+      
+   }
+
+   obtenerTspCapa(){
+      
+            var tspCapa = JSON.parse(localStorage.getItem('tspCapa'));
+            return tspCapa;
+           
+      
+         }
+
+         actualizarTspCapa(value){
+            var tspCapa = JSON.parse(localStorage.getItem('tspCapa'));
+            tspCapa = value;
+             localStorage.setItem('tspCapa', JSON.stringify(tspCapa));
+      
+   }
+
+   /*obtenerTspNulos(value){
+      
+             tspNulos = value ;
+      
+         }
+
+    tspNulosParaMenu(){
+      return tspNulos;
+    }*/
+            
+   
+      
 }

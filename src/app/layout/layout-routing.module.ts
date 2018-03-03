@@ -7,10 +7,10 @@ const routes: Routes = [
         path: '', component: LayoutComponent,
         children: [
             { path: 'menu-interactivo', loadChildren: './menu-interactivo/menu-interactivo.module#MenuInteractivoModule' },
-            { path: 'SFN', loadChildren: './blank-page/blank-page.module#BlankPageModule' },
-            { path: 'remux', loadChildren: './modulador/resumen/resumen.module#ResumenModule' },
+            { path: 'SFN', loadChildren: './sfn/sfn.module#SfnModule' },
+            { path: 'remux', loadChildren: './remultiplexor/remultiplexor.module#RemultiplexorModule' },
             { path: 'codificador', loadChildren: './codificador/codificador.module#CodificadorModule' },
-            { path: 'modulador', loadChildren: './remux/remux.module#RemuxModule' },
+            { path: 'modulador', loadChildren: './modulador/modulador.module#ModuladorModule' },
             { path: 'multiplexor', loadChildren: './multiplexor/multiplexor.module#MultiplexorModule' },
             { path: 'creditos', loadChildren: './creditos/creditos.module#CreditosModule' },
         ]

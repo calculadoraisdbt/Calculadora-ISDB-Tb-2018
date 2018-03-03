@@ -1,0 +1,486 @@
+<h4>Remultiplexor</h4>
+<div class="row">
+    <div class="col ">
+        <div class="card mb-3">
+            <div class="card-header">
+                Parámetros Variables
+            </div>
+            <div class="card-block ">
+                <div class="form-group">
+                <label>Modo:</label>
+                <select [value]="modoSelected" class="form-control-mb-12" 
+                 (change)="modo($event.target.value)">
+                    <option value="MODO 1" >MODO 1</option>
+                    <option value="MODO 2">MODO 2</option>
+                    <option value="MODO 3" >MODO 3</option>
+                </select>
+                 <label>Intervalo de Guarda:</label>
+                <select [value]="intSelected" class="form-control-mb-12"
+                (change)="intSelection($event.target.value)" >
+                    <option  value="1/4">1/4</option>
+                    <option value="1/8">1/8</option>
+                    <option  value="1/16">1/16</option>
+                    <option  value="1/32">1/32</option>
+                </select> <br>
+                  <label> One-Seg: </label>
+                    <button (click)="onActivado()">{{ activado ? 'Activado' : 'Desactivado' }}</button>
+                    <div class="row">
+                      <div class="col">
+                     <table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th style="text-align:center;">Capa A</th>
+      <th style="text-align:center;">Capa B</th>
+      <th style="text-align:center;">Capa C</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" >Nº de Segmentos [N<sub>S</sub>]:</th>
+      <td style="text-align:center;"> <select [(ngModel)]="select1" [disabled]="activado" (change)="saveValueA(select1)">
+              <option *ngFor="let o of options | slice:0:getLimit(select1)" [ngValue]="o">{{ o }}</option>
+              </select> </td>
+      <td style="text-align:center;"> <select [(ngModel)]="select2" (change)="saveValueB(select2)">
+              <option *ngFor="let o of options | slice:0:getLimit(select2)" [ngValue]="o">{{ o }}</option>
+              </select> </td>
+      <td style="text-align:center;"> <select [(ngModel)]="select3" (change)="saveValueC(select3)">
+               <option *ngFor="let o of options | slice:0:getLimit(select3)" [ngValue]="o">{{ o }}</option>
+              </select></td>
+                  </tr>
+    <tr>
+      <th scope="row">Esquema de Modulación:</th>
+      <td style="text-align:center;">  <select class="form-control-mb-12" [value]="esqModSelected[0]" (change)="esqModSelection($event.target.value, 'capa A')">
+                   <option value="QPSK">QPSK</option>
+                    <option value="16-QAM">16-QAM</option>
+                    <option value="64-QAM">64-QAM</option>
+                    <option value="DQPSK">DQPSK</option>
+                </select> </td>
+      <td style="text-align:center;"> <select  class="form-control-mb-12" [value]="esqModSelected[1]" (change)="esqModSelection($event.target.value,'capa B')">
+                    <option value="QPSK">QPSK</option>
+                    <option value="16-QAM">16-QAM</option>
+                    <option value="64-QAM">64-QAM</option>
+                    <option value="DQPSK">DQPSK</option>
+                </select> </td>
+      <td style="text-align:center;"> <select  class="form-control-mb-12" [value]="esqModSelected[2]" (change)="esqModSelection($event.target.value, 'capa C')">
+                     <option value="QPSK">QPSK</option>
+                    <option value="16-QAM">16-QAM</option>
+                    <option value="64-QAM">64-QAM</option>
+                    <option value="DQPSK">DQPSK</option>
+                </select></td>
+                  </tr>
+    <tr>
+      <th scope="row">Codificación  Convolucional [K<sub>I</sub>]</th>
+      <td style="text-align:center;"><select class="form-control-mb-12"  [(ngModel)]="codConSelected[0]" (change)="codConSelection(codConSelected[0], 'capa A')">
+               <option value="1/2">1/2</option>
+                    <option value="2/3">2/3</option>
+                    <option value="3/4">3/4</option>
+                    <option value="5/6">5/6</option>
+                    <option value="7/8">7/8</option>
+                </select></td>
+      <td style="text-align:center;">  <select class="form-control-mb-12" [value]="codConSelected[1]" (change)="codConSelection($event.target.value, 'capa B')">
+                  <option value="1/2">1/2</option>
+                    <option value="2/3">2/3</option>
+                    <option value="3/4">3/4</option>
+                    <option value="5/6">5/6</option>
+                    <option value="7/8">7/8</option>
+                </select> </td>
+      <td style="text-align:center;"> <select class="form-control-mb-12" [value]="codConSelected[2]"  (change)="codConSelection($event.target.value, 'capa C')">
+               <option value="1/2">1/2</option>
+                    <option value="2/3">2/3</option>
+                    <option value="3/4">3/4</option>
+                    <option value="5/6">5/6</option>
+                    <option value="7/8">7/8</option>
+                </select> </td>
+       </tr>
+       <tr>
+        <th scope="row">Entrelazado de tiempo [I]</th>
+        <td style="text-align:center;"><select [(ngModel)]="entrelazadoDeTiempo[0]" name="entrelazadoDeTiempo[0]" (change)="guardarValoresEntrelazado()" class="form-control-mb-12" >
+                      <option *ngIf="modoBoolean[0]" >0</option>
+                      <option *ngIf="modoBoolean[0]" >4</option>
+                      <option *ngIf="modoBoolean[0]">8</option>
+                      <option *ngIf="modoBoolean[0]">16</option>
+                      <option *ngIf="modoBoolean[1]" >0</option>
+                      <option *ngIf="modoBoolean[1]">2</option>
+                      <option  *ngIf="modoBoolean[1]">4</option>
+                      <option *ngIf="modoBoolean[1]" >8</option>
+                      <option  *ngIf="modoBoolean[2]">0</option>
+                      <option *ngIf="modoBoolean[2]" >1</option>
+                      <option *ngIf="modoBoolean[2]" >2</option>
+                      <option *ngIf="modoBoolean[2]" >4</option>          
+                    </select> </td>        
+        <td style="text-align:center;">  <select  [(ngModel)]="entrelazadoDeTiempo[1]"  name="entrelazadoDeTiempo[1]"  (change)="guardarValoresEntrelazado()"class="form-control-mb-12" >
+          <option *ngIf="modoBoolean[0]" >0</option>
+          <option *ngIf="modoBoolean[0]" >4</option>
+          <option *ngIf="modoBoolean[0]">8</option>
+          <option *ngIf="modoBoolean[0]">16</option>
+          <option *ngIf="modoBoolean[1]" >0</option>
+          <option *ngIf="modoBoolean[1]">2</option>
+          <option  *ngIf="modoBoolean[1]">4</option>
+          <option *ngIf="modoBoolean[1]" >8</option>
+          <option  *ngIf="modoBoolean[2]">0</option>
+          <option *ngIf="modoBoolean[2]" >1</option>
+          <option *ngIf="modoBoolean[2]" >2</option>
+          <option *ngIf="modoBoolean[2]" >4</option>        
+                  </select> </td>
+        <td style="text-align:center;"> <select [(ngModel)]="entrelazadoDeTiempo[2]" name="entrelazadoDeTiempo[2]"  (change)="guardarValoresEntrelazado()" class="form-control-mb-12" >
+          <option *ngIf="modoBoolean[0]" >0</option>
+          <option *ngIf="modoBoolean[0]" >4</option>
+          <option *ngIf="modoBoolean[0]">8</option>
+          <option *ngIf="modoBoolean[0]">16</option>
+          <option *ngIf="modoBoolean[1]" >0</option>
+          <option *ngIf="modoBoolean[1]">2</option>
+          <option  *ngIf="modoBoolean[1]">4</option>
+          <option *ngIf="modoBoolean[1]" >8</option>
+          <option  *ngIf="modoBoolean[2]">0</option>
+          <option *ngIf="modoBoolean[2]" >1</option>
+          <option *ngIf="modoBoolean[2]" >2</option>
+          <option *ngIf="modoBoolean[2]" >4</option>        
+                  </select> </td>
+         </tr>
+  </tbody>
+</table>
+                      </div>
+                    </div>
+<div *ngIf="!isValidSuma()" class="alert alert-danger">
+    <strong>La suma de los segmentos asignados debe ser 13</strong> 
+</div>
+      
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Resultados  -->
+<div class="row">
+    <div class="col">
+        <div class="card mb-3">
+            <div class="card-header">Resultados</div>
+            <div class="card-block">
+                <ngb-tabset >
+ 
+                    <ngb-tab [disabled]="!isValidSuma()">
+                        <ng-template ngbTabTitle> <b>Parámetros  Generales</b> </ng-template>
+                        <ng-template ngbTabContent>
+                          <table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th ><span *ngIf="modoBoolean[0]" style="color:orange"> <b>Modo 1 </b></span> 
+          <span *ngIf="!modoBoolean[0]">Modo 1</span></th>
+          <th ><span *ngIf="modoBoolean[1]" style="color:orange"> <b>Modo 2 </b></span> 
+            <span *ngIf="!modoBoolean[1]">Modo 2</span></th>
+            <th ><span *ngIf="modoBoolean[2]" style="color:orange"> <b>Modo 3 </b></span> 
+              <span *ngIf="!modoBoolean[2]">Modo 3</span></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <th scope="row">Ancho de banda efectivo : BW<sub>CH</sub> [Mhz]</th>
+          <td>{{(((bws*13)+(bws/ls1))/1000).toFixed(4)}}</td>
+          <td>{{(((bws*13)+(bws/ls2))/1000).toFixed(4)}}</td>
+          <td>{{(((bws*13)+(bws/ls3))/1000).toFixed(4)}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Payload total A+B+C: [Mbps] </th>
+            <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))+(ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))+(ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(3)}}</td>
+            <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))+(ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))+(ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(3)}}</td>
+            <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))+(ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))+(ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(3)}}</td>
+          </tr>
+          <tr>
+    <tr>
+      <th scope="row">Número  total de portadoras: L [Port]</th>
+        <td>{{(ls1*ns)+1}}</td>
+      <td>{{(ls2*ns)+1}}</td>
+      <td>{{(ls3*ns)+1}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Nº de portadoras por segmento: L<sub>s</sub> [Port]</th>
+      <td>{{ls1}}</td>
+      <td>{{ls2}}</td>
+      <td>{{ls3}}</td>
+    </tr>
+
+    <tr>
+      <th scope="row" >Anchura de banda del segmento: BW<sub>s</sub> [Khz]</th>
+      <td>{{(bws)}}</td>
+      <td>{{bws}}</td>
+      <td>{{bws}}</td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Separación  entre portadoras: Δf [Khz] </th>
+      <td>{{(bws/ls1).toFixed(3)}}</td>
+      <td>{{(bws/ls2).toFixed(3)}}</td>
+      <td>{{(bws/ls3).toFixed(3)}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Tiempo útil de símbolo: T <sub>u</sub> [useg]</th>
+      <td>{{((1/(bws/ls1))*1000).toFixed(2)}}</td>
+      <td>{{((1/(bws/ls2))*1000).toFixed(2)}}</td>
+      <td>{{((1/(bws/ls3))*1000).toFixed(2)}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Intervalo de guarda: T<sub>G</sub> [useg]</th>
+      <td>{{tg1}}</td>
+      <td>{{tg2}}</td>
+      <td>{{tg3}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Tiempo de símbolo: T<sub>s</sub> [useg]</th>
+     <td>{{(tg1+(1/(bws/ls1))*1000).toFixed(2)}}</td>
+      <td>{{(tg2+(1/(bws/ls2))*1000).toFixed(2)}}</td>
+      <td>{{(tg3+(1/(bws/ls3))*1000).toFixed(2)}}</td>
+    </tr>
+    <tr>
+      <th scope="row"  >Frecuencia de símbolo: f<sub>s</sub> [Hz]</th>
+      <td>{{((1/(tg1+(1/(bws/ls1))*1000))*1000000).toFixed(2)}}</td>
+      <td>{{((1/(tg2+(1/(bws/ls2))*1000))*1000000).toFixed(2)}}</td>
+      <td>{{((1/(tg3+(1/(bws/ls3))*1000))*1000000).toFixed(2)}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Nº de símbolos OFDM por cuadro: F [Simb]</th>
+      <td>{{f}}</td>
+      <td>{{f}}</td>
+      <td>{{f}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Tiempo de cuadro: T<sub>F</sub> [ms]</th>
+      <td>{{((f*(tg1+(1/(bws/ls1))*1000))/1000).toFixed(2)}}</td>
+      <td>{{((f*(tg2+(1/(bws/ls2))*1000))/1000).toFixed(2)}}</td>
+      <td>{{((f*(tg3+(1/(bws/ls3))*1000))/1000).toFixed(2)}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Frecuencia de cuadro: F <sub>f</sub> [Hz]: </th>
+      <td>{{((1/((f*(tg1+(1/(bws/ls1))*1000))/1000))*1000).toFixed(2)}}</td>
+      <td>{{((1/((f*(tg2+(1/(bws/ls2))*1000))/1000))*1000).toFixed(2)}}</td>
+      <td>{{((1/((f*(tg3+(1/(bws/ls3))*1000))/1000))*1000).toFixed(2)}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Muestras por símbolo OFDM: S[bins]</th>
+      <td>2048</td>
+      <td>4096</td>
+      <td>8192</td>
+    </tr>
+    <tr>
+      <th scope="row" >Frecuencia de muestreo IFFT: f <sub>IFTT</sub> [Mhz]</th>
+      <td>{{(2048/252).toFixed(7)}}</td>
+      <td>{{(2048/252).toFixed(7)}}</td>
+      <td>{{(2048/252).toFixed(7)}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Periodo de muestreo IFFT: T <sub>m</sub> [useg]</th>
+      <td>{{(1/(2048/252)).toFixed(3)}}</td>
+      <td>{{(1/(2048/252)).toFixed(3)}}</td>
+      <td>{{(1/(2048/252)).toFixed(3)}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Total de pulsos por símbolo OFDM: N <sub> pulsos </sub></th>
+      <td>{{pps[0]}}</td>
+      <td>{{pps[1]}}</td>
+      <td>{{pps[2]}}</td>
+    </tr>
+  </tbody>
+</table>          
+                        </ng-template>
+                    </ngb-tab>
+
+                     <ngb-tab [disabled]="!isValidSuma()">
+                        <ng-template ngbTabTitle><b>Cuadro Multiplex</b> </ng-template>
+                        <ng-template ngbTabContent>
+                           <table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th ><span *ngIf="modoBoolean[0]" style="color:orange"> <b>Modo 1 </b></span> 
+        <span *ngIf="!modoBoolean[0]">Modo 1</span></th>
+        <th ><span *ngIf="modoBoolean[1]" style="color:orange"> <b>Modo 2 </b></span> 
+          <span *ngIf="!modoBoolean[1]">Modo 2</span></th>
+          <th ><span *ngIf="modoBoolean[2]" style="color:orange"> <b>Modo 3 </b></span> 
+            <span *ngIf="!modoBoolean[2]">Modo 3</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Duración del TSP: T<sub>TSP</sub> [us]</th>
+      <td>{{50.203135}}</td>
+      <td>{{50.203135}}</td>
+      <td>{{50.203135}}</td>
+    </tr>
+    <tr>
+        <th scope="row"> Nº de TSP transportados por el BTS en un cuadro múltiplex: N<sub>BTS</sub> </th>
+        <td>{{Nbts[0]}} </td>
+        <td>{{Nbts[1]}}</td>
+        <td>{{Nbts[2]}}</td>
+     </tr>
+     <tr>
+      <td rowspan="2"  > <b>Nº de TSP nulos transportados por el BTS en un cuadro múltiplex: ΣTSP<sub>nul</sub></b> </td>
+      <td>{{(Nbts[0]-(((Nmodo1[0])*select1)+((Nmodo1[1])*select2)+((Nmodo1[2])*select3)))-1}}</td>
+      <td>{{(Nbts[1]-(((Nmodo2[0])*select1)+((Nmodo2[1])*select2)+((Nmodo2[2])*select3)))-1}}</td>
+      <td>{{(Nbts[2]-(((Nmodo3[0])*select1)+((Nmodo3[1])*select2)+((Nmodo3[2])*select3)))-1}}</td>
+    </tr>
+    <tr>
+      <td> Paquete IIP: 1 </td>
+      <td>Paquete IIP: 1</td>
+      <td>Paquete IIP: 1</td>
+   </tr>
+    <tr>
+      <th scope="row">Frecuencia reloj del BTS (4 flFFT): f<sub>R</sub> [Mhz]</th>
+      <td>{{(4*(2048/252)).toFixed(4)}}</td>
+      <td>{{(4*(2048/252)).toFixed(4)}}</td>
+      <td>{{(4*(2048/252)).toFixed(4)}}</td>
+    </tr>&nbsp;
+    <tr>
+
+  </tbody>
+</table>               
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab [disabled]="!isValidSuma()">
+                        <ng-template ngbTabTitle><b>Capa A</b> </ng-template>
+                        <ng-template ngbTabContent>
+                           <table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th ><span *ngIf="modoBoolean[0]" style="color:orange"> <b>Modo 1 </b></span> 
+        <span *ngIf="!modoBoolean[0]">Modo 1</span></th>
+        <th ><span *ngIf="modoBoolean[1]" style="color:orange"> <b>Modo 2 </b></span> 
+          <span *ngIf="!modoBoolean[1]">Modo 2</span></th>
+          <th ><span *ngIf="modoBoolean[2]" style="color:orange"> <b>Modo 3 </b></span> 
+            <span *ngIf="!modoBoolean[2]">Modo 3</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Número de bits por portadora: b<sub>P</sub> </th>
+      <td>{{bp[0]}}</td>
+      <td>{{bp[0]}}</td>
+      <td>{{bp[0]}}</td>
+    </tr>&nbsp;
+    <tr>
+
+    <tr>
+      <th scope="row">Nº TSP por segmento por cuadro: N </th>
+      <td>{{Nmodo1[0]}}</td>
+      <td>{{Nmodo2[0]}}</td>
+      <td>{{Nmodo3[0]}}</td>
+    </tr>
+    <tr>
+      <th scope="row" > Tasa binaria neta de la Capa A: R <sub>A</sub> [Mbps]</th>
+      <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))).toFixed(3)}}</td>
+      <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))).toFixed(3)}}</td>
+      <td>{{((ki[0]*(188/204))*((bp[0]*select1*portadoraDeDatos[0])/(tg1+(1/(bws/ls1))*1000))).toFixed(3)}}</td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Total de TSP para la Capa A: N <sub>S</sub> x N [TSP<sub>S</sub>]   </th>
+      <td>{{((Nmodo1[0])*13)}}</td>
+      <td>{{((Nmodo2[0])*13)}}</td>
+      <td>{{((Nmodo3[0])*13)}}</td>
+    </tr>
+  </tbody>
+</table>               
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab  [disabled]="!isValidSuma()">
+                        <ng-template ngbTabTitle><b>Capa B</b> </ng-template>
+                        <ng-template ngbTabContent>
+                           <table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th ><span *ngIf="modoBoolean[0]" style="color:orange"> <b>Modo 1 </b></span> 
+        <span *ngIf="!modoBoolean[0]">Modo 1</span></th>
+        <th ><span *ngIf="modoBoolean[1]" style="color:orange"> <b>Modo 2 </b></span> 
+          <span *ngIf="!modoBoolean[1]">Modo 2</span></th>
+          <th ><span *ngIf="modoBoolean[2]" style="color:orange"> <b>Modo 3 </b></span> 
+            <span *ngIf="!modoBoolean[2]">Modo 3</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Número de bits por portadora: b<sub>P</sub> </th>
+      <td>{{bp[1]}}</td>
+      <td>{{bp[1]}}</td>
+      <td>{{bp[1]}}</td>
+    </tr>&nbsp;
+    <tr>
+
+    <tr>
+      <th scope="row">Nº TSP por segmento por cuadro: N </th>
+      <td>{{Nmodo1[1]}}</td>
+      <td>{{Nmodo2[1]}}</td>
+      <td>{{Nmodo3[1]}}</td>
+    </tr>
+    <tr>
+      <th scope="row" > Tasa binaria neta de la Capa B: R <sub>B</sub> [Mbps]</th>
+      <td>{{((ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))).toFixed(3)}}</td>
+      <td>{{((ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))).toFixed(3)}}</td>
+      <td>{{((ki[1]*(188/204))*((bp[1]*select2*portadoraDeDatos[1])/(tg2+(1/(bws/ls2))*1000))).toFixed(3)}}</td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Total de TSP para la Capa B: N <sub>S</sub> x N [TSP<sub>S</sub>]   </th>
+      <td>{{((Nmodo1[1])*13)}}</td>
+      <td>{{((Nmodo2[1])*13)}}</td>
+      <td>{{((Nmodo3[1])*13)}}</td>
+    </tr>
+  </tbody>
+</table>               
+     
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab  [disabled]="!isValidSuma()">
+                        <ng-template ngbTabTitle><b>Capa C</b> </ng-template>
+                        <ng-template ngbTabContent>
+                           <table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th ><span *ngIf="modoBoolean[0]" style="color:orange"> <b>Modo 1 </b></span> 
+        <span *ngIf="!modoBoolean[0]">Modo 1</span></th>
+        <th ><span *ngIf="modoBoolean[1]" style="color:orange"> <b>Modo 2 </b></span> 
+          <span *ngIf="!modoBoolean[1]">Modo 2</span></th>
+          <th ><span *ngIf="modoBoolean[2]" style="color:orange"> <b>Modo 3 </b></span> 
+            <span *ngIf="!modoBoolean[2]">Modo 3</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Número de bits por portadora: b<sub>P</sub> </th>
+      <td>{{bp[2]}}</td>
+      <td>{{bp[2]}}</td>
+      <td>{{bp[2]}}</td>
+    </tr>&nbsp;
+    <tr>
+
+    <tr>
+      <th scope="row">Nº TSP por segmento por cuadro: N </th>
+      <td>{{Nmodo1[2]}}</td>
+      <td>{{Nmodo2[2]}}</td>
+      <td>{{Nmodo3[2]}}</td>
+    </tr>
+    <tr>
+      <th scope="row" > Tasa binaria neta de la Capa C: R <sub>C</sub> [Mbps]</th>
+      <td>{{((ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(3)}}</td>
+      <td>{{((ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(3)}}</td>
+      <td>{{((ki[2]*(188/204))*((bp[2]*select3*portadoraDeDatos[2])/(tg3+(1/(bws/ls3))*1000))).toFixed(3)}}</td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Total de TSP para la Capa C: N <sub>S</sub> x N [TSP<sub>S</sub>]   </th>
+      <td>{{((Nmodo1[2])*13)}}</td>
+      <td>{{((Nmodo2[2])*13)}}</td>
+      <td>{{((Nmodo3[2])*13)}}</td>
+    </tr>
+  </tbody>
+</table>                                      
+                        </ng-template>
+                    </ngb-tab>
+                </ngb-tabset>
+            </div>
+        </div>
+    </div>
+    

@@ -7,7 +7,7 @@ export class InitMultiplexor {
         || localStorage.getItem('ASI1Enable')=== null || localStorage.getItem('ASI2Enable')=== null || localStorage.getItem('ASI3Enable')=== null 
         || localStorage.getItem('TableLayer')=== null|| localStorage.getItem('TablePmtPid')=== null|| localStorage.getItem('TableEnable')=== null
         ){
-            console.log('No se encontraron ...');
+            
             
             var ASI1Input  = [0,0,0,0,0,0,0,0,0,0];
             var ASI1Layer = ["Layer A","Layer A","Layer A","Layer A","Layer A","Layer A","Layer A","Layer A","Layer A","Layer A"];

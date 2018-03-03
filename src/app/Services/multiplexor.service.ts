@@ -13,7 +13,6 @@ export class MultiplexorService extends InitMultiplexor {
 //ASI 1
    obtenerASI1Input(){
     var ASI1Input = JSON.parse(localStorage.getItem('ASI1Input'));
-    console.log("aca service", ASI1Input)
     return ASI1Input;
     
 
@@ -26,7 +25,6 @@ actualizarASI1Input(nuevo : any){
 
 obtenerASI1Layer(){
     var ASI1Layer = JSON.parse(localStorage.getItem('ASI1Layer'));
-    console.log("aca service", ASI1Layer)
     return ASI1Layer;
     
 
@@ -39,7 +37,6 @@ actualizarASI1Layer(nuevo : any){
 
 obtenerASI1Output(){
     var ASI1Output = JSON.parse(localStorage.getItem('ASI1Output'));
-    console.log("aca service", ASI1Output)
     return ASI1Output;
     
 
@@ -52,7 +49,6 @@ actualizarASI1Output(nuevo : any){
 
 obtenerASI1Enable(){
     var ASI1Enable = JSON.parse(localStorage.getItem('ASI1Enable'));
-    console.log("aca service", ASI1Enable)
     return ASI1Enable;
     
 
@@ -106,7 +102,6 @@ actualizarASI2Output(nuevo : any){
 
 obtenerASI2Enable(){
     var ASI2Enable = JSON.parse(localStorage.getItem('ASI2Enable'));
-    console.log("aca service", ASI2Enable)
     return ASI2Enable;
     
 
@@ -154,7 +149,6 @@ actualizarASI3Output(nuevo : any){
 }
 obtenerASI3Enable(){
     var ASI3Enable = JSON.parse(localStorage.getItem('ASI3Enable'));
-    console.log("aca service", ASI3Enable)
     return ASI3Enable;
     
 
