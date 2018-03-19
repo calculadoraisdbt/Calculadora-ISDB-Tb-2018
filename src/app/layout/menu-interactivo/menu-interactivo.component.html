@@ -123,18 +123,31 @@
                             
                                     <thead>
                                             <tr>
-                                                    <th>PID Audio</th>
-                                                    <th>PID Video</th>
-                                                    <th>PID PCR</th>
-                                                    <th>Intervalo de PCR [ms]</th>
+                                                    <th *ngIf="ASI1Enable[0]">PID Out 1</th>
+                                                    <th *ngIf="ASI1Enable[1]">PID Out 2</th>
+                                                    <th *ngIf="ASI1Enable[2]">PID Out 3</th>
+                                                    <th *ngIf="ASI1Enable[3]">PID Out 4</th>
+                                                    <th *ngIf="ASI1Enable[4]">PID Out 5</th>
+                                                    <th *ngIf="ASI1Enable[5]">PID Out 6</th>
+                                                    <th *ngIf="ASI1Enable[6]">PID Out 7</th>
+                                                    <th *ngIf="ASI1Enable[7]">PID Out 8</th>
+                                                    <th *ngIf="ASI1Enable[8]">PID Out 9</th>
+                                                    <th *ngIf="ASI1Enable[9]">PID Out 10</th>
                                                 </tr>
                                     </thead>
                                     <tbody>
                                             <tr>
-                                                        <td > {{pidAudio[0]}} </td>
-                                                        <td>{{pidVideo[0]}}</td>
-                                                        <td>{{pidPcr[0]}} </td>
-                                                        <td> {{asiPciInterval[0]}}</td>
+                                                        <td *ngIf="ASI1Enable[0]" > {{ASI1Output[0]}} </td>
+                                                        <td *ngIf="ASI1Enable[1]" > {{ASI1Output[1]}} </td>
+                                                        <td *ngIf="ASI1Enable[2]" > {{ASI1Output[2]}} </td>
+                                                        <td *ngIf="ASI1Enable[3]" > {{ASI1Output[3]}} </td>
+                                                        <td *ngIf="ASI1Enable[4]" > {{ASI1Output[4]}} </td>
+                                                        <td *ngIf="ASI1Enable[5]" > {{ASI1Output[5]}} </td>
+                                                        <td *ngIf="ASI1Enable[6]" > {{ASI1Output[6]}} </td>
+                                                        <td *ngIf="ASI1Enable[7]" > {{ASI1Output[7]}} </td>
+                                                        <td *ngIf="ASI1Enable[8]" > {{ASI1Output[8]}} </td>
+                                                        <td *ngIf="ASI1Enable[9]" > {{ASI1Output[9]}} </td>
+
                                                 </tr>
                                                
                                     </tbody>
@@ -144,18 +157,30 @@
                                     
                                             <thead>
                                                     <tr>
-                                                            <th>PID Audio</th>
-                                                            <th>PID Video</th>
-                                                            <th>PID PCR</th>
-                                                            <th>Intervalo de PCR [ms]</th>
+                                                        <th *ngIf="ASI2Enable[0]">PID Out 1</th>
+                                                        <th *ngIf="ASI2Enable[1]">PID Out 2</th>
+                                                        <th *ngIf="ASI2Enable[2]">PID Out 3</th>
+                                                        <th *ngIf="ASI2Enable[3]">PID Out 4</th>
+                                                        <th *ngIf="ASI2Enable[4]">PID Out 5</th>
+                                                        <th *ngIf="ASI2Enable[5]">PID Out 6</th>
+                                                        <th *ngIf="ASI2Enable[6]">PID Out 7</th>
+                                                        <th *ngIf="ASI2Enable[7]">PID Out 8</th>
+                                                        <th *ngIf="ASI2Enable[8]">PID Out 9</th>
+                                                        <th *ngIf="ASI2Enable[9]">PID Out 10</th>
                                                         </tr>
                                             </thead>
                                             <tbody>
                                                     <tr>
-                                                                <td > {{pidAudio[1]}} </td>
-                                                                <td>{{pidVideo[1]}}</td>
-                                                                <td>{{pidPcr[1]}} </td>
-                                                                <td> {{asiPciInterval[1]}}</td>
+                                                                <td *ngIf="ASI2Enable[0]" > {{ASI2Output[0]}} </td>
+                                                                <td *ngIf="ASI2Enable[1]" > {{ASI2Output[1]}} </td>
+                                                                <td *ngIf="ASI2Enable[2]" > {{ASI2Output[2]}} </td>
+                                                                <td *ngIf="ASI2Enable[3]" > {{ASI2Output[3]}} </td>
+                                                                <td *ngIf="ASI2Enable[4]" > {{ASI2Output[4]}} </td>
+                                                                <td *ngIf="ASI2Enable[5]" > {{ASI2Output[5]}} </td>
+                                                                <td *ngIf="ASI2Enable[6]" > {{ASI2Output[6]}} </td>
+                                                                <td *ngIf="ASI2Enable[7]" > {{ASI2Output[7]}} </td>
+                                                                <td *ngIf="ASI2Enable[8]" > {{ASI2Output[8]}} </td>
+                                                                <td *ngIf="ASI2Enable[9]" > {{ASI2Output[9]}} </td>
                                                         </tr>
                                                        
                                             </tbody>
@@ -165,18 +190,30 @@
                                             
                                                     <thead>
                                                             <tr>
-                                                                    <th>PID Audio</th>
-                                                                    <th>PID Video</th>
-                                                                    <th>PID PCR</th>
-                                                                    <th>Intervalo de PCR [ms]</th>
+                                                                <th *ngIf="ASI3Enable[0]">PID Out 1</th>
+                                                                <th *ngIf="ASI3Enable[1]">PID Out 2</th>
+                                                                <th *ngIf="ASI3Enable[2]">PID Out 3</th>
+                                                                <th *ngIf="ASI3Enable[3]">PID Out 4</th>
+                                                                <th *ngIf="ASI3Enable[4]">PID Out 5</th>
+                                                                <th *ngIf="ASI3Enable[5]">PID Out 6</th>
+                                                                <th *ngIf="ASI3Enable[6]">PID Out 7</th>
+                                                                <th *ngIf="ASI3Enable[7]">PID Out 8</th>
+                                                                <th *ngIf="ASI3Enable[8]">PID Out 9</th>
+                                                                <th *ngIf="ASI3Enable[9]">PID Out 10</th>
                                                                 </tr>
                                                     </thead>
                                                     <tbody>
                                                             <tr>
-                                                                        <td > {{pidAudio[2]}} </td>
-                                                                        <td>{{pidVideo[2]}}</td>
-                                                                        <td>{{pidPcr[2]}} </td>
-                                                                        <td> {{asiPciInterval[2]}}</td>
+                                                                        <td *ngIf="ASI3Enable[0]" > {{ASI3Output[0]}} </td>
+                                                                        <td *ngIf="ASI3Enable[1]" > {{ASI3Output[1]}} </td>
+                                                                        <td *ngIf="ASI3Enable[2]" > {{ASI3Output[2]}} </td>
+                                                                        <td *ngIf="ASI3Enable[3]" > {{ASI3Output[3]}} </td>
+                                                                        <td *ngIf="ASI3Enable[4]" > {{ASI3Output[4]}} </td>
+                                                                        <td *ngIf="ASI3Enable[5]" > {{ASI3Output[5]}} </td>
+                                                                        <td *ngIf="ASI3Enable[6]" > {{ASI3Output[6]}} </td>
+                                                                        <td *ngIf="ASI3Enable[7]" > {{ASI3Output[7]}} </td>
+                                                                        <td *ngIf="ASI3Enable[8]" > {{ASI3Output[8]}} </td>
+                                                                        <td *ngIf="ASI3Enable[9]" > {{ASI3Output[9]}} </td>
                                                                 </tr>
                                                                
                                                     </tbody>

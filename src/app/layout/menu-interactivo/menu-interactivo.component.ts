@@ -31,6 +31,12 @@ export class MenuInteractivoComponent implements OnInit {
   tableLayer = [];
   TablePmtPid = [];
   TableEnable = [];
+  ASI1Enable = [];
+  ASI2Enable = [];
+  ASI3Enable = [];
+  ASI1Output = [];
+  ASI2Output = [];
+  ASI3Output = [];
 // del remultiplexor
   tspNulos;
   tspCapa = [] ;
@@ -50,7 +56,12 @@ export class MenuInteractivoComponent implements OnInit {
     this.TableEnable = this._multiplexorService.obtenerTableEnable();
     this.tspNulos = this._moduladorService.obtenerTspNulos();
     this.tspCapa = this._moduladorService.obtenerTspCapa();
-    
+    this.ASI1Enable = this._multiplexorService.obtenerASI1Enable();
+    this.ASI2Enable = this._multiplexorService.obtenerASI2Enable();
+    this.ASI3Enable = this._multiplexorService.obtenerASI3Enable();
+    this.ASI1Output = this._multiplexorService.obtenerASI1Output();
+    this.ASI2Output = this._multiplexorService.obtenerASI2Output();
+    this.ASI3Output = this._multiplexorService.obtenerASI3Output();
   }
   
 

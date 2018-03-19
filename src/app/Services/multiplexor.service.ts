@@ -145,7 +145,7 @@ obtenerASI3Output(){
 actualizarASI3Output(nuevo : any){
    var ASI3Output = JSON.parse(localStorage.getItem('ASI3Output'));
    ASI3Output = nuevo ;
-   localStorage.setItem('ASI1Output', JSON.stringify(ASI3Output)); 
+   localStorage.setItem('ASI3Output', JSON.stringify(ASI3Output)); 
 }
 obtenerASI3Enable(){
     var ASI3Enable = JSON.parse(localStorage.getItem('ASI3Enable'));

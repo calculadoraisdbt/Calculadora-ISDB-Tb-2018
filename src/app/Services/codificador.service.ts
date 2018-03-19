@@ -197,7 +197,7 @@ export class CodificadorService extends InitCodificador {
    
      if(id === 'E2') {
 
-         var audioBitRate = JSON.parse(localStorage.getItem('videoResolution'));
+         var videoResolution = JSON.parse(localStorage.getItem('videoResolution'));
 
           videoResolution[1] = newParam;
 
@@ -207,7 +207,7 @@ export class CodificadorService extends InitCodificador {
 
      if(id === 'E3') {
 
-         var audioBitRate = JSON.parse(localStorage.getItem('videoResolution'));
+         var videoResolution = JSON.parse(localStorage.getItem('videoResolution'));
 
           videoResolution[2] = newParam;
 
