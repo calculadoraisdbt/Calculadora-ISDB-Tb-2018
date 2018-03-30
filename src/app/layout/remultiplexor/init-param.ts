@@ -41,7 +41,7 @@ load(){
             localStorage.setItem('alturaIntGua2', JSON.stringify(alturaIntGua2));
             var tspNulos = 1279;
             localStorage.setItem('tspNulos', JSON.stringify(tspNulos));
-            var tspCapa = [156,312,624];
+            var tspCapa = [0,0,0];
             localStorage.setItem('tspCapa', JSON.stringify(tspCapa));
         }else{
                

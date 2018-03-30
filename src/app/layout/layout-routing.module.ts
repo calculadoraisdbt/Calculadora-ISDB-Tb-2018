@@ -13,6 +13,7 @@ const routes: Routes = [
             { path: 'modulador', loadChildren: './modulador/modulador.module#ModuladorModule' },
             { path: 'multiplexor', loadChildren: './multiplexor/multiplexor.module#MultiplexorModule' },
             { path: 'creditos', loadChildren: './creditos/creditos.module#CreditosModule' },
+            
         ]
     }
 ];

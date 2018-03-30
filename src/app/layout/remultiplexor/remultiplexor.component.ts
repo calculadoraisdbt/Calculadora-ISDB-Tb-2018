@@ -143,6 +143,7 @@ modo(value){
      this.calculoIntervaloGuarda(this.intSelected);
      this.modoParaEntrelazado();
      this.calculoTspNulos();
+     this.calculoTspCapa();
 }
 
 modoParaEntrelazado(){
@@ -272,18 +273,21 @@ codConSelection(value, id){
   saveValueA(value) {
         this._moduladorService.actualizarSegmentoA(value);
         this.calculoTspNulos();
+        this.calculoTspCapa();
     // call service or whatever to save the value
   }
 
    saveValueB(value) {
        this._moduladorService.actualizarSegmentoB(value);
        this.calculoTspNulos();
+       this.calculoTspCapa();
     // call service or whatever to save the value
   }
 
    saveValueC(value) {
        this._moduladorService.actualizarSegmentoC(value);
        this.calculoTspNulos();
+       this.calculoTspCapa();
     // call service or whatever to save the value
   }
 
@@ -789,9 +793,9 @@ calculoTspNulos(){
 
 calculoTspCapa(){
 
-    this.tspCapaModo1 = [((this.Nmodo1[0])*13),((this.Nmodo1[1])*13),((this.Nmodo1[2])*13)] ;
-    this.tspCapaModo2 = [((this.Nmodo2[0])*13),((this.Nmodo2[1])*13),((this.Nmodo2[2])*13)] ;
-    this.tspCapaModo3 = [((this.Nmodo3[0])*13),((this.Nmodo3[1])*13),((this.Nmodo3[2])*13)] ;
+    this.tspCapaModo1 = [((this.Nmodo1[0])*this.select1),((this.Nmodo1[1])*this.select2),((this.Nmodo1[2])*this.select3)] ;
+    this.tspCapaModo2 = [((this.Nmodo2[0])*this.select1),((this.Nmodo2[1])*this.select2),((this.Nmodo2[2])*this.select3)] ;
+    this.tspCapaModo3 = [((this.Nmodo3[0])*this.select1),((this.Nmodo3[1])*this.select2),((this.Nmodo3[2])*this.select3)] ;
     if(this.modoSelected === 'MODO 1'){
         this._moduladorService.actualizarTspCapa(this.tspCapaModo1);
     }
